@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
-		9CF2AF44275AD61000458646 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ViewController.swift */; };
+		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
 		9CF2AF47275AD61000458646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2AF45275AD61000458646 /* Main.storyboard */; };
 		9CF2AF49275AD61200458646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2AF48275AD61200458646 /* Assets.xcassets */; };
 		9CF2AF4C275AD61200458646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */; };
+		9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */; };
+		9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */; };
+		9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF59275DE5F900458646 /* SomeFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CF2AF43275AD61000458646 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9CF2AF43275AD61000458646 /* ClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsViewController.swift; sourceTree = "<group>"; };
 		9CF2AF46275AD61000458646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CF2AF48275AD61200458646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF2AF4B275AD61200458646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF2AF4D275AD61200458646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClubDistanceViewController.swift; sourceTree = "<group>"; };
+		9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStrokeViewController.swift; sourceTree = "<group>"; };
+		9CF2AF59275DE5F900458646 /* SomeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,26 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
-				9CF2AF3F275AD61000458646 /* AppDelegate.swift */,
-				9CF2AF41275AD61000458646 /* SceneDelegate.swift */,
-				9CF2AF43275AD61000458646 /* ViewController.swift */,
+				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
+				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
+				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
 				9CF2AF45275AD61000458646 /* Main.storyboard */,
 				9CF2AF48275AD61200458646 /* Assets.xcassets */,
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
 				9CF2AF4D275AD61200458646 /* Info.plist */,
+				9CF2AF5B275DE94900458646 /* Delegates */,
 			);
 			path = CaddyApp;
+			sourceTree = "<group>";
+		};
+		9CF2AF5B275DE94900458646 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2AF41275AD61000458646 /* SceneDelegate.swift */,
+				9CF2AF3F275AD61000458646 /* AppDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF2AF44275AD61000458646 /* ViewController.swift in Sources */,
+				9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */,
 				9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */,
+				9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
+				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
+				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
