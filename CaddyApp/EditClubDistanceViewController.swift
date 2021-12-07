@@ -19,48 +19,57 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
         
         
-        guard let dist = UserDefaults().value(forKey: "\(currentClub)") as? Int else {
-            print("Not an int!!!")
-            return
+//        guard let dist = UserDefaults().value(forKey: "\(currentClub)") as? Int else {
+//            print("Not an int!!!")
+//            print("Has type \(type(of: UserDefaults().value(forKey: "\(currentClub)")))")
+//            return
+//        }
+        if let dist = Int("\(UserDefaults().value(forKey: "\(currentClub)") ?? "PROBLEM IN EDITCLUBDIST")") {
+            currentDistanceLabel?.text = "Current Distance: \(dist)"
         }
-        print("Curr dist issss \(dist)")
-        currentDistanceLabel?.text = "Current Distance: \(dist)"
+        
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveClub()
+        textField.resignFirstResponder()
+        return true
+    }
     
     @objc func saveClub() {
         guard let enteredDistance = clubTextField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
             return
         }
+
+        let distAsInt = Int("\(enteredDistance)")!
+        if distAsInt > 450 {
+            let alert = UIAlertController(title: "\(distAsInt)? Really?", message: "Come on, let's be realistic lol", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                switch action.style{
+                    case .default:
+                    print("default")
+                    
+                    case .cancel:
+                    print("cancel")
+                    
+                    case .destructive:
+                    print("destructive")
+                    
+                @unknown default:
+                    print("whateverIDC")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        // we have to use this Guard statement because Swift is not aware that we already set up this account variable in another view controller. So we have to make sure that we open the optional carefully
-//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-//            return
-//        }
-//        let newCount = count + 1
-//        UserDefaults().set(newCount, forKey: "count")
         print("Setting \(enteredDistance) as distance for \(currentClub)")
         UserDefaults().set(Int(enteredDistance), forKey: "\(currentClub)")
         
         
-        // this is saying if this update function exists, let's call it
-//            update?()
-        
         // once we call it, let's dismiss this View controller
         navigationController?.popViewController(animated: true)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

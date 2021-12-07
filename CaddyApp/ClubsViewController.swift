@@ -12,9 +12,6 @@ var currentClub :  String = "NANA"
 class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var clubsTableView: UITableView!
-    
-    let clubs : [String] = ["Pitching Wedge", "9 Iron", "8 Iron","7 Iron","6 Iron","5 Iron"]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,18 +22,28 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print(clubs.count)
         
         if !UserDefaults().bool(forKey: "setup") {
-            setUpDefaults(clubs)
+            setUpDefaults()
+            checkDefaults(clubsArray: clubs)
             UserDefaults().set(true, forKey: "setup")
         }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addClub))
+        //self.action(sender:)
+        
         
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath)
-        cell.textLabel?.text = clubs[indexPath.row]
-        cell.backgroundColor = .link
+        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
+        let thisClub = "\(allClubsByType[indexPath.section][indexPath.row])"
+        cell.textLabel?.text = thisClub
+        if let yards = UserDefaults().value(forKey: thisClub) {
+            cell.yardsLabel.text = "\(yards) yards"
+        } else {
+            cell.yardsLabel.text = "NOT SET"
+        }
         return cell
 
     }
@@ -44,22 +51,51 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
-        print(clubs[indexPath.row])
-        clubVC.title = "\(clubs[indexPath.row]) Distance"
+        let clubName = allClubsByType[indexPath.section][indexPath.row]
+        clubVC.title = "\(clubName) Distance"
         navigationController?.pushViewController(clubVC, animated: true)
-        print("Current club was \(currentClub)")
-        currentClub = clubs[indexPath.row]
-        print("Current club is now \(currentClub)")
+//        print("Current club was \(currentClub)")
+        currentClub = clubName
+//        print("Current club is now \(currentClub)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("returning this many \(clubs.count)")
-        return clubs.count
+        return allClubsByType[section].count
+    }
+    
+    
+    @objc func resetAllClubDistances() {
+        setUpDefaults()
+        checkDefaults(clubsArray: clubs)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return clubTypes.count
     }
     
     
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return clubTypes[section]
+    }
+    
+    @objc func addClub () {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            allClubsByType[indexPath.section].remove(at: indexPath.row)
+//            objects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
 
 
 }
