@@ -11,7 +11,6 @@ import UIKit
 func getAllDistances(forTheseClubs clubs: [String]) -> [Int] {
     var distances = [Int]()
     for clubType in clubs {
-        
         if let dis = UserDefaults().value(forKey: "\(clubType)") {
             // Hacky way to get the UserDefaults values to ints to be returned
             let disStr = "\(dis)"
@@ -26,36 +25,29 @@ func getAllDistances(forTheseClubs clubs: [String]) -> [Int] {
 }
 
 func getDistanceForOneClub(forThisClub club: String) -> String {
-    var thisClubsDistance : String = ""
+    var thisClubsDistance: String = ""
     if let dis = UserDefaults().value(forKey: "\(club)") {
         thisClubsDistance = "\(dis)"
     }
-    
+
     return thisClubsDistance
 }
 
-
-func setUpDefaults () {
-    
+func setUpDefaults() {
     UserDefaults().set("135", forKey: "Pitching Wedge")
     UserDefaults().set("145", forKey: "9 Iron")
     UserDefaults().set("155", forKey: "8 Iron")
     UserDefaults().set("165", forKey: "7 Iron")
     UserDefaults().set("175", forKey: "6 Iron")
     UserDefaults().set("185", forKey: "5 Iron")
-  
 }
 
 func checkDefaults(clubsArray: [String]) {
-    
     for club in clubsArray {
         let dist = UserDefaults().value(forKey: club)
         print("\(club) has key/distance of \(dist ?? "ERROR GETTING DISTANCE")")
     }
 }
-
-
-
 
 func pickClubFromDistance(_ clubs: [String], distance: Int) -> String {
     var pickedClub: String = ""

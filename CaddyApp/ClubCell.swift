@@ -8,8 +8,7 @@
 import UIKit
 
 class ClubCell: UITableViewCell {
-
-    @IBOutlet weak var yardsLabel: UILabel!
+    @IBOutlet var yardsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +19,4 @@ class ClubCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
