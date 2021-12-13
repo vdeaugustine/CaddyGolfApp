@@ -11,9 +11,10 @@ var currentClub: String = "NANA"
 
 class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var clubsTableView: UITableView!
+    var userBag = defaultBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
         // Do any additional setup after loading the view.
@@ -24,9 +25,8 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if !userDefaults.bool(forKey: "setup") {
             print("\nOK NOT SETUP. LETS TRY\n")
             userDefaults.set(true, forKey: "setup")
-            let userBag = UserBag()
             do {
-                try userDefaults.setCustomObject(userBag, forKey: "userBag")
+                try userDefaults.setCustomObject(userBag, forKey: "user_bag")
             } catch {
                 print(error.localizedDescription)
             }
@@ -34,11 +34,24 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             print("\nOK is SETUP. LETS TRY this\n")
             do {
-                let userBag = try userDefaults.getCustomObject(forKey: "userBag", castTo: UserBag.self)
-                print(userBag)
+                let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+                print(getUserBag)
+                userBag = getUserBag
             } catch {
                 print(error.localizedDescription)
             }
+            
+            
+            // This is the example **************************************************
+            //            do {
+            //                let playingItMyWay = try userDefaults.getCustomObject(forKey: "MyFavouriteBook", castTo: Book.self)
+            //                print(playingItMyWay)
+            //            } catch {
+            //                print(error.localizedDescription)
+            //            }
+            
+            // This is the example **************************************************
+
 
         }
 
@@ -49,7 +62,7 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
-        let thisClub = "\(allClubsByType[indexPath.section][indexPath.row])"
+        let thisClub = "\(userBag.irons[indexPath.row])"
         cell.textLabel?.text = thisClub
         if let yards = UserDefaults().value(forKey: thisClub) {
             cell.yardsLabel.text = "\(yards) yards"
@@ -73,7 +86,7 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allClubsByType[section].count
+        return userBag.irons.count
     }
 
     @objc func resetAllClubDistances() {
@@ -84,7 +97,7 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return clubTypes.count
+        return userBag.types.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,7 +105,7 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return clubTypes[section]
+        return userBag.types[section]
     }
 
     @objc func addClub() {
