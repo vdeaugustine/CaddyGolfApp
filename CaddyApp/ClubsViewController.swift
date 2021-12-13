@@ -19,12 +19,29 @@ class ClubsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         print("Hi clubs")
         print(clubs.count)
+        let userDefaults = UserDefaults.standard
+        // If user has not been set up before
+        if !userDefaults.bool(forKey: "setup") {
+            print("\nOK NOT SETUP. LETS TRY\n")
+            userDefaults.set(true, forKey: "setup")
+            let userBag = UserBag()
+            do {
+                try userDefaults.setCustomObject(userBag, forKey: "userBag")
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        } else {
+            print("\nOK is SETUP. LETS TRY this\n")
+            do {
+                let userBag = try userDefaults.getCustomObject(forKey: "userBag", castTo: UserBag.self)
+                print(userBag)
+            } catch {
+                print(error.localizedDescription)
+            }
 
-        if !UserDefaults().bool(forKey: "setup") {
-            setUpDefaults()
-            checkDefaults(clubsArray: clubs)
-            UserDefaults().set(true, forKey: "setup")
         }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addClub))
         // self.action(sender:)

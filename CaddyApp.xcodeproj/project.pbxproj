@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B427671A0D00F49D93 /* UserBag.swift */; };
+		9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B62767CA4000F49D93 /* SaveBag.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
+		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
 				9CF2AF4D275AD61200458646 /* Info.plist */,
 				9CF2AF5B275DE94900458646 /* Delegates */,
+				9C7D80B427671A0D00F49D93 /* UserBag.swift */,
+				9C7D80B62767CA4000F49D93 /* SaveBag.swift */,
 			);
 			path = CaddyApp;
 			sourceTree = "<group>";
@@ -169,8 +175,10 @@
 			files = (
 				9CF2AF5D275EAC8700458646 /* ClubsFile.swift in Sources */,
 				9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */,
+				9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */,
 				9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */,
 				9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */,
+				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
