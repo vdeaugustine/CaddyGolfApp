@@ -48,3 +48,13 @@ extension UserDefaults: ObjectSavable {
         }
     }
 }
+
+
+
+func doSave(userDefaults: UserDefaults, saveThisBag: UserBag) {
+    do {
+        try userDefaults.setCustomObject(saveThisBag, forKey: "user_bag")
+    } catch {
+        print(error.localizedDescription)
+    }
+}

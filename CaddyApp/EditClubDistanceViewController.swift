@@ -16,15 +16,6 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         clubTextField.delegate = self
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
-
-//        guard let dist = UserDefaults().value(forKey: "\(currentClub)") as? Int else {
-//            print("Not an int!!!")
-//            print("Has type \(type(of: UserDefaults().value(forKey: "\(currentClub)")))")
-//            return
-//        }
-        if let dist = Int("\(UserDefaults().value(forKey: "\(currentClub)") ?? "PROBLEM IN EDITCLUBDIST")") {
-            currentDistanceLabel?.text = "Current Distance: \(dist)"
-        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -61,7 +52,15 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         }
 
         print("Setting \(enteredDistance) as distance for \(currentClub)")
-        UserDefaults().set(Int(enteredDistance), forKey: "\(currentClub)")
+        
+        // Need to get userBag so we can edit it
+        let userDefaults = UserDefaults.standard
+        do {
+            let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+            print("GOT USER BAG")
+        } catch {
+            print(error.localizedDescription)
+        }
 
         // once we call it, let's dismiss this View controller
         navigationController?.popViewController(animated: true)
