@@ -24,29 +24,25 @@ struct ClubObject: Codable {
     var distance: Int
 }
 
-
-func defaultBag() -> UserBag{
-    
+func defaultBag() -> UserBag {
     let typesOfClubs = ["Woods", "Irons", "Hybrids"]
-    
+
     var clubsArray = [ClubObject]()
     var ironsArray = [ClubObject]()
     var woodsArray = [ClubObject]()
     var hybridsArray = [ClubObject]()
-    
+
     let driver = ClubObject(name: "Driver", type: "Wood", distance: 275)
     clubsArray.append(driver)
     woodsArray.append(driver)
-    
+
     let fourIron = ClubObject(name: "4 Iron", type: "Iron", distance: 190)
     clubsArray.append(fourIron)
     ironsArray.append(fourIron)
     let threeHybrid = ClubObject(name: "3 Hybrid", type: "Hybrid", distance: 210)
     clubsArray.append(threeHybrid)
     hybridsArray.append(threeHybrid)
-    
-    
-    
+
     return UserBag(types: typesOfClubs,
                    clubsArray: clubsArray,
                    ironsArray: ironsArray,
@@ -54,3 +50,7 @@ func defaultBag() -> UserBag{
                    woodsArray: woodsArray,
                    arrayOfArrays: [woodsArray, ironsArray, hybridsArray])
 }
+
+// func getSectionAndIndexOfClubInBag(of club: String, in bag: UserBag) -> (Int, Int) {
+//
+// }

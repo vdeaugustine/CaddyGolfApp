@@ -52,7 +52,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5sT-6Q-tMF" secondAttribute="bottom" id="obE-Pa-tdj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf"/>
+                    <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="SPu-Dg-Iei"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="clubsTableView" destination="5sT-6Q-tMF" id="Iux-Ot-jTX"/>
                     </connections>
@@ -101,6 +103,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDz-ey-U9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2995.6521739130435" y="105.80357142857143"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gIU-37-7Dl">
+            <objects>
+                <viewController id="908-R2-HcC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IjK-th-pW6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Czy-qR-ePr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sZQ-uP-zqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3935" y="106"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yyq-MX-Ft1">

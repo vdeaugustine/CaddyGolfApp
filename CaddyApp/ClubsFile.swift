@@ -21,11 +21,11 @@ var woodsInuserBag = woods
 var hybridsInuserBag = hybrids
 var wedgesInuserBag = wedges
 
-func getClubTypesInBag (in userBag: [String]) -> [String] {
+func getClubTypesInBag(in userBag: [String]) -> [String] {
     /// Returns a set converted to array. Should have at most 4 unique items (Woods, Irons, Hybrids, Wedges)
-    
+
     var clubTypesInBag = Set<String>()
-    
+
     for item in userBag {
         if item.contains("Iron") {
             clubTypesInBag.insert("Irons")
@@ -40,55 +40,53 @@ func getClubTypesInBag (in userBag: [String]) -> [String] {
             clubTypesInBag.insert("Wedges")
         }
     }
-    
+
     return Array(clubTypesInBag)
 }
 
-func getUserBag() -> [String]{
+func getUserBag() -> [String] {
     var userBagReturned = [String]()
     let userD = UserDefaults()
-    
+
     // Get Woods
     for wood in woods {
-        if let thisWood = userD.value(forKey: wood){
+        if let thisWood = userD.value(forKey: wood) {
             userBagReturned.append(thisWood as! String)
         }
     }
-    
+
     // Get Irons
     for iron in irons {
-        if let thisIron = userD.value(forKey: iron){
+        if let thisIron = userD.value(forKey: iron) {
             userBagReturned.append(thisIron as! String)
         }
     }
-    
+
     // Get Hybrids
     for hybrid in hybrids {
-        if let thisHybrid = userD.value(forKey: hybrid){
+        if let thisHybrid = userD.value(forKey: hybrid) {
             userBagReturned.append(thisHybrid as! String)
         }
     }
-    
+
     // Get Wedges
-    
-    
+
     return userBagReturned
 }
 
-
-//struct ClubObject {
+// struct ClubObject {
 //    var clubType: String
 //    var clubOptions: [String]
-//}
+// }
 //
-//func setUpClubObjects() -> [ClubObject] {
+// func setUpClubObjects() -> [ClubObject] {
 //    var clubsList = [ClubObject]()
 //    clubsList.append(ClubObject(clubType: "Woods", clubOptions: woods))
 //    clubsList.append(ClubObject(clubType: "Hybrids", clubOptions: hybrids))
 //    clubsList.append(ClubObject(clubType: "Irons", clubOptions: irons))
 //
 //    return clubsList
-//}
+// }
 //
 //// func deleteClub(firstIndex: Int, secondIndex: Int, from thisArray: [[String]]) {
 ////    var tempArr = thisArray
@@ -96,7 +94,7 @@ func getUserBag() -> [String]{
 //// }
 //
 //
-//func setClubsToDefault() -> [Club] {
+// func setClubsToDefault() -> [Club] {
 //    var allClubs: [Club] = []
 //
 //    // Set up Woods
@@ -134,13 +132,13 @@ func getUserBag() -> [String]{
 //    allClubs.append(Club(clubType: "wedge", clubName: "60 Wedge", userDistance: 60))
 //
 //    return allClubs
-//}
+// }
 //
-//struct Club {
+// struct Club {
 //    var clubType: String
 //    var clubName: String
 //    var userDistance: Int = 145
-//}
+// }
 //
 //
 //

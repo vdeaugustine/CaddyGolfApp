@@ -52,12 +52,35 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         }
 
         print("Setting \(enteredDistance) as distance for \(currentClub)")
-        
+
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
         do {
-            let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+            var userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+            print(type(of: userBagReturned))
             print("GOT USER BAG")
+            var typeOfClubIndex: Int = 0
+            if currentClub.type == "Wood" {
+                typeOfClubIndex = 0
+            } else if currentClub.type == "Iron" {
+                typeOfClubIndex = 1
+            } else if currentClub.type == "Hybrid" {
+                typeOfClubIndex = 2
+            } else if currentClub.type == "Wedge" {
+//                typeOfClubIndex = 3
+            } else {
+                print("\nERROR ERROR. CLUB TYPE NOT FOUND")
+            }
+            var indexOfClub = 0
+            for i in 0 ..< userBagReturned.arrayOfArrays[typeOfClubIndex].count {
+                if userBagReturned.arrayOfArrays[typeOfClubIndex][i].name == currentClub.name {
+                    indexOfClub = i
+                    break
+                }
+            }
+            userBagReturned.arrayOfArrays[typeOfClubIndex][indexOfClub].distance = distAsInt
+            doSave(userDefaults: userDefaults, saveThisBag: userBagReturned)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         } catch {
             print(error.localizedDescription)
         }
