@@ -51,8 +51,7 @@ func defaultBag() -> UserBag {
                    arrayOfArrays: [woodsArray, ironsArray, hybridsArray])
 }
 
-func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool{
-    
+func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool {
     for clubType in bag.arrayOfArrays {
         for nameOfClub in clubType {
             if clubName == nameOfClub.name {
@@ -61,5 +60,22 @@ func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool{
         }
     }
     return false
+}
+
+func sortBag(bag: UserBag) -> UserBag {
+    let sortedIrons: [ClubObject] = bag.ironsArray.sorted(by: { $0.name < $1.name })
+    var sortedWoods: [ClubObject] = bag.woodsArray.sorted(by: { $0.name < $1.name })
+    let sortedHybrids: [ClubObject] = bag.hybridsArray.sorted(by: { $0.name < $1.name })
+    let driver = sortedWoods.remove(at: sortedWoods.count-1)
+    sortedWoods.insert(driver, at: 0)
+    let allSortedClubs = sortedIrons + sortedWoods + sortedHybrids
     
+    
+    
+    return UserBag(types: ["Woods", "Irons", "Hybrids"],
+                   clubsArray: allSortedClubs,
+                   ironsArray: sortedIrons,
+                   hybridsArray: sortedHybrids,
+                   woodsArray: sortedWoods,
+                   arrayOfArrays: [sortedWoods, sortedIrons, sortedHybrids])
 }

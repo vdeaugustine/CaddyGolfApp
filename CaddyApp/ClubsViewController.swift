@@ -13,14 +13,7 @@ class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
     var userBag = defaultBag()
 
-//    override func viewDidLayoutSubviews() {
-////        print("Called layoutsubviews")
-////        clubsTableView.reloadData()
-//    }
-
     override func viewDidAppear(_ animated: Bool) {
-//        print("called viewdidappear")
-
 //        print("\n\n\n\n\nDOING THIS IN VIEWDIDAPPEAR\n\n\n\n\n")
 
         do {
@@ -29,14 +22,13 @@ class ClubsViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
+        userBag = sortBag(bag: userBag)
         clubsTableView.reloadData()
     }
 
     override func viewDidLoad() {
 //        print("\n\n\n\n\ncalled viewdidload\n\n\n\n\n")
         super.viewDidLoad()
-//        clubsTableView.reloadData()
-//        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
         let userDefaults = UserDefaults.standard
@@ -45,11 +37,6 @@ class ClubsViewController: UIViewController {
         if !userDefaults.bool(forKey: "setup") {
             print("\nOK NOT SETUP. LETS TRY\n")
             userDefaults.set(true, forKey: "setup")
-//            do {
-//                try userDefaults.setCustomObject(userBag, forKey: "user_bag")
-//            } catch {
-//                print(error.localizedDescription)
-//            }
             doSave(userDefaults: userDefaults, saveThisBag: userBag)
 
         } else {
