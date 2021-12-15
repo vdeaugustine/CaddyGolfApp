@@ -53,7 +53,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="SPu-Dg-Iei"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SPu-Dg-Iei">
+                            <connections>
+                                <segue destination="908-R2-HcC" kind="show" id="6kv-A0-3ci"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clubsTableView" destination="5sT-6Q-tMF" id="Iux-Ot-jTX"/>
@@ -104,20 +108,56 @@
             </objects>
             <point key="canvasLocation" x="2995.6521739130435" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Add New Club-->
         <scene sceneID="gIU-37-7Dl">
             <objects>
-                <viewController id="908-R2-HcC" sceneMemberID="viewController">
+                <viewController id="908-R2-HcC" customClass="AddNewClubViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IjK-th-pW6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mep-ae-LCr">
+                                <rect key="frame" x="60" y="255" width="294" height="32"/>
+                                <segments>
+                                    <segment title="Wood"/>
+                                    <segment title="Iron"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ClubTypeSelected:" destination="908-R2-HcC" eventType="valueChanged" id="h68-zp-aTk"/>
+                                    <action selector="clubTypeSelectedBySegment" destination="908-R2-HcC" eventType="valueChanged" id="tX9-Gj-5xf"/>
+                                </connections>
+                            </segmentedControl>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzX-Ec-9D7">
+                                <rect key="frame" x="0.0" y="296" width="414" height="216"/>
+                            </pickerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Czy-qR-ePr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mep-ae-LCr" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" constant="60" id="Slj-la-cbc"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="mep-ae-LCr" secondAttribute="trailing" constant="60" id="XFQ-s2-xzl"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="top" secondItem="mep-ae-LCr" secondAttribute="bottom" constant="10" id="dvw-t4-Q6g"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="trailing" secondItem="Czy-qR-ePr" secondAttribute="trailing" id="eSJ-Wt-hJr"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" id="fOP-Zx-XaN"/>
+                            <constraint firstItem="mep-ae-LCr" firstAttribute="top" secondItem="Czy-qR-ePr" secondAttribute="top" constant="115" id="ldz-Iw-NmR"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Add New Club" id="fOL-za-Km5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tpy-Tw-91V">
+                            <connections>
+                                <action selector="SaveClub:" destination="908-R2-HcC" id="JBe-1J-bXb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="clubNumberPicker" destination="hzX-Ec-9D7" id="oCK-st-puQ"/>
+                        <outlet property="clubTypeSegment" destination="mep-ae-LCr" id="mcV-9O-B91"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZQ-uP-zqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3935" y="106"/>
+            <point key="canvasLocation" x="3955" y="106"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yyq-MX-Ft1">

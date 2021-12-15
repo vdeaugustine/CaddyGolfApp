@@ -13,19 +13,18 @@ class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
     var userBag = defaultBag()
 
-    override func viewDidLayoutSubviews() {
-        print("Called layoutsubviews")
-//        clubsTableView.reloadData()
-    }
+//    override func viewDidLayoutSubviews() {
+////        print("Called layoutsubviews")
+////        clubsTableView.reloadData()
+//    }
 
     override func viewDidAppear(_ animated: Bool) {
-        print("called viewdidappear")
+//        print("called viewdidappear")
 
-        print("\n\n\n\n\nDOING THIS IN VIEWDIDAPPEAR\n\n\n\n\n")
+//        print("\n\n\n\n\nDOING THIS IN VIEWDIDAPPEAR\n\n\n\n\n")
 
         do {
             let getUserBag = try UserDefaults.standard.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-            print(getUserBag)
             userBag = getUserBag
         } catch {
             print(error.localizedDescription)
@@ -34,7 +33,7 @@ class ClubsViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        print("\n\n\n\n\ncalled viewdidload\n\n\n\n\n")
+//        print("\n\n\n\n\ncalled viewdidload\n\n\n\n\n")
         super.viewDidLoad()
 //        clubsTableView.reloadData()
 //        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -54,29 +53,16 @@ class ClubsViewController: UIViewController {
             doSave(userDefaults: userDefaults, saveThisBag: userBag)
 
         } else {
-            print("\n\n\n\n\nOK is SETUP. LETS TRY this\n\n\n\n\n")
+//            print("\n\n\n\n\nOK is SETUP. LETS TRY this\n\n\n\n\n")
             do {
                 let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-                print(getUserBag)
                 userBag = getUserBag
             } catch {
                 print(error.localizedDescription)
             }
-
-            // This is the example **************************************************
-            //            do {
-            //                let playingItMyWay = try userDefaults.getCustomObject(forKey: "MyFavouriteBook", castTo: Book.self)
-            //                print(playingItMyWay)
-            //            } catch {
-            //                print(error.localizedDescription)
-            //            }
-
-            // This is the example **************************************************
         }
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addClub))
-        DispatchQueue.main.async { self.clubsTableView.reloadData() }
     }
 
     @objc func addClub() {
@@ -88,11 +74,6 @@ class ClubsViewController: UIViewController {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
-
-//    @objc func loadList(notification: NSNotification){
-//        //load data here
-//        self.clubsTableView.reloadData()
-//    }
 }
 
 extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
