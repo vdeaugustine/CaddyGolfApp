@@ -45,6 +45,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
                 _ = navigationController?.popViewController(animated: true)
                 return
             }
+                
             print("Going to save")
             print("Club Type Selected \(clubTypeSelected)")
             print("Club Name: ", clubName)

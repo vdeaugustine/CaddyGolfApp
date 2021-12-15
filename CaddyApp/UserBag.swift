@@ -18,13 +18,22 @@ struct UserBag: Codable {
     var arrayOfArrays: [[ClubObject]]
 }
 
-struct ClubObject: Codable {
+struct ClubObject: Codable, CustomStringConvertible, Equatable {
     var name: String
     var type: String
     var distance: Int
+    var description: String {
+        return "\(name)-\(distance)".uppercased()
+    }
+
+    public static func == (lhs: ClubObject, rhs: ClubObject) -> Bool {
+        return lhs.name == rhs.name && lhs.type == rhs.type
+    }
 }
 
 func defaultBag() -> UserBag {
+    
+    print("\nCALLING DEFAULT BAG FOR SOME REASON\n")
     let typesOfClubs = ["Woods", "Irons", "Hybrids"]
 
     var clubsArray = [ClubObject]()
@@ -62,20 +71,52 @@ func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool {
     return false
 }
 
-func sortBag(bag: UserBag) -> UserBag {
+func clubAlreadyInBag(club: ClubObject, bag: UserBag) -> Bool {
+    for clubType in bag.arrayOfArrays {
+        for thisClub in clubType {
+            if thisClub == club {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+func sortBag(bag: inout UserBag) {
+    print("In sort")
+    printBagOutLines(bag: bag)
     let sortedIrons: [ClubObject] = bag.ironsArray.sorted(by: { $0.name < $1.name })
     var sortedWoods: [ClubObject] = bag.woodsArray.sorted(by: { $0.name < $1.name })
     let sortedHybrids: [ClubObject] = bag.hybridsArray.sorted(by: { $0.name < $1.name })
-    let driver = sortedWoods.remove(at: sortedWoods.count-1)
+    let driver = sortedWoods.remove(at: sortedWoods.count - 1)
     sortedWoods.insert(driver, at: 0)
-    let allSortedClubs = sortedIrons + sortedWoods + sortedHybrids
+    let allSortedClubs = sortedWoods + sortedIrons + sortedHybrids
     
-    
-    
-    return UserBag(types: ["Woods", "Irons", "Hybrids"],
-                   clubsArray: allSortedClubs,
-                   ironsArray: sortedIrons,
-                   hybridsArray: sortedHybrids,
-                   woodsArray: sortedWoods,
-                   arrayOfArrays: [sortedWoods, sortedIrons, sortedHybrids])
+    bag.ironsArray = sortedIrons
+    bag.woodsArray = sortedWoods
+    bag.hybridsArray = sortedHybrids
+    bag.arrayOfArrays = [sortedWoods, sortedIrons, sortedHybrids]
+    bag.clubsArray = allSortedClubs
 }
+
+//func removeDuplicates(bag: UserBag) -> UserBag {
+//
+//    var newBag = bag
+//
+//    for ind in 0..<newBag.ironsArray.count - 1 {
+//        if newBag[ind] ==
+//        
+//    }
+//
+//    for wood in newBag.woodsArray {
+//
+//    }
+//
+//    for hybrid in newBag.hybridsArray {
+//
+//    }
+//
+//    return newBag
+//
+//
+//}

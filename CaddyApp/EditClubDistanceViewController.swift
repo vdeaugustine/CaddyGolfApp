@@ -56,7 +56,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
         do {
-            var userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+            let userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
             print(type(of: userBagReturned))
             print("GOT USER BAG")
             var typeOfClubIndex: Int = 0
@@ -73,13 +73,26 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
             }
             var indexOfClub = 0
             for i in 0 ..< userBagReturned.arrayOfArrays[typeOfClubIndex].count {
-                if userBagReturned.arrayOfArrays[typeOfClubIndex][i].name == currentClub.name {
+                print("\nIS \(currentClub) == \(userBagReturned.arrayOfArrays[i])? -- ")
+                if currentClub == userBagReturned.arrayOfArrays[typeOfClubIndex][i] {
+                    print("YES")
                     indexOfClub = i
-                    break
+                } else {
+                    print("NO!!")
                 }
+//                if userBagReturned.arrayOfArrays[typeOfClubIndex][i].name == currentClub.name {
+//                    indexOfClub = i
+//                    break
+//                }
             }
-            userBagReturned.arrayOfArrays[typeOfClubIndex][indexOfClub].distance = distAsInt
-            doSave(userDefaults: userDefaults, saveThisBag: userBagReturned)
+            let newClub = ClubObject(name: currentClub.name, type: currentClub.type, distance: distAsInt)
+//            userBagReturned.arrayOfArrays[typeOfClubIndex][indexOfClub].distance = distAsInt
+//            print(userBagReturned.arrayOfArrays[typeOfClubIndex][indexOfClub])
+            var newBag = userBagReturned
+            newBag.arrayOfArrays[typeOfClubIndex][indexOfClub] = newClub
+            mainBag.arrayOfArrays[typeOfClubIndex][indexOfClub] = newClub
+            printBagOutLines(bag: userBagReturned)
+            doSave(userDefaults: userDefaults, saveThisBag: newBag)
 //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         } catch {
             print(error.localizedDescription)
@@ -87,6 +100,8 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
 
         // once we call it, let's dismiss this View controller
         navigationController?.popViewController(animated: true)
+        
+    
     }
 }
 
