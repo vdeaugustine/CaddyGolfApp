@@ -65,9 +65,6 @@ class ClubsViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
-    @objc func addClub() {
-    }
-
     @objc func resetAllClubDistances() {
         setUpDefaults()
         checkDefaults(clubsArray: clubs)

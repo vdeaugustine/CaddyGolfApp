@@ -51,6 +51,15 @@ func defaultBag() -> UserBag {
                    arrayOfArrays: [woodsArray, ironsArray, hybridsArray])
 }
 
-// func getSectionAndIndexOfClubInBag(of club: String, in bag: UserBag) -> (Int, Int) {
-//
-// }
+func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool{
+    
+    for clubType in bag.arrayOfArrays {
+        for nameOfClub in clubType {
+            if clubName == nameOfClub.name {
+                return true
+            }
+        }
+    }
+    return false
+    
+}

@@ -34,10 +34,17 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func SaveClub(_ sender: UIBarButtonItem) {
+        
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
+        
         do {
             var userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+            guard !thatClubIsAlreadyInBag(clubName: clubName, bag: userBagReturned) else {
+                print("Already in bag, Not adding it!")
+                _ = navigationController?.popViewController(animated: true)
+                return
+            }
             print("Going to save")
             print("Club Type Selected \(clubTypeSelected)")
             print("Club Name: ", clubName)
