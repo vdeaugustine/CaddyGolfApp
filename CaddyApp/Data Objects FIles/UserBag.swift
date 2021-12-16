@@ -82,21 +82,20 @@ func clubAlreadyInBag(club: ClubObject, bag: UserBag) -> Bool {
     return false
 }
 
-func sortBag(bag: inout UserBag) {
+func sortBag(){
     print("In sort")
-    printBagOutLines(bag: bag)
-    let sortedIrons: [ClubObject] = bag.ironsArray.sorted(by: { $0.name < $1.name })
-    var sortedWoods: [ClubObject] = bag.woodsArray.sorted(by: { $0.name < $1.name })
-    let sortedHybrids: [ClubObject] = bag.hybridsArray.sorted(by: { $0.name < $1.name })
-    let driver = sortedWoods.remove(at: sortedWoods.count - 1)
-    sortedWoods.insert(driver, at: 0)
-    let allSortedClubs = sortedWoods + sortedIrons + sortedHybrids
-    
-    bag.ironsArray = sortedIrons
-    bag.woodsArray = sortedWoods
-    bag.hybridsArray = sortedHybrids
-    bag.allClubs2DArray = [sortedWoods, sortedIrons, sortedHybrids]
-    bag.clubsArray = allSortedClubs
+    print("Main bag entering sort", mainBag.allClubs2DArray)
+    for workingIndex in 0..<mainBag.allClubs2DArray.count {
+        mainBag.allClubs2DArray[workingIndex] = mainBag.allClubs2DArray[workingIndex].sorted(by: {$0.name < $1.name})
+    }
+}
+
+func printArray(_ arr: [ClubObject]) -> String{
+    var str = ""
+    for club in arr {
+        str += "\(club),"
+    }
+    return str
 }
 
 //func removeDuplicates(bag: UserBag) -> UserBag {

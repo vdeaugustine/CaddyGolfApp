@@ -15,7 +15,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         clubTextField.delegate = self
-        
+
         // Add the save button to the top right part of the nav controller
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
     }
@@ -27,7 +27,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     /// Function that will be called when the user hits save button at top of screen.
     /// Function will add the newly updated user bag to the UserDefaults, and update global mainBag variable
     @objc func saveClub() {
@@ -36,7 +36,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
             print("Text entered is either not int or empty")
             return
         }
-        
+
         let distAsInt = Int("\(enteredDistance)")! // The value that will be saved to ClubObject as distance
         // Send an alert to the user if they put in a ridiculous yardage amount
         if distAsInt > 450 {
@@ -69,7 +69,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
+
         print(type(of: mainBag))
 //        print("GOT USER BAG")
         /// This will be used to figure out which type of club it is, so we can find which sub-array it belongs to
@@ -98,14 +98,12 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         }
         let newClub = ClubObject(name: currentClub.name, type: currentClub.type, distance: distAsInt)
         mainBag.allClubs2DArray[typeOfClubIndex][indexOfClub] = newClub
-        
+
         // Save the bag to the defaults
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
 
         // Once we call it, let's dismiss this View controller
         navigationController?.popViewController(animated: true)
-        
-    
     }
 }
 

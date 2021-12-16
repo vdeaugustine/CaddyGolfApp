@@ -124,8 +124,7 @@
                                     <segment title="Hybrid"/>
                                 </segments>
                                 <connections>
-                                    <action selector="ClubTypeSelected:" destination="908-R2-HcC" eventType="valueChanged" id="h68-zp-aTk"/>
-                                    <action selector="clubTypeSelectedBySegment" destination="908-R2-HcC" eventType="valueChanged" id="tX9-Gj-5xf"/>
+                                    <action selector="clubTypeSelected:" destination="908-R2-HcC" eventType="valueChanged" id="GTy-3q-uPr"/>
                                 </connections>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzX-Ec-9D7">
@@ -146,13 +145,13 @@
                     <navigationItem key="navigationItem" title="Add New Club" id="fOL-za-Km5">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tpy-Tw-91V">
                             <connections>
-                                <action selector="SaveClub:" destination="908-R2-HcC" id="JBe-1J-bXb"/>
+                                <action selector="saveClub:" destination="908-R2-HcC" id="oKy-t1-XjB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="clubNumberPicker" destination="hzX-Ec-9D7" id="oCK-st-puQ"/>
-                        <outlet property="clubTypeSegment" destination="mep-ae-LCr" id="mcV-9O-B91"/>
+                        <outlet property="clubTypeSegment" destination="mep-ae-LCr" id="jfs-SW-Nmu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZQ-uP-zqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
