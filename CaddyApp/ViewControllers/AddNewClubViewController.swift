@@ -2,7 +2,7 @@
 //  AddNewClubViewController.swift
 //  CaddyApp
 //
-//  Created by Vincent DeAugustine on 12/13/21.
+//  Created by Vincent on 12/13/21.
 //
 
 import UIKit
@@ -18,8 +18,8 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var clubNumberPicker: UIPickerView!
     @IBOutlet var clubTypeSegment: UISegmentedControl!
     var useThisArrForClubsOptions: [String] = woods
-    var typeSelectedIndex : Int = 0
-    var numSelectedIndex : Int = 0
+    var typeSelectedIndex: Int = 0
+    var numSelectedIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,10 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveClub(_ sender: UIBarButtonItem) {
         print("Saved club tapped")
 
+        clubName = useThisArrForClubsOptions[numSelectedIndex]
+
+        print("Trying to save", clubName)
+        print(typeSelectedIndex, numSelectedIndex)
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
 
@@ -42,30 +46,17 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         } catch {
             print(error.localizedDescription)
         }
-            guard !thatClubIsAlreadyInBag(clubName: clubName, bag: mainBag) else {
-                print("Already in bag, Not adding it!")
-                print("Club: ", clubName)
-                print("Bag: ", mainBag)
-                _ = navigationController?.popViewController(animated: true)
-                return
-            }
-            print("Club Type Selected \(clubTypeSelected)")
-            print("Club Name: ", clubName)
-//            if clubTypeSelected == "Wood" {
-//                let newClubObject = ClubObject(name: clubName, type: "Wood", distance: 250)
-//                mainBag.allClubs2DArray[0].append(newClubObject)
-//                mainBag.woodsArray.append(newClubObject)
-//
-//            } else if clubTypeSelected == "Iron" {
-//                let newClubObject = ClubObject(name: clubName, type: "Iron", distance: 150)
-//                mainBag.allClubs2DArray[1].append(newClubObject)
-//                mainBag.ironsArray.append(newClubObject)
-//            } else if clubTypeSelected == "Hybrid" {
-//                let newClubObject = ClubObject(name: clubName, type: "Hybrid", distance: 200)
-//                mainBag.allClubs2DArray[2].append(newClubObject)
-//                mainBag.hybridsArray.append(newClubObject)
-//            }
+        guard !thatClubIsAlreadyInBag(clubName: clubName, bag: mainBag) else {
+            print("Already in bag, Not adding it!")
+            print("Club: ", clubName)
+            print("Bag: ", mainBag)
+            _ = navigationController?.popViewController(animated: true)
+            return
+        }
+        print("Club Type Selected \(clubTypeSelected)")
+        print("Club Name: ", clubName)
         print("TypeIndex", typeSelectedIndex, "Num Index", numSelectedIndex)
+
         let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, distance: 999)
         mainBag.allClubs2DArray[typeSelectedIndex].append(newClubObject)
         mainBag.woodsArray = mainBag.allClubs2DArray[0]
@@ -73,12 +64,9 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         mainBag.hybridsArray = mainBag.allClubs2DArray[2]
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
         // Go back to previous view controller in the navigation stack
-        
 
         _ = navigationController?.popViewController(animated: true)
-        }
-
-        
+    }
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
         clubTypeChangedAtLeastOnce = true

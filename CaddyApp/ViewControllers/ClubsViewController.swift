@@ -31,6 +31,9 @@ class ClubsViewController: UIViewController {
 //        mainBag = sortBag(bag: mainBag)
         sortBag()
         clubsTableView.reloadData()
+        printBagOutLines(bag: mainBag)
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     override func viewDidLoad() {
@@ -53,15 +56,45 @@ class ClubsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     /// This will make all of the clubs in the User's bag back to default distances.
     // will need to be updated at a later time
     @objc func resetAllClubDistances() {
-        setUpDefaults()
-        checkDefaults(clubsArray: clubs)
+        let alert = UIAlertController(title: "Reset all clubs", message: "Are you sure you would like to reset your bag to default?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { action in
+            switch action.style {
+            case .default:
+                print("yes default")
+                mainBag = defaultBag()
+                doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+                self.clubsTableView.reloadData()
+            case .cancel:
+                print("yes cancel")
 
+            case .destructive:
+                print("yes destructive")
+
+            @unknown default:
+                print("whateverIDC")
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: { action in
+            switch action.style {
+            case .default:
+                print("cancel default")
+
+            case .cancel:
+                print("cancel cancel")
+
+            case .destructive:
+                print("cancel destructive")
+
+            @unknown default:
+                print("whateverIDC")
+            }
+        }))
+        present(alert, animated: true, completion: nil)
         // Taptic feedback when button is tapped
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -80,7 +113,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         let currentClubNameForCell = currentClubForCell.name
         let currentClubDistance = currentClubForCell.distance
         cell.textLabel?.text = currentClubNameForCell
-        cell.yardsLabel.text = "\(currentClubDistance)"
+        cell.yardsLabel.text = "\(currentClubDistance) yards"
 
         return cell
     }
@@ -88,6 +121,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Row Selected
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(mainBag.allClubs2DArray[indexPath.section][indexPath.row]) selected")
         tableView.deselectRow(at: indexPath, animated: true)
         currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let taptic = UIImpactFeedbackGenerator(style: .rigid)

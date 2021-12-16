@@ -2,7 +2,7 @@
 //  UserBag.swift
 //  CaddyApp
 //
-//  Created by Vincent DeAugustine on 12/12/21.
+//  Created by Vincent   on 12/12/21.
 //
 
 import Foundation
@@ -32,7 +32,6 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
 }
 
 func defaultBag() -> UserBag {
-    
     print("\nCALLING DEFAULT BAG FOR SOME REASON\n")
     let typesOfClubs = ["Woods", "Irons", "Hybrids"]
 
@@ -82,40 +81,28 @@ func clubAlreadyInBag(club: ClubObject, bag: UserBag) -> Bool {
     return false
 }
 
-func sortBag(){
+func sortBag() {
     print("In sort")
     print("Main bag entering sort", mainBag.allClubs2DArray)
-    for workingIndex in 0..<mainBag.allClubs2DArray.count {
-        mainBag.allClubs2DArray[workingIndex] = mainBag.allClubs2DArray[workingIndex].sorted(by: {$0.name < $1.name})
+    for workingIndex in 0 ..< mainBag.allClubs2DArray.count {
+        mainBag.allClubs2DArray[workingIndex] = mainBag.allClubs2DArray[workingIndex].sorted(by: { $0.name < $1.name })
+    }
+
+    // Put driver at top
+    if !mainBag.allClubs2DArray[0].isEmpty {
+        if mainBag.allClubs2DArray[0][mainBag.allClubs2DArray[0].count - 1].name == "Driver" {
+            print(mainBag.allClubs2DArray[0].last!, "name")
+            let driver = mainBag.allClubs2DArray[0].remove(at: mainBag.allClubs2DArray[0].count - 1)
+            mainBag.allClubs2DArray[0].insert(driver, at: 0)
+            print(driver)
+        }
     }
 }
 
-func printArray(_ arr: [ClubObject]) -> String{
+func printArray(_ arr: [ClubObject]) -> String {
     var str = ""
     for club in arr {
         str += "\(club),"
     }
     return str
 }
-
-//func removeDuplicates(bag: UserBag) -> UserBag {
-//
-//    var newBag = bag
-//
-//    for ind in 0..<newBag.ironsArray.count - 1 {
-//        if newBag[ind] ==
-//        
-//    }
-//
-//    for wood in newBag.woodsArray {
-//
-//    }
-//
-//    for hybrid in newBag.hybridsArray {
-//
-//    }
-//
-//    return newBag
-//
-//
-//}
