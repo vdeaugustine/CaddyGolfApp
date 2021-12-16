@@ -67,7 +67,7 @@ func pickClubFromDistance(_ clubs: [String], distance: Int) -> String {
 
 
 func printBagOutLines(bag: UserBag) {
-    for item in bag.arrayOfArrays {
+    for item in bag.allClubs2DArray {
         for item2 in item {
             print(item2)
         }

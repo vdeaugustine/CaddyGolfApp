@@ -8,6 +8,8 @@
 import UIKit
 
 var currentClub: ClubObject = ClubObject(name: "Driver", type: "Wood", distance: 275)
+
+/// This has to be a global variable. If it is a property of the ClubsViewController class, it will be reinitialized every time the view is loaded, leading to the table values being screwed up.
 var mainBag: UserBag = defaultBag()
 
 class ClubsViewController: UIViewController {
@@ -21,7 +23,7 @@ class ClubsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         clubsTableView.reloadData()
-        print("\n\n\n\n\nDOING THIS IN VIEWDIDAPPEAR\n\n\n\n\n")
+        // print("\n\n\n\n\nDOING THIS IN VIEWDIDAPPEAR\n\n\n\n\n")
 
         do {
             let getUserBag = try UserDefaults.standard.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
@@ -50,10 +52,10 @@ class ClubsViewController: UIViewController {
             doSave(userDefaults: userDefaults, saveThisBag: userBag)
 
         } else {
-            print("\n\n\n\n\nOK is SETUP. LETS TRY this\n\n\n\n\n")
+            // print("\n\n\n\n\nOK is SETUP. LETS TRY this\n\n\n\n\n")
             do {
                 let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-                print("Getusrbg")
+//                print("Getusrbg")
                 printBagOutLines(bag: getUserBag)
                 userBag = getUserBag
                 mainBag = getUserBag
@@ -61,7 +63,7 @@ class ClubsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        print("userBag")
+//        print("userBag")
         printBagOutLines(bag: userBag)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
@@ -82,10 +84,10 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 //        let currentClubForCell = userBag.arrayOfArrays[indexPath.section][indexPath.row]
 //        let currentClubNameForCell = currentClubForCell.name
 //        let currentClubDistance = currentClubForCell.distance
-        let currentClubForCell = mainBag.arrayOfArrays[indexPath.section][indexPath.row]
+        let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let currentClubNameForCell = currentClubForCell.name
         let currentClubDistance = currentClubForCell.distance
-        print("TABLE---", currentClubForCell)
+//        print("TABLE---", currentClubForCell)
         cell.textLabel?.text = currentClubNameForCell
         cell.yardsLabel.text = "\(currentClubDistance)"
 
@@ -96,11 +98,11 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
 //        let clubName = userBag.arrayOfArrays[indexPath.section][indexPath.row].name
-        let clubName = mainBag.arrayOfArrays[indexPath.section][indexPath.row].name
+        let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
         clubVC.title = "\(clubName) Distance"
         navigationController?.pushViewController(clubVC, animated: true)
 //        currentClub = userBag.arrayOfArrays[indexPath.section][indexPath.row]
-        currentClub = mainBag.arrayOfArrays[indexPath.section][indexPath.row]
+        currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let taptic = UIImpactFeedbackGenerator(style: .rigid)
         taptic.impactOccurred(intensity: 1.0)
     }
@@ -108,7 +110,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 //            userBag.arrayOfArrays[indexPath.section].remove(at: indexPath.row)
-            mainBag.arrayOfArrays[indexPath.section].remove(at: indexPath.row)
+            mainBag.allClubs2DArray[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             // Make sure you save the updated bag to defaults so the delete is perminent
             doSave(userDefaults: UserDefaults.standard, saveThisBag: userBag)
@@ -118,11 +120,11 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userBag.arrayOfArrays[section].count
+        return mainBag.allClubs2DArray[section].count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return userBag.types.count
+        return mainBag.types.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -130,6 +132,6 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return userBag.types[section]
+        return mainBag.types[section]
     }
 }

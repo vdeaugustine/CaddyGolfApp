@@ -52,16 +52,16 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
             if clubTypeSelected == "Wood" {
                 print("\n\nREACHED WOOD THING\n\n")
                 let newClubObject = ClubObject(name: clubName, type: "Wood", distance: 250)
-                userBagReturned.arrayOfArrays[0].append(newClubObject)
+                userBagReturned.allClubs2DArray[0].append(newClubObject)
                 userBagReturned.woodsArray.append(newClubObject)
 
             } else if clubTypeSelected == "Iron" {
                 let newClubObject = ClubObject(name: clubName, type: "Iron", distance: 150)
-                userBagReturned.arrayOfArrays[1].append(newClubObject)
+                userBagReturned.allClubs2DArray[1].append(newClubObject)
                 userBagReturned.ironsArray.append(newClubObject)
             } else if clubTypeSelected == "Hybrid" {
                 let newClubObject = ClubObject(name: clubName, type: "Hybrid", distance: 200)
-                userBagReturned.arrayOfArrays[2].append(newClubObject)
+                userBagReturned.allClubs2DArray[2].append(newClubObject)
                 userBagReturned.hybridsArray.append(newClubObject)
             }
             print("\n\nBEFORE SAVE")

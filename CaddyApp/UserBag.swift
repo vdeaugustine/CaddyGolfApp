@@ -15,7 +15,7 @@ struct UserBag: Codable {
     var hybridsArray: [ClubObject]
     var woodsArray: [ClubObject]
     /// This is an array that holds an individual array for each type of club. So inside this main array will be a WoodsArray, IronsArray, HybridsArray, and WedgesArray in that order
-    var arrayOfArrays: [[ClubObject]]
+    var allClubs2DArray: [[ClubObject]]
 }
 
 struct ClubObject: Codable, CustomStringConvertible, Equatable {
@@ -57,11 +57,11 @@ func defaultBag() -> UserBag {
                    ironsArray: ironsArray,
                    hybridsArray: hybridsArray,
                    woodsArray: woodsArray,
-                   arrayOfArrays: [woodsArray, ironsArray, hybridsArray])
+                   allClubs2DArray: [woodsArray, ironsArray, hybridsArray])
 }
 
 func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool {
-    for clubType in bag.arrayOfArrays {
+    for clubType in bag.allClubs2DArray {
         for nameOfClub in clubType {
             if clubName == nameOfClub.name {
                 return true
@@ -72,7 +72,7 @@ func thatClubIsAlreadyInBag(clubName: String, bag: UserBag) -> Bool {
 }
 
 func clubAlreadyInBag(club: ClubObject, bag: UserBag) -> Bool {
-    for clubType in bag.arrayOfArrays {
+    for clubType in bag.allClubs2DArray {
         for thisClub in clubType {
             if thisClub == club {
                 return true
@@ -95,7 +95,7 @@ func sortBag(bag: inout UserBag) {
     bag.ironsArray = sortedIrons
     bag.woodsArray = sortedWoods
     bag.hybridsArray = sortedHybrids
-    bag.arrayOfArrays = [sortedWoods, sortedIrons, sortedHybrids]
+    bag.allClubs2DArray = [sortedWoods, sortedIrons, sortedHybrids]
     bag.clubsArray = allSortedClubs
 }
 
