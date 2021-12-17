@@ -12,6 +12,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var YardsToPin: UILabel!
     @IBOutlet weak var SelectedClubLabel: UILabel!
+    @IBOutlet weak var tipsLabel: UILabel!
+    @IBOutlet weak var tipsTypeSegControl: UISegmentedControl!
+    
     
     var tableView = UITableView()
     override func viewDidLoad() {
@@ -51,4 +54,27 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
          // Pass the selected object to the new view controller.
      }
      */
+    
+
+    @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred(intensity: 1.0)
+        switch tipsTypeSegControl.selectedSegmentIndex {
+        case 0:
+            print("Lie Tips Selected")
+            tipsLabel.text = "Lie Tips Selected"
+        case 1:
+            print("General Tips Selected")
+            tipsLabel.text = "General Tips Selected"
+        case 2:
+            print("Shot Type Tips Selected")
+            tipsLabel.text = "Shot Type Tips Selected"
+        default:
+            break
+        }
+    }
+    
+    
+    
+    
 }
