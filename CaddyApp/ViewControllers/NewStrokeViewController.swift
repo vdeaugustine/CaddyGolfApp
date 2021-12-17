@@ -7,6 +7,8 @@
 
 import UIKit
 
+var clubForAdvice = currentClub
+
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
@@ -14,15 +16,12 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
+    var distanceToPin = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let theseDistances = getAllDistances(forTheseClubs: clubs)
-        print(theseDistances)
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Generate", style: .done, target: self, action: #selector(getAdvice))
-
-        // Do any additional setup after loading the view.
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,15 +38,11 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     }
 
     func saveEnteredDist() {
-        //        let distanceToHole : Int = 0
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
             return
         }
         if let theDistance = Int(enteredDistance) {
-            let pickedClub = pickClubFromDistance(clubs, distance: theDistance)
-            let thisClubsDist = getDistanceForOneClub(forThisClub: pickedClub)
-            useClubLabel.text = "Use \(pickedClub): \(thisClubsDist) yards"
             StrokeInfo.distance = theDistance
         }
     }
@@ -73,14 +68,39 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @objc func getAdvice() {
-        saveEnteredDist()
-        print("got advice!")
-        print(StrokeInfo)
+    @IBAction func getAdvice() {
+//        saveEnteredDist()
+//        print("got advice!")
+//        print(StrokeInfo)
+        print("GETADVICE")
         distanceField.resignFirstResponder()
+        clubForAdvice = getClubForDistance()
+        print(clubForAdvice, "club for advice")
         let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
 //        print(clubs[indexPath.row])
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)
+    }
+
+    func getClubForDistance() -> ClubObject {
+        
+        var shortestClubGap = 999
+        guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
+            print("Text entered is either not int or empty")
+            return ClubObject(name: "NONE", type: "NON", distance: 999)
+        }
+        
+        let distAsInt = Int("\(enteredDistance)")!
+        var closestClub = currentClub
+        for clubType in mainBag.allClubs2DArray {
+            for club in clubType {
+                let thisClubGap = abs(distAsInt - club.distance)
+                if thisClubGap < shortestClubGap {
+                    shortestClubGap = thisClubGap
+                    closestClub = club
+                }
+            }
+        }
+        return closestClub
     }
 }

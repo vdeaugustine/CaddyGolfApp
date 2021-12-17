@@ -271,7 +271,13 @@
                             <constraint firstItem="7Vm-oB-SxN" firstAttribute="top" secondItem="cxL-VD-a65" secondAttribute="bottom" constant="10" id="zPN-5g-Fsi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="shu-2F-4J5"/>
+                    <navigationItem key="navigationItem" id="shu-2F-4J5">
+                        <barButtonItem key="rightBarButtonItem" title="Advice" id="C7M-Zi-Fz3">
+                            <connections>
+                                <action selector="getAdvice" destination="eN1-0R-PeP" id="egh-V9-6nO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="distanceField" destination="IGp-pa-vS8" id="zEk-y8-5LA"/>
                         <outlet property="lieTypeSegControl" destination="7Vm-oB-SxN" id="mKC-es-KTh"/>
@@ -312,6 +318,11 @@
                             <constraint firstItem="ioR-w7-mcQ" firstAttribute="trailing" secondItem="kpm-aF-MhC" secondAttribute="trailing" constant="75" id="xGF-wv-EDu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UEg-Na-UdI"/>
+                    <connections>
+                        <outlet property="SelectedClubLabel" destination="LJU-1V-iML" id="8wM-Jq-STE"/>
+                        <outlet property="YardsToPin" destination="kpm-aF-MhC" id="VN0-2r-pwu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nL-Yd-pax" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,7 +340,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eN1-0R-PeP" kind="relationship" relationship="rootViewController" id="ZVp-VW-g1X"/>
+                        <segue destination="eN1-0R-PeP" kind="relationship" relationship="rootViewController" id="QTU-d8-Ym3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbN-nd-cvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

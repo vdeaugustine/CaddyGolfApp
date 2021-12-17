@@ -8,6 +8,11 @@
 import UIKit
 
 class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+
+    @IBOutlet weak var YardsToPin: UILabel!
+    @IBOutlet weak var SelectedClubLabel: UILabel!
+    
     var tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +20,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        SelectedClubLabel.text = clubForAdvice.name
+        YardsToPin.text = "\(clubForAdvice.distance)" + " yards with this club"
+        
+        
         view.addSubview(tableView)
     }
 
