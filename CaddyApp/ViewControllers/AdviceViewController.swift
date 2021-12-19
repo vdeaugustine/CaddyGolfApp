@@ -8,14 +8,11 @@
 import UIKit
 
 class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    @IBOutlet var YardsToPin: UILabel!
+    @IBOutlet var SelectedClubLabel: UILabel!
+    @IBOutlet var tipsLabel: UILabel!
+    @IBOutlet var tipsTypeSegControl: UISegmentedControl!
 
-    @IBOutlet weak var YardsToPin: UILabel!
-    @IBOutlet weak var SelectedClubLabel: UILabel!
-    @IBOutlet weak var tipsLabel: UILabel!
-    @IBOutlet weak var tipsTypeSegControl: UISegmentedControl!
-    
-    
     var tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +20,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         var longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
-        
+
         SelectedClubLabel.text = "Your \(advice.closestClub.name) goes \(advice.closestClub.fullDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name)"
         YardsToPin.text = "\(advice.distanceToPin) Yards to the Pin"
-        
-        
+
         view.addSubview(tableView)
     }
 
@@ -56,7 +52,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
          // Pass the selected object to the new view controller.
      }
      */
-    
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
@@ -75,8 +70,4 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             break
         }
     }
-    
-    
-    
-    
 }

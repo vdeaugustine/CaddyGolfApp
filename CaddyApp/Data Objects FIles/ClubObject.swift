@@ -17,8 +17,8 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
     var description: String {
         return "\(name)-\(fullDistance)".uppercased()
     }
-    
-    var previousHits : String
+
+    var previousHits: String
 
     public static func == (lhs: ClubObject, rhs: ClubObject) -> Bool {
         return lhs.name == rhs.name && lhs.type == rhs.type

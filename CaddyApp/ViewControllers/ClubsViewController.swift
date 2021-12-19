@@ -181,7 +181,6 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .fade)
             // Make sure you save the updated bag to defaults so the delete is perminent
             doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
-            
         }
     }
 

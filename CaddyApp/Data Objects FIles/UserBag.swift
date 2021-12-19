@@ -19,8 +19,6 @@ struct UserBag: Codable {
     var allClubs2DArray: [[ClubObject]]
 }
 
-
-
 func defaultBag() -> UserBag {
     print("\nCALLING DEFAULT BAG FOR SOME REASON\n")
     let typesOfClubs = ["Woods", "Irons", "Hybrids", "Wedges"]
@@ -41,10 +39,7 @@ func defaultBag() -> UserBag {
     let threeHybrid = ClubObject(name: "3 Hybrid", type: "Hybrid", fullDistance: 210, threeFourthsDistance: 200, maxDistance: 220, averageDistance: 0, previousHits: "")
     clubsArray.append(threeHybrid)
     hybridsArray.append(threeHybrid)
-    
-    
 
-    
     ironsArray.append(ClubObject(name: "3 Iron", type: "Iron", fullDistance: 205, threeFourthsDistance: 200, maxDistance: 215, averageDistance: 0, previousHits: ""))
     ironsArray.append(ClubObject(name: "4 Iron", type: "Iron", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 205, averageDistance: 0, previousHits: ""))
     ironsArray.append(ClubObject(name: "5 Iron", type: "Iron", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 195, averageDistance: 0, previousHits: ""))
@@ -52,7 +47,7 @@ func defaultBag() -> UserBag {
     ironsArray.append(ClubObject(name: "7 Iron", type: "Iron", fullDistance: 165, threeFourthsDistance: 155, maxDistance: 175, averageDistance: 0, previousHits: ""))
     ironsArray.append(ClubObject(name: "8 Iron", type: "Iron", fullDistance: 155, threeFourthsDistance: 145, maxDistance: 165, averageDistance: 0, previousHits: ""))
     ironsArray.append(ClubObject(name: "9 Iron", type: "Iron", fullDistance: 145, threeFourthsDistance: 135, maxDistance: 155, averageDistance: 0, previousHits: ""))
-    
+
     clubsArray.append(ClubObject(name: "3 Iron", type: "Iron", fullDistance: 205, threeFourthsDistance: 195, maxDistance: 220, averageDistance: 0, previousHits: ""))
     clubsArray.append(ClubObject(name: "4 Iron", type: "Iron", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageDistance: 0, previousHits: ""))
     clubsArray.append(ClubObject(name: "5 Iron", type: "Iron", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageDistance: 0, previousHits: ""))
@@ -60,20 +55,15 @@ func defaultBag() -> UserBag {
     clubsArray.append(ClubObject(name: "7 Iron", type: "Iron", fullDistance: 165, threeFourthsDistance: 155, maxDistance: 220, averageDistance: 0, previousHits: ""))
     clubsArray.append(ClubObject(name: "8 Iron", type: "Iron", fullDistance: 155, threeFourthsDistance: 145, maxDistance: 220, averageDistance: 0, previousHits: ""))
     clubsArray.append(ClubObject(name: "9 Iron", type: "Iron", fullDistance: 145, threeFourthsDistance: 135, maxDistance: 220, averageDistance: 0, previousHits: ""))
-    
-    
+
     clubsArray.append(ClubObject(name: "3 wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageDistance: 0, previousHits: ""))
     clubsArray.append(ClubObject(name: "5 wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageDistance: 0, previousHits: ""))
-    
+
     woodsArray.append(ClubObject(name: "3 wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageDistance: 0, previousHits: ""))
     woodsArray.append(ClubObject(name: "5 wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageDistance: 0, previousHits: ""))
-    
+
     wedgesArray.append(ClubObject(name: "52 Wedge", type: "Wedge", fullDistance: 115, threeFourthsDistance: 105, maxDistance: 220, averageDistance: 0, previousHits: ""))
     wedgesArray.append(ClubObject(name: "60 Wedge", type: "Wedge", fullDistance: 60, threeFourthsDistance: 95, maxDistance: 220, averageDistance: 0, previousHits: ""))
-    
-    
-    
-    
 
     return UserBag(types: typesOfClubs,
                    clubsArray: clubsArray,
@@ -123,5 +113,3 @@ func sortBag() {
         }
     }
 }
-
-

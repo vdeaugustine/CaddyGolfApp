@@ -84,13 +84,12 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     }
 
     func getClubForDistance() -> ClubObject {
-        
         var shortestClubGap = 999
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
             return ClubObject(name: "NONE", type: "NONE", fullDistance: 999, threeFourthsDistance: 500, maxDistance: 1000, averageDistance: 0, previousHits: "")
         }
-        
+
         let distAsInt = Int("\(enteredDistance)")!
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {

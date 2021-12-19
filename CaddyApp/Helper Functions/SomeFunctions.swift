@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 extension String {
     var isInt: Bool {
         return Int(self) != nil
@@ -88,10 +87,9 @@ func printArray(_ arr: [ClubObject]) -> String {
     return str
 }
 
-
-func saveCurrentClub () {
-    for clubTypeIndex in 0..<mainBag.allClubs2DArray.count {
-        for clubIndex in 0..<mainBag.allClubs2DArray[clubTypeIndex].count {
+func saveCurrentClub() {
+    for clubTypeIndex in 0 ..< mainBag.allClubs2DArray.count {
+        for clubIndex in 0 ..< mainBag.allClubs2DArray[clubTypeIndex].count {
             let club = mainBag.allClubs2DArray[clubTypeIndex][clubIndex]
             if club == currentClub {
                 mainBag.allClubs2DArray[clubTypeIndex][clubIndex] = currentClub
@@ -109,10 +107,9 @@ func deleteFromCurrentClubPrevHits(thisIndex index: Int) {
     currentClub.previousHits = arrFromStr.joined(separator: ",")
     currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
     saveCurrentClub()
-    
 }
 
-func getAvgFromStr(_ str: String) -> Int{
+func getAvgFromStr(_ str: String) -> Int {
     var sum = 0
     let arrFromStr = str.components(separatedBy: ",")
     var numItemsCount = 0
@@ -128,7 +125,6 @@ func getAvgFromStr(_ str: String) -> Int{
         return 0
     }
 }
-
 
 func removeEmptyFromPrevHits() {
     var prevHitsStr = currentClub.previousHits

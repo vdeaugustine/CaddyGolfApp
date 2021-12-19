@@ -8,6 +8,6 @@
 import Foundation
 
 struct PreviousHit {
-    var distance : Int = 0
-    var date : String = ""
+    var distance: Int = 0
+    var date: String = ""
 }

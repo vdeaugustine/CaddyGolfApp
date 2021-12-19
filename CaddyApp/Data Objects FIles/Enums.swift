@@ -36,7 +36,7 @@ enum standardDistanceForClub: Int {
     case wedge56 = 85
     case wedge58 = 70
     case wedge60 = 60
-    
+
     case pitchingWedge = 135
 }
 

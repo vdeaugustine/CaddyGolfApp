@@ -152,11 +152,7 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
         if arrOfPrevHits.last == "" {
             _ = arrOfPrevHits.popLast()
         }
-//        if arrOfPrevHits.count == 1 {
-//            if arrOfPrevHits[0] == "" {
-//                _ = arrOfPrevHits.popLast()
-//            }
-//        }
+
         if arrOfPrevHits.count > 0 {
             print(arrOfPrevHits)
             print("")
