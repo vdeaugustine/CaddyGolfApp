@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+
+extension String {
+    var isInt: Bool {
+        return Int(self) != nil
+    }
+}
+
 func getAllDistances(forTheseClubs clubs: [String]) -> [Int] {
     var distances = [Int]()
     for clubType in clubs {
@@ -70,5 +77,54 @@ func printBagOutLines(bag: UserBag) {
         for item2 in item {
             print(item2)
         }
+    }
+}
+
+func printArray(_ arr: [ClubObject]) -> String {
+    var str = ""
+    for club in arr {
+        str += "\(club),"
+    }
+    return str
+}
+
+
+func saveCurrentClub () {
+    for clubTypeIndex in 0..<mainBag.allClubs2DArray.count {
+        for clubIndex in 0..<mainBag.allClubs2DArray[clubTypeIndex].count {
+            let club = mainBag.allClubs2DArray[clubTypeIndex][clubIndex]
+            if club == currentClub {
+                mainBag.allClubs2DArray[clubTypeIndex][clubIndex] = currentClub
+                doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+            }
+        }
+    }
+}
+
+func deleteFromCurrentClubPrevHits(thisIndex index: Int) {
+    var arrFromStr = currentClub.previousHits.components(separatedBy: ",")
+    if index < arrFromStr.count {
+        arrFromStr.remove(at: index)
+    }
+    currentClub.previousHits = arrFromStr.joined(separator: ",")
+    currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
+    saveCurrentClub()
+    
+}
+
+func getAvgFromStr(_ str: String) -> Int{
+    var sum = 0
+    let arrFromStr = str.components(separatedBy: ",")
+    var numItemsCount = 0
+    for item in arrFromStr {
+        if let strInt = Int(item) {
+            numItemsCount += 1
+            sum += strInt
+        }
+    }
+    if numItemsCount != 0 {
+        return Int(sum / numItemsCount)
+    } else {
+        return 0
     }
 }

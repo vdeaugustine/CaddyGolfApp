@@ -7,7 +7,7 @@
 
 import UIKit
 
-var currentClub: ClubObject = ClubObject(name: "Driver", type: "Wood", distance: 275)
+var currentClub: ClubObject = ClubObject(name: "Driver", type: "Wood", fullDistance: 275, threeFourthsDistance: 265, maxDistance: 285, averageDistance: 0, previousHits: "")
 
 /// This has to be a global variable. If it is a property of the ClubsViewController class, it will be reinitialized every time the view is loaded, leading to the table values being screwed up.
 var mainBag: UserBag = defaultBag()
@@ -15,6 +15,10 @@ var mainBag: UserBag = defaultBag()
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
+
+    @IBOutlet var swingTypeToggle: UIButton!
+
+    var currentSwingTypeState = swingTypeState(rawValue: 0)
 
     override func viewDidAppear(_ animated: Bool) {
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
@@ -26,9 +30,6 @@ class ClubsViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-        // Reload in case something has changed
-//        sortBag(bag: &mainBag)
-//        mainBag = sortBag(bag: mainBag)
         sortBag()
         clubsTableView.reloadData()
         printBagOutLines(bag: mainBag)
@@ -99,6 +100,26 @@ class ClubsViewController: UIViewController {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
+
+    @IBAction func swingTypeToggleTapped(_ sender: UIButton) {
+        switch currentSwingTypeState {
+        case .fullSwing:
+            print("FULLSWING")
+            currentSwingTypeState = .maxSwing
+            swingTypeToggle.setTitle("MAX", for: .normal)
+        case .maxSwing:
+            print("MAXSWING")
+            currentSwingTypeState = .threeFourths
+            swingTypeToggle.setTitle("3/4", for: .normal)
+        case .threeFourths:
+            print("TFSWING")
+            currentSwingTypeState = .fullSwing
+            swingTypeToggle.setTitle("FULL", for: .normal)
+        case .none:
+            currentSwingTypeState = .fullSwing
+        }
+        clubsTableView.reloadData()
+    }
 }
 
 // MARK: - TABLE VIEW STUFF
@@ -111,9 +132,24 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let currentClubNameForCell = currentClubForCell.name
-        let currentClubDistance = currentClubForCell.distance
+//        let currentClubDistance = currentClubForCell.fullDistance
         cell.textLabel?.text = currentClubNameForCell
-        cell.yardsLabel.text = "\(currentClubDistance) yards"
+//        cell.yardsLabel.text = "\(currentClubDistance) yards"
+        cell.yardsLabel.text = {
+            switch currentSwingTypeState {
+            case .fullSwing:
+                return "\(currentClubForCell.fullDistance)"
+            case .threeFourths:
+                return "\(currentClubForCell.threeFourthsDistance)"
+            case .maxSwing:
+                return "\(currentClubForCell.maxDistance)"
+            case .none:
+                return ""
+            case .some:
+                return ""
+            }
+
+        }()
 
         return cell
     }
@@ -145,6 +181,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .fade)
             // Make sure you save the updated bag to defaults so the delete is perminent
             doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+            
         }
     }
 

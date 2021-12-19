@@ -9,15 +9,22 @@ import UIKit
 
 class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var currentDistanceLabel: UILabel!
+    @IBOutlet var avgDistance: UILabel!
 
+    @IBOutlet var swingTypeSegControl: UISegmentedControl!
+    @IBOutlet var prevHitsTableView: UITableView!
     /// The text field that will receive the yardage from the user for this club
     @IBOutlet var clubTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        clubTextField.placeholder = "Change 3/4 Distance for Club"
         clubTextField.delegate = self
-
+        avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
+        currentDistanceLabel.text = " Current Distance: \(currentClub.fullDistance)"
         // Add the save button to the top right part of the nav controller
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
+        prevHitsTableView.delegate = self
+        prevHitsTableView.dataSource = self
     }
 
     /// Will be used to save the club if the return button is hit on the text field keyboard
@@ -81,7 +88,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         } else if currentClub.type == "Hybrid" {
             typeOfClubIndex = 2
         } else if currentClub.type == "Wedge" {
-//                typeOfClubIndex = 3
+            typeOfClubIndex = 3
         } else {
             print("\nERROR ERROR. CLUB TYPE NOT FOUND")
         }
@@ -96,7 +103,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
                 print("NO!!")
             }
         }
-        let newClub = ClubObject(name: currentClub.name, type: currentClub.type, distance: distAsInt)
+        let newClub = ClubObject(name: currentClub.name, type: currentClub.type, fullDistance: distAsInt, threeFourthsDistance: Int(Double(distAsInt) * 0.75), maxDistance: Int(Double(distAsInt) * 1.25), averageDistance: 0, previousHits: "")
         mainBag.allClubs2DArray[typeOfClubIndex][indexOfClub] = newClub
 
         // Save the bag to the defaults
@@ -105,10 +112,96 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         // Once we call it, let's dismiss this View controller
         navigationController?.popViewController(animated: true)
     }
-}
 
-extension String {
-    var isInt: Bool {
-        return Int(self) != nil
+    @IBAction func swingTypeSegControlChange(_ sender: UISegmentedControl) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred(intensity: 1.0)
+        switch swingTypeSegControl.selectedSegmentIndex {
+        case 0:
+            currentDistanceLabel.text = "Current 3/4 Distance: \(currentClub.threeFourthsDistance)"
+            clubTextField.placeholder = "Change 3/4 Distance for Club"
+        case 1:
+            currentDistanceLabel.text = "Current Full Distance: \(currentClub.fullDistance)"
+            clubTextField.placeholder = "Change Full Distance for Club"
+        case 2:
+            currentDistanceLabel.text = "Current Max Distance: \(currentClub.maxDistance)"
+            clubTextField.placeholder = "Change Max Distance for Club"
+        default:
+            print()
+        }
     }
 }
+
+extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSource {
+        
+    
+        /*
+         // Only override draw() if you perform custom drawing.
+         // An empty implementation adversely affects performance during animation.
+         override func draw(_ rect: CGRect) {
+             // Drawing code
+         }
+         */
+
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            let arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
+            
+            return arrOfPrevHits.count + 1
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "addNew")!
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "prevHit")!
+                let arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
+                cell.textLabel?.text = arrOfPrevHits[indexPath.row-1]
+                return cell
+            }
+        }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            if indexPath.row == 0 {
+                // 1. Create the alert controller.
+                let alert = UIAlertController(title: "Enter Distance", message: "Of Previous Shot", preferredStyle: .alert)
+
+                // 2. Add the text field. You can configure it however you need.
+                alert.addTextField { textField in
+                    textField.placeholder = "Yardage"
+                }
+
+                // 3. Grab the value from the text field, and print it when the user clicks OK.
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] _ in
+                    let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+                    if let theDistance = textField?.text, theDistance.isInt {
+                        currentClub.previousHits.append("\(theDistance),")
+                        currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
+                        saveCurrentClub()
+                    }
+                    
+                    print("Text field: \(textField?.text ?? "")")
+                    tableView.reloadData()
+                    self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
+                    
+                }))
+
+                // 4. Present the alert.
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+        }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteFromCurrentClubPrevHits(thisIndex: indexPath.row-1)
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+        }
+        self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
+    }
+    }

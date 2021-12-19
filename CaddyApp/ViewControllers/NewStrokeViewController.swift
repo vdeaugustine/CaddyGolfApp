@@ -8,6 +8,7 @@
 import UIKit
 
 var clubForAdvice = currentClub
+var advice = Advice()
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
@@ -87,20 +88,24 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         var shortestClubGap = 999
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
-            return ClubObject(name: "NONE", type: "NON", distance: 999)
+            return ClubObject(name: "NONE", type: "NONE", fullDistance: 999, threeFourthsDistance: 500, maxDistance: 1000, averageDistance: 0, previousHits: "")
         }
         
         let distAsInt = Int("\(enteredDistance)")!
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
-                let thisClubGap = abs(distAsInt - club.distance)
+                let thisClubGap = abs(distAsInt - club.fullDistance)
                 if thisClubGap < shortestClubGap {
                     shortestClubGap = thisClubGap
                     closestClub = club
                 }
             }
         }
+        advice.closestClub = closestClub
+        advice.closestClubDistance = advice.closestClub.fullDistance
+        advice.closestClubGap = shortestClubGap
+        advice.distanceToPin = distAsInt
         return closestClub
     }
 }

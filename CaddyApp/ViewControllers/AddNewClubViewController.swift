@@ -56,12 +56,98 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         print("Club Type Selected \(clubTypeSelected)")
         print("Club Name: ", clubName)
         print("TypeIndex", typeSelectedIndex, "Num Index", numSelectedIndex)
+        let fullDist = { () -> Int in
+            var distRet = 1
+            if let someClubType = clubTypesEnum(rawValue: clubTypeSelected) {
+                switch someClubType {
+                case .irons:
+                    if let someClub = ironTypes(rawValue: clubName) {
+                        switch someClub {
+                        case .nineIron:
+                            distRet = standardDistanceForClub.nineIron.rawValue
+                        case .eightIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .sevenIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .sixIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .fiveIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .fourIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .threeIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .twoIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        case .oneIron:
+                            distRet = standardDistanceForClub.eightIron.rawValue
+                        }
+                    }
 
-        let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, distance: 999)
+                case .woods:
+                    if let someClub = woodTypes(rawValue: clubName) {
+                        switch someClub {
+                        case .driver:
+                            distRet = standardDistanceForClub.driver.rawValue
+                        case .twoWood:
+                            distRet = standardDistanceForClub.twoWood.rawValue
+                        case .threeWood:
+                            distRet = standardDistanceForClub.threeWood.rawValue
+                        case .fourWood:
+                            distRet = standardDistanceForClub.fourWood.rawValue
+                        case .fiveWood:
+                            distRet = standardDistanceForClub.fiveWood.rawValue
+                        }
+                    }
+                case .wedges:
+                    if let someClub = wedgesTypes(rawValue: clubName) {
+                        switch someClub {
+                        case .wedge60:
+                            distRet = standardDistanceForClub.wedge60.rawValue
+                        case .wedge58:
+                            distRet = standardDistanceForClub.wedge58.rawValue
+                        case .wedge56:
+                            distRet = standardDistanceForClub.wedge56.rawValue
+                        case .wedge54:
+                            distRet = standardDistanceForClub.wedge54.rawValue
+                        case .wedge52:
+                            distRet = standardDistanceForClub.wedge52.rawValue
+                        case .pitching:
+                            distRet = standardDistanceForClub.pitchingWedge.rawValue
+                        }
+                    }
+                case .hybrids:
+                    if let someClub = hybridTypes(rawValue: clubName) {
+                        switch someClub {
+                        case .fiveIron:
+                            distRet = standardDistanceForClub.fiveHybrid.rawValue
+                        case .fourHybrid:
+                            distRet = standardDistanceForClub.fourHybrid.rawValue
+                        case .threeHybrid:
+                            distRet = standardDistanceForClub.threeHybrid.rawValue
+                        case .twoHybrid:
+                            distRet = standardDistanceForClub.twoHybrid.rawValue
+                        case .oneHybrid:
+                            distRet = standardDistanceForClub.oneHybrid.rawValue
+                        }
+                    }
+                }
+            }
+
+            return distRet
+        } ()
+        let threfDist = Int(0.75 * Double(fullDist))
+        let maxDist = Int(1.25 * Double(fullDist))
+        
+        
+        let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, fullDistance: fullDist, threeFourthsDistance: threfDist, maxDistance: maxDist, averageDistance: 0, previousHits: "")
+        
+        
         mainBag.allClubs2DArray[typeSelectedIndex].append(newClubObject)
         mainBag.woodsArray = mainBag.allClubs2DArray[0]
         mainBag.ironsArray = mainBag.allClubs2DArray[1]
         mainBag.hybridsArray = mainBag.allClubs2DArray[2]
+        mainBag.wedgesArray = mainBag.allClubs2DArray[3]
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
         // Go back to previous view controller in the navigation stack
 
@@ -88,6 +174,11 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
             print("Hybrid Selected")
             clubTypeSelected = "Hybrid"
             useThisArrForClubsOptions = hybrids
+            clubNumberPicker.reloadAllComponents()
+        case 3:
+            print("Wedge Selected")
+            clubTypeSelected = "Wedge"
+            useThisArrForClubsOptions = wedges
             clubNumberPicker.reloadAllComponents()
         default:
             break

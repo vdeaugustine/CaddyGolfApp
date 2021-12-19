@@ -24,8 +24,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
-        SelectedClubLabel.text = clubForAdvice.name
-        YardsToPin.text = "\(clubForAdvice.distance)" + " yards with this club"
+        var longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
+        
+        SelectedClubLabel.text = "Your \(advice.closestClub.name) goes \(advice.closestClub.fullDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name)"
+        YardsToPin.text = "\(advice.distanceToPin) Yards to the Pin"
         
         
         view.addSubview(tableView)
@@ -65,10 +67,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tipsLabel.text = "Lie Tips Selected"
         case 1:
             print("General Tips Selected")
-            tipsLabel.text = "General Tips Selected"
+            tipsLabel.text = generalAdvice
         case 2:
             print("Shot Type Tips Selected")
-            tipsLabel.text = "Shot Type Tips Selected"
+            tipsLabel.text = pitchAdvice
         default:
             break
         }
