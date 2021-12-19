@@ -25,6 +25,8 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
         prevHitsTableView.delegate = self
         prevHitsTableView.dataSource = self
+        removeEmptyFromPrevHits()
+        prevHitsTableView.reloadData()
     }
 
     /// Will be used to save the club if the return button is hit on the text field keyboard
@@ -133,75 +135,95 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSource {
-        
-    
-        /*
-         // Only override draw() if you perform custom drawing.
-         // An empty implementation adversely affects performance during animation.
-         override func draw(_ rect: CGRect) {
-             // Drawing code
-         }
-         */
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+         // Drawing code
+     }
+     */
 
-        func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
+        if arrOfPrevHits.last == "" {
+            _ = arrOfPrevHits.popLast()
+        }
+//        if arrOfPrevHits.count == 1 {
+//            if arrOfPrevHits[0] == "" {
+//                _ = arrOfPrevHits.popLast()
+//            }
+//        }
+        if arrOfPrevHits.count > 0 {
+            print(arrOfPrevHits)
+            print("")
+            return arrOfPrevHits.count + 1
+        } else {
+            print(arrOfPrevHits)
             return 1
         }
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addNew")!
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "prevHit")!
             let arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
-            
-            return arrOfPrevHits.count + 1
+            cell.textLabel?.text = arrOfPrevHits[indexPath.row - 1]
+            return cell
         }
+    }
 
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "addNew")!
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "prevHit")!
-                let arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
-                cell.textLabel?.text = arrOfPrevHits[indexPath.row-1]
-                return cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            // 1. Create the alert controller.
+            let alert = UIAlertController(title: "Enter Distance", message: "Of Previous Shot", preferredStyle: .alert)
+
+            // 2. Add the text field. You can configure it however you need.
+            alert.addTextField { textField in
+                textField.placeholder = "Yardage"
+                textField.keyboardType = .numberPad
             }
-        }
 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            if indexPath.row == 0 {
-                // 1. Create the alert controller.
-                let alert = UIAlertController(title: "Enter Distance", message: "Of Previous Shot", preferredStyle: .alert)
-
-                // 2. Add the text field. You can configure it however you need.
-                alert.addTextField { textField in
-                    textField.placeholder = "Yardage"
+            // 3. Grab the value from the text field, and print it when the user clicks OK.
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] _ in
+                let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+                if let theDistance = textField?.text, theDistance.isInt {
+                    currentClub.previousHits.append("\(theDistance),")
+                    currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
+                    saveCurrentClub()
                 }
 
-                // 3. Grab the value from the text field, and print it when the user clicks OK.
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] _ in
-                    let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-                    if let theDistance = textField?.text, theDistance.isInt {
-                        currentClub.previousHits.append("\(theDistance),")
-                        currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
-                        saveCurrentClub()
-                    }
-                    
-                    print("Text field: \(textField?.text ?? "")")
-                    tableView.reloadData()
-                    self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
-                    
-                }))
+                print("Text field: \(textField?.text ?? "")")
+                tableView.reloadData()
+                self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
 
-                // 4. Present the alert.
-                self.present(alert, animated: true, completion: nil)
-                
-            }
+            }))
+
+            // 4. Present the alert.
+            present(alert, animated: true, completion: nil)
         }
-    
-    
+    }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteFromCurrentClubPrevHits(thisIndex: indexPath.row-1)
+            deleteFromCurrentClubPrevHits(thisIndex: indexPath.row - 1)
             tableView.deleteRows(at: [indexPath], with: .bottom)
         }
-        self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
+        avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        } else {
+            return true
+        }
     }
+}

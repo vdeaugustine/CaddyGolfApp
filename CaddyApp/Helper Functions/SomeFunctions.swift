@@ -128,3 +128,13 @@ func getAvgFromStr(_ str: String) -> Int{
         return 0
     }
 }
+
+
+func removeEmptyFromPrevHits() {
+    var prevHitsStr = currentClub.previousHits
+    if prevHitsStr.last == "," {
+        _ = prevHitsStr.removeLast()
+    }
+    currentClub.previousHits = prevHitsStr
+    saveCurrentClub()
+}
