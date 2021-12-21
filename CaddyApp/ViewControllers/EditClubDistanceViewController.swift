@@ -15,6 +15,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var prevHitsTableView: UITableView!
     /// The text field that will receive the yardage from the user for this club
     @IBOutlet var clubTextField: UITextField!
+    var swingTypeSelected : swingTypes = .threeFourths
     override func viewDidLoad() {
         super.viewDidLoad()
         clubTextField.placeholder = "Change 3/4 Distance for Club"
@@ -25,7 +26,8 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
         prevHitsTableView.delegate = self
         prevHitsTableView.dataSource = self
-        removeEmptyFromPrevHits()
+//        removeEmptyFromPrevHits()
+
         prevHitsTableView.reloadData()
     }
 
@@ -68,70 +70,29 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         }
 
-        // Need to get userBag so we can edit it
-        let userDefaults = UserDefaults.standard
-        do {
-            let userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-            mainBag = userBagReturned
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        print(type(of: mainBag))
-//        print("GOT USER BAG")
         /// This will be used to figure out which type of club it is, so we can find which sub-array it belongs to
-        var typeOfClubIndex: Int = 0
-
-        switch currentClub.type {
+        var typeOfClubChosen: clubTypesEnum
+        switch currentClubCORE.type {
         case "Wood":
-            typeOfClubIndex = 0
+            typeOfClubChosen = .woods
         case "Iron":
-            typeOfClubIndex = 1
+            typeOfClubChosen = .irons
         case "Hybrid":
-            typeOfClubIndex = 2
+            typeOfClubChosen = .hybrids
         case "Wedge":
-            typeOfClubIndex = 3
+            typeOfClubChosen = .wedges
         default:
             print("Problem with currentClub.type switch in EditClubDistanceViewController")
-            // The below code should be a less clean version of the above code. If we run and it doesn't have a problem, this can be deleted
-//            if currentClub.type == "Wood" {
-//                typeOfClubIndex = 0
-//            } else if currentClub.type == "Iron" {
-//                typeOfClubIndex = 1
-//            } else if currentClub.type == "Hybrid" {
-//                typeOfClubIndex = 2
-//            } else if currentClub.type == "Wedge" {
-//                typeOfClubIndex = 3
-//            } else {
-//                print("\nERROR ERROR. CLUB TYPE NOT FOUND")
-//            }
-        }
 
-        // Go through the subindex of 2DArray (index of club type we are looking for) and find the index for the club itself
-        var indexOfClub = 0
-        for i in 0 ..< mainBag.allClubs2DArray[typeOfClubIndex].count {
-            print("\nIS \(currentClub) == \(mainBag.allClubs2DArray[i])? -- ")
-            if currentClub == mainBag.allClubs2DArray[typeOfClubIndex][i] {
-                print("YES")
-                indexOfClub = i
-            } else {
-                print("NO!!")
-            }
-        }
-        let newClub = ClubObject(name: currentClub.name, type: currentClub.type, fullDistance: distAsInt, threeFourthsDistance: Int(Double(distAsInt) * 0.75), maxDistance: Int(Double(distAsInt) * 1.25), averageDistance: 0, previousHits: "")
-        mainBag.allClubs2DArray[typeOfClubIndex][indexOfClub] = newClub
+            // MARK: - Core Data Save
 
-        // Save the bag to the defaults
-        doSave(userDefaults: userDefaults, saveThisBag: mainBag)
-
-        // MARK: - Core Data Save
-
+            updateClub(club: currentClubCORE, newAverage: distAsInt, averageType: swingTypeSelected)
 //        createItem(name: currentClub.name, typeOfClub: distAsInt)
 
-        // Once we call it, let's dismiss this View controller
-//        navigationController?.popViewController(animated: true)
-        let tempViewController = storyboard?.instantiateViewController(identifier: "TestTableViewController") as! TestTableViewController
-        navigationController?.pushViewController(tempViewController, animated: true)
+            // Once we call it, let's dismiss this View controller
+        navigationController?.popViewController(animated: true)
+            
+        }
     }
 
     @IBAction func swingTypeSegControlChange(_ sender: UISegmentedControl) {
@@ -141,12 +102,15 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         case 0:
             currentDistanceLabel.text = "Current 3/4 Distance: \(currentClub.threeFourthsDistance)"
             clubTextField.placeholder = "Change 3/4 Distance for Club"
+            swingTypeSelected = .threeFourths
         case 1:
             currentDistanceLabel.text = "Current Full Distance: \(currentClub.fullDistance)"
             clubTextField.placeholder = "Change Full Distance for Club"
+            swingTypeSelected = .full
         case 2:
             currentDistanceLabel.text = "Current Max Distance: \(currentClub.maxDistance)"
             clubTextField.placeholder = "Change Max Distance for Club"
+            swingTypeSelected = .max
         default:
             print()
         }

@@ -125,6 +125,7 @@ enum swingTypeState: Int {
     case fullSwing = 0, maxSwing, threeFourths
 }
 
+/// ThreeFourths, Full, or Max
 enum swingTypes {
     case threeFourths, full, max
 }

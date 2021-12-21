@@ -155,21 +155,30 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: Row Selected
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("\(mainBag.allClubs2DArray[indexPath.section][indexPath.row]) selected")
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-//        let taptic = UIImpactFeedbackGenerator(style: .rigid)
-//        taptic.impactOccurred(intensity: 1.0)
-//
-//        // Create new view controller that will be used to edit club distance
-//        let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
-//        let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
-//        clubVC.title = "\(clubName) Distance"
-//
-//        // This is what sends us to the next view controller for editing distance
-//        navigationController?.pushViewController(clubVC, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let selectedClub = AppDelegate.userGolfBag.allClubs2DArr?[indexPath.section][indexPath.row] {
+            currentClubCORE = selectedClub
+            let taptic = UIImpactFeedbackGenerator(style: .rigid)
+            taptic.impactOccurred(intensity: 1.0)
+            
+            // Create new view controller that will be used to edit club distance
+            let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
+            let clubName = selectedClub.name
+            
+            clubVC.title = "\(clubName!) Distance"
+
+            // This is what sends us to the next view controller for editing distance
+            navigationController?.pushViewController(clubVC, animated: true)
+            
+            
+        }
+        
+       
+
+       
+    }
 
     // MARK: Rest of Table View Stuff
 

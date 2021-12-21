@@ -107,11 +107,46 @@ func updateClub(club: SingleClub, newAverage: Int, averageType: swingTypes) {
         club.maxDistance = Int64(newAverage)
     }
 
+   
+    
+    var subIndexForClub : Int
+    var superIndex: Int
+    if let clubType = club.type  {
+        
+        // Update bag
+        switch clubType {
+        case "Wood":
+            subIndexForClub = getIndexFromArray(for: club, type: .woods)
+            superIndex = 0
+            AppDelegate.userGolfBag.allClubs2DArr?[superIndex][subIndexForClub] = club
+        case "Hybrid":
+            subIndexForClub = getIndexFromArray(for: club, type: .hybrids)
+            superIndex = 1
+            AppDelegate.userGolfBag.allClubs2DArr?[superIndex][subIndexForClub] = club
+        case "Iron":
+            subIndexForClub = getIndexFromArray(for: club, type: .irons)
+            superIndex = 2
+            AppDelegate.userGolfBag.allClubs2DArr?[superIndex][subIndexForClub] = club
+        case "Wedge":
+            subIndexForClub = getIndexFromArray(for: club, type: .wedges)
+            superIndex = 3
+            AppDelegate.userGolfBag.allClubs2DArr?[superIndex][subIndexForClub] = club
+        default:
+            print()
+            
+        }
+        
+    }
+    // Not sure if we need to do this
     do {
         try coreDataContext.save()
     } catch {
         print("ERROR WHEN TRYING TO SAVE CLUB UPDATE")
     }
+    
+    
+    
+    
 }
 
 /// Updates the array containing previous distances of this swing type for a club. Saves after done
@@ -253,4 +288,28 @@ func getGolfBagFromCoreData() {
     } catch {
         print("ERROR WHEN TRYING TO SAVE GETALLITEMS")
     }
+}
+
+
+func getIndexFromArray(for club: SingleClub, type: clubTypesEnum) -> Int{
+    var lookAtThisSubArray = 0
+    switch type {
+    case .irons:
+        lookAtThisSubArray = 2
+    case .woods:
+        lookAtThisSubArray = 0
+    case .wedges:
+        lookAtThisSubArray = 3
+    case .hybrids:
+        lookAtThisSubArray = 1
+    }
+    guard let arr = AppDelegate.userGolfBag.allClubs2DArr?[lookAtThisSubArray] else {
+        return -1
+    }
+    for currentIndex in 0 ..< arr.count {
+        if arr[currentIndex].name == club.name {
+            return currentIndex
+        }
+    }
+    return -1
 }
