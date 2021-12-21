@@ -114,7 +114,7 @@ enum wedgesTypes: String, CaseIterable {
     case pitching = "Pitching"
 }
 
-enum clubTypesEnum: String, CaseIterable {
+public enum clubTypesEnum: String, CaseIterable {
     case irons = "Iron"
     case woods = "Wood"
     case wedges = "Wedge"
@@ -123,4 +123,8 @@ enum clubTypesEnum: String, CaseIterable {
 
 enum swingTypeState: Int {
     case fullSwing = 0, maxSwing, threeFourths
+}
+
+enum swingTypes {
+    case threeFourths, full, max
 }

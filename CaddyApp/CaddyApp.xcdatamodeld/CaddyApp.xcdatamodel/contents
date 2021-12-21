@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SingleClub" representedClassName="SingleClub" syncable="YES" codeGenerationType="class">
+        <attribute name="averageFull" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageMax" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="averageThreeFourths" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullSwingDistance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="maxDistance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="prevFullSwingHits" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
+        <attribute name="prevMaxHits" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
+        <attribute name="prevTFHits" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
+        <attribute name="threeFourthsDistance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" customClassName="clubTypesEnum"/>
+    </entity>
+    <entity name="UserGolfBag" representedClassName="UserGolfBag" syncable="YES" codeGenerationType="class">
+        <attribute name="allClubs2DArr" optional="YES" attributeType="Transformable" customClassName="[[SingleClub]]"/>
+        <attribute name="clubTypes" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="hybridsArray" optional="YES" attributeType="Transformable" customClassName="[SingleClub]"/>
+        <attribute name="ironsArray" optional="YES" attributeType="Transformable" customClassName="[SingleClub]"/>
+        <attribute name="numberOfClubs" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wedgesArray" optional="YES" attributeType="Transformable" customClassName="[SingleClub]"/>
+        <attribute name="woodsArray" optional="YES" attributeType="Transformable" customClassName="[SingleClub]"/>
+    </entity>
+    <elements>
+        <element name="SingleClub" positionX="-54.4820556640625" positionY="-161.6241912841797" width="133.1361083984375" height="208"/>
+        <element name="UserGolfBag" positionX="-54" positionY="81" width="128" height="148"/>
+    </elements>
+</model>

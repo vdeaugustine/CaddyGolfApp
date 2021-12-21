@@ -7,11 +7,6 @@
 
 import UIKit
 
-var currentClub: ClubObject = ClubObject(name: "Driver", type: "Wood", fullDistance: 275, threeFourthsDistance: 265, maxDistance: 285, averageDistance: 0, previousHits: "")
-
-/// This has to be a global variable. If it is a property of the ClubsViewController class, it will be reinitialized every time the view is loaded, leading to the table values being screwed up.
-var mainBag: UserBag = defaultBag()
-
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
@@ -30,9 +25,9 @@ class ClubsViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-        sortBag()
+//        sortBag()
         clubsTableView.reloadData()
-        printBagOutLines(bag: mainBag)
+//        printBagOutLines(bag: mainBag)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
@@ -41,22 +36,23 @@ class ClubsViewController: UIViewController {
         super.viewDidLoad()
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
-        let userDefaults = UserDefaults.standard
+        makeGolfBagStandard()
+//        let userDefaults = UserDefaults.standard
 
-        // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
-        if !userDefaults.bool(forKey: "setup") {
-            print("\nOK NOT SETUP. LETS TRY\n")
-            userDefaults.set(true, forKey: "setup")
-            doSave(userDefaults: userDefaults, saveThisBag: mainBag)
-
-        } else {
-            do {
-                let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-                mainBag = getUserBag
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+//        // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
+//        if !userDefaults.bool(forKey: "setup") {
+//            print("\nOK NOT SETUP. LETS TRY\n")
+//            userDefaults.set(true, forKey: "setup")
+//            doSave(userDefaults: userDefaults, saveThisBag: mainBag)
+//
+//        } else {
+//            do {
+//                let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
+//                mainBag = getUserBag
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 
     /// This will make all of the clubs in the User's bag back to default distances.
@@ -67,8 +63,7 @@ class ClubsViewController: UIViewController {
             switch action.style {
             case .default:
                 print("yes default")
-                mainBag = defaultBag()
-                doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+                makeGolfBagStandard()
                 self.clubsTableView.reloadData()
             case .cancel:
                 print("yes cancel")
@@ -130,7 +125,11 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
-        let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
+//        let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
+        guard let currentClubForCell = AppDelegate.userGolfBag.allClubs2DArr?[indexPath.section][indexPath.row] else {
+            // This might give problem of returning a cell even if we don't want one. Look here if you are getting one too many cells
+            return cell
+        }
         let currentClubNameForCell = currentClubForCell.name
 //        let currentClubDistance = currentClubForCell.fullDistance
         cell.textLabel?.text = currentClubNameForCell
@@ -138,7 +137,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.yardsLabel.text = {
             switch currentSwingTypeState {
             case .fullSwing:
-                return "\(currentClubForCell.fullDistance)"
+                return "\(currentClubForCell.fullSwingDistance)"
             case .threeFourths:
                 return "\(currentClubForCell.threeFourthsDistance)"
             case .maxSwing:
@@ -156,40 +155,43 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: Row Selected
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(mainBag.allClubs2DArray[indexPath.section][indexPath.row]) selected")
-        tableView.deselectRow(at: indexPath, animated: true)
-        currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-        let taptic = UIImpactFeedbackGenerator(style: .rigid)
-        taptic.impactOccurred(intensity: 1.0)
-
-        // Create new view controller that will be used to edit club distance
-        let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
-        let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
-        clubVC.title = "\(clubName) Distance"
-
-        // This is what sends us to the next view controller for editing distance
-        navigationController?.pushViewController(clubVC, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("\(mainBag.allClubs2DArray[indexPath.section][indexPath.row]) selected")
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
+//        let taptic = UIImpactFeedbackGenerator(style: .rigid)
+//        taptic.impactOccurred(intensity: 1.0)
+//
+//        // Create new view controller that will be used to edit club distance
+//        let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
+//        let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
+//        clubVC.title = "\(clubName) Distance"
+//
+//        // This is what sends us to the next view controller for editing distance
+//        navigationController?.pushViewController(clubVC, animated: true)
+//    }
 
     // MARK: Rest of Table View Stuff
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Remove it from the data model
-            mainBag.allClubs2DArray[indexPath.section].remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            // Make sure you save the updated bag to defaults so the delete is perminent
-            doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Remove it from the data model
+//            mainBag.allClubs2DArray[indexPath.section].remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            // Make sure you save the updated bag to defaults so the delete is perminent
+//            doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+//        }
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainBag.allClubs2DArray[section].count
+        guard let mainArr = AppDelegate.userGolfBag.allClubs2DArr else {
+            return 0
+        }
+        return mainArr[section].count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return mainBag.types.count
+        return AppDelegate.userGolfBag.allClubs2DArr?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

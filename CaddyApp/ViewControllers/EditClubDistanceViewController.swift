@@ -68,8 +68,6 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         }
 
-        print("Setting \(enteredDistance) as distance for \(currentClub)")
-
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
         do {
@@ -83,17 +81,32 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
 //        print("GOT USER BAG")
         /// This will be used to figure out which type of club it is, so we can find which sub-array it belongs to
         var typeOfClubIndex: Int = 0
-        if currentClub.type == "Wood" {
+
+        switch currentClub.type {
+        case "Wood":
             typeOfClubIndex = 0
-        } else if currentClub.type == "Iron" {
+        case "Iron":
             typeOfClubIndex = 1
-        } else if currentClub.type == "Hybrid" {
+        case "Hybrid":
             typeOfClubIndex = 2
-        } else if currentClub.type == "Wedge" {
+        case "Wedge":
             typeOfClubIndex = 3
-        } else {
-            print("\nERROR ERROR. CLUB TYPE NOT FOUND")
+        default:
+            print("Problem with currentClub.type switch in EditClubDistanceViewController")
+            // The below code should be a less clean version of the above code. If we run and it doesn't have a problem, this can be deleted
+//            if currentClub.type == "Wood" {
+//                typeOfClubIndex = 0
+//            } else if currentClub.type == "Iron" {
+//                typeOfClubIndex = 1
+//            } else if currentClub.type == "Hybrid" {
+//                typeOfClubIndex = 2
+//            } else if currentClub.type == "Wedge" {
+//                typeOfClubIndex = 3
+//            } else {
+//                print("\nERROR ERROR. CLUB TYPE NOT FOUND")
+//            }
         }
+
         // Go through the subindex of 2DArray (index of club type we are looking for) and find the index for the club itself
         var indexOfClub = 0
         for i in 0 ..< mainBag.allClubs2DArray[typeOfClubIndex].count {
@@ -111,8 +124,14 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         // Save the bag to the defaults
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
 
+        // MARK: - Core Data Save
+
+//        createItem(name: currentClub.name, typeOfClub: distAsInt)
+
         // Once we call it, let's dismiss this View controller
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        let tempViewController = storyboard?.instantiateViewController(identifier: "TestTableViewController") as! TestTableViewController
+        navigationController?.pushViewController(tempViewController, animated: true)
     }
 
     @IBAction func swingTypeSegControlChange(_ sender: UISegmentedControl) {

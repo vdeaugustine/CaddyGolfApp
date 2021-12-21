@@ -7,8 +7,7 @@
 
 import UIKit
 
-var clubForAdvice = currentClub
-var advice = Advice()
+
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
