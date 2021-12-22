@@ -12,20 +12,11 @@ class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
 
     @IBOutlet var swingTypeToggle: UIButton!
-
+    let userBagCore = AppDelegate.userGolfBag
     var currentSwingTypeState = swingTypeState(rawValue: 0)
 
     override func viewDidAppear(_ animated: Bool) {
-        // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
-        // ... although, this might be moved to viewDidLoad() or some other function at a later time. If the mainBag is a global variable that can be edited in other viewControllers, then we might not have to call from UserDefaults, because the mainBag will have already been updated
-        do {
-            let getUserBag = try UserDefaults.standard.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-            print("immediately after")
-            mainBag = getUserBag
-        } catch {
-            print(error.localizedDescription)
-        }
-//        sortBag()
+        
         clubsTableView.reloadData()
 //        printBagOutLines(bag: mainBag)
 
@@ -37,6 +28,7 @@ class ClubsViewController: UIViewController {
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
         makeGolfBagStandard()
+        
 //        let userDefaults = UserDefaults.standard
 
 //        // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
@@ -200,7 +192,8 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return AppDelegate.userGolfBag.allClubs2DArr?.count ?? 0
+        
+        return userBagCore.clubTypes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -208,6 +201,14 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return mainBag.types[section]
+//        print(userBagCore.allClubs2DArr)
+//        if let x = userBagCore.allClubs2DArr {
+//            for i in x {
+//                for n in i {
+//                    print(n.name)
+//                }
+//            }
+//        }
+        return userBagCore.clubTypes![section]
     }
 }

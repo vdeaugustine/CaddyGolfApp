@@ -97,19 +97,5 @@ func clubAlreadyInBag(club: String, bag: UserBag) -> Bool {
 }
 
 func sortBag() {
-    print("In sort")
-    print("Main bag entering sort", mainBag.allClubs2DArray)
-    for workingIndex in 0 ..< mainBag.allClubs2DArray.count {
-        mainBag.allClubs2DArray[workingIndex] = mainBag.allClubs2DArray[workingIndex].sorted(by: { $0.name < $1.name })
-    }
-
-    // Put driver at top
-    if !mainBag.allClubs2DArray[0].isEmpty {
-        if mainBag.allClubs2DArray[0][mainBag.allClubs2DArray[0].count - 1].name == "Driver" {
-            print(mainBag.allClubs2DArray[0].last!, "name")
-            let driver = mainBag.allClubs2DArray[0].remove(at: mainBag.allClubs2DArray[0].count - 1)
-            mainBag.allClubs2DArray[0].insert(driver, at: 0)
-            print(driver)
-        }
-    }
+ 
 }

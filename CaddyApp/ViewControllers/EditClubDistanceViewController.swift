@@ -20,8 +20,6 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         clubTextField.placeholder = "Change 3/4 Distance for Club"
         clubTextField.delegate = self
-        avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
-        currentDistanceLabel.text = " Current Distance: \(currentClub.fullDistance)"
         // Add the save button to the top right part of the nav controller
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveClub))
         prevHitsTableView.delegate = self
@@ -100,15 +98,15 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         generator.impactOccurred(intensity: 1.0)
         switch swingTypeSegControl.selectedSegmentIndex {
         case 0:
-            currentDistanceLabel.text = "Current 3/4 Distance: \(currentClub.threeFourthsDistance)"
+            currentDistanceLabel.text = "Current 3/4 Distance: \(currentClubCORE.threeFourthsDistance)"
             clubTextField.placeholder = "Change 3/4 Distance for Club"
             swingTypeSelected = .threeFourths
         case 1:
-            currentDistanceLabel.text = "Current Full Distance: \(currentClub.fullDistance)"
+            currentDistanceLabel.text = "Current Full Distance: \(currentClubCORE.fullSwingDistance)"
             clubTextField.placeholder = "Change Full Distance for Club"
             swingTypeSelected = .full
         case 2:
-            currentDistanceLabel.text = "Current Max Distance: \(currentClub.maxDistance)"
+            currentDistanceLabel.text = "Current Max Distance: \(currentClubCORE.maxDistance)"
             clubTextField.placeholder = "Change Max Distance for Club"
             swingTypeSelected = .max
         default:
@@ -131,19 +129,7 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
-        if arrOfPrevHits.last == "" {
-            _ = arrOfPrevHits.popLast()
-        }
-
-        if arrOfPrevHits.count > 0 {
-            print(arrOfPrevHits)
-            print("")
-            return arrOfPrevHits.count + 1
-        } else {
-            print(arrOfPrevHits)
-            return 1
-        }
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -152,8 +138,6 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "prevHit")!
-            let arrOfPrevHits = currentClub.previousHits.components(separatedBy: ",")
-            cell.textLabel?.text = arrOfPrevHits[indexPath.row - 1]
             return cell
         }
     }
@@ -174,14 +158,11 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] _ in
                 let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
                 if let theDistance = textField?.text, theDistance.isInt {
-                    currentClub.previousHits.append("\(theDistance),")
-                    currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
-                    saveCurrentClub()
+                    
                 }
 
                 print("Text field: \(textField?.text ?? "")")
                 tableView.reloadData()
-                self.avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
 
             }))
 
@@ -192,10 +173,8 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteFromCurrentClubPrevHits(thisIndex: indexPath.row - 1)
             tableView.deleteRows(at: [indexPath], with: .bottom)
         }
-        avgDistance.text = "Average Distance: \(currentClub.averageDistance)"
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
@@ -82,28 +80,30 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(adviceVC, animated: true)
     }
 
-    func getClubForDistance() -> ClubObject {
+    func getClubForDistance() -> SingleClub {
         var shortestClubGap = 999
+        // Just make sure the distance entered is correct type and var is ready to be used
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
+            // Only if something goes wrong
             print("Text entered is either not int or empty")
-            return ClubObject(name: "NONE", type: "NONE", fullDistance: 999, threeFourthsDistance: 500, maxDistance: 1000, averageDistance: 0, previousHits: "")
+            return SingleClub()
         }
 
         let distAsInt = Int("\(enteredDistance)")!
-        var closestClub = currentClub
-        for clubType in mainBag.allClubs2DArray {
-            for club in clubType {
-                let thisClubGap = abs(distAsInt - club.fullDistance)
-                if thisClubGap < shortestClubGap {
-                    shortestClubGap = thisClubGap
-                    closestClub = club
+        var closestClub = currentClubCORE
+
+        if let bagArr = AppDelegate.userGolfBag.allClubs2DArr {
+            for clubType in bagArr {
+                for club in clubType {
+                    let thisClubGap = abs(Int(distAsInt) - Int(club.fullSwingDistance))
+                    if thisClubGap < shortestClubGap {
+                        shortestClubGap = thisClubGap
+                        closestClub = club
+                    }
                 }
             }
         }
-        advice.closestClub = closestClub
-        advice.closestClubDistance = advice.closestClub.fullDistance
-        advice.closestClubGap = shortestClubGap
-        advice.distanceToPin = distAsInt
+
         return closestClub
     }
 }

@@ -40,19 +40,8 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         // Need to get userBag so we can edit it
         let userDefaults = UserDefaults.standard
 
-        do {
-            let userBagReturned = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-            mainBag = userBagReturned
-        } catch {
-            print(error.localizedDescription)
-        }
-        guard !thatClubIsAlreadyInBag(clubName: clubName, bag: mainBag) else {
-            print("Already in bag, Not adding it!")
-            print("Club: ", clubName)
-            print("Bag: ", mainBag)
-            _ = navigationController?.popViewController(animated: true)
-            return
-        }
+        
+        
         print("Club Type Selected \(clubTypeSelected)")
         print("Club Name: ", clubName)
         print("TypeIndex", typeSelectedIndex, "Num Index", numSelectedIndex)
@@ -141,12 +130,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
 
         let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, fullDistance: fullDist, threeFourthsDistance: threfDist, maxDistance: maxDist, averageDistance: 0, previousHits: "")
 
-        mainBag.allClubs2DArray[typeSelectedIndex].append(newClubObject)
-        mainBag.woodsArray = mainBag.allClubs2DArray[0]
-        mainBag.ironsArray = mainBag.allClubs2DArray[1]
-        mainBag.hybridsArray = mainBag.allClubs2DArray[2]
-        mainBag.wedgesArray = mainBag.allClubs2DArray[3]
-        doSave(userDefaults: userDefaults, saveThisBag: mainBag)
+       
         // Go back to previous view controller in the navigation stack
 
         _ = navigationController?.popViewController(animated: true)

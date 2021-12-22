@@ -87,27 +87,7 @@ func printArray(_ arr: [ClubObject]) -> String {
     return str
 }
 
-func saveCurrentClub() {
-    for clubTypeIndex in 0 ..< mainBag.allClubs2DArray.count {
-        for clubIndex in 0 ..< mainBag.allClubs2DArray[clubTypeIndex].count {
-            let club = mainBag.allClubs2DArray[clubTypeIndex][clubIndex]
-            if club == currentClub {
-                mainBag.allClubs2DArray[clubTypeIndex][clubIndex] = currentClub
-                doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
-            }
-        }
-    }
-}
 
-func deleteFromCurrentClubPrevHits(thisIndex index: Int) {
-    var arrFromStr = currentClub.previousHits.components(separatedBy: ",")
-    if index < arrFromStr.count {
-        arrFromStr.remove(at: index)
-    }
-    currentClub.previousHits = arrFromStr.joined(separator: ",")
-    currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
-    saveCurrentClub()
-}
 
 func getAvgFromStr(_ str: String) -> Int {
     var sum = 0
@@ -126,11 +106,4 @@ func getAvgFromStr(_ str: String) -> Int {
     }
 }
 
-func removeEmptyFromPrevHits() {
-    var prevHitsStr = currentClub.previousHits
-    if prevHitsStr.last == "," {
-        _ = prevHitsStr.removeLast()
-    }
-    currentClub.previousHits = prevHitsStr
-    saveCurrentClub()
-}
+
