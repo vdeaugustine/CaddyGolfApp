@@ -73,7 +73,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         print("GETADVICE")
         distanceField.resignFirstResponder()
         clubForAdvice = getClubForDistance()
-        print(clubForAdvice, "club for advice")
+        advice.closestClub = clubForAdvice
+        print("clubForAdvice after", clubForAdvice)
         let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
 //        print(clubs[indexPath.row])
         adviceVC.title = "Shot Advice"
@@ -90,8 +91,9 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         }
 
         let distAsInt = Int("\(enteredDistance)")!
+        advice.distanceToPin = distAsInt
         var closestClub = currentClubCORE
-
+        
         if let bagArr = AppDelegate.userGolfBag.allClubs2DArr {
             for clubType in bagArr {
                 for club in clubType {
@@ -103,7 +105,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-
+        print("clubForAdvice before", clubForAdvice)
         return closestClub
     }
 }

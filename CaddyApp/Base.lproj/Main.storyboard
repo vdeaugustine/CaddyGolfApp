@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rSS-1D-UAa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a66-8j-IPs">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -429,20 +429,45 @@
             </objects>
             <point key="canvasLocation" x="3844.9275362318845" y="764.73214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Custom Cell View Controller-->
         <scene sceneID="VgB-U0-3hu">
             <objects>
-                <viewController id="a66-8j-IPs" sceneMemberID="viewController">
+                <viewController id="a66-8j-IPs" customClass="TestCustomCellViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b7x-bp-7bd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Zrc-Jr-mLL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pSg-7t-6em">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pSg-7t-6em" id="8Xw-cq-vFq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vo4-Uc-g3d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Zrc-Jr-mLL" firstAttribute="top" secondItem="vo4-Uc-g3d" secondAttribute="top" id="Xz7-f7-D5S"/>
+                            <constraint firstItem="vo4-Uc-g3d" firstAttribute="trailing" secondItem="Zrc-Jr-mLL" secondAttribute="trailing" id="c4F-e8-PGQ"/>
+                            <constraint firstItem="Zrc-Jr-mLL" firstAttribute="leading" secondItem="vo4-Uc-g3d" secondAttribute="leading" id="mXe-sf-R6t"/>
+                            <constraint firstItem="vo4-Uc-g3d" firstAttribute="bottom" secondItem="Zrc-Jr-mLL" secondAttribute="bottom" id="s1G-po-rJH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clubsTableView" destination="Zrc-Jr-mLL" id="6Fc-Za-CFa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbB-6m-djK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4790" y="765"/>
+            <point key="canvasLocation" x="4788" y="776"/>
         </scene>
         <!--New Stroke-->
         <scene sceneID="cPd-68-ZqF">

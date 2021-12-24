@@ -13,4 +13,4 @@ import UIKit
 var currentClubCORE = SingleClub(context: coreDataContext)
 
 var clubForAdvice = currentClubCORE
-var advice = Advice()
+var advice = Advice(closestClub: clubForAdvice, secondclosestClub: clubForAdvice)

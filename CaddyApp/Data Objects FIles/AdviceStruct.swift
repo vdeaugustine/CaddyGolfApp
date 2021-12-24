@@ -8,13 +8,23 @@
 import Foundation
 
 struct Advice {
-    var closestClub: ClubObject = ClubObject(name: "", type: "", fullDistance: 0, threeFourthsDistance: 0, maxDistance: 0, averageDistance: 0, previousHits: "")
+    var closestClub: SingleClub {
+        didSet {
+            self.updateClosestClubGap()
+        }
+    }
 
     var closestClubDistance: Int = 0
     var closestClubGap: Int = 0
-    var secondclosestClub: ClubObject = ClubObject(name: "", type: "", fullDistance: 0, threeFourthsDistance: 0, maxDistance: 0, averageDistance: 0, previousHits: "")
+    var secondclosestClub: SingleClub
     var secondclosestClubDistance: Int = 0
     var secondClosestClubGap: Int = 0
 
     var distanceToPin = 0
+    
+    mutating func updateClosestClubGap() {
+        print("calling updateClosestClubGap")
+        closestClubGap = abs(Int(closestClub.fullSwingDistance) - distanceToPin)
+
+    }
 }

@@ -16,6 +16,9 @@
 		9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B62767CA4000F49D93 /* SaveBag.swift */; };
 		9C7D80B927687DCC00F49D93 /* AddNewClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */; };
 		9C918E392771907E00C87FC3 /* ComebackToIfNeeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C918E382771907E00C87FC3 /* ComebackToIfNeeded.swift */; };
+		9C918E3C2775A06200C87FC3 /* ClubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C918E3A2775A06200C87FC3 /* ClubTableViewCell.swift */; };
+		9C918E3D2775A06200C87FC3 /* BigClubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C918E3B2775A06200C87FC3 /* BigClubCell.xib */; };
+		9C918E412775A27700C87FC3 /* TestCustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C918E402775A27700C87FC3 /* TestCustomCellViewController.swift */; };
 		9CB7A551277163E8000B08DD /* CaddyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A54F277163E8000B08DD /* CaddyApp.xcdatamodeld */; };
 		9CB7A55327716653000B08DD /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A55227716653000B08DD /* CoreDataFunctions.swift */; };
 		9CB7A55927716B0C000B08DD /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7A55827716B0C000B08DD /* TestTableViewController.swift */; };
@@ -46,6 +49,9 @@
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
 		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
 		9C918E382771907E00C87FC3 /* ComebackToIfNeeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComebackToIfNeeded.swift; sourceTree = "<group>"; };
+		9C918E3A2775A06200C87FC3 /* ClubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubTableViewCell.swift; sourceTree = "<group>"; };
+		9C918E3B2775A06200C87FC3 /* BigClubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigClubCell.xib; sourceTree = "<group>"; };
+		9C918E402775A27700C87FC3 /* TestCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCustomCellViewController.swift; sourceTree = "<group>"; };
 		9CB7A550277163E8000B08DD /* CaddyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CaddyApp.xcdatamodel; sourceTree = "<group>"; };
 		9CB7A55227716653000B08DD /* CoreDataFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		9CB7A55827716B0C000B08DD /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 				9CF2AF4D275AD61200458646 /* Info.plist */,
 				9CB7A54F277163E8000B08DD /* CaddyApp.xcdatamodeld */,
 				9C918E382771907E00C87FC3 /* ComebackToIfNeeded.swift */,
+				9C918E3A2775A06200C87FC3 /* ClubTableViewCell.swift */,
+				9C918E3B2775A06200C87FC3 /* BigClubCell.xib */,
+				9C918E402775A27700C87FC3 /* TestCustomCellViewController.swift */,
 			);
 			path = CaddyApp;
 			sourceTree = "<group>";
@@ -223,6 +232,7 @@
 				9CF2AF4C275AD61200458646 /* LaunchScreen.storyboard in Resources */,
 				9CF2AF49275AD61200458646 /* Assets.xcassets in Resources */,
 				9CF2AF47275AD61000458646 /* Main.storyboard in Resources */,
+				9C918E3D2775A06200C87FC3 /* BigClubCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +256,8 @@
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
+				9C918E412775A27700C87FC3 /* TestCustomCellViewController.swift in Sources */,
+				9C918E3C2775A06200C87FC3 /* ClubTableViewCell.swift in Sources */,
 				9CB7A55927716B0C000B08DD /* TestTableViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 				9CF2AF61275F249300458646 /* ClubCell.swift in Sources */,

@@ -21,9 +21,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
 
-        var longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
+        let longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
 
-        SelectedClubLabel.text = "Your \(advice.closestClub.name) goes \(advice.closestClub.fullDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name)"
+        
+        SelectedClubLabel.text = "Your \(advice.closestClub.name!) goes \(advice.closestClub.fullSwingDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name!)"
         YardsToPin.text = "\(advice.distanceToPin) Yards to the Pin"
 
         view.addSubview(tableView)
