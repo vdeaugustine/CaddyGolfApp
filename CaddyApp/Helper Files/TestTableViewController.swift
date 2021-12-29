@@ -12,7 +12,7 @@ class TestTableViewController: UITableViewController {
     @IBOutlet weak var testTable: UITableView!
     
     @IBAction func deleteAll(_ sender: Any) {
-        deleteAllFromCoreData()
+//        deleteAllFromCoreData()
         self.tableView.reloadData()
     }
     
@@ -21,7 +21,7 @@ class TestTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         tableView.dataSource = self
-        getAllItems(toReload: self.tableView)
+//        getAllItems(toReload: self.tableView)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,14 +38,15 @@ class TestTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return mainBagModels.count
+//        return mainBagModels.count
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        let model = mainBagModels[indexPath.row]
-        cell.textLabel?.text = "\(model.name) \(model.fullSwingDistance)"
+//        let model = mainBagModels[indexPath.row]
+//        cell.textLabel?.text = "\(model.name) \(model.fullSwingDistance)"
 
         return cell
     }

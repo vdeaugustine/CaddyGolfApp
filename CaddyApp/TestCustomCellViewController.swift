@@ -18,7 +18,7 @@ class TestCustomCellViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
-        makeGolfBagStandard()
+//        makeGolfBagStandard()
         
         let nib = UINib(nibName: "BigClubCell", bundle: nil)
         clubsTableView.register(ClubTableViewCell.nib(), forCellReuseIdentifier: ClubTableViewCell.identifier)
@@ -27,25 +27,26 @@ class TestCustomCellViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let mainArr = AppDelegate.userGolfBag.allClubs2DArr else {
-            return 0
-        }
-        return mainArr[section].count
+//        guard let mainArr = AppDelegate.userGolfBag.allClubs2DArr else {
+//            return 0
+//        }
+//        return mainArr[section].count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BigClubCell", for: indexPath) as! ClubTableViewCell
         
         
-        guard let currentClubForCell = AppDelegate.userGolfBag.allClubs2DArr?[indexPath.section][indexPath.row] else {
-            // This might give problem of returning a cell even if we don't want one. Look here if you are getting one too many cells
-            return cell
-        }
-        let currentClubNameForCell = currentClubForCell.name
-        cell.nameLabel.text = currentClubNameForCell!
-        cell.tfLabel.text = "\(currentClubForCell.threeFourthsDistance)"
-        cell.fullLabel.text = "\(currentClubForCell.fullSwingDistance)"
-        cell.maxLabel.text = "\(currentClubForCell.maxDistance)"
+//        guard let currentClubForCell = AppDelegate.userGolfBag.allClubs2DArr?[indexPath.section][indexPath.row] else {
+//            // This might give problem of returning a cell even if we don't want one. Look here if you are getting one too many cells
+//            return cell
+//        }
+//        let currentClubNameForCell = currentClubForCell.name
+//        cell.nameLabel.text = currentClubNameForCell!
+//        cell.tfLabel.text = "\(currentClubForCell.threeFourthsDistance)"
+//        cell.fullLabel.text = "\(currentClubForCell.fullSwingDistance)"
+//        cell.maxLabel.text = "\(currentClubForCell.maxDistance)"
 
         return cell
     }

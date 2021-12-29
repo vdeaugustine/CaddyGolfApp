@@ -67,45 +67,45 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func getAdvice() {
-//        saveEnteredDist()
-//        print("got advice!")
-//        print(StrokeInfo)
-        print("GETADVICE")
-        distanceField.resignFirstResponder()
-        clubForAdvice = getClubForDistance()
-        advice.closestClub = clubForAdvice
-        print("clubForAdvice after", clubForAdvice)
-        let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
-//        print(clubs[indexPath.row])
-        adviceVC.title = "Shot Advice"
-        navigationController?.pushViewController(adviceVC, animated: true)
-    }
-
-    func getClubForDistance() -> SingleClub {
-        var shortestClubGap = 999
-        // Just make sure the distance entered is correct type and var is ready to be used
-        guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
-            // Only if something goes wrong
-            print("Text entered is either not int or empty")
-            return SingleClub()
-        }
-
-        let distAsInt = Int("\(enteredDistance)")!
-        advice.distanceToPin = distAsInt
-        var closestClub = currentClubCORE
-        
-        if let bagArr = AppDelegate.userGolfBag.allClubs2DArr {
-            for clubType in bagArr {
-                for club in clubType {
-                    let thisClubGap = abs(Int(distAsInt) - Int(club.fullSwingDistance))
-                    if thisClubGap < shortestClubGap {
-                        shortestClubGap = thisClubGap
-                        closestClub = club
-                    }
-                }
-            }
-        }
-        print("clubForAdvice before", clubForAdvice)
-        return closestClub
+////        saveEnteredDist()
+////        print("got advice!")
+////        print(StrokeInfo)
+//        print("GETADVICE")
+//        distanceField.resignFirstResponder()
+//        clubForAdvice = getClubForDistance()
+//        advice.closestClub = clubForAdvice
+//        print("clubForAdvice after", clubForAdvice)
+//        let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
+////        print(clubs[indexPath.row])
+//        adviceVC.title = "Shot Advice"
+//        navigationController?.pushViewController(adviceVC, animated: true)
+//    }
+//
+//    func getClubForDistance() -> SingleClub {
+//        var shortestClubGap = 999
+//        // Just make sure the distance entered is correct type and var is ready to be used
+//        guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
+//            // Only if something goes wrong
+//            print("Text entered is either not int or empty")
+//            return SingleClub()
+//        }
+//
+//        let distAsInt = Int("\(enteredDistance)")!
+//        advice.distanceToPin = distAsInt
+//        var closestClub = currentClubCORE
+//
+//        if let bagArr = AppDelegate.userGolfBag.allClubs2DArr {
+//            for clubType in bagArr {
+//                for club in clubType {
+//                    let thisClubGap = abs(Int(distAsInt) - Int(club.fullSwingDistance))
+//                    if thisClubGap < shortestClubGap {
+//                        shortestClubGap = thisClubGap
+//                        closestClub = club
+//                    }
+//                }
+//            }
+//        }
+//        print("clubForAdvice before", clubForAdvice)
+//        return closestClub
     }
 }

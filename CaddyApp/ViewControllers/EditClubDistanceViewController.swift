@@ -84,7 +84,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
 
             // MARK: - Core Data Save
 
-            updateClub(club: currentClubCORE, newAverage: distAsInt, averageType: swingTypeSelected)
+//            updateClub(club: currentClubCORE, newAverage: distAsInt, averageType: swingTypeSelected)
 //        createItem(name: currentClub.name, typeOfClub: distAsInt)
 
             // Once we call it, let's dismiss this View controller
