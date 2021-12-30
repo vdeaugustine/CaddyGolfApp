@@ -13,12 +13,16 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
     var fullDistance: Int
     var threeFourthsDistance: Int
     var maxDistance: Int
-    var averageDistance: Int = 0
+    var averageFullDistance: Int = 0
+    var averageMaxDistance: Int = 0
+    var averageThreeFourthsDistance: Int = 0
     var description: String {
         return "\(name)-\(fullDistance)".uppercased()
     }
 
-    var previousHits: String
+    var previousFullHits: String = ""
+    var previousThreeFourthsHits: String = ""
+    var previousMaxHits: String = ""
 
     public static func == (lhs: ClubObject, rhs: ClubObject) -> Bool {
         return lhs.name == rhs.name && lhs.type == rhs.type

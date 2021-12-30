@@ -139,7 +139,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         let threfDist = Int(0.75 * Double(fullDist))
         let maxDist = Int(1.25 * Double(fullDist))
 
-        let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, fullDistance: fullDist, threeFourthsDistance: threfDist, maxDistance: maxDist, averageDistance: 0, previousHits: "")
+        let newClubObject = ClubObject(name: clubName, type: clubTypeSelected, fullDistance: fullDist, threeFourthsDistance: threfDist, maxDistance: maxDist, averageFullDistance: 0, previousFullHits: "")
 
         mainBag.allClubs2DArray[typeSelectedIndex].append(newClubObject)
         mainBag.woodsArray = mainBag.allClubs2DArray[0]

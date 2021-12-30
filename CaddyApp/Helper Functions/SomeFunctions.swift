@@ -99,13 +99,14 @@ func saveCurrentClub() {
     }
 }
 
-func deleteFromCurrentClubPrevHits(thisIndex index: Int) {
-    var arrFromStr = currentClub.previousHits.components(separatedBy: ",")
+// TODO: - Make this work for different type of hits
+func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTypeState) {
+    var arrFromStr = currentClub.previousFullHits.components(separatedBy: ",")
     if index < arrFromStr.count {
         arrFromStr.remove(at: index)
     }
-    currentClub.previousHits = arrFromStr.joined(separator: ",")
-    currentClub.averageDistance = getAvgFromStr(currentClub.previousHits)
+    currentClub.previousFullHits = arrFromStr.joined(separator: ",")
+    currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
     saveCurrentClub()
 }
 
@@ -127,10 +128,10 @@ func getAvgFromStr(_ str: String) -> Int {
 }
 
 func removeEmptyFromPrevHits() {
-    var prevHitsStr = currentClub.previousHits
+    var prevHitsStr = currentClub.previousFullHits
     if prevHitsStr.last == "," {
         _ = prevHitsStr.removeLast()
     }
-    currentClub.previousHits = prevHitsStr
+    currentClub.previousFullHits = prevHitsStr
     saveCurrentClub()
 }
