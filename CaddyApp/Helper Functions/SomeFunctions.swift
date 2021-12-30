@@ -101,12 +101,32 @@ func saveCurrentClub() {
 
 // TODO: - Make this work for different type of hits
 func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTypeState) {
-    var arrFromStr = currentClub.previousFullHits.components(separatedBy: ",")
-    if index < arrFromStr.count {
-        arrFromStr.remove(at: index)
+    var arrOfPrevHits : [String]
+    switch swingType {
+    case .fullSwing:
+        arrOfPrevHits = currentClub.previousFullHits.components(separatedBy: ",")
+    case .maxSwing:
+        arrOfPrevHits = currentClub.previousMaxHits.components(separatedBy: ",")
+    case .threeFourths:
+        arrOfPrevHits = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
     }
-    currentClub.previousFullHits = arrFromStr.joined(separator: ",")
-    currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
+//    var arrFromStr = currentClub.previousFullHits.components(separatedBy: ",")
+    if index < arrOfPrevHits.count {
+        arrOfPrevHits.remove(at: index)
+    }
+    
+    switch swingType {
+    case .fullSwing:
+        currentClub.previousFullHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
+    case .maxSwing:
+        currentClub.previousMaxHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.averageMaxDistance = getAvgFromStr(currentClub.previousMaxHits)
+    case .threeFourths:
+        currentClub.previousThreeFourthsHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
+    }
+    
     saveCurrentClub()
 }
 
