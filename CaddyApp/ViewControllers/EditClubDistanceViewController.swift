@@ -98,7 +98,7 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         // Go through the subindex of 2DArray (index of club type we are looking for) and find the index for the club itself
         var indexOfClub = 0
         for i in 0 ..< mainBag.allClubs2DArray[typeOfClubIndex].count {
-            print("\nIS \(currentClub) == \(mainBag.allClubs2DArray[i])? -- ")
+//            print("\nIS \(currentClub) == \(mainBag.allClubs2DArray[typeOfClubIndex][i])? -- ")
             if currentClub == mainBag.allClubs2DArray[typeOfClubIndex][i] {
                 print("YES")
                 indexOfClub = i

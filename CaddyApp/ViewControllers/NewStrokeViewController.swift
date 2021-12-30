@@ -14,7 +14,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
-
+    @IBOutlet weak var shotType: UISegmentedControl!
+    
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
     var distanceToPin = 0
@@ -49,7 +50,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func lieSelected() {
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
         switch lieTypeSegControl.selectedSegmentIndex {
         case 0:
@@ -68,6 +69,27 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
             break
         }
     }
+    
+    @IBAction func shotTypeSelected(_ sender: UISegmentedControl) {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred(intensity: 1.0)
+        switch shotType.selectedSegmentIndex {
+        case 0:
+            print("Tee Shot Selected")
+            
+        case 1:
+            print("Approach Shot Selected")
+            
+        case 2:
+            print("Pitch Shot Selected")
+            
+        case 3:
+            print("Chip Shot Selected")
+        default:
+            break
+        }
+    }
+    
 
     @IBAction func getAdvice() {
 //        saveEnteredDist()

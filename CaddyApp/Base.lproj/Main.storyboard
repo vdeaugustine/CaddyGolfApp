@@ -343,6 +343,9 @@
                                     <segment title="Pitch"/>
                                     <segment title="Chip"/>
                                 </segments>
+                                <connections>
+                                    <action selector="shotTypeSelected:" destination="eN1-0R-PeP" eventType="valueChanged" id="LdT-ZR-4Ag"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acK-wp-OFQ">
                                 <rect key="frame" x="75" y="368" width="264" height="21"/>
@@ -384,6 +387,7 @@
                     <connections>
                         <outlet property="distanceField" destination="IGp-pa-vS8" id="zEk-y8-5LA"/>
                         <outlet property="lieTypeSegControl" destination="7Vm-oB-SxN" id="mKC-es-KTh"/>
+                        <outlet property="shotType" destination="lF4-aq-92o" id="Jiy-8B-Lwj"/>
                         <outlet property="useClubLabel" destination="XtD-Fl-kXF" id="4YI-LK-1p3"/>
                     </connections>
                 </viewController>

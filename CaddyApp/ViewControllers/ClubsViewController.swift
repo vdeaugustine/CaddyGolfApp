@@ -192,7 +192,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 20
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
