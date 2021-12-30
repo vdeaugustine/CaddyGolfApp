@@ -84,8 +84,8 @@
 		9C7D80BB276AC2F500F49D93 /* Helper Functions */ = {
 			isa = PBXGroup;
 			children = (
-				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
 				9C7D80B62767CA4000F49D93 /* SaveBag.swift */,
+				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
 			);
 			path = "Helper Functions";
 			sourceTree = "<group>";
@@ -126,6 +126,7 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9CF2AF5B275DE94900458646 /* Delegates */,
 				9C7D80BA276AC2D500F49D93 /* ViewControllers */,
 				9C7D80BB276AC2F500F49D93 /* Helper Functions */,
 				9C7D80BC276AC30800F49D93 /* Data Objects FIles */,
@@ -133,7 +134,6 @@
 				9CF2AF48275AD61200458646 /* Assets.xcassets */,
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
 				9CF2AF4D275AD61200458646 /* Info.plist */,
-				9CF2AF5B275DE94900458646 /* Delegates */,
 			);
 			path = CaddyApp;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 		9CF2AF5B275DE94900458646 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				9CF2AF41275AD61000458646 /* SceneDelegate.swift */,
 				9CF2AF3F275AD61000458646 /* AppDelegate.swift */,
+				9CF2AF41275AD61000458646 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
