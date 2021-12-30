@@ -29,6 +29,7 @@
 		9CDA252F277C22AD00FDAAC2 /* UserGolfBag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA252B277C22AD00FDAAC2 /* UserGolfBag+CoreDataProperties.swift */; };
 		9CDA2530277C22AD00FDAAC2 /* SingleClub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA252C277C22AD00FDAAC2 /* SingleClub+CoreDataClass.swift */; };
 		9CDA2531277C22AD00FDAAC2 /* SingleClub+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA252D277C22AD00FDAAC2 /* SingleClub+CoreDataProperties.swift */; };
+		9CDA2533277CE3FB00FDAAC2 /* UserDefaultsStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2532277CE3FB00FDAAC2 /* UserDefaultsStuff.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -67,6 +68,7 @@
 		9CDA252B277C22AD00FDAAC2 /* UserGolfBag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserGolfBag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CDA252C277C22AD00FDAAC2 /* SingleClub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleClub+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9CDA252D277C22AD00FDAAC2 /* SingleClub+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SingleClub+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9CDA2532277CE3FB00FDAAC2 /* UserDefaultsStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStuff.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,9 +114,9 @@
 			children = (
 				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
 				9C7D80B62767CA4000F49D93 /* SaveBag.swift */,
-				9CB7A55227716653000B08DD /* OldCoreDataFunctions.swift */,
+				9CDA2534277CE84B00FDAAC2 /* CoreData */,
 				9CB7A55827716B0C000B08DD /* TestTableViewController.swift */,
-				9CDA2518277C0A0300FDAAC2 /* NewCoreDataFunctions.swift */,
+				9CDA2532277CE3FB00FDAAC2 /* UserDefaultsStuff.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -145,6 +147,15 @@
 				9CDA252D277C22AD00FDAAC2 /* SingleClub+CoreDataProperties.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9CDA2534277CE84B00FDAAC2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9CB7A55227716653000B08DD /* OldCoreDataFunctions.swift */,
+				9CDA2518277C0A0300FDAAC2 /* NewCoreDataFunctions.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		9CF2AF33275AD61000458646 = {
@@ -283,6 +294,7 @@
 				9C918E412775A27700C87FC3 /* TestCustomCellViewController.swift in Sources */,
 				9CDA2531277C22AD00FDAAC2 /* SingleClub+CoreDataProperties.swift in Sources */,
 				9C918E3C2775A06200C87FC3 /* ClubTableViewCell.swift in Sources */,
+				9CDA2533277CE3FB00FDAAC2 /* UserDefaultsStuff.swift in Sources */,
 				9CB7A55927716B0C000B08DD /* TestTableViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 				9CDA2519277C0A0300FDAAC2 /* NewCoreDataFunctions.swift in Sources */,

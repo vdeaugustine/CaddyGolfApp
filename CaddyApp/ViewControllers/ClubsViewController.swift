@@ -5,8 +5,8 @@
 //  Created by Vincent DeAugustine on 12/3/21.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
@@ -15,7 +15,11 @@ class ClubsViewController: UIViewController {
     @IBOutlet var swingTypeToggle: UIButton!
     let currentGolfBag = AppDelegate.userGolfBag
     var currentSwingTypeState = swingTypeState(rawValue: 0)
-    var ironsArrTest : [SingleClub]?
+    var ironsArrTest: [SingleClub]?
+    var woodsArrTest: [SingleClub]?
+    var hybridsArrTest: [SingleClub]?
+    var wedgesArrTest: [SingleClub]?
+    var allClubOfAllTypes = [[SingleClub]]()
 
     override func viewDidAppear(_ animated: Bool) {
         clubsTableView.reloadData()
@@ -28,50 +32,55 @@ class ClubsViewController: UIViewController {
         super.viewDidLoad()
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
-        makeStandardIrons()
+        if isFirstSetup() {
+            makeStandardBag() }
+        // load in the data from CoreData to arrays/objects we can use
         do {
             let bagFetchRequest = try coreDataContext.fetch(UserGolfBag.fetchRequest())
+            let clubsFetchRequest = try coreDataContext.fetch(SingleClub.fetchRequest())
             let tempGolfBag = bagFetchRequest[0]
+            print(bagFetchRequest.count)
+            print(clubsFetchRequest.count)
+            for brequest in bagFetchRequest {
+                print("******************")
+                print(brequest)
+                print("******************")
+            }
+//            let secondBag = bagFetchRequest[1]
             print(tempGolfBag.ironsArr!)
             let ironsSet = tempGolfBag.ironsArr! // this is an NSSet
             ironsArrTest = ironsSet.allObjects as? [SingleClub]
+            let woodsSet = tempGolfBag.woodsArr!
+            woodsArrTest = woodsSet.allObjects as? [SingleClub]
+            let hybridsSet = tempGolfBag.hybridsArr! // this is an NSSet
+            hybridsArrTest = hybridsSet.allObjects as? [SingleClub]
+            let wedgesSet = tempGolfBag.wedgesArr!
+            wedgesArrTest = wedgesSet.allObjects as? [SingleClub]
+            allClubOfAllTypes.append(woodsArrTest!)
+            allClubOfAllTypes.append(hybridsArrTest!)
+            allClubOfAllTypes.append(ironsArrTest!)
+            allClubOfAllTypes.append(wedgesArrTest!)
+        } catch {
+            fatalError()
         }
-        catch {
-            print("Problem you know where")
-            
-        }
-        if let ioz = ironsArrTest {
-            print("POINS")
-            for itemx in ioz {
-                print(itemx.name!)
-                print("GO")
-            }
-        } else {
-            print("WTF")
-        }
-       printIronsCoreData()
-
-//        let userDefaults = UserDefaults.standard
-
-//        // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
-//        if !userDefaults.bool(forKey: "setup") {
-//            print("\nOK NOT SETUP. LETS TRY\n")
-//            userDefaults.set(true, forKey: "setup")
-//            doSave(userDefaults: userDefaults, saveThisBag: mainBag)
-//
-//        } else {
-//            do {
-//                let getUserBag = try userDefaults.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
-//                mainBag = getUserBag
-//            } catch {
-//                print(error.localizedDescription)
+//        if let ioz = ironsArrTest {
+//            print("POINS")
+//            for itemx in ioz {
+//                print(itemx.name!)
+//                print("GO")
 //            }
+//        } else {
+//            print("WTF")
 //        }
+//       printIronsCoreData()
     }
 
     /// This will make all of the clubs in the User's bag back to default distances.
     // will need to be updated at a later time
     @objc func resetAllClubDistances() {
+        makeStandardBag()
+        saveCoreData()
+        self.clubsTableView.reloadData()
 //        let alert = UIAlertController(title: "Reset all clubs", message: "Are you sure you would like to reset your bag to default?", preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { action in
 //            switch action.style {
@@ -136,17 +145,16 @@ class ClubsViewController: UIViewController {
 // Extension for handling and managing TableView
 extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Making Table View Cell
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
-////        let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
+        ////        let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
 //        guard let currentClubForCell = AppDelegate.userGolfBag.allClubs2DArr?[indexPath.section][indexPath.row] else {
 //            // This might give problem of returning a cell even if we don't want one. Look here if you are getting one too many cells
 //            return cell
 //        }
-      
-        let currentClubForCell = ironsArrTest![indexPath.row]
+
+        let currentClubForCell = allClubOfAllTypes[indexPath.section][indexPath.row]
         let currentClubNameForCell = currentClubForCell.name
 //        let currentClubDistance = currentClubForCell.fullDistance
         cell.textLabel?.text = currentClubNameForCell
@@ -192,22 +200,49 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: Rest of Table View Stuff
 
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Remove it from the data model
-//            mainBag.allClubs2DArray[indexPath.section].remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            // Make sure you save the updated bag to defaults so the delete is perminent
-//            doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove it from the data model
+            let selectedClub = allClubOfAllTypes[indexPath.section][indexPath.row]
+            switch selectedClub.type {
+            case clubTypesEnum.woods.rawValue:
+                woodsArrTest?.remove(at: (woodsArrTest?.firstIndex(of: selectedClub))!)
+                AppDelegate.userGolfBag.removeFromWoodsArr(selectedClub)
+//                deleteClub(from: .woods, at: indexPath.row)
+            case clubTypesEnum.irons.rawValue:
+//                deleteClub(from: .irons, at: indexPath.row)
+                ironsArrTest?.remove(at: (ironsArrTest?.firstIndex(of: selectedClub))!)
+                AppDelegate.userGolfBag.removeFromIronsArr(selectedClub)
+            case clubTypesEnum.hybrids.rawValue:
+//                deleteClub(from: .hybrids, at: indexPath.row)
+                hybridsArrTest?.remove(at: (hybridsArrTest?.firstIndex(of: selectedClub))!)
+                AppDelegate.userGolfBag.removeFromHybridsArr(selectedClub)
+            case clubTypesEnum.wedges.rawValue:
+//                deleteClub(from: .wedges, at: indexPath.row)
+                wedgesArrTest?.remove(at: (wedgesArrTest?.firstIndex(of: selectedClub))!)
+                AppDelegate.userGolfBag.removeFromWedgesArr(selectedClub)
+            default:
+                break
+            }
+            saveCoreData()
+//            allClubOfAllTypes[indexPath.section].remove(at: indexPath.row)
+            allClubOfAllTypes.removeAll()
+            allClubOfAllTypes.append(woodsArrTest!)
+            allClubOfAllTypes.append(hybridsArrTest!)
+            allClubOfAllTypes.append(ironsArrTest!)
+            allClubOfAllTypes.append(wedgesArrTest!)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            // Make sure you save the updated bag to defaults so the delete is perminent
+//            saveCoreData()
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ironsArrTest!.count
+        return allClubOfAllTypes[section].count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return allClubOfAllTypes.count
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -223,6 +258,6 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 //                }
 //            }
 //        }
-        return "Irons"
+        return clubTypes[section]
     }
 }

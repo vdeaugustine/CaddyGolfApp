@@ -114,6 +114,7 @@ enum wedgesTypes: String, CaseIterable {
     case pitching = "Pitching"
 }
 
+/// The rawValue of each case is *singular*. Using it will not have an s at the end 
 public enum clubTypesEnum: String, CaseIterable {
     case irons = "Iron"
     case woods = "Wood"

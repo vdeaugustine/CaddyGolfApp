@@ -14,3 +14,6 @@ var currentClubCORE = SingleClub(context: coreDataContext)
 
 var clubForAdvice = currentClubCORE
 var advice = Advice(closestClub: clubForAdvice, secondclosestClub: clubForAdvice)
+var allClubOfAllTypes = [[SingleClub]]()
+
+
