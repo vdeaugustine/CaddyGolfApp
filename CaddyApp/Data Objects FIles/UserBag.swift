@@ -20,7 +20,6 @@ struct UserBag: Codable {
 }
 
 func defaultBag() -> UserBag {
-    print("\nCALLING DEFAULT BAG FOR SOME REASON\n")
     let typesOfClubs = ["Woods", "Irons", "Hybrids", "Wedges"]
 
     var clubsArray = [ClubObject]()
@@ -33,9 +32,6 @@ func defaultBag() -> UserBag {
     clubsArray.append(driver)
     woodsArray.append(driver)
 
-//    let fourIron = ClubObject(name: "4 Iron", type: "Iron", distance: 190)
-//    clubsArray.append(fourIron)
-//    ironsArray.append(fourIron)
     let threeHybrid = ClubObject(name: "3 Hybrid", type: "Hybrid", fullDistance: 210, threeFourthsDistance: 200, maxDistance: 220, averageFullDistance: 0, previousFullHits: "")
     clubsArray.append(threeHybrid)
     hybridsArray.append(threeHybrid)
@@ -97,8 +93,6 @@ func clubAlreadyInBag(club: String, bag: UserBag) -> Bool {
 }
 
 func sortBag() {
-    print("In sort")
-    print("Main bag entering sort", mainBag.allClubs2DArray)
     for workingIndex in 0 ..< mainBag.allClubs2DArray.count {
         mainBag.allClubs2DArray[workingIndex] = mainBag.allClubs2DArray[workingIndex].sorted(by: { $0.name < $1.name })
     }

@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-
-
-
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
     @IBOutlet var clubsTableView: UITableView!
@@ -95,7 +91,6 @@ class ClubsViewController: UIViewController {
             }
         }))
         present(alert, animated: true, completion: nil)
-        // Taptic feedback when button is tapped
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
@@ -123,7 +118,6 @@ class ClubsViewController: UIViewController {
 
 // MARK: - TABLE VIEW STUFF
 
-// Extension for handling and managing TableView
 extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: Making Table View Cell
 
@@ -131,9 +125,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let currentClubNameForCell = currentClubForCell.name
-//        let currentClubDistance = currentClubForCell.fullDistance
         cell.textLabel?.text = currentClubNameForCell
-//        cell.yardsLabel.text = "\(currentClubDistance) yards"
         cell.yardsLabel.text = {
             switch currentSwingTypeState {
             case .fullSwing:

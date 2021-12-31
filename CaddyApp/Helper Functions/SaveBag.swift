@@ -19,7 +19,6 @@ enum ObjectSavableError: String, LocalizedError {
 
 protocol ObjectSavable {
     /// setObject method accepts an object whose type conforms to Encodable protocol and a key that we want to associate with it.
-
     func setCustomObject<Object>(_ object: Object, forKey: String) throws where Object: Encodable
 
     /// getObject method accepts a key by which we will retrieve the associated object from UserDefaults and a type that conforms to the Decodable protocol. Note that to pass a type itself we have used Metatype😕.

@@ -147,8 +147,8 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         mainBag.hybridsArray = mainBag.allClubs2DArray[2]
         mainBag.wedgesArray = mainBag.allClubs2DArray[3]
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
-        // Go back to previous view controller in the navigation stack
 
+        // Go back to previous view controller in the navigation stack
         _ = navigationController?.popViewController(animated: true)
     }
 

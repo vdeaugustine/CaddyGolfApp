@@ -14,8 +14,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
-    @IBOutlet weak var shotType: UISegmentedControl!
-    
+    @IBOutlet var shotType: UISegmentedControl!
+
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
     var distanceToPin = 0
@@ -69,38 +69,33 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
             break
         }
     }
-    
+
     @IBAction func shotTypeSelected(_ sender: UISegmentedControl) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
         switch shotType.selectedSegmentIndex {
         case 0:
             print("Tee Shot Selected")
-            
+
         case 1:
             print("Approach Shot Selected")
-            
+
         case 2:
             print("Pitch Shot Selected")
-            
+
         case 3:
             print("Chip Shot Selected")
         default:
             break
         }
     }
-    
 
     @IBAction func getAdvice() {
-//        saveEnteredDist()
-//        print("got advice!")
-//        print(StrokeInfo)
         print("GETADVICE")
         distanceField.resignFirstResponder()
         clubForAdvice = getClubForDistance()
         print(clubForAdvice, "club for advice")
         let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
-//        print(clubs[indexPath.row])
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)
     }

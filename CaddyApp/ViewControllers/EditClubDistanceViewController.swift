@@ -47,7 +47,9 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        let distAsInt = Int("\(enteredDistance)")! // The value that will be saved to ClubObject as distance
+        /// The value that will be saved to ClubObject as distance
+        let distAsInt = Int("\(enteredDistance)")!
+
         // Send an alert to the user if they put in a ridiculous yardage amount
         if distAsInt > 450 {
             let alert = UIAlertController(title: "\(distAsInt)? Really?", message: "Come on, let's be realistic lol", preferredStyle: .alert)
@@ -81,7 +83,6 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         }
 
         print(type(of: mainBag))
-//        print("GOT USER BAG")
         /// This will be used to figure out which type of club it is, so we can find which sub-array it belongs to
         var typeOfClubIndex: Int = 0
         if currentClub.type == "Wood" {
@@ -93,12 +94,11 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         } else if currentClub.type == "Wedge" {
             typeOfClubIndex = 3
         } else {
-            print("\nERROR ERROR. CLUB TYPE NOT FOUND")
+            fatalError()
         }
         // Go through the subindex of 2DArray (index of club type we are looking for) and find the index for the club itself
         var indexOfClub = 0
         for i in 0 ..< mainBag.allClubs2DArray[typeOfClubIndex].count {
-//            print("\nIS \(currentClub) == \(mainBag.allClubs2DArray[typeOfClubIndex][i])? -- ")
             if currentClub == mainBag.allClubs2DArray[typeOfClubIndex][i] {
                 print("YES")
                 indexOfClub = i
@@ -144,20 +144,9 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func deleteAllButtonTapped(_ sender: Any) {
-//        switch swingTypeSelected {
-//        case .fullSwing:
-//            arrOfPrevHits = currentClub.previousFullHits.components(separatedBy: ",")
-//            avgDistance.text = "Average Full Swing Distance: \(currentClub.averageFullDistance)"
-//        case .maxSwing:
-//            arrOfPrevHits = currentClub.previousMaxHits.components(separatedBy: ",")
-//            avgDistance.text = "Average Max Swing Distance: \(currentClub.averageMaxDistance)"
-//        case .threeFourths:
-//            arrOfPrevHits = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
-//            avgDistance.text = "Average Distance: \(currentClub.averageThreeFourthsDistance)"
-//        }
         let alert = UIAlertController(title: "Are you sure you want to delete all distances?", message: "This action cannot be undone", preferredStyle: .alert)
         var doDelete = false
-        alert.addAction(UIAlertAction(title: "YES", style: .destructive, handler:  { [self] _ in
+        alert.addAction(UIAlertAction(title: "YES", style: .destructive, handler: { [self] _ in
             doDelete = true
             if doDelete {
                 print("DOING DELETE")
@@ -178,21 +167,10 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         }))
         alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-        
-
-        
     }
 }
 
 extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSource {
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-         // Drawing code
-     }
-     */
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -248,7 +226,7 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
             // 1. Create the alert controller.
             let alert = UIAlertController(title: "Enter Distance", message: "Of Previous Shot", preferredStyle: .alert)
 
-            // 2. Add the text field. You can configure it however you need.
+            // 2. Add the text field
             alert.addTextField { textField in
                 textField.placeholder = "Yardage"
                 textField.keyboardType = .numberPad
@@ -256,7 +234,7 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
 
             // 3. Grab the value from the text field, and print it when the user clicks OK.
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] _ in
-                let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+                let textField = alert?.textFields![0]
                 if let theDistance = textField?.text, theDistance.isInt {
                     switch self.swingTypeSelected {
                     case .fullSwing:
@@ -278,7 +256,6 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
 
                 print("Text field: \(textField?.text ?? "")")
                 tableView.reloadData()
-//                self.avgDistance.text = "Average Distance: \(currentClub.averageFullDistance)"
 
             }))
 

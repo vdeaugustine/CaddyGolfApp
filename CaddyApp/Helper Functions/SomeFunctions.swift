@@ -101,7 +101,7 @@ func saveCurrentClub() {
 
 // TODO: - Make this work for different type of hits
 func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTypeState) {
-    var arrOfPrevHits : [String]
+    var arrOfPrevHits: [String]
     switch swingType {
     case .fullSwing:
         arrOfPrevHits = currentClub.previousFullHits.components(separatedBy: ",")
@@ -110,11 +110,10 @@ func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTy
     case .threeFourths:
         arrOfPrevHits = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
     }
-//    var arrFromStr = currentClub.previousFullHits.components(separatedBy: ",")
     if index < arrOfPrevHits.count {
         arrOfPrevHits.remove(at: index)
     }
-    
+
     switch swingType {
     case .fullSwing:
         currentClub.previousFullHits = arrOfPrevHits.joined(separator: ",")
@@ -126,7 +125,7 @@ func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTy
         currentClub.previousThreeFourthsHits = arrOfPrevHits.joined(separator: ",")
         currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
     }
-    
+
     saveCurrentClub()
 }
 

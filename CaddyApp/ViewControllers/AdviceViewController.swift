@@ -21,7 +21,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
 
-        var longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
+        let longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
 
         SelectedClubLabel.text = "Your \(advice.closestClub.name) goes \(advice.closestClub.fullDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name)"
         YardsToPin.text = "\(advice.distanceToPin) Yards to the Pin"
@@ -43,15 +43,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return 1
     }
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
