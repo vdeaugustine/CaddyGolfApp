@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-extension String {
-    var isInt: Bool {
-        return Int(self) != nil
-    }
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
+
 
 func getAllDistances(forTheseClubs clubs: [String]) -> [Int] {
     var distances = [Int]()

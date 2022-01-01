@@ -155,9 +155,9 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         taptic.impactOccurred(intensity: 1.0)
 
         // Create new view controller that will be used to edit club distance
-        let clubVC = storyboard?.instantiateViewController(identifier: "EditClubDistance") as! EditClubDistanceViewController
+        let clubVC = storyboard?.instantiateViewController(identifier: "sketchTest") as! SketchTestViewController
         let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
-        clubVC.title = "\(clubName) Distance"
+        clubVC.title = "\(clubName)"
 
         // This is what sends us to the next view controller for editing distance
         navigationController?.pushViewController(clubVC, animated: true)

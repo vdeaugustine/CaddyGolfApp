@@ -17,6 +17,8 @@
 		9C7D80B927687DCC00F49D93 /* AddNewClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
+		9CDA2539277FA40900FDAAC2 /* SketchTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* SketchTestViewController.swift */; };
+		9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253A277FA4C200FDAAC2 /* Extensions.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -43,6 +45,8 @@
 		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		9CDA2538277FA40900FDAAC2 /* SketchTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchTestViewController.swift; sourceTree = "<group>"; };
+		9CDA253A277FA4C200FDAAC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,9 +113,18 @@
 			path = "Data Objects FIles";
 			sourceTree = "<group>";
 		};
+		9CDA2537277FA3EE00FDAAC2 /* TestWithSketch */ = {
+			isa = PBXGroup;
+			children = (
+				9CDA2538277FA40900FDAAC2 /* SketchTestViewController.swift */,
+			);
+			path = TestWithSketch;
+			sourceTree = "<group>";
+		};
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
+				9CDA2537277FA3EE00FDAAC2 /* TestWithSketch */,
 				9CF2AF3E275AD61000458646 /* CaddyApp */,
 				9CF2AF3D275AD61000458646 /* Products */,
 			);
@@ -128,6 +141,7 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9CDA253A277FA4C200FDAAC2 /* Extensions.swift */,
 				9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */,
 				9CF2AF5B275DE94900458646 /* Delegates */,
 				9C7D80BA276AC2D500F49D93 /* ViewControllers */,
@@ -230,6 +244,7 @@
 				9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */,
 				9C72A840276D736C005BAA31 /* Enums.swift in Sources */,
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
+				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
@@ -238,6 +253,7 @@
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
 				9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
+				9CDA2539277FA40900FDAAC2 /* SketchTestViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,
