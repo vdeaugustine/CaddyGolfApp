@@ -23,6 +23,10 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
+    }
 
     override func viewWillLayoutSubviews() {
         setUpSubviews()
@@ -228,12 +232,16 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 switch swingTypeSelected {
                 case .fullSwing:
                     currentClub.previousFullHits = ""
+                    currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
                     averageNumberLabel.text = "\(currentClub.averageFullDistance)"
                 case .maxSwing:
                     currentClub.previousMaxHits = ""
+                    currentClub.averageMaxDistance = getAvgFromStr(currentClub.previousMaxHits)
                     averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
+                    
                 case .threeFourths:
                     currentClub.previousThreeFourthsHits = ""
+                    currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
                     averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
                 }
                 saveCurrentClub()
@@ -297,6 +305,31 @@ extension SwingsViewController {
             doAddSwingAlert()
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteFromCurrentClubPrevHits(thisIndex: indexPath.row - 1, from: swingTypeSelected)
+
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+        }
+        switch swingTypeSelected {
+        case .threeFourths:
+            averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
+        case .fullSwing:
+            averageNumberLabel.text = "\(currentClub.averageFullDistance)"
+        case .maxSwing:
+            averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
+        }
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
 
     // MARK: - Objc Functions
 

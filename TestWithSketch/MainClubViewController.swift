@@ -8,6 +8,10 @@
 import UIKit
 
 class MainClubViewController: UIViewController {
+    
+    var swingsCollectionView: UICollectionView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,6 +77,9 @@ class MainClubViewController: UIViewController {
         maxSwingContainer.addSubview(maxHeader)
         maxHeader.addSubview(maxHeaderLabel)
         maxSwingContainer.addSubview(maxNumber)
+        
+        swingsLargeRectView.addSubview(firstSwingRect)
+        
     }
 
     func newLayoutSubviews() {
@@ -182,6 +189,17 @@ class MainClubViewController: UIViewController {
                                 y: maxHeader.bottom + 18,
                                 width: maxSwingContainer.width,
                                 height: maxSwingContainer.height / 3)
+        
+        firstSwingRect.frame = CGRect(x: padRectsFromSides,
+                                      y: swingsRectTitle.bottom + 5,
+                                      width: swingsLargeRectView.width - padRectsFromSides * 2,
+                                      height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides)
+        print()
+        print("height of swings rect", swingsLargeRectView.height)
+        print("swings bottom - label bottom", swingsRectTitle.bottom - swingsLargeRectView.bottom)
+        print("swings bottom", swingsLargeRectView.bottom)
+        print("title bottom", swingsRectTitle.bottom)
+        print("BREAK")
         
         let thisheight = maxSwingContainer.frame.maxY + 500
         print("height", thisheight)
@@ -391,6 +409,8 @@ class MainClubViewController: UIViewController {
 
         return label
     }()
+    
+    let firstSwingRect = swingRect()
 
     // MARK: - Button Actions
 
@@ -423,4 +443,37 @@ class MainClubViewController: UIViewController {
         notesLargeRectView.showAnimation {
         }
     }
+}
+
+extension MainClubViewController {
+    
+    func makePrevSwingRect () -> UIView{
+        
+        let viewToReturn: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = true
+            view.layer.cornerRadius = 8
+            view.backgroundColor = .red
+//            view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
+            view.isUserInteractionEnabled = true
+            return view
+        }()
+        return viewToReturn
+    }
+    
+    class swingRect: UIView {
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            self.translatesAutoresizingMaskIntoConstraints = true
+            self.layer.cornerRadius = 8
+            self.backgroundColor = .red
+            self.isUserInteractionEnabled = false
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+    
 }
