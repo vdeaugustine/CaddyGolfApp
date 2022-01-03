@@ -376,10 +376,10 @@
             </objects>
             <point key="canvasLocation" x="2850.7246376811595" y="765.40178571428567"/>
         </scene>
-        <!--Sketch Test View Controller-->
+        <!--Main Club View Controller-->
         <scene sceneID="4cw-BA-d2U">
             <objects>
-                <viewController storyboardIdentifier="sketchTest" id="sLy-bB-RlL" customClass="SketchTestViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sketchTest" id="sLy-bB-RlL" customClass="MainClubViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HpP-4U-z0M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,32 +391,105 @@
             </objects>
             <point key="canvasLocation" x="3101" y="1412"/>
         </scene>
-        <!--View Controller-->
+        <!--Swings View Controller-->
         <scene sceneID="XP4-Je-fg2">
             <objects>
-                <viewController id="gFc-Xk-Frc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SwingsViewController" id="gFc-Xk-Frc" customClass="SwingsViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YhR-2C-Mmb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-fu-fbC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <segments>
+                                    <segment title="3/4"/>
+                                    <segment title="FULL"/>
+                                    <segment title="MAX"/>
+                                </segments>
+                                <connections>
+                                    <action selector="swingTypeChanged:" destination="gFc-Xk-Frc" eventType="valueChanged" id="be4-nU-4rL"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="01A-KL-uwq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="211" width="414" height="651"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addNew" id="lTi-Xe-gbx">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="45.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lTi-Xe-gbx" id="3ww-4f-Prm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Add New Hit " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKu-U6-l5K">
+                                                    <rect key="frame" x="20" y="11" width="167.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <color key="textColor" systemColor="linkColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAd-MN-6dg">
+                                                    <rect key="frame" x="318" y="7" width="86" height="31.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Delete All">
+                                                        <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="deleteAllButtonTapped:" destination="gFc-Xk-Frc" eventType="touchUpInside" id="CqX-Lo-Aum"/>
+                                                        <action selector="deleteAllButtonTapped:" destination="rC7-Hk-6dq" eventType="touchUpInside" id="W9g-S9-EoW"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RKu-U6-l5K" firstAttribute="centerY" secondItem="3ww-4f-Prm" secondAttribute="centerY" id="JVH-uC-eF6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eAd-MN-6dg" secondAttribute="trailing" constant="-10" id="Kso-vX-7LW"/>
+                                                <constraint firstItem="eAd-MN-6dg" firstAttribute="top" secondItem="3ww-4f-Prm" secondAttribute="topMargin" constant="-4" id="QAS-0b-HpC"/>
+                                                <constraint firstItem="eAd-MN-6dg" firstAttribute="centerY" secondItem="RKu-U6-l5K" secondAttribute="centerY" id="Rdy-3x-qVO"/>
+                                                <constraint firstItem="RKu-U6-l5K" firstAttribute="leading" secondItem="3ww-4f-Prm" secondAttribute="leadingMargin" id="T1B-6R-WZ1"/>
+                                                <constraint firstItem="RKu-U6-l5K" firstAttribute="top" secondItem="3ww-4f-Prm" secondAttribute="topMargin" id="btB-jG-Fgk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="swingsCell" id="PmL-yU-Wbp" userLabel="swingsCell">
+                                        <rect key="frame" x="0.0" y="90" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PmL-yU-Wbp" id="b8i-j6-BZY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vW-4r-M5A">
+                                <rect key="frame" x="0.0" y="85" width="414" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="mmL-Ge-xHI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bWM-Aa-poo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="01A-KL-uwq" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="4xz-dT-eB6"/>
-                            <constraint firstItem="bWM-Aa-poo" firstAttribute="trailing" secondItem="01A-KL-uwq" secondAttribute="trailing" id="V8B-pZ-C47"/>
-                            <constraint firstItem="bWM-Aa-poo" firstAttribute="bottom" secondItem="01A-KL-uwq" secondAttribute="bottom" id="c1W-Dr-DvI"/>
-                            <constraint firstItem="01A-KL-uwq" firstAttribute="top" secondItem="bWM-Aa-poo" secondAttribute="top" id="z72-Yh-Er7"/>
+                            <constraint firstItem="5vW-4r-M5A" firstAttribute="top" secondItem="UM1-fu-fbC" secondAttribute="bottom" constant="10" id="7Ia-ia-bLi"/>
+                            <constraint firstItem="5vW-4r-M5A" firstAttribute="trailing" secondItem="bWM-Aa-poo" secondAttribute="trailing" id="AfN-3e-Kkq"/>
+                            <constraint firstItem="UM1-fu-fbC" firstAttribute="trailing" secondItem="bWM-Aa-poo" secondAttribute="trailing" id="BDR-PH-n7E"/>
+                            <constraint firstItem="UM1-fu-fbC" firstAttribute="top" secondItem="bWM-Aa-poo" secondAttribute="top" id="KJp-og-Fil"/>
+                            <constraint firstItem="01A-KL-uwq" firstAttribute="leading" secondItem="5vW-4r-M5A" secondAttribute="leading" id="N1q-Gu-AXN"/>
+                            <constraint firstItem="5vW-4r-M5A" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="aem-IS-hbi"/>
+                            <constraint firstItem="01A-KL-uwq" firstAttribute="trailing" secondItem="5vW-4r-M5A" secondAttribute="trailing" id="bMF-qR-3nh"/>
+                            <constraint firstItem="01A-KL-uwq" firstAttribute="bottom" secondItem="bWM-Aa-poo" secondAttribute="bottom" id="cpM-jt-yPs"/>
+                            <constraint firstItem="01A-KL-uwq" firstAttribute="top" secondItem="5vW-4r-M5A" secondAttribute="bottom" constant="6" id="ePO-gd-dJu"/>
+                            <constraint firstItem="UM1-fu-fbC" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="o0H-dp-7sA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="swingTypeSegmentControl" destination="UM1-fu-fbC" id="Nph-vz-KKq"/>
+                        <outlet property="swingsTableView" destination="01A-KL-uwq" id="Yky-O3-hsk"/>
+                        <outlet property="viewForYardages" destination="5vW-4r-M5A" id="paw-UZ-tRg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktP-3H-TBo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4136" y="1409"/>
+            <point key="canvasLocation" x="4134.7826086956529" y="1408.9285714285713"/>
         </scene>
         <!--Advice View Controller-->
         <scene sceneID="cch-4o-Oik">
