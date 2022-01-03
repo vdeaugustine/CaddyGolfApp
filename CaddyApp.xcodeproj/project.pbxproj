@@ -21,6 +21,7 @@
 		9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253A277FA4C200FDAAC2 /* Extensions.swift */; };
 		9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */; };
 		9CDA253F2782926600FDAAC2 /* CollectionVIewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */; };
+		9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -51,6 +52,7 @@
 		9CDA253A277FA4C200FDAAC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingsViewController.swift; sourceTree = "<group>"; };
 		9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVIewTestViewController.swift; sourceTree = "<group>"; };
+		9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
+				9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */,
 			);
 			path = TestWithSketch;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
 				9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
+				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,

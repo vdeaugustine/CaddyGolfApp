@@ -8,17 +8,15 @@
 import UIKit
 
 class MainClubViewController: UIViewController {
-    
     var swingsCollectionView: UICollectionView?
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //        view.backgroundColor = UIColor(red: 115 / 255.0, green: 197 / 255.0, blue: 114 / 255.0, alpha: 1.0)
         newSetUpSubViews()
-        
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         maxNumber.text = "\(currentClub.maxDistance)"
@@ -61,29 +59,28 @@ class MainClubViewController: UIViewController {
         swingsLargeRectView.addSubview(swingsRectTitle)
         scrollView.addSubview(notesLargeRectView)
         notesLargeRectView.addSubview(notesRectTitle)
-        
+
         yardagesLargeRectView.addSubview(tfContainer)
         yardagesLargeRectView.addSubview(fullSwingContainer)
         yardagesLargeRectView.addSubview(maxSwingContainer)
-        
+
         tfContainer.addSubview(tfHeader)
         tfHeader.addSubview(tfHeaderLabel)
         tfContainer.addSubview(tfNumber)
-        
+
         fullSwingContainer.addSubview(fullHeader)
         fullHeader.addSubview(fullHeaderLabel)
         fullSwingContainer.addSubview(fullNumber)
-        
+
         maxSwingContainer.addSubview(maxHeader)
         maxHeader.addSubview(maxHeaderLabel)
         maxSwingContainer.addSubview(maxNumber)
-        
+
         swingsLargeRectView.addSubview(firstSwingRect)
-        
     }
 
     func newLayoutSubviews() {
-//        scrollView.frame = view.bounds
+        //        scrollView.frame = view.bounds
         let setUpDimensions = view.bounds
         let padRectsFromSides: CGFloat = 10
         let padLabel: CGFloat = 4
@@ -133,15 +130,15 @@ class MainClubViewController: UIViewController {
         tfContainer.dropShadow()
 
         fullSwingContainer.frame = CGRect(x: padRectsFromSides + tfContainer.right,
-                                    y: yardagesRectTitle.bottom + padRectsFromSides,
-                                    width: widthOfSwingTypeBoxes,
-                                    height: heightOfSwingTypeBoxes)
+                                          y: yardagesRectTitle.bottom + padRectsFromSides,
+                                          width: widthOfSwingTypeBoxes,
+                                          height: heightOfSwingTypeBoxes)
         fullSwingContainer.dropShadow()
 
         maxSwingContainer.frame = CGRect(x: padRectsFromSides + fullSwingContainer.right,
-                                   y: yardagesRectTitle.bottom + padRectsFromSides,
-                                   width: widthOfSwingTypeBoxes,
-                                   height: heightOfSwingTypeBoxes)
+                                         y: yardagesRectTitle.bottom + padRectsFromSides,
+                                         width: widthOfSwingTypeBoxes,
+                                         height: heightOfSwingTypeBoxes)
         maxSwingContainer.dropShadow()
 
         tfHeader.frame = CGRect(x: 0,
@@ -153,43 +150,42 @@ class MainClubViewController: UIViewController {
                                      y: 0,
                                      width: tfHeader.width,
                                      height: tfHeader.height)
-        
+
         tfNumber.frame = CGRect(x: -2,
                                 y: tfHeader.bottom + 18,
                                 width: tfContainer.width,
                                 height: tfContainer.height / 3)
-        
+
         fullHeader.frame = CGRect(x: 0,
-                                y: 0,
-                                width: fullSwingContainer.width,
-                                height: fullSwingContainer.height / 3)
-        
+                                  y: 0,
+                                  width: fullSwingContainer.width,
+                                  height: fullSwingContainer.height / 3)
+
         fullHeaderLabel.frame = CGRect(x: 0,
-                                     y: 0,
-                                     width: fullHeader.width,
-                                     height: fullHeader.height)
-        
+                                       y: 0,
+                                       width: fullHeader.width,
+                                       height: fullHeader.height)
+
         fullNumber.frame = CGRect(x: -2,
-                                y: fullHeader.bottom + 18,
-                                width: fullSwingContainer.width,
-                                height: fullSwingContainer.height / 3)
-        
-        
+                                  y: fullHeader.bottom + 18,
+                                  width: fullSwingContainer.width,
+                                  height: fullSwingContainer.height / 3)
+
         maxHeader.frame = CGRect(x: 0,
-                                y: 0,
-                                width: fullSwingContainer.width,
-                                height: fullSwingContainer.height / 3)
-        
+                                 y: 0,
+                                 width: fullSwingContainer.width,
+                                 height: fullSwingContainer.height / 3)
+
         maxHeaderLabel.frame = CGRect(x: 0,
-                                     y: 0,
-                                     width: maxHeader.width,
-                                     height: maxHeader.height)
-        
+                                      y: 0,
+                                      width: maxHeader.width,
+                                      height: maxHeader.height)
+
         maxNumber.frame = CGRect(x: -2,
-                                y: maxHeader.bottom + 18,
-                                width: maxSwingContainer.width,
-                                height: maxSwingContainer.height / 3)
-        
+                                 y: maxHeader.bottom + 18,
+                                 width: maxSwingContainer.width,
+                                 height: maxSwingContainer.height / 3)
+
         firstSwingRect.frame = CGRect(x: padRectsFromSides,
                                       y: swingsRectTitle.bottom + 5,
                                       width: swingsLargeRectView.width - padRectsFromSides * 2,
@@ -200,217 +196,54 @@ class MainClubViewController: UIViewController {
         print("swings bottom", swingsLargeRectView.bottom)
         print("title bottom", swingsRectTitle.bottom)
         print("BREAK")
-        
+
         let thisheight = maxSwingContainer.frame.maxY + 500
         print("height", thisheight)
-        print("view height",view.height)
-        print("viewbounds ",view.bounds)
+        print("view height", view.height)
+        print("viewbounds ", view.bounds)
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
-        
+
         let tappedSwings = UITapGestureRecognizer(target: self, action: #selector(didTapSwingsButton))
         swingsLargeRectView.addGestureRecognizer(tappedSwings)
     }
 
     // MARK: - UIViews NEW
-    // MARK: Large Rect Views / Containers
 
-    let yardagesLargeRectView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
 
-    let yardagesRectTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 34)
-        label.text = "Yardages"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        return label
-    }()
+    // MARK: Large Rect Views
+    let yardagesLargeRectView = LargeRect()
+    let notesLargeRectView = LargeRect()
+    let swingsLargeRectView = LargeRect()
 
-    let swingsLargeRectView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    // MARK: Large Rect Titles
+    let swingsRectTitle = RectTitle("Swings")
+    let yardagesRectTitle = RectTitle("Yardages")
+    let notesRectTitle = RectTitle("Notes")
 
-    let swingsRectTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 34)
-        label.text = "Swings"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        return label
-    }()
+    // MARK: Container Headers
+    let tfHeader = Header()
+    let fullHeader = Header()
+    let maxHeader = Header()
 
-    let notesLargeRectView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    // MARK: Header Labels
+    let tfHeaderLabel = HeaderLabel()
+    let fullHeaderLabel = HeaderLabel()
+    let maxHeaderLabel = HeaderLabel()
 
-    let notesRectTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 34)
-        label.text = "Notes"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        return label
-    }()
+    // MARK: SwingType Number Labels
+    let tfNumber = NumberLabel()
+    let fullNumber = NumberLabel()
+    let maxNumber = NumberLabel()
 
-    let tfContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    // MARK: Swing Type Containers
+    let tfContainer = SwingTypeContainer()
+    let fullSwingContainer = SwingTypeContainer()
+    let maxSwingContainer = SwingTypeContainer()
 
-    let fullSwingContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
-
-    let maxSwingContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
-
-    let tfHeader: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
-    }()
-
-    let fullHeader: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
-    }()
-
-    let maxHeader: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
-        //    view.backgroundColor = .red
-        view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
-        view.isUserInteractionEnabled = true
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return view
-    }()
-
-    let tfHeaderLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 18)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "3/4 Swing"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
-
-        return label
-    }()
     
-    let fullHeaderLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 18)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "Full Swing"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
 
-        return label
-    }()
-    
-    let maxHeaderLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 18)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "Max Swing"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
-
-        return label
-    }()
-
-    let tfNumber: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "\(currentClub.threeFourthsDistance)"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
-        //        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
-    
-    let fullNumber: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "\(currentClub.fullDistance)"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
-        //        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
-    
-    let maxNumber: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "\(currentClub.maxDistance)"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
-        label.textAlignment = .center
-        //        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
-    
-    let firstSwingRect = swingRect()
+    let firstSwingRect = customView()
 
     // MARK: - Button Actions
 
@@ -445,35 +278,4 @@ class MainClubViewController: UIViewController {
     }
 }
 
-extension MainClubViewController {
-    
-    func makePrevSwingRect () -> UIView{
-        
-        let viewToReturn: UIView = {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = true
-            view.layer.cornerRadius = 8
-            view.backgroundColor = .red
-//            view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
-            view.isUserInteractionEnabled = true
-            return view
-        }()
-        return viewToReturn
-    }
-    
-    class swingRect: UIView {
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            self.translatesAutoresizingMaskIntoConstraints = true
-            self.layer.cornerRadius = 8
-            self.backgroundColor = .red
-            self.isUserInteractionEnabled = false
-        }
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-    }
-    
-}
+
