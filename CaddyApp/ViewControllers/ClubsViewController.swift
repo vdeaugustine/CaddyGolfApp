@@ -17,6 +17,9 @@ class ClubsViewController: UIViewController {
     var currentSwingTypeState = swingTypeState.threeFourths
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        
+        
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
         // ... although, this might be moved to viewDidLoad() or some other function at a later time. If the mainBag is a global variable that can be edited in other viewControllers, then we might not have to call from UserDefaults, because the mainBag will have already been updated
         do {

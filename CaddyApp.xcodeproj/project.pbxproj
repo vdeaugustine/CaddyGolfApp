@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
+		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
 		9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStruct.swift */; };
 		9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A843276D8813005BAA31 /* ClubObject.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
+		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9C72A841276D7B72005BAA31 /* AdviceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStruct.swift; sourceTree = "<group>"; };
 		9C72A843276D8813005BAA31 /* ClubObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubObject.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
+				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
 				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
 				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
 				9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */,
@@ -269,6 +272,7 @@
 				9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */,
 				9CDA253F2782926600FDAAC2 /* CollectionVIewTestViewController.swift in Sources */,
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
+				9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */,
 				9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
