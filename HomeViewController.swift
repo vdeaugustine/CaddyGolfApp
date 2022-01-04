@@ -26,15 +26,38 @@ class HomeViewController: UIViewController {
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    
     override func viewWillLayoutSubviews() {
+        mainHeaderView.layer.cornerRadius = 8
+        mainHeaderView.dropShadow()
         let clubsTapped = UITapGestureRecognizer(target: self, action: #selector(didTapClubs))
+        clubsView.addGestureRecognizer(clubsTapped)
+        let adviceTapped = UITapGestureRecognizer(target: self, action: #selector(didTapAdvice))
+        adviceView.addGestureRecognizer(adviceTapped)
         clubsView.addGestureRecognizer(clubsTapped)
         clubsView.layer.cornerRadius = 8
         clubsView.dropShadow()
+        adviceView.layer.cornerRadius = 8
+        adviceView.dropShadow()
+        notesView.layer.cornerRadius = 8
+        notesView.dropShadow()
+        
+        
     }
     
     @objc func didTapClubs() {
         print("tapped clubs")
+        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+        
+        navigationController?.pushViewController(clubsVC, animated: true)
+        
+    }
+    
+    @objc func didTapAdvice() {
+        print("tapped advice")
         let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
         
         navigationController?.pushViewController(clubsVC, animated: true)

@@ -20,23 +20,24 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="club" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="club" rowHeight="47" id="cy0-on-ucm" customClass="ClubCell" customModule="CaddyApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="47"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="club" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="club" rowHeight="77" id="cy0-on-ucm" customClass="ClubCell" customModule="CaddyApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cy0-on-ucm" id="Eyb-1j-BJi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yards Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-DC-Eb9">
-                                                    <rect key="frame" x="310.5" y="16" width="88.5" height="21"/>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yards Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-DC-Eb9">
+                                                    <rect key="frame" x="285.5" y="31" width="88.5" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lMd-DC-Eb9" firstAttribute="top" secondItem="Eyb-1j-BJi" secondAttribute="topMargin" constant="5" id="krk-ry-NFc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lMd-DC-Eb9" secondAttribute="trailing" constant="-5" id="xbY-ZU-Za5"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lMd-DC-Eb9" secondAttribute="bottom" constant="20" id="99y-Te-wNf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lMd-DC-Eb9" secondAttribute="trailing" constant="20" id="B2I-fr-ALz"/>
+                                                <constraint firstItem="lMd-DC-Eb9" firstAttribute="top" secondItem="Eyb-1j-BJi" secondAttribute="topMargin" constant="20" id="URz-Qq-1Qr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -58,7 +59,7 @@
                     <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="SPu-Dg-Iei">
                             <connections>
-                                <segue destination="908-R2-HcC" kind="show" id="6kv-A0-3ci"/>
+                                <segue destination="908-R2-HcC" kind="presentation" id="1dJ-xM-Hyp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -68,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4672.463768115942" y="105.80357142857143"/>
+            <point key="canvasLocation" x="3234.7826086956525" y="-838.39285714285711"/>
         </scene>
         <!--EditClubDistance-->
         <scene sceneID="PhM-MR-UGO">
@@ -190,18 +191,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDz-ey-U9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5726.0869565217399" y="105.80357142857143"/>
+            <point key="canvasLocation" x="5703" y="105"/>
         </scene>
         <!--Add New Club-->
         <scene sceneID="gIU-37-7Dl">
             <objects>
                 <viewController id="908-R2-HcC" customClass="AddNewClubViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IjK-th-pW6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mep-ae-LCr">
-                                <rect key="frame" x="60" y="255" width="294" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mep-ae-LCr">
+                                <rect key="frame" x="0.0" y="180" width="414" height="32"/>
                                 <segments>
                                     <segment title="Wood"/>
                                     <segment title="Iron"/>
@@ -213,35 +214,94 @@
                                 </connections>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzX-Ec-9D7">
-                                <rect key="frame" x="0.0" y="296" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="211" width="414" height="216"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5G-xf-Z1d">
+                                <rect key="frame" x="40" y="457" width="140.5" height="75"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="G0s-Do-Qhs"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="CANCEL">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="exit:" destination="908-R2-HcC" eventType="touchUpInside" id="Wus-jA-LFQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tY-CM-i83">
+                                <rect key="frame" x="277.5" y="457" width="96.5" height="75"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="dim-Yt-Vw6"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SAVE">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveClub:" destination="908-R2-HcC" eventType="touchUpInside" id="tiN-IM-qIo"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g87-9N-ow6" userLabel="AddClubTitle">
+                                <rect key="frame" x="10" y="100" width="394" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Club" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5G-hu-dR6">
+                                        <rect key="frame" x="2" y="2" width="390" height="51"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="F5G-hu-dR6" secondAttribute="bottom" constant="2" id="4Pi-t8-PHZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="F5G-hu-dR6" secondAttribute="trailing" constant="2" id="QlC-z1-Pjk"/>
+                                    <constraint firstItem="F5G-hu-dR6" firstAttribute="leading" secondItem="g87-9N-ow6" secondAttribute="leading" constant="2" id="fe7-w7-Xql"/>
+                                    <constraint firstAttribute="height" constant="55" id="paw-1l-YDS"/>
+                                    <constraint firstItem="F5G-hu-dR6" firstAttribute="top" secondItem="g87-9N-ow6" secondAttribute="top" constant="2" id="zAw-g1-FNZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Czy-qR-ePr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mep-ae-LCr" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" constant="60" id="Slj-la-cbc"/>
-                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="mep-ae-LCr" secondAttribute="trailing" constant="60" id="XFQ-s2-xzl"/>
-                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="top" secondItem="mep-ae-LCr" secondAttribute="bottom" constant="10" id="dvw-t4-Q6g"/>
-                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="trailing" secondItem="Czy-qR-ePr" secondAttribute="trailing" id="eSJ-Wt-hJr"/>
-                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" id="fOP-Zx-XaN"/>
-                            <constraint firstItem="mep-ae-LCr" firstAttribute="top" secondItem="Czy-qR-ePr" secondAttribute="top" constant="115" id="ldz-Iw-NmR"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="top" secondItem="mep-ae-LCr" secondAttribute="bottom" id="0F4-gE-TZu"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="mep-ae-LCr" secondAttribute="trailing" id="2Fc-ow-a8g"/>
+                            <constraint firstItem="5tY-CM-i83" firstAttribute="width" secondItem="a5G-xf-Z1d" secondAttribute="width" multiplier="0.686833" id="4yq-QQ-v5c"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="centerX" secondItem="IjK-th-pW6" secondAttribute="centerX" id="7HP-vW-qks"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="5tY-CM-i83" secondAttribute="trailing" constant="40" id="CCw-tC-TVy"/>
+                            <constraint firstItem="mep-ae-LCr" firstAttribute="top" secondItem="g87-9N-ow6" secondAttribute="bottom" constant="25" id="Mee-MM-OuH"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="hzX-Ec-9D7" secondAttribute="trailing" id="NDy-6V-Mbw"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="g87-9N-ow6" secondAttribute="trailing" constant="10" id="Qfd-bq-GAx"/>
+                            <constraint firstItem="g87-9N-ow6" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" constant="10" id="Rc0-qX-htC"/>
+                            <constraint firstItem="hzX-Ec-9D7" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" id="SiN-Vq-yHd"/>
+                            <constraint firstItem="a5G-xf-Z1d" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" constant="40" id="Ugh-AH-cfG"/>
+                            <constraint firstItem="g87-9N-ow6" firstAttribute="top" secondItem="Czy-qR-ePr" secondAttribute="top" constant="100" id="X8H-6u-E6h"/>
+                            <constraint firstItem="Czy-qR-ePr" firstAttribute="trailing" secondItem="5tY-CM-i83" secondAttribute="trailing" constant="40" id="YnA-iy-SFq"/>
+                            <constraint firstItem="5tY-CM-i83" firstAttribute="top" secondItem="hzX-Ec-9D7" secondAttribute="bottom" constant="30" id="gw3-Hw-PgR"/>
+                            <constraint firstItem="a5G-xf-Z1d" firstAttribute="top" secondItem="hzX-Ec-9D7" secondAttribute="bottom" constant="30" id="idL-GP-1Mv"/>
+                            <constraint firstItem="mep-ae-LCr" firstAttribute="leading" secondItem="Czy-qR-ePr" secondAttribute="leading" id="soy-Ob-Z0r"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Club" id="fOL-za-Km5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tpy-Tw-91V">
-                            <connections>
-                                <action selector="saveClub:" destination="908-R2-HcC" id="oKy-t1-XjB"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Tpy-Tw-91V"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="a5G-xf-Z1d" id="306-HU-Ftx"/>
                         <outlet property="clubNumberPicker" destination="hzX-Ec-9D7" id="oCK-st-puQ"/>
                         <outlet property="clubTypeSegment" destination="mep-ae-LCr" id="jfs-SW-Nmu"/>
+                        <outlet property="mainTitleLabbel" destination="F5G-hu-dR6" id="I9w-pe-GUv"/>
+                        <outlet property="mainTitleRectView" destination="g87-9N-ow6" id="yEg-YF-8Tn"/>
+                        <outlet property="submitButton" destination="5tY-CM-i83" id="OXw-MX-hDE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZQ-uP-zqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6682.608695652174" y="105.80357142857143"/>
+            <point key="canvasLocation" x="4307.2463768115949" y="-838.39285714285711"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="J1H-Gc-sPJ">
@@ -278,7 +338,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="exn-lc-gV2"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="pTj-bv-mqd" firstAttribute="width" secondItem="vWr-W4-wxC" secondAttribute="width" id="1gS-HL-cdj"/>
                             <constraint firstItem="vWr-W4-wxC" firstAttribute="top" secondItem="5qo-01-KpP" secondAttribute="bottom" constant="40" id="3HE-mn-1ID"/>
@@ -295,7 +355,9 @@
                             <constraint firstItem="lQU-Ws-fOb" firstAttribute="top" secondItem="vWr-W4-wxC" secondAttribute="bottom" constant="30" id="pbb-Hc-qmH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7e7-Nw-dUX"/>
+                    <navigationItem key="navigationItem" id="7e7-Nw-dUX">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="hz3-PT-5mo"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="adviceView" destination="pTj-bv-mqd" id="Hpa-oF-Rj1"/>
                         <outlet property="clubsView" destination="vWr-W4-wxC" id="tzd-dp-kuE"/>
@@ -324,7 +386,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXL-WW-TkI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852.1739130434785" y="105.80357142857143"/>
+            <point key="canvasLocation" x="162" y="105"/>
         </scene>
         <!--Club Distances-->
         <scene sceneID="k92-yw-6yh">
@@ -343,7 +405,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="3762.3188405797105" y="105.80357142857143"/>
+            <point key="canvasLocation" x="2190" y="-838"/>
         </scene>
         <!--NewStroke-->
         <scene sceneID="Wlq-YG-UbX">
@@ -439,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9FQ-Nh-QRv" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850.7246376811595" y="765.40178571428567"/>
+            <point key="canvasLocation" x="2093" y="940"/>
         </scene>
         <!--Main Club View Controller-->
         <scene sceneID="4cw-BA-d2U">
@@ -454,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8d-pb-FrH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3101" y="1412"/>
+            <point key="canvasLocation" x="3772" y="956"/>
         </scene>
         <!--Swings View Controller-->
         <scene sceneID="XP4-Je-fg2">
@@ -554,7 +616,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktP-3H-TBo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4134.7826086956529" y="1408.9285714285713"/>
+            <point key="canvasLocation" x="5091" y="956"/>
         </scene>
         <!--Advice View Controller-->
         <scene sceneID="cch-4o-Oik">
@@ -621,7 +683,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nL-Yd-pax" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3844.9275362318845" y="764.73214285714278"/>
+            <point key="canvasLocation" x="3413" y="104"/>
         </scene>
         <!--CollectionV Iew Test View Controller-->
         <scene sceneID="VgB-U0-3hu">
@@ -636,7 +698,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbB-6m-djK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4790" y="765"/>
+            <point key="canvasLocation" x="4506" y="104"/>
         </scene>
         <!--New Stroke-->
         <scene sceneID="cPd-68-ZqF">
@@ -655,13 +717,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbN-nd-cvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940.5797101449277" y="765.40178571428567"/>
+            <point key="canvasLocation" x="1148" y="940"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="suk-8G-fgU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lJ9-UV-XLg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="wsA-Gb-rFY"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="wsA-Gb-rFY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qxx-zw-zcm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -678,6 +740,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="linkColor">
@@ -685,9 +748,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

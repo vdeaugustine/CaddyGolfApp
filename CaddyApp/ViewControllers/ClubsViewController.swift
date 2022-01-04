@@ -15,6 +15,10 @@ class ClubsViewController: UIViewController {
     @IBOutlet var swingTypeToggle: UIButton!
 
     var currentSwingTypeState = swingTypeState.threeFourths
+    
+    override func viewWillAppear(_ animated: Bool) {
+        clubsTableView.reloadData()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         
@@ -33,11 +37,16 @@ class ClubsViewController: UIViewController {
         clubsTableView.reloadData()
         printBagOutLines(bag: mainBag)
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ModalTransitionMediator.instance.setListener(listener: self)
+
+        
+        
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
         clubsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -189,4 +198,15 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return mainBag.types[section]
     }
+}
+
+
+extension ClubsViewController: ModalTransitionListener {
+//other code
+//required delegate func
+func popoverDismissed() {
+    self.navigationController?.dismiss(animated: true, completion: nil)
+    sortBag()
+    clubsTableView.reloadData()
+}
 }

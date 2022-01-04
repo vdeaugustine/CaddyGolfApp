@@ -15,22 +15,41 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     var clubName = "Driver" // Just default value because it's first on picker
     var clubTypeChangedAtLeastOnce = false
     var clubNumChangedAtLeastOnce = false
-    @IBOutlet var clubNumberPicker: UIPickerView!
-    @IBOutlet var clubTypeSegment: UISegmentedControl!
+    @IBOutlet weak var clubNumberPicker: UIPickerView!
+    @IBOutlet weak var clubTypeSegment: UISegmentedControl!
     var useThisArrForClubsOptions: [String] = woods
     var typeSelectedIndex: Int = 0
     var numSelectedIndex: Int = 0
 
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var mainTitleRectView: UIView!
+    @IBOutlet weak var mainTitleLabbel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clubNumberPicker.delegate = self
         clubNumberPicker.dataSource = self
+        submitButton.dropShadow()
+        cancelButton.dropShadow()
+        submitButton.layer.cornerRadius = 8
+        cancelButton.layer.cornerRadius = 8
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
+
     }
 
     // MARK: - IBActions
 
+    @IBAction func exit(_ sender: UIButton) {
+        super.dismiss(animated: true, completion: nil)
+    }
+    
+    
     /// Function that is called when SAVE is tapped to save new club to bag
-    @IBAction func saveClub(_ sender: UIBarButtonItem) {
+    @IBAction func saveClub(_ sender: UIButton) {
         print("Saved club tapped")
 
         clubName = useThisArrForClubsOptions[numSelectedIndex]
@@ -149,7 +168,23 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
 
         // Go back to previous view controller in the navigation stack
-        _ = navigationController?.popViewController(animated: true)
+//        _ = navigationController?.popViewController(animated: true)
+        
+        
+//
+//        if let firstVC = self.presentingViewController as? ClubsViewController {
+//            print("GOTHERE")
+//                    DispatchQueue.main.async {
+//                        firstVC.clubsTableView.reloadData()
+//                    }
+//                }
+//        else {
+//            print("DIDNOTGETHERE")
+//        }
+//
+        super.dismiss(animated: true, completion: nil)
+        
+        
     }
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
