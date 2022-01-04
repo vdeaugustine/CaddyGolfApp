@@ -8,6 +8,10 @@
 import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
     // MARK: - Properties
 
     @IBOutlet var viewForYardages: UIView!
@@ -287,11 +291,11 @@ extension SwingsViewController {
             let arrOfPrevHits: [String]
             switch swingTypeSelected {
             case .fullSwing:
-                arrOfPrevHits = currentClub.previousFullHits.components(separatedBy: ",")
+                arrOfPrevHits = getSwings(typeOfSwing: .fullSwing)
             case .maxSwing:
-                arrOfPrevHits = currentClub.previousMaxHits.components(separatedBy: ",")
+                arrOfPrevHits = getSwings(typeOfSwing: .maxSwing)
             case .threeFourths:
-                arrOfPrevHits = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
+                arrOfPrevHits = getSwings(typeOfSwing: .threeFourths)
             }
 
             cell.textLabel?.text = arrOfPrevHits[indexPath.row - 1]
@@ -389,16 +393,13 @@ extension SwingsViewController {
             if let theDistance = Int((textField?.text)!), theDistance > 0 {
                 switch self.swingTypeSelected {
                 case .fullSwing:
-                    currentClub.previousFullHits.append("\(theDistance),")
-                    currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
+                    addSwing(typeOfSwing: .fullSwing, distance: theDistance)
                     self.averageNumberLabel.text = "\(currentClub.averageFullDistance)"
                 case .maxSwing:
-                    currentClub.previousMaxHits.append("\(theDistance),")
-                    currentClub.averageMaxDistance = getAvgFromStr(currentClub.previousMaxHits)
+                    addSwing(typeOfSwing: .maxSwing, distance: theDistance)
                     self.averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
                 case .threeFourths:
-                    currentClub.previousThreeFourthsHits.append("\(theDistance),")
-                    currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
+                    addSwing(typeOfSwing: .threeFourths, distance: theDistance)
                     self.averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
                 }
 

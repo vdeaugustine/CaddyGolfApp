@@ -102,28 +102,29 @@ func saveCurrentClub() {
 
 // TODO: - Make this work for different type of hits
 func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTypeState) {
-    var arrOfPrevHits: [String]
+    var arrOfPrevHitsByType: [String]
+    
     switch swingType {
     case .fullSwing:
-        arrOfPrevHits = currentClub.previousFullHits.components(separatedBy: ",")
+        arrOfPrevHitsByType = currentClub.previousFullHits.components(separatedBy: ",")
     case .maxSwing:
-        arrOfPrevHits = currentClub.previousMaxHits.components(separatedBy: ",")
+        arrOfPrevHitsByType = currentClub.previousMaxHits.components(separatedBy: ",")
     case .threeFourths:
-        arrOfPrevHits = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
+        arrOfPrevHitsByType = currentClub.previousThreeFourthsHits.components(separatedBy: ",")
     }
-    if index < arrOfPrevHits.count {
-        arrOfPrevHits.remove(at: index)
+    if index < arrOfPrevHitsByType.count {
+        arrOfPrevHitsByType.remove(at: index)
     }
 
     switch swingType {
     case .fullSwing:
-        currentClub.previousFullHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.previousFullHits = arrOfPrevHitsByType.joined(separator: ",")
         currentClub.averageFullDistance = getAvgFromStr(currentClub.previousFullHits)
     case .maxSwing:
-        currentClub.previousMaxHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.previousMaxHits = arrOfPrevHitsByType.joined(separator: ",")
         currentClub.averageMaxDistance = getAvgFromStr(currentClub.previousMaxHits)
     case .threeFourths:
-        currentClub.previousThreeFourthsHits = arrOfPrevHits.joined(separator: ",")
+        currentClub.previousThreeFourthsHits = arrOfPrevHitsByType.joined(separator: ",")
         currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
     }
 
@@ -155,3 +156,6 @@ func removeEmptyFromPrevHits() {
     currentClub.previousFullHits = prevHitsStr
     saveCurrentClub()
 }
+
+
+

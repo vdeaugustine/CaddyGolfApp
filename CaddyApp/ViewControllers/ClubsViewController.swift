@@ -9,11 +9,12 @@ import UIKit
 
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
+    
     @IBOutlet var clubsTableView: UITableView!
 
     @IBOutlet var swingTypeToggle: UIButton!
 
-    var currentSwingTypeState = swingTypeState(rawValue: 0)
+    var currentSwingTypeState = swingTypeState.threeFourths
 
     override func viewDidAppear(_ animated: Bool) {
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
@@ -36,6 +37,7 @@ class ClubsViewController: UIViewController {
         super.viewDidLoad()
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
+        clubsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let userDefaults = UserDefaults.standard
 
         // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
@@ -109,8 +111,6 @@ class ClubsViewController: UIViewController {
             print("TFSWING")
             currentSwingTypeState = .fullSwing
             swingTypeToggle.setTitle("FULL", for: .normal)
-        case .none:
-            currentSwingTypeState = .fullSwing
         }
         clubsTableView.reloadData()
     }
@@ -134,10 +134,6 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
                 return "\(currentClubForCell.threeFourthsDistance)"
             case .maxSwing:
                 return "\(currentClubForCell.maxDistance)"
-            case .none:
-                return ""
-            case .some:
-                return ""
             }
 
         }()

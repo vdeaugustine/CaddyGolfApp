@@ -54,38 +54,38 @@ extension UIView {
         layer.shadowOpacity = 0.3
         layer.shadowOffset = CGSize(width: 5, height: 5)
         layer.shadowRadius = 5
-        
-        
+
         func customShadowPath(viewLayer layer: CALayer,
-                                      shadowHeight: CGFloat) -> UIBezierPath {
+                              shadowHeight: CGFloat) -> UIBezierPath {
             let layerX = layer.bounds.origin.x
             let layerY = layer.bounds.origin.y
             let layerWidth = layer.bounds.size.width
             let layerHeight = layer.bounds.size.height
-            
+
             let path = UIBezierPath()
             path.move(to: CGPoint.zero)
-            
+
             path.addLine(to: CGPoint(x: layerX + layerWidth,
                                      y: layerY))
             path.addLine(to: CGPoint(x: layerX + layerWidth,
                                      y: layerHeight))
-            
+
             path.addCurve(to: CGPoint(x: 0,
                                       y: layerHeight),
                           controlPoint1: CGPoint(x: layerX + layerWidth,
                                                  y: layerHeight),
                           controlPoint2: CGPoint(x: layerX,
                                                  y: layerHeight))
-            
+
             return path
         }
-        
 
         layer.shadowPath = customShadowPath(viewLayer: layer, shadowHeight: 5).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
+
+//    }
 }
 
 public extension UIView {
@@ -109,3 +109,5 @@ public extension UIView {
         }
     }
 }
+
+

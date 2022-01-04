@@ -121,6 +121,8 @@ enum clubTypesEnum: String, CaseIterable {
     case hybrids = "Hybrid"
 }
 
-enum swingTypeState: Int {
-    case fullSwing = 0, maxSwing, threeFourths
+enum swingTypeState: String {
+    case fullSwing = "Full Swing"
+    case maxSwing = "Max Swing"
+    case threeFourths = "Three Fourths"
 }

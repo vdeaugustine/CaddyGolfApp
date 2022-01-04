@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
 		9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStruct.swift */; };
 		9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A843276D8813005BAA31 /* ClubObject.swift */; };
@@ -22,6 +23,7 @@
 		9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */; };
 		9CDA253F2782926600FDAAC2 /* CollectionVIewTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */; };
 		9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */; };
+		9CDA25432782B5B100FDAAC2 /* ManagePreviousSwings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -38,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9C72A841276D7B72005BAA31 /* AdviceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStruct.swift; sourceTree = "<group>"; };
 		9C72A843276D8813005BAA31 /* ClubObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubObject.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingsViewController.swift; sourceTree = "<group>"; };
 		9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVIewTestViewController.swift; sourceTree = "<group>"; };
 		9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewControllerExtensions.swift; sourceTree = "<group>"; };
+		9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePreviousSwings.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
+				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
+				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
 				9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */,
 				9CDA2537277FA3EE00FDAAC2 /* TestWithSketch */,
 				9CF2AF3E275AD61000458646 /* CaddyApp */,
@@ -252,8 +258,10 @@
 				9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */,
 				9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */,
 				9C72A840276D736C005BAA31 /* Enums.swift in Sources */,
+				9CDA25432782B5B100FDAAC2 /* ManagePreviousSwings.swift in Sources */,
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
+				9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
@@ -423,8 +431,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,7 +445,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -451,8 +462,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +476,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
