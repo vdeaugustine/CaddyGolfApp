@@ -30,6 +30,14 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
+        switch currentSwingType {
+        case .fullSwing:
+            self.swingTypeSegmentControl.selectedSegmentIndex = 1
+        case .maxSwing:
+            self.swingTypeSegmentControl.selectedSegmentIndex = 2
+        case .threeFourths:
+            self.swingTypeSegmentControl.selectedSegmentIndex = 0
+        }
     }
 
     override func viewWillLayoutSubviews() {

@@ -24,25 +24,16 @@ class MainClubViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        maxNumber.text = "\(currentClub.maxDistance)"
-        fullNumber.text = "\(currentClub.fullDistance)"
-        tfNumber.text = "\(currentClub.threeFourthsDistance)"
         print("all", currentClub.allPreviousSwings)
         swingsCollectionView?.reloadData()
+        maxSwingContainer.updateYardage()
+        tfSwingContainer.updateYardage()
+        fullSwingContainer.updateYardage()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         newLayoutSubviews()
-        
-        
-        
-        //        yardagesLabel.frame = CGRect(x: ,
-        //                                     y: ,
-        //                                     width: sizeOfYardagesLabel.width,
-        //                                     height: sizeOfYardagesLabel.height)
-        
-        //        clubLabel.frame = CGRect(x: padRectsFromSides, y: yardagesRect.bottom + 30, width: 50, height: 50)
     }
     
     override func viewWillLayoutSubviews() {
@@ -69,32 +60,19 @@ class MainClubViewController: UIViewController {
         scrollView.addSubview(notesLargeRectView)
         notesLargeRectView.addSubview(notesRectTitle)
         
-        yardagesLargeRectView.addSubview(tfContainer)
-        yardagesLargeRectView.addSubview(fullSwingContainer)
+        yardagesLargeRectView.addSubview(tfSwingContainer.mainContainer)
+        yardagesLargeRectView.addSubview(fullSwingContainer.mainContainer)
         yardagesLargeRectView.addSubview(maxSwingContainer.mainContainer)
         
-        tfContainer.addSubview(tfHeader)
-        tfHeader.addSubview(tfHeaderLabel)
-        tfContainer.addSubview(tfNumber)
+        tfSwingContainer.layoutViews()
         
-        fullSwingContainer.addSubview(fullHeader)
-        fullHeader.addSubview(fullHeaderLabel)
-        fullSwingContainer.addSubview(fullNumber)
+        fullSwingContainer.layoutViews()
         
         maxSwingContainer.layoutViews()
-        
-        
-//        maxSwingContainer.addSubview(maxHeader)
-//        maxHeader.addSubview(maxHeaderLabel)
-//        maxSwingContainer.addSubview(maxNumber)
-        
-        
-        
         
     }
     
     func newLayoutSubviews() {
-        //        scrollView.frame = view.bounds
         let setUpDimensions = view.bounds
         let padRectsFromSides: CGFloat = 10
         let padLabel: CGFloat = 4
@@ -103,7 +81,6 @@ class MainClubViewController: UIViewController {
                                              width: setUpDimensions.width - (2 * padRectsFromSides),
                                              height: 201)
         yardagesLargeRectView.dropShadow()
-        //        let sizeOfLabel = clubLabel.sizeThatFits(CGSize(width: yardagesLargeRectView.width, height: yardagesLargeRectView.height))
         yardagesRectTitle.frame = CGRect(x: padLabel,
                                          y: 2 * padRectsFromSides,
                                          width: setUpDimensions.width - 50,
@@ -111,6 +88,16 @@ class MainClubViewController: UIViewController {
         
         let tappedYardages = UITapGestureRecognizer(target: self, action: #selector(didTapYardagesButton))
         yardagesLargeRectView.addGestureRecognizer(tappedYardages)
+        
+        let tappedTF = UITapGestureRecognizer(target: self, action: #selector(didTapTFSwing))
+        tfSwingContainer.mainContainer.addGestureRecognizer(tappedTF)
+        
+        let tappedFull = UITapGestureRecognizer(target: self, action: #selector(didTapFullSwing))
+        fullSwingContainer.mainContainer.addGestureRecognizer(tappedFull)
+        
+        let tappedMax = UITapGestureRecognizer(target: self, action: #selector(didTapMaxSwing))
+        maxSwingContainer.mainContainer.addGestureRecognizer(tappedMax)
+        
         
         swingsLargeRectView.frame = CGRect(x: padRectsFromSides,
                                            y: yardagesLargeRectView.bottom + padRectsFromSides * 2,
@@ -138,79 +125,16 @@ class MainClubViewController: UIViewController {
         
         // MARK: Swing Types with Yardages
         
-        let widthOfSwingTypeBoxes = (yardagesLargeRectView.width - padRectsFromSides * 4) / 3
-        let heightOfSwingTypeBoxes: CGFloat = 110
+        tfSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: nil, rightNeighbor: nil, topNeighbor: yardagesRectTitle)
         
-        tfContainer.frame = CGRect(x: padRectsFromSides,
-                                   y: yardagesRectTitle.bottom + padRectsFromSides,
-                                   width: widthOfSwingTypeBoxes,
-                                   height: heightOfSwingTypeBoxes)
-        tfContainer.dropShadow()
-        
-        fullSwingContainer.frame = CGRect(x: padRectsFromSides + tfContainer.right,
-                                          y: yardagesRectTitle.bottom + padRectsFromSides,
-                                          width: widthOfSwingTypeBoxes,
-                                          height: heightOfSwingTypeBoxes)
-        fullSwingContainer.dropShadow()
-        
-//        maxSwingContainer.frame = CGRect(x: padRectsFromSides + fullSwingContainer.right,
-//                                         y: yardagesRectTitle.bottom + padRectsFromSides,
-//                                         width: widthOfSwingTypeBoxes,
-//                                         height: heightOfSwingTypeBoxes)
-//        maxSwingContainer.dropShadow()
-        
-        tfHeader.frame = CGRect(x: 0,
-                                y: 0,
-                                width: tfContainer.width,
-                                height: tfContainer.height / 3)
-        
-        tfHeaderLabel.frame = CGRect(x: 0,
-                                     y: 0,
-                                     width: tfHeader.width,
-                                     height: tfHeader.height)
-        
-        tfNumber.frame = CGRect(x: -2,
-                                y: tfHeader.bottom + 18,
-                                width: tfContainer.width,
-                                height: tfContainer.height / 3)
-        
-        fullHeader.frame = CGRect(x: 0,
-                                  y: 0,
-                                  width: fullSwingContainer.width,
-                                  height: fullSwingContainer.height / 3)
-        
-        fullHeaderLabel.frame = CGRect(x: 0,
-                                       y: 0,
-                                       width: fullHeader.width,
-                                       height: fullHeader.height)
-        
-        fullNumber.frame = CGRect(x: -2,
-                                  y: fullHeader.bottom + 18,
-                                  width: fullSwingContainer.width,
-                                  height: fullSwingContainer.height / 3)
-        maxSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: fullSwingContainer, topNeighbor: yardagesRectTitle)
-        
-//        maxHeader.frame = CGRect(x: 0,
-//                                 y: 0,
-//                                 width: fullSwingContainer.width,
-//                                 height: fullSwingContainer.height / 3)
-//
-//        maxHeaderLabel.frame = CGRect(x: 0,
-//                                      y: 0,
-//                                      width: maxHeader.width,
-//                                      height: maxHeader.height)
-//
-//        maxNumber.frame = CGRect(x: -2,
-//                                 y: maxHeader.bottom + 18,
-//                                 width: maxSwingContainer.width,
-//                                 height: maxSwingContainer.height / 3)
+        fullSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: tfSwingContainer.mainContainer, rightNeighbor: nil, topNeighbor: yardagesRectTitle)
+
+        maxSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: fullSwingContainer.mainContainer, topNeighbor: yardagesRectTitle)
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.itemSize = CGSize(width: (swingsLargeRectView.width - padRectsFromSides * 2) * 0.75, height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides * 5)
         layout.itemSize = CGSize(width: 150, height: 150)
         layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = 100
         let swingCollectionViewFrame = CGRect(x: padRectsFromSides,
                                               y: swingsRectTitle.bottom + 5,
                                               width: (swingsLargeRectView.width - padRectsFromSides * 2) * 0.75,
@@ -243,29 +167,7 @@ class MainClubViewController: UIViewController {
             print("DID NOT MAKE IT ")
         }
         
-        
-        
-        
-        
-//        firstSwingRect.frame = CGRect(x: padRectsFromSides,
-//                                      y: swingsRectTitle.bottom + 5,
-//                                      width: (swingsLargeRectView.width - padRectsFromSides * 2) * 0.75,
-//                                      height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides)
-//
-//        firstSwingRect.backgroundColor = .red
-        
-        
-        print()
-        print("height of swings rect", swingsLargeRectView.height)
-        print("swings bottom - label bottom", swingsRectTitle.bottom - swingsLargeRectView.bottom)
-        print("swings bottom", swingsLargeRectView.bottom)
-        print("title bottom", swingsRectTitle.bottom)
-        print("BREAK")
-        
         let thisheight = notesLargeRectView.frame.maxY + 20
-        print("height", thisheight)
-        print("view height", view.height)
-        print("viewbounds ", view.bounds)
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
         
@@ -283,36 +185,14 @@ class MainClubViewController: UIViewController {
     let swingsLargeRectView = LargeRect()
     
     let maxSwingContainer = SwingTypeBox(type: .maxSwing)
+    let fullSwingContainer = SwingTypeBox(type: .fullSwing)
+    let tfSwingContainer = SwingTypeBox(type: .threeFourths)
     
     // MARK: Large Rect Titles
     
     let swingsRectTitle = RectTitle("Swings")
     let yardagesRectTitle = RectTitle("Yardages")
     let notesRectTitle = RectTitle("Notes")
-    
-    // MARK: Container Headers
-    
-    let tfHeader = Header()
-    let fullHeader = Header()
-//    let maxHeader = Header()
-    
-    // MARK: Header Labels
-    
-    let tfHeaderLabel = HeaderLabel("3/4 Swing")
-    let fullHeaderLabel = HeaderLabel("Full Swing")
-//    let maxHeaderLabel = HeaderLabel("Max Swing")
-    
-    // MARK: SwingType Number Labels
-    
-    let tfNumber = NumberLabel("\(currentClub.threeFourthsDistance)")
-    let fullNumber = NumberLabel("\(currentClub.fullDistance)")
-//    let maxNumber = NumberLabel("\(currentClub.maxDistance)")
-    
-    // MARK: Swing Type Containers
-    
-    let tfContainer = SwingTypeContainer()
-    let fullSwingContainer = SwingTypeContainer()
-//    let maxSwingContainer = SwingTypeContainer()
     
     let firstSwingRect = customView()
     
@@ -329,6 +209,26 @@ class MainClubViewController: UIViewController {
         // This is what sends us to the next view controller for editing distance
         navigationController?.pushViewController(clubVC, animated: true)
     }
+    
+    @objc private func didTapTFSwing() {
+        print("TF Was Tapped")
+        currentSwingType = .threeFourths
+        didTapSwingsButton()
+    }
+    
+    @objc private func didTapFullSwing() {
+        print("Full Was Tapped")
+        currentSwingType = .fullSwing
+        didTapSwingsButton()
+    }
+    
+    @objc private func didTapMaxSwing() {
+        print("Full Was Tapped")
+        currentSwingType = .maxSwing
+        didTapSwingsButton()
+    }
+    
+    
     
     @objc private func didTapSwingsButton() {
         print("Swings Was Tapped")
