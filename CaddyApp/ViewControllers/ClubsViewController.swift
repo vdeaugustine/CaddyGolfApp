@@ -147,8 +147,10 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.clubNameLabel.text = currentClubNameForCell
         cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
         cell.yardsBox.setHeaderText("Full Swing")
+        cell.notesBox.setHeaderText("Notes")
         cell.yardsBox.layoutViews()
-        cell.yardsBox.mainContainer.backgroundColor = .red
+        cell.notesBox.layoutViews()
+        
 //        cell.textLabel?.text = currentClubNameForCell
         
 //        cell.yardsLabel.text = {

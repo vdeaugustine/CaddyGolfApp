@@ -11,14 +11,10 @@ import UIKit
 class RoundedBox {
     var mainContainer: UIView
     let header: UIView
-    let headerLabel: UIView
+    let headerLabel: UILabel
     let mainTextLabel: UILabel
     var mainText: String?
     var headerText: String?
-//    var leftNeighborView: UIView?
-//    var rightNeighborView: UIView?
-//    var topNeighborView: UIView?
-//    var padFromSides: CGFloat?
 
     init() {
 
@@ -62,6 +58,7 @@ class RoundedBox {
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
             //        label.translatesAutoresizingMaskIntoConstraints = true
             theView.textAlignment = .center
+            theView.numberOfLines = 0
             //        label.translatesAutoresizingMaskIntoConstraints = false
             return theView
         }()
@@ -79,7 +76,6 @@ class RoundedBox {
         mainContainer.frame = CGRect(x: 0, y: 0, width: thisFrame.width, height: thisFrame.height)
         
         mainContainer.dropShadow()
-        mainContainer.backgroundColor = .red
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
@@ -113,7 +109,6 @@ class RoundedBox {
                                          height: heightOfSwingTypeBoxes)
         
         mainContainer.dropShadow()
-        mainContainer.backgroundColor = .red
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
@@ -141,10 +136,15 @@ class RoundedBox {
     
     func setMainText(_ text: String) {
         self.mainText = text
+        self.mainTextLabel.text = self.mainText
+        self.mainTextLabel.adjustsFontSizeToFitWidth = true
     }
     
     func setHeaderText(_ text: String) {
         self.headerText = text
+        self.headerLabel.text = self.headerText
+        self.headerLabel.adjustsFontSizeToFitWidth = true
+        
     }
     
 }

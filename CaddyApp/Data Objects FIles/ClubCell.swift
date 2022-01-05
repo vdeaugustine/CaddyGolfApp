@@ -9,25 +9,26 @@ import UIKit
 
 class ClubCell: UITableViewCell {
     @IBOutlet var yardsLabel: UILabel!
-    @IBOutlet weak var notesBox: UIView!
+    @IBOutlet weak var notesBoxContainer: UIView!
     @IBOutlet weak var clubNameBox: UIView!
-    @IBOutlet weak var yardageBox: UIView!
+    @IBOutlet weak var yardageBoxContainer: UIView!
     @IBOutlet weak var clubNameLabel: UILabel!
     var yardsBox = RoundedBox()
-    var yardagesRect:  UIView {
-        let theView = UIView()
-        theView.layer.cornerRadius = 8
-        return theView
-    }
+    var notesBox = RoundedBox()
+//    var yardagesRect:  UIView {
+//        let theView = UIView()
+//        theView.layer.cornerRadius = 8
+//        return theView
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         
         
-        yardageBox.layer.cornerRadius = 8
+        yardageBoxContainer.layer.cornerRadius = 8
         clubNameBox.layer.cornerRadius = 8
-        notesBox.layer.cornerRadius = 8
+        notesBoxContainer.layer.cornerRadius = 8
         clubNameLabel.adjustsFontSizeToFitWidth = true
         
         let pad: CGFloat = 10
@@ -46,18 +47,23 @@ class ClubCell: UITableViewCell {
         let spaceToWorkWith = CGRect(x: startNotesBoxAt, y: pad, width: abs(finishYardBoxAt - startNotesBoxAt), height: super.height - pad * 2)
         
         yardsBox.setMainText("Yardage")
-        yardageBox.frame = CGRect(x: spaceToWorkWith.minX,
+        yardageBoxContainer.frame = CGRect(x: spaceToWorkWith.minX,
                                   y: spaceToWorkWith.minY,
                                   width: (spaceToWorkWith.width - pad) / 2,
                                   height: spaceToWorkWith.height)
-        notesBox.frame = CGRect(x: yardageBox.right + pad,
+        notesBoxContainer.frame = CGRect(x: yardageBoxContainer.right + pad,
                                   y: spaceToWorkWith.minY,
-                                width: yardageBox.width,
+                                width: yardageBoxContainer.width,
                                   height: spaceToWorkWith.height)
         
-        yardageBox.addSubview(yardsBox.mainContainer)
-        yardsBox.setupFrames(with: yardageBox.frame)
+        yardageBoxContainer.addSubview(yardsBox.mainContainer)
+        yardsBox.setupFrames(with: yardageBoxContainer.frame)
         yardsBox.layoutViews()
+        
+        notesBox.setMainText("Some Notes Go Here")
+        notesBoxContainer.addSubview(notesBox.mainContainer)
+        notesBox.setupFrames(with: notesBoxContainer.frame)
+        notesBox.layoutViews()
         
         
         

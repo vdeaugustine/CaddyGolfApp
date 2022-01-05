@@ -15,7 +15,7 @@ class CollectionVIewTestViewController: UIViewController {
             super.viewDidLoad()
             
             let view = UIView()
-            view.backgroundColor = .white
+            view.backgroundColor = .systemBackground
             
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             let height : CGFloat = 50
@@ -25,7 +25,7 @@ class CollectionVIewTestViewController: UIViewController {
             
             myCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
             myCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-            myCollectionView?.backgroundColor = UIColor.green
+            myCollectionView?.backgroundColor = .systemBackground
             
             myCollectionView?.dataSource = self
             myCollectionView?.delegate = self
@@ -43,7 +43,7 @@ class CollectionVIewTestViewController: UIViewController {
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-            myCell.backgroundColor = UIColor.blue
+            myCell.backgroundColor = .systemBackground
             return myCell
         }
     }

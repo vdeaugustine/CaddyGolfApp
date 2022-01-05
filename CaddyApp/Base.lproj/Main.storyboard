@@ -44,7 +44,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQw-3P-BsD">
                                                     <rect key="frame" x="164" y="5" width="123" height="100"/>
@@ -56,8 +56,8 @@
                                         <connections>
                                             <outlet property="clubNameBox" destination="sNL-nQ-6zW" id="avb-IC-QW2"/>
                                             <outlet property="clubNameLabel" destination="Hav-TI-rHa" id="KVc-ce-wEZ"/>
-                                            <outlet property="notesBox" destination="nQw-3P-BsD" id="Eh5-a3-4GZ"/>
-                                            <outlet property="yardageBox" destination="Fgy-RK-743" id="jBi-HG-jbf"/>
+                                            <outlet property="notesBoxContainer" destination="nQw-3P-BsD" id="Eh5-a3-4GZ"/>
+                                            <outlet property="yardageBoxContainer" destination="Fgy-RK-743" id="jBi-HG-jbf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

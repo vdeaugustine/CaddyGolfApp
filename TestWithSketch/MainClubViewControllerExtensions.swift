@@ -29,7 +29,6 @@ extension MainClubViewController {
             super.init(frame: frame)
             translatesAutoresizingMaskIntoConstraints = true
             layer.cornerRadius = 8
-            backgroundColor = .red
             isUserInteractionEnabled = false
         }
 
