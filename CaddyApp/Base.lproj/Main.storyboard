@@ -17,31 +17,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5sT-6Q-tMF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="club" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="club" rowHeight="77" id="cy0-on-ucm" customClass="ClubCell" customModule="CaddyApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="77"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="club" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="club" rowHeight="110" id="cy0-on-ucm" customClass="ClubCell" customModule="CaddyApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cy0-on-ucm" id="Eyb-1j-BJi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yards Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMd-DC-Eb9">
-                                                    <rect key="frame" x="285.5" y="31" width="88.5" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgy-RK-743">
+                                                    <rect key="frame" x="292" y="5" width="117" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sNL-nQ-6zW" userLabel="clubNameView">
+                                                    <rect key="frame" x="5" y="5" width="150" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="52 Wedge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hav-TI-rHa">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="34"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQw-3P-BsD">
+                                                    <rect key="frame" x="164" y="5" width="123" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lMd-DC-Eb9" secondAttribute="bottom" constant="20" id="99y-Te-wNf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lMd-DC-Eb9" secondAttribute="trailing" constant="20" id="B2I-fr-ALz"/>
-                                                <constraint firstItem="lMd-DC-Eb9" firstAttribute="top" secondItem="Eyb-1j-BJi" secondAttribute="topMargin" constant="20" id="URz-Qq-1Qr"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="yardsLabel" destination="lMd-DC-Eb9" id="Wwa-lJ-QER"/>
+                                            <outlet property="clubNameBox" destination="sNL-nQ-6zW" id="avb-IC-QW2"/>
+                                            <outlet property="clubNameLabel" destination="Hav-TI-rHa" id="KVc-ce-wEZ"/>
+                                            <outlet property="notesBox" destination="nQw-3P-BsD" id="Eh5-a3-4GZ"/>
+                                            <outlet property="yardageBox" destination="Fgy-RK-743" id="jBi-HG-jbf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -50,10 +66,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Eft-9i-djf"/>
-                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZTQ-oy-pMR"/>
-                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aSj-eZ-gGV"/>
-                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vLG-Ym-SNS"/>
+                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="885-M7-4v8"/>
+                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KVY-rg-KXg"/>
+                            <constraint firstAttribute="bottom" secondItem="5sT-6Q-tMF" secondAttribute="bottom" id="RLG-dp-2gP"/>
+                            <constraint firstItem="5sT-6Q-tMF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="So8-SR-g0O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf">
@@ -303,6 +319,38 @@
             </objects>
             <point key="canvasLocation" x="4307.2463768115949" y="-838.39285714285711"/>
         </scene>
+        <!--TestTBVC-->
+        <scene sceneID="4AO-2y-eeL">
+            <objects>
+                <tableViewController id="SAu-0F-jkS" customClass="TestTBVC" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cvN-3O-JbY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="chn-eW-ltM">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chn-eW-ltM" id="fna-9q-9zu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SAu-0F-jkS" id="j5h-Bg-7J4"/>
+                            <outlet property="delegate" destination="SAu-0F-jkS" id="uIN-gF-qO7"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="testTV" destination="cvN-3O-JbY" id="gDh-lS-bXg"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLe-df-yHO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5312" y="-838"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="J1H-Gc-sPJ">
             <objects>
@@ -391,7 +439,6 @@
         <!--Club Distances-->
         <scene sceneID="k92-yw-6yh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YQb-6z-tAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8VD-Bd-7uh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Club Distances" image="list.dash" catalog="system" selectedImage="list.dash" id="MYQ-Zp-Fyr"/>
                     <toolbarItems/>
@@ -404,6 +451,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MsG-S8-ONg"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQb-6z-tAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2190" y="-838"/>
         </scene>
@@ -749,6 +797,9 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -760,6 +811,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

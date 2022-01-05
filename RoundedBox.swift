@@ -8,35 +8,19 @@
 import Foundation
 import UIKit
 
-class SwingTypeBox {
+class RoundedBox {
     var mainContainer: UIView
     let header: UIView
     let headerLabel: UIView
     let mainTextLabel: UILabel
-    let swingType: swingTypeState
+    var mainText: String?
+    var headerText: String?
 //    var leftNeighborView: UIView?
 //    var rightNeighborView: UIView?
 //    var topNeighborView: UIView?
 //    var padFromSides: CGFloat?
 
-    init(type: swingTypeState) {
-        swingType = type
-
-        let labelText: String
-        
-        let yardageNum: Int
-
-        switch type {
-        case .fullSwing:
-            labelText = "Full Swing"
-            yardageNum = currentClub.fullDistance
-        case .maxSwing:
-            labelText = "Max Swing"
-            yardageNum = currentClub.maxDistance
-        case .threeFourths:
-            labelText = "3/4 Swing"
-            yardageNum = currentClub.threeFourthsDistance
-        }
+    init() {
 
         mainContainer = {
             let theView = UIView()
@@ -64,7 +48,6 @@ class SwingTypeBox {
             let theView = UILabel()
             theView.font = UIFont(name: "Helvetica-Bold", size: 18)
             theView.adjustsFontSizeToFitWidth = true
-            theView.text = labelText
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
             //        label.translatesAutoresizingMaskIntoConstraints = true
             theView.textAlignment = .center
@@ -75,7 +58,7 @@ class SwingTypeBox {
             let theView = UILabel()
             theView.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
             theView.adjustsFontSizeToFitWidth = true
-            theView.text = "\(yardageNum)"
+            theView.text = "0"
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
             //        label.translatesAutoresizingMaskIntoConstraints = true
             theView.textAlignment = .center
@@ -90,36 +73,13 @@ class SwingTypeBox {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupFrames(padFromSides: CGFloat = 10, leftNeighbor: UIView? = nil, rightNeighbor: UIView? = nil, topNeighbor: UIView? = nil) {
-        
-        guard let mainContSuper = mainContainer.superview else {
-            fatalError()
-        }
+    func setupFrames(with thisFrame: CGRect) {
         
         
-        let widthOfSwingTypeBoxes = (mainContSuper.frame.width - padFromSides * 4) / 3
-        let heightOfSwingTypeBoxes: CGFloat = 110
-        guard let topNeighbor = topNeighbor else {
-            return
-        }
+        mainContainer.frame = CGRect(x: 0, y: 0, width: thisFrame.width, height: thisFrame.height)
         
-        if let leftNeighbor = leftNeighbor {
-            mainContainer.frame = CGRect(x: leftNeighbor.right + padFromSides,
-                                         y: topNeighbor.bottom + padFromSides,
-                                         width: widthOfSwingTypeBoxes,
-                                         height: heightOfSwingTypeBoxes)
-        } else {
-            mainContainer.frame = CGRect(x: padFromSides,
-                                         y: topNeighbor.bottom + padFromSides,
-                                         width: widthOfSwingTypeBoxes,
-                                         height: heightOfSwingTypeBoxes)
-        }
-        
-
-
-    
-        print("main container bounds", mainContainer.bounds)
         mainContainer.dropShadow()
+        mainContainer.backgroundColor = .red
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
@@ -130,6 +90,41 @@ class SwingTypeBox {
                                    width: header.width,
                                    height: header.height)
         
+
+        mainTextLabel.frame = CGRect(x: -2,
+                                          y: header.bottom + 18,
+                                          width: mainContainer.width,
+                                          height: mainContainer.height / 3)
+    }
+    
+    
+    func setupFrames(padFromSides: CGFloat = 10, nestedIn superView: UIView) {
+        
+        let mainContSuper = superView
+        
+        let widthOfSwingTypeBoxes = superView.width - (padFromSides * 4)
+        let heightOfSwingTypeBoxes: CGFloat = mainContSuper.frame.height - padFromSides * 2
+        
+        
+        
+        mainContainer.frame = CGRect(x: padFromSides,
+                                         y: padFromSides,
+                                         width: widthOfSwingTypeBoxes,
+                                         height: heightOfSwingTypeBoxes)
+        
+        mainContainer.dropShadow()
+        mainContainer.backgroundColor = .red
+        header.frame = CGRect(x: 0,
+                              y: 0,
+                              width: mainContainer.width,
+                              height: mainContainer.height / 3)
+        
+        headerLabel.frame = CGRect(x: 0,
+                                   y: 0,
+                                   width: header.width,
+                                   height: header.height)
+        
+
         mainTextLabel.frame = CGRect(x: -2,
                                           y: header.bottom + 18,
                                           width: mainContainer.width,
@@ -144,15 +139,12 @@ class SwingTypeBox {
         mainContainer.addSubview(mainTextLabel)
     }
     
-    func updateYardage() {
-//        yardageNumberLabel = currentClub
-        switch swingType {
-        case .fullSwing:
-            mainTextLabel.text = "\(currentClub.fullDistance)"
-        case .maxSwing:
-            mainTextLabel.text = "\(currentClub.maxDistance)"
-        case .threeFourths:
-            mainTextLabel.text = "\(currentClub.threeFourthsDistance)"
-        }
+    func setMainText(_ text: String) {
+        self.mainText = text
     }
+    
+    func setHeaderText(_ text: String) {
+        self.headerText = text
+    }
+    
 }

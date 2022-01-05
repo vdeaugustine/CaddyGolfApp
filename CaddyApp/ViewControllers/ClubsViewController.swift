@@ -10,7 +10,9 @@ import UIKit
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
     
+    
     @IBOutlet var clubsTableView: UITableView!
+    
 
     @IBOutlet var swingTypeToggle: UIButton!
 
@@ -19,9 +21,14 @@ class ClubsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         clubsTableView.reloadData()
     }
+    
+    override func viewWillLayoutSubviews() {
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         
+        self.clubsTableView.insetsContentViewsToSafeArea = true
+        clubsTableView.cellLayoutMarginsFollowReadableWidth = true
         
         
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
@@ -136,22 +143,34 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-        let currentClubNameForCell = currentClubForCell.name
-        cell.textLabel?.text = currentClubNameForCell
-        cell.yardsLabel.text = {
-            switch currentSwingTypeState {
-            case .fullSwing:
-                return "\(currentClubForCell.fullDistance)"
-            case .threeFourths:
-                return "\(currentClubForCell.threeFourthsDistance)"
-            case .maxSwing:
-                return "\(currentClubForCell.maxDistance)"
-            }
-
-        }()
+        let currentClubNameForCell = currentClubForCell.name.uppercased()
+        cell.clubNameLabel.text = currentClubNameForCell
+        cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
+        cell.yardsBox.setHeaderText("Full Swing")
+        cell.yardsBox.layoutViews()
+        cell.yardsBox.mainContainer.backgroundColor = .red
+//        cell.textLabel?.text = currentClubNameForCell
+        
+//        cell.yardsLabel.text = {
+//            switch currentSwingTypeState {
+//            case .fullSwing:
+//                return "\(currentClubForCell.fullDistance)"
+//            case .threeFourths:
+//                return "\(currentClubForCell.threeFourthsDistance)"
+//            case .maxSwing:
+//                return "\(currentClubForCell.maxDistance)"
+//            }
+//
+//        }()
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
+    
 
     // MARK: Row Selected
 
