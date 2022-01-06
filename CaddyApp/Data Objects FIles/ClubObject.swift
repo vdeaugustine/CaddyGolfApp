@@ -23,7 +23,7 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
     var previousFullHits: String = ""
     var previousThreeFourthsHits: String = ""
     var previousMaxHits: String = ""
-
+    var allNotes = [String]()
     
     var allPreviousSwings: String = ""
     var allPreviousSwingTypes: String = ""

@@ -8,9 +8,6 @@
 import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    override var shouldAutorotate: Bool {
-        return false
-    }
 
     // MARK: - Properties
 

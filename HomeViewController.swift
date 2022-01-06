@@ -36,8 +36,10 @@ class HomeViewController: UIViewController {
         let clubsTapped = UITapGestureRecognizer(target: self, action: #selector(didTapClubs))
         clubsView.addGestureRecognizer(clubsTapped)
         let adviceTapped = UITapGestureRecognizer(target: self, action: #selector(didTapAdvice))
+        let notesTapped = UITapGestureRecognizer(target: self, action: #selector(didTapNotes))
         adviceView.addGestureRecognizer(adviceTapped)
         clubsView.addGestureRecognizer(clubsTapped)
+        notesView.addGestureRecognizer(notesTapped)
         clubsView.layer.cornerRadius = 8
         clubsView.dropShadow()
         adviceView.layer.cornerRadius = 8
@@ -59,6 +61,14 @@ class HomeViewController: UIViewController {
     @objc func didTapAdvice() {
         print("tapped advice")
         let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+        
+        navigationController?.pushViewController(clubsVC, animated: true)
+        
+    }
+    
+    @objc func didTapNotes() {
+        print("tapped notes")
+        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as! NoteEntryViewController
         
         navigationController?.pushViewController(clubsVC, animated: true)
         

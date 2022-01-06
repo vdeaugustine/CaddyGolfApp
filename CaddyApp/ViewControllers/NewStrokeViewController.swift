@@ -23,12 +23,18 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         distanceField.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Generate", style: .done, target: self, action: #selector(getAdvice))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        distanceField.placeholder = "0"
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
+    
         saveEnteredDist()
     }
 
@@ -38,10 +44,16 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return false
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.placeholder = ""
+        return true
+    }
 
     func saveEnteredDist() {
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
+            distanceField.placeholder = "0"
             return
         }
         if let theDistance = Int(enteredDistance) {

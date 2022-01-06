@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C0705412785921000496B37 /* TestTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705402785921000496B37 /* TestTBVC.swift */; };
+		9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705422786C16300496B37 /* NoteEntryViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		9C0705402785921000496B37 /* TestTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTBVC.swift; sourceTree = "<group>"; };
+		9C0705422786C16300496B37 /* NoteEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
+				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
 				9CB972572785571B0048AC54 /* RoundedBox.swift */,
 				9CB9725527854A910048AC54 /* ClubsTableViewCell.swift */,
@@ -284,6 +287,7 @@
 				9CF2AF61275F249300458646 /* ClubCell.swift in Sources */,
 				9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */,
 				9CDA253F2782926600FDAAC2 /* CollectionVIewTestViewController.swift in Sources */,
+				9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */,
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
 				9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */,
 				9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */,
