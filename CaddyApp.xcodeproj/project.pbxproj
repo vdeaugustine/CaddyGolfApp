@@ -134,13 +134,13 @@
 			path = "Data Objects FIles";
 			sourceTree = "<group>";
 		};
-		9CDA2537277FA3EE00FDAAC2 /* TestWithSketch */ = {
+		9CDA2537277FA3EE00FDAAC2 /* MainClubView */ = {
 			isa = PBXGroup;
 			children = (
 				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */,
 			);
-			path = TestWithSketch;
+			path = MainClubView;
 			sourceTree = "<group>";
 		};
 		9CF2AF33275AD61000458646 = {
@@ -154,7 +154,7 @@
 				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
 				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
 				9CDA253E2782926600FDAAC2 /* CollectionVIewTestViewController.swift */,
-				9CDA2537277FA3EE00FDAAC2 /* TestWithSketch */,
+				9CDA2537277FA3EE00FDAAC2 /* MainClubView */,
 				9CF2AF3E275AD61000458646 /* CaddyApp */,
 				9CF2AF3D275AD61000458646 /* Products */,
 			);

@@ -8,10 +8,10 @@
 import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     override var shouldAutorotate: Bool {
         return false
     }
+
     // MARK: - Properties
 
     @IBOutlet var viewForYardages: UIView!
@@ -27,16 +27,19 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
+        
         switch currentSwingType {
         case .fullSwing:
-            self.swingTypeSegmentControl.selectedSegmentIndex = 1
+            swingTypeSegmentControl.selectedSegmentIndex = 1
+            averageNumberLabel.text = "\(currentClub.averageFullDistance)"
         case .maxSwing:
-            self.swingTypeSegmentControl.selectedSegmentIndex = 2
+            swingTypeSegmentControl.selectedSegmentIndex = 2
+            averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
         case .threeFourths:
-            self.swingTypeSegmentControl.selectedSegmentIndex = 0
+            swingTypeSegmentControl.selectedSegmentIndex = 0
+            averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
         }
     }
 
@@ -46,6 +49,10 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLayoutSubviews() {
         layoutSubviews()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        print("VIEW WILL DISAPPEAR")
     }
 
     // MARK: - Yardages Views
@@ -120,7 +127,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let label = UILabel()
         label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "\(currentClub.averageThreeFourthsDistance)"
+        label.text = "\(0)"
         //    label.heightAnchor.constraint(equalToConstant: 49.0)
         //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
@@ -133,7 +140,15 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let label = UILabel()
         label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "\(currentClub.threeFourthsDistance)"
+        switch currentSwingType {
+        case .fullSwing:
+            label.text = "\(currentClub.fullDistance)"
+        case .maxSwing:
+            label.text = "\(currentClub.maxDistance)"
+        case .threeFourths:
+            label.text = "\(currentClub.threeFourthsDistance)"
+        }
+
         //    label.heightAnchor.constraint(equalToConstant: 49.0)
         //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
@@ -215,16 +230,17 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         generator.impactOccurred(intensity: 1.0)
         switch swingTypeSegmentControl.selectedSegmentIndex {
         case 0:
+            currentSwingType = .threeFourths
             swingTypeSelected = .threeFourths
             averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
             fixedNumberLabel.text = "\(currentClub.threeFourthsDistance)"
         case 1:
-
+            currentSwingType = .fullSwing
             swingTypeSelected = .fullSwing
             averageNumberLabel.text = "\(currentClub.averageFullDistance)"
             fixedNumberLabel.text = "\(currentClub.fullDistance)"
         case 2:
-
+            currentSwingType = .maxSwing
             swingTypeSelected = .maxSwing
             averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
             fixedNumberLabel.text = "\(currentClub.maxDistance)"
@@ -250,7 +266,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     currentClub.previousMaxHits = ""
                     currentClub.averageMaxDistance = getAvgFromStr(currentClub.previousMaxHits)
                     averageNumberLabel.text = "\(currentClub.averageMaxDistance)"
-                    
+
                 case .threeFourths:
                     currentClub.previousThreeFourthsHits = ""
                     currentClub.averageThreeFourthsDistance = getAvgFromStr(currentClub.previousThreeFourthsHits)
@@ -317,7 +333,7 @@ extension SwingsViewController {
             doAddSwingAlert()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteFromCurrentClubPrevHits(thisIndex: indexPath.row - 1, from: swingTypeSelected)
@@ -341,7 +357,6 @@ extension SwingsViewController {
             return true
         }
     }
-    
 
     // MARK: - Objc Functions
 
@@ -361,7 +376,7 @@ extension SwingsViewController {
         alert.addAction(UIAlertAction(title: "UPDATE", style: .default, handler: { [weak alert] _ in
             let textField = alert?.textFields![0]
             if let theDistance = Int((textField?.text)!) {
-                switch self.swingTypeSelected {
+                switch currentSwingType {
                 case .fullSwing:
                     currentClub.fullDistance = theDistance
                     self.fixedNumberLabel.text = "\(currentClub.fullDistance)"
@@ -381,6 +396,7 @@ extension SwingsViewController {
 
         }))
 
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
         // 4. Present the alert.
         present(alert, animated: true, completion: nil)
     }
@@ -420,6 +436,8 @@ extension SwingsViewController {
             print("Text field: \(textField?.text ?? "")")
 
         }))
+
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
 
         // 4. Present the alert.
         present(alert, animated: true, completion: nil)

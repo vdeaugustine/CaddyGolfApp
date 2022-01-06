@@ -12,7 +12,16 @@ class SwingTypeBox {
     var mainContainer: UIView
     let header: UIView
     let headerLabel: UIView
-    let mainTextLabel: UILabel
+    var mainTextLabel: UILabel {
+        willSet {
+            print("Swing TYPE: \(self.swingType.rawValue). NEW VAL: \(newValue)")
+            print("GLobal Swing Type: \(currentSwingType.rawValue)")
+        }
+        didSet {
+            print("Swing TYPE: \(self.swingType.rawValue). OLD VAL: \(oldValue)")
+            print("GLobal Swing Type: \(currentSwingType.rawValue)")
+        }
+    }
     let swingType: swingTypeState
 //    var leftNeighborView: UIView?
 //    var rightNeighborView: UIView?
@@ -144,6 +153,7 @@ class SwingTypeBox {
         mainContainer.addSubview(mainTextLabel)
     }
     
+    /// Changes the mainTextLabel for the SwingTypeBox 
     func updateYardage() {
 //        yardageNumberLabel = currentClub
         switch swingType {

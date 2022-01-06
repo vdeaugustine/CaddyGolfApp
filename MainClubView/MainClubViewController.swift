@@ -24,7 +24,7 @@ class MainClubViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        print("all", currentClub.allPreviousSwings)
+        print("currentSwingType", currentSwingType.rawValue)
         swingsCollectionView?.reloadData()
         maxSwingContainer.updateYardage()
         tfSwingContainer.updateYardage()

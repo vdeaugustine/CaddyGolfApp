@@ -17,7 +17,6 @@ class RoundedBox {
     var headerText: String?
 
     init() {
-
         mainContainer = {
             let theView = UIView()
             theView.translatesAutoresizingMaskIntoConstraints = true
@@ -62,8 +61,6 @@ class RoundedBox {
             //        label.translatesAutoresizingMaskIntoConstraints = false
             return theView
         }()
-
-        
     }
 
     required init?(coder: NSCoder) {
@@ -71,80 +68,68 @@ class RoundedBox {
     }
 
     func setupFrames(with thisFrame: CGRect) {
-        
-        
         mainContainer.frame = CGRect(x: 0, y: 0, width: thisFrame.width, height: thisFrame.height)
-        
+
         mainContainer.dropShadow()
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
                               height: mainContainer.height / 3)
-        
+
         headerLabel.frame = CGRect(x: 0,
                                    y: 0,
                                    width: header.width,
                                    height: header.height)
-        
 
         mainTextLabel.frame = CGRect(x: -2,
-                                          y: header.bottom + 18,
-                                          width: mainContainer.width,
-                                          height: mainContainer.height / 3)
+                                     y: header.bottom + 18,
+                                     width: mainContainer.width,
+                                     height: mainContainer.height / 3)
     }
-    
-    
+
     func setupFrames(padFromSides: CGFloat = 10, nestedIn superView: UIView) {
-        
         let mainContSuper = superView
-        
+
         let widthOfSwingTypeBoxes = superView.width - (padFromSides * 4)
         let heightOfSwingTypeBoxes: CGFloat = mainContSuper.frame.height - padFromSides * 2
-        
-        
-        
+
         mainContainer.frame = CGRect(x: padFromSides,
-                                         y: padFromSides,
-                                         width: widthOfSwingTypeBoxes,
-                                         height: heightOfSwingTypeBoxes)
-        
+                                     y: padFromSides,
+                                     width: widthOfSwingTypeBoxes,
+                                     height: heightOfSwingTypeBoxes)
+
         mainContainer.dropShadow()
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
                               height: mainContainer.height / 3)
-        
+
         headerLabel.frame = CGRect(x: 0,
                                    y: 0,
                                    width: header.width,
                                    height: header.height)
-        
 
         mainTextLabel.frame = CGRect(x: -2,
-                                          y: header.bottom + 18,
-                                          width: mainContainer.width,
-                                          height: mainContainer.height / 3)
-        
-        
+                                     y: header.bottom + 18,
+                                     width: mainContainer.width,
+                                     height: mainContainer.height / 3)
     }
-    
+
     func layoutViews() {
         mainContainer.addSubview(header)
         header.addSubview(headerLabel)
         mainContainer.addSubview(mainTextLabel)
     }
-    
+
     func setMainText(_ text: String) {
-        self.mainText = text
-        self.mainTextLabel.text = self.mainText
-        self.mainTextLabel.adjustsFontSizeToFitWidth = true
+        mainText = text
+        mainTextLabel.text = mainText
+        mainTextLabel.adjustsFontSizeToFitWidth = true
     }
-    
+
     func setHeaderText(_ text: String) {
-        self.headerText = text
-        self.headerLabel.text = self.headerText
-        self.headerLabel.adjustsFontSizeToFitWidth = true
-        
+        headerText = text
+        headerLabel.text = headerText
+        headerLabel.adjustsFontSizeToFitWidth = true
     }
-    
 }
