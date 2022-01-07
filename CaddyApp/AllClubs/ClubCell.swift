@@ -8,13 +8,14 @@
 import UIKit
 
 class ClubCell: UITableViewCell {
-    @IBOutlet var yardsLabel: UILabel!
     @IBOutlet weak var notesBoxContainer: UIView!
     @IBOutlet weak var clubNameBox: UIView!
     @IBOutlet weak var yardageBoxContainer: UIView!
     @IBOutlet weak var clubNameLabel: UILabel!
+    @IBOutlet weak var notesButton: UIButton!
     var yardsBox = RoundedBox()
     var notesBox = RoundedBox()
+    var myViewController : UIViewController?
 //    var yardagesRect:  UIView {
 //        let theView = UIView()
 //        theView.layer.cornerRadius = 8
@@ -64,9 +65,9 @@ class ClubCell: UITableViewCell {
         notesBoxContainer.addSubview(notesBox.mainContainer)
         notesBox.setupFrames(with: notesBoxContainer.frame)
         notesBox.layoutViews()
-        
-        
-        
+        notesBoxContainer.isUserInteractionEnabled = true
+        let gesture = UIGestureRecognizer(target: self, action: #selector(didTapNotes))
+        notesBoxContainer.addGestureRecognizer(gesture)
         
         
 //        yardageBox.frame = CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
@@ -92,14 +93,35 @@ class ClubCell: UITableViewCell {
 //        notesBox.addSubview(someBox)
 //        yardsBox.setupFrames(padFromSides: 0, nestedIn: yardageBox)
         
-        
+        notesButton.frame = notesBoxContainer.frame
     }
     
    
     
-    
+    @objc func didTapNotes() {
+        print("Notes Was Tapped")
+        super.showAnimation {
+        }
+        let notesVC = myViewController?.storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+        
+        notesVC.comingFrom = "club"
+        
+        myViewController?.navigationController?.pushViewController(notesVC, animated: true)
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    @IBAction func notesTapped() {
+        print("Notes tapped")
+        let notesVC = myViewController?.storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+        
+        notesVC.comingFrom = "club"
+        
+        myViewController?.navigationController?.pushViewController(notesVC, animated: true)
+    }
+    
+    
 }

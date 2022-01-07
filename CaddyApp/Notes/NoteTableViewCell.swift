@@ -1,18 +1,20 @@
 //
-//  ClubsTableViewCell.swift
+//  NoteTableViewCell.swift
 //  CaddyApp
 //
-//  Created by Vincent DeAugustine on 1/4/22.
+//  Created by Vincent DeAugustine on 1/6/22.
 //
 
 import UIKit
 
-class ClubsTableViewCell: UITableViewCell {
+class NoteTableViewCell: UITableViewCell {
     
-    
+    @IBOutlet var noteTitle: UILabel!
+    @IBOutlet var noteContentPreview: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        noteContentPreview.dropShadow()
         // Initialization code
     }
 
@@ -21,5 +23,5 @@ class ClubsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

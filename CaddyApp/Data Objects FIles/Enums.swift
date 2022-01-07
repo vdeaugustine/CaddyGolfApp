@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum AllClubNames: String {
+    case nineIron = "Nine Iron"
+}
+
 enum standardDistanceForClub: Int {
     case nineIron = 145
     case eightIron = 155

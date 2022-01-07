@@ -246,5 +246,10 @@ class MainClubViewController: UIViewController {
         print("Notes Was Tapped")
         notesLargeRectView.showAnimation {
         }
+        let notesVC = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+        
+        notesVC.comingFrom = "club"
+        
+        navigationController?.pushViewController(notesVC, animated: true)
     }
 }

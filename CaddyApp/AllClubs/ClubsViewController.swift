@@ -19,6 +19,7 @@ class ClubsViewController: UIViewController {
     var currentSwingTypeState = swingTypeState.threeFourths
     
     override func viewWillAppear(_ animated: Bool) {
+        self.clubsTableView.delaysContentTouches = false
         clubsTableView.reloadData()
     }
     
@@ -42,7 +43,6 @@ class ClubsViewController: UIViewController {
         }
         sortBag()
         clubsTableView.reloadData()
-        printBagOutLines(bag: mainBag)
 
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }

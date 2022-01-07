@@ -68,9 +68,11 @@ class HomeViewController: UIViewController {
     
     @objc func didTapNotes() {
         print("tapped notes")
-        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as! NoteEntryViewController
+        let notesVC = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
         
-        navigationController?.pushViewController(clubsVC, animated: true)
+        notesVC.comingFrom = "home"
+        
+        navigationController?.pushViewController(notesVC, animated: true)
         
     }
 
