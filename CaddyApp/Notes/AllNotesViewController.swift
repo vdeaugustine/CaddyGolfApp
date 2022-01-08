@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: - Add some padding to the all notes table view. right now the text of the notes looks like it is too close to the edge of the screen
+
 class AllNotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var models = [(title: String, note: String)]()
     var thisClubNotes: [ClubNote]?

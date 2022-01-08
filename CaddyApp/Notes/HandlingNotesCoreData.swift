@@ -20,7 +20,6 @@ func getAllClubNotes() -> [ClubNote]{
     do {
         clubNotes = try mainContext.fetch(ClubNote.fetchRequest())
         for item in clubNotes {
-            print(item.subTitle)
         }
         return clubNotes
     } catch {}
