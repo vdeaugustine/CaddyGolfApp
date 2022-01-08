@@ -13,7 +13,8 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     var models = [(title: String, note: String)]()
     var thisClubNotes: [ClubNote]?
     var mainNotes: [MainNote]?
-    var comingFrom = ""
+    var comingFrom: String = ""
+    
 
     @IBOutlet var notesTableView: UITableView!
 
@@ -22,6 +23,9 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         notesTableView.delegate = self
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -29,10 +33,12 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         if comingFrom == "home" {
             mainNotes = getAllMainNotes()
+            self.title = "General Notes"
             print("Viewwill appear main notes")
             
         } else if comingFrom == "club" {
             thisClubNotes = getAllClubNotes()
+            self.title = "\(currentClub.name.capitalized) Notes"
             print("view will appear club notes")
             print(clubNotes)
         }

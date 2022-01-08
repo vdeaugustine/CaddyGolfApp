@@ -27,7 +27,7 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
     
     var allPreviousSwings: String = ""
     var allPreviousSwingTypes: String = ""
-    
+    var mostRecentClubNoteTitle: String = "No notes yet"
     
     public static func == (lhs: ClubObject, rhs: ClubObject) -> Bool {
         return lhs.name == rhs.name && lhs.type == rhs.type

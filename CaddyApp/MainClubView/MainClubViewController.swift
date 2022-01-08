@@ -86,17 +86,7 @@ class MainClubViewController: UIViewController {
                                          width: setUpDimensions.width - 50,
                                          height: 50)
         
-        let tappedYardages = UITapGestureRecognizer(target: self, action: #selector(didTapYardagesButton))
-        yardagesLargeRectView.addGestureRecognizer(tappedYardages)
-        
-        let tappedTF = UITapGestureRecognizer(target: self, action: #selector(didTapTFSwing))
-        tfSwingContainer.mainContainer.addGestureRecognizer(tappedTF)
-        
-        let tappedFull = UITapGestureRecognizer(target: self, action: #selector(didTapFullSwing))
-        fullSwingContainer.mainContainer.addGestureRecognizer(tappedFull)
-        
-        let tappedMax = UITapGestureRecognizer(target: self, action: #selector(didTapMaxSwing))
-        maxSwingContainer.mainContainer.addGestureRecognizer(tappedMax)
+        addGestureRecognizers()
         
         
         swingsLargeRectView.frame = CGRect(x: padRectsFromSides,
@@ -251,5 +241,24 @@ class MainClubViewController: UIViewController {
         notesVC.comingFrom = "club"
         
         navigationController?.pushViewController(notesVC, animated: true)
+    }
+    
+    
+    func addGestureRecognizers() {
+        let tappedYardages = UITapGestureRecognizer(target: self, action: #selector(didTapYardagesButton))
+        yardagesLargeRectView.addGestureRecognizer(tappedYardages)
+        
+        let tappedTF = UITapGestureRecognizer(target: self, action: #selector(didTapTFSwing))
+        tfSwingContainer.mainContainer.addGestureRecognizer(tappedTF)
+        
+        let tappedFull = UITapGestureRecognizer(target: self, action: #selector(didTapFullSwing))
+        fullSwingContainer.mainContainer.addGestureRecognizer(tappedFull)
+        
+        let tappedMax = UITapGestureRecognizer(target: self, action: #selector(didTapMaxSwing))
+        maxSwingContainer.mainContainer.addGestureRecognizer(tappedMax)
+        
+        let tappedNotes = UITapGestureRecognizer(target: self, action: #selector(didTapNotesButton))
+        notesLargeRectView.addGestureRecognizer(tappedNotes)
+        
     }
 }

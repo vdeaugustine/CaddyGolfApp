@@ -44,7 +44,7 @@ class ClubsViewController: UIViewController {
         sortBag()
         clubsTableView.reloadData()
 
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     override func viewDidLoad() {
@@ -148,6 +148,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
         cell.yardsBox.setHeaderText("Full Swing")
         cell.notesBox.setHeaderText("Notes")
+        cell.notesBox.setMainText(currentClubForCell.mostRecentClubNoteTitle)
         cell.yardsBox.layoutViews()
         cell.notesBox.layoutViews()
         

@@ -31,13 +31,14 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
         noteField.delegate = self
         title = "New Note"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
+        navigationController?.navigationBar.prefersLargeTitles = false
         if hasContentAlready {
             titleField.text = titleContent
             noteField.text = noteContent
         }
 
         // Set up the placeholder for user beginning to edit
-        let sizeOfFont: CGFloat = 32
+        let sizeOfFont: CGFloat = 18
         // Set font of placeholder label and textView to same size
         textViewPlaceholder.font = textViewPlaceholder.font.withSize(sizeOfFont)
         noteField.font = noteField.font?.withSize(sizeOfFont)
@@ -82,6 +83,8 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                     print("saving club note from entry controller")
                     // TODO: - Make this work for all club types not just nine iron
                     createClubNote(title: titleContent, subtitle: noteContent, type: .nineIron)
+                    currentClub.mostRecentClubNoteTitle = titleContent
+                    saveCurrentClub()
                 }
             }
         }
