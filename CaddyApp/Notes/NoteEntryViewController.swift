@@ -82,7 +82,7 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                 } else if comingFrom == "club" {
                     print("saving club note from entry controller")
                     // TODO: - Make this work for all club types not just nine iron
-                    createClubNote(title: titleContent, subtitle: noteContent, type: .nineIron)
+                    createClubNote(title: titleContent, subtitle: noteContent, type: currentClubTypeAsEnum())
                     currentClub.mostRecentClubNoteTitle = titleContent
                     saveCurrentClub()
                 }

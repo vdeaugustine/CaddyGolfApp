@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 var clubNotes = [ClubNote]()
@@ -16,23 +17,40 @@ let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentCont
 
 
 // MARK: - FOR CLUBS
-func getAllClubNotes() -> [ClubNote]{
+//func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
+//    do {
+//        clubNotes = try mainContext.fetch(ClubNote.fetchRequest())
+//
+//        for item in clubNotes {
+//        }
+//        return clubNotes
+//    } catch {}
+//    return [ClubNote]()
+//}
+
+func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
     do {
-        clubNotes = try mainContext.fetch(ClubNote.fetchRequest())
-        for item in clubNotes {
-        }
+        let request = ClubNote.fetchRequest() as NSFetchRequest<ClubNote>
+        
+        let pred = NSPredicate(format: "clubName CONTAINS %@", clubName.rawValue)
+        request.predicate = pred
+        // Set filtering and sorting on the request
+        clubNotes = try mainContext.fetch(request)
         return clubNotes
     } catch {}
     return [ClubNote]()
 }
 
+
+
 func createClubNote(title: String, subtitle: String, type: AllClubNames) {
     let newItem = ClubNote(context: mainContext)
     newItem.title = title
     newItem.subTitle = subtitle
+    newItem.clubName = type.rawValue
     do {
         try mainContext.save()
-        let _ = getAllClubNotes()
+        let _ = getAllClubNotes(type)
     } catch {}
 }
 

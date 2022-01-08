@@ -8,7 +8,34 @@
 import Foundation
 
 enum AllClubNames: String {
-    case nineIron = "Nine Iron"
+    case nineIron = "9 Iron"
+    case eightIron = "8 Iron"
+    case sevenIron = "7 Iron"
+    case sixIron = "6 Iron"
+    case fiveIron = "5 Iron"
+    case fourIron = "4 Iron"
+    case threeIron = "3 Iron"
+    case twoIron = "2 Iron"
+    case oneIron = "1 Iron"
+    
+    case driver = "Driver"
+    case fiveWood = "5 Wood"
+    case fourWood = "4 Wood"
+    case threeWood = "3 Wood"
+    case twoWood = "2 Wood"
+    
+    case fiveHybrid = "5 Hybrid"
+    case fourHybrid = "4 Hybrid"
+    case threeHybrid = "3 Hybrid"
+    case twoHybrid = "2 Hybrid"
+    case oneHybrid = "1 Hybrid"
+    
+    case wedge60 = "60 Wedge"
+    case wedge58 = "58 Wedge"
+    case wedge56 = "56 Wedge"
+    case wedge54 = "54 Wedge"
+    case wedge52 = "52 Wedge"
+    case pitchingWedge = "Pitching Wedge"
 }
 
 enum standardDistanceForClub: Int {
@@ -102,7 +129,7 @@ enum woodTypes: String, CaseIterable {
 }
 
 enum hybridTypes: String, CaseIterable {
-    case fiveIron = "5 Hybrid"
+    case fiveHybrid = "5 Hybrid"
     case fourHybrid = "4 Hybrid"
     case threeHybrid = "3 Hybrid"
     case twoHybrid = "2 Hybrid"

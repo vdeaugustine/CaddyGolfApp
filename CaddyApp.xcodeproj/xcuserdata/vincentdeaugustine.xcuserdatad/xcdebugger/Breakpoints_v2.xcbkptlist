@@ -94,8 +94,8 @@
             filePath = "CaddyApp/Helper Functions/SomeFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "deleteFromCurrentClubPrevHits(thisIndex:from:)"
             landmarkType = "9">
          </BreakpointContent>

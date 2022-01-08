@@ -9,6 +9,69 @@ import Foundation
 import UIKit
 
 
+func currentClubTypeAsEnum() -> AllClubNames {
+    switch currentClub.name.capitalized {
+    case "9 Iron":
+        return .nineIron
+    case "8 Iron":
+        return .eightIron
+    case "7 Iron":
+        return .sevenIron
+    case "6 Iron":
+        return .sixIron
+    case "5 Iron":
+        return .fiveIron
+    case "4 Iron":
+        return .fourIron
+    case "3 Iron":
+        return .threeIron
+    case "2 Iron":
+        return .twoIron
+    case "1 Iron":
+        return .oneIron
+        
+    case "Driver":
+        return .driver
+    case "5 Wood":
+        return .fiveWood
+    case "4 Wood":
+        return .fourWood
+    case "3 Wood":
+        return .threeWood
+    case "2 Wood":
+        return .twoWood
+    
+    case "5 Hybrid":
+        return .fiveHybrid
+    case "4 Hybrid":
+        return .fourHybrid
+    case "3 Hybrid":
+        return .threeHybrid
+    case "2 Hybrid":
+        return .twoHybrid
+    case "1 Hybrid":
+        return .oneHybrid
+        
+    case "60 Wedge":
+        return .wedge60
+    case "58 Wedge":
+        return .wedge58
+    case "56 Wedge":
+        return .wedge56
+    case "54 Wedge":
+        return .wedge54
+    case "52 Wedge":
+        return .wedge52
+    case "Pitching Wedge":
+        return .pitchingWedge
+        
+    default:
+        print("Got", currentClub.name, "which is not a case")
+        fatalError()
+    }
+}
+
+
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)

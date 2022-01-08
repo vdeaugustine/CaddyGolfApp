@@ -37,7 +37,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             print("Viewwill appear main notes")
             
         } else if comingFrom == "club" {
-            thisClubNotes = getAllClubNotes()
+            thisClubNotes = getAllClubNotes(currentClubTypeAsEnum())
             self.title = "\(currentClub.name.capitalized) Notes"
             print("view will appear club notes")
             print(clubNotes)

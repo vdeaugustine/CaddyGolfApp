@@ -52,11 +52,11 @@ func defaultBag() -> UserBag {
     clubsArray.append(ClubObject(name: "8 Iron", type: "Iron", fullDistance: 155, threeFourthsDistance: 145, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
     clubsArray.append(ClubObject(name: "9 Iron", type: "Iron", fullDistance: 145, threeFourthsDistance: 135, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
 
-    clubsArray.append(ClubObject(name: "3 wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
-    clubsArray.append(ClubObject(name: "5 wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
+    clubsArray.append(ClubObject(name: "3 Wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
+    clubsArray.append(ClubObject(name: "5 Wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
 
-    woodsArray.append(ClubObject(name: "3 wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
-    woodsArray.append(ClubObject(name: "5 wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
+    woodsArray.append(ClubObject(name: "3 Wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
+    woodsArray.append(ClubObject(name: "5 Wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
 
     wedgesArray.append(ClubObject(name: "52 Wedge", type: "Wedge", fullDistance: 115, threeFourthsDistance: 105, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
     wedgesArray.append(ClubObject(name: "60 Wedge", type: "Wedge", fullDistance: 60, threeFourthsDistance: 95, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))

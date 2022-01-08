@@ -138,7 +138,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
                 case .hybrids:
                     if let someClub = hybridTypes(rawValue: clubName) {
                         switch someClub {
-                        case .fiveIron:
+                        case .fiveHybrid:
                             distRet = standardDistanceForClub.fiveHybrid.rawValue
                         case .fourHybrid:
                             distRet = standardDistanceForClub.fourHybrid.rawValue
