@@ -47,6 +47,7 @@ extension UIView {
     public var centerY: CGFloat {
         return top + (height / 2)
     }
+    
 
     func dropShadow(scale: Bool = true) {
 //        layer.masksToBounds = false
@@ -84,7 +85,48 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
-
+    
+    
+    func constrainEqualToSuperView() {
+        
+        guard let superview = superview else {
+            return
+        }
+        let constraints: [NSLayoutConstraint] = [
+            self.topAnchor.constraint(equalTo: superview.topAnchor),
+            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            self.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+    }
+    
+    func doTheseConstraints(_ theseConstraintsWithConstants: [(ConstraintTypes, CGFloat?)], to relativeView: UIView) {
+        var listOfConstraints = [NSLayoutConstraint]()
+        for item in theseConstraintsWithConstants {
+            switch item.0 {
+            case .topAnchor:
+                listOfConstraints.append(self.topAnchor.constraint(equalTo: relativeView.topAnchor, constant: item.1 ?? 0))
+            case .bottomAnchor:
+                listOfConstraints.append(self.bottomAnchor.constraint(equalTo: relativeView.bottomAnchor, constant: item.1 ?? 0))
+            case .leadingAnchor:
+                listOfConstraints.append(self.leadingAnchor.constraint(equalTo: relativeView.leadingAnchor, constant: item.1 ?? 0))
+            case .trailingAnchor:
+                listOfConstraints.append(self.trailingAnchor.constraint(equalTo: relativeView.trailingAnchor, constant: item.1 ?? 0))
+            case .centerX:
+                listOfConstraints.append(self.centerXAnchor.constraint(equalTo: relativeView.centerXAnchor, constant: item.1 ?? 0))
+            case .centerY:
+                listOfConstraints.append(self.centerYAnchor.constraint(equalTo: relativeView.centerYAnchor, constant: item.1 ?? 0))
+           
+                
+            }
+        }
+        
+        NSLayoutConstraint.activate(listOfConstraints)
+    }
+    
+    
 //    }
 }
 

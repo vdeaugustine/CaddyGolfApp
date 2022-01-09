@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 
+
 func currentClubTypeAsEnum() -> AllClubNames {
     switch currentClub.name.capitalized {
     case "9 Iron":

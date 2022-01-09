@@ -157,3 +157,13 @@ enum swingTypeState: String {
     case maxSwing = "Max Swing"
     case threeFourths = "Three Fourths"
 }
+
+enum ConstraintTypes: CaseIterable {
+    case topAnchor
+    case bottomAnchor
+    case leadingAnchor
+    case trailingAnchor
+    case centerX
+    case centerY
+}
+

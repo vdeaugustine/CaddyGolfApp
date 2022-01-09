@@ -860,65 +860,14 @@
                     <view key="view" contentMode="scaleToFill" id="tFb-07-erP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Club" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJU-1V-iML">
-                                <rect key="frame" x="40" y="140" width="334" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpm-aF-MhC">
-                                <rect key="frame" x="75" y="73" width="264" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K9t-bA-Gbk">
-                                <rect key="frame" x="20" y="240.5" width="374" height="32"/>
-                                <segments>
-                                    <segment title="Lie Tips"/>
-                                    <segment title="General Tips"/>
-                                    <segment title="Shot-Type Tips"/>
-                                </segments>
-                                <connections>
-                                    <action selector="clubTypeSelected:" destination="XQX-RD-vNA" eventType="valueChanged" id="e9w-YV-lFu"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TipsLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-z3-JK4">
-                                <rect key="frame" x="20" y="301.5" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ioR-w7-mcQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="ioR-w7-mcQ" firstAttribute="trailing" secondItem="LJU-1V-iML" secondAttribute="trailing" constant="40" id="5hZ-1C-Tjp"/>
-                            <constraint firstItem="GP1-z3-JK4" firstAttribute="leading" secondItem="ioR-w7-mcQ" secondAttribute="leading" constant="20" id="6Bd-U1-wvs"/>
-                            <constraint firstItem="kpm-aF-MhC" firstAttribute="leading" secondItem="ioR-w7-mcQ" secondAttribute="leading" constant="75" id="8WQ-ua-fzh"/>
-                            <constraint firstItem="kpm-aF-MhC" firstAttribute="top" secondItem="ioR-w7-mcQ" secondAttribute="top" constant="29" id="CNa-4Q-Qew"/>
-                            <constraint firstItem="K9t-bA-Gbk" firstAttribute="top" secondItem="LJU-1V-iML" secondAttribute="bottom" constant="80" id="K2c-iF-Z8U"/>
-                            <constraint firstItem="ioR-w7-mcQ" firstAttribute="trailing" secondItem="K9t-bA-Gbk" secondAttribute="trailing" constant="20" id="Kpv-tg-M0b"/>
-                            <constraint firstItem="GP1-z3-JK4" firstAttribute="top" secondItem="K9t-bA-Gbk" secondAttribute="bottom" constant="30" id="NLl-0i-piF"/>
-                            <constraint firstItem="ioR-w7-mcQ" firstAttribute="trailing" secondItem="GP1-z3-JK4" secondAttribute="trailing" constant="20" id="SAi-tb-adx"/>
-                            <constraint firstItem="LJU-1V-iML" firstAttribute="leading" secondItem="ioR-w7-mcQ" secondAttribute="leading" constant="40" id="T0L-GH-8ji"/>
-                            <constraint firstItem="LJU-1V-iML" firstAttribute="top" secondItem="kpm-aF-MhC" secondAttribute="bottom" constant="46" id="ZlS-Ud-2Jf"/>
-                            <constraint firstItem="K9t-bA-Gbk" firstAttribute="leading" secondItem="ioR-w7-mcQ" secondAttribute="leading" constant="20" id="vkE-iX-8yC"/>
-                            <constraint firstItem="ioR-w7-mcQ" firstAttribute="trailing" secondItem="kpm-aF-MhC" secondAttribute="trailing" constant="75" id="xGF-wv-EDu"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UEg-Na-UdI"/>
-                    <connections>
-                        <outlet property="SelectedClubLabel" destination="LJU-1V-iML" id="8wM-Jq-STE"/>
-                        <outlet property="YardsToPin" destination="kpm-aF-MhC" id="VN0-2r-pwu"/>
-                        <outlet property="tipsLabel" destination="GP1-z3-JK4" id="yhR-I1-Ru3"/>
-                        <outlet property="tipsTypeSegControl" destination="K9t-bA-Gbk" id="e9E-8a-8wN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nL-Yd-pax" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3413" y="104"/>
+            <point key="canvasLocation" x="3168" y="104"/>
         </scene>
         <!--New Stroke-->
         <scene sceneID="cPd-68-ZqF">
