@@ -20,7 +20,7 @@ class RoundedBox {
         mainContainer = {
             let theView = UIView()
             theView.translatesAutoresizingMaskIntoConstraints = true
-            theView.layer.cornerRadius = 8
+            theView.layer.cornerRadius = globalCornerRadius
             //            view.backgroundColor = .red
             theView.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
             theView.isUserInteractionEnabled = true
@@ -30,7 +30,7 @@ class RoundedBox {
         header = {
             let theView = UIView()
             theView.translatesAutoresizingMaskIntoConstraints = true
-            theView.layer.cornerRadius = 8
+            theView.layer.cornerRadius = globalCornerRadius
             //    view.backgroundColor = .red
             theView.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
             theView.isUserInteractionEnabled = true

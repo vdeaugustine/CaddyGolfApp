@@ -15,15 +15,32 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
     @IBOutlet var shotType: UISegmentedControl!
-
+    @IBOutlet weak var shotTypeLabel: UILabel!
+    @IBOutlet weak var lieTypeLabel: UILabel!
+    @IBOutlet weak var distanceToPinLabel: UILabel!
+    
+    
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
     var distanceToPin = 0
 
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.clipsToBounds = true
+        scrollView.isScrollEnabled = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+        
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
+        self.distanceField.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([self.distanceField.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -((self.view.height / 3) + 5))])
+        
         
     }
     

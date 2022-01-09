@@ -151,6 +151,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.notesBox.setMainText(currentClubForCell.mostRecentClubNoteTitle)
         cell.yardsBox.layoutViews()
         cell.notesBox.layoutViews()
+        cell.myViewController = self
         
 //        cell.textLabel?.text = currentClubNameForCell
         

@@ -13,6 +13,8 @@
 		9C070548278756DE00496B37 /* HandlingNotesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C070547278756DE00496B37 /* HandlingNotesCoreData.swift */; };
 		9C07054A278757E000496B37 /* AllNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C070549278757E000496B37 /* AllNotesViewController.swift */; };
 		9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07054C278759E300496B37 /* NoteTableViewCell.swift */; };
+		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
+		9C52A405278A883600E07956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A404278A883600E07956 /* ViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
@@ -54,6 +56,8 @@
 		9C070547278756DE00496B37 /* HandlingNotesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlingNotesCoreData.swift; sourceTree = "<group>"; };
 		9C070549278757E000496B37 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
 		9C07054C278759E300496B37 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
+		9C52A404278A883600E07956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -162,6 +166,14 @@
 			path = NewSwingAndAdvice;
 			sourceTree = "<group>";
 		};
+		9C52A403278A881900E07956 /* TestingClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9C52A404278A883600E07956 /* ViewController.swift */,
+			);
+			path = TestingClasses;
+			sourceTree = "<group>";
+		};
 		9C7D80BB276AC2F500F49D93 /* Helper Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,11 +227,14 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C52A403278A881900E07956 /* TestingClasses */,
+				9C52A401278A2F2000E07956 /* ExtraClasses.swift */,
 				9C345EEF2787B38D007AB6A5 /* AllClubs */,
 				9C345EF12787B447007AB6A5 /* AddClub */,
 				9C345EF42787B511007AB6A5 /* NewSwingAndAdvice */,
 				9C345EF32787B4F0007AB6A5 /* Swings */,
 				9C345EF22787B46D007AB6A5 /* EditDistance */,
+				9CDA2537277FA3EE00FDAAC2 /* MainClubView */,
 				9C345EF02787B3A1007AB6A5 /* Home */,
 				9C07054B278759A600496B37 /* Notes */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
@@ -227,7 +242,6 @@
 				9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */,
 				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
 				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
-				9CDA2537277FA3EE00FDAAC2 /* MainClubView */,
 				9CDA253A277FA4C200FDAAC2 /* Extensions.swift */,
 				9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */,
 				9CF2AF5B275DE94900458646 /* Delegates */,
@@ -337,8 +351,10 @@
 				9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */,
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
+				9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */,
 				9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
+				9C52A405278A883600E07956 /* ViewController.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 				9CF2AF61275F249300458646 /* ClubCell.swift in Sources */,

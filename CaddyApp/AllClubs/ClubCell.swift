@@ -12,27 +12,20 @@ class ClubCell: UITableViewCell {
     @IBOutlet var clubNameBox: UIView!
     @IBOutlet var yardageBoxContainer: UIView!
     @IBOutlet var clubNameLabel: UILabel!
-    @IBOutlet var notesButton: UIButton!
 
-    @IBAction func testButtonTouched(_ sender: UIButton) {
-        print("Touched button")
-    }
 
     var yardsBox = RoundedBox()
+
+    /// The box that is smaller.
+    /// - SuperView: notesBoxContainer, View
     var notesBox = RoundedBox()
     var myViewController: UIViewController?
-//    var yardagesRect:  UIView {
-//        let theView = UIView()
-//        theView.layer.cornerRadius = 8
-//        return theView
-//    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        yardageBoxContainer.layer.cornerRadius = 8
-        clubNameBox.layer.cornerRadius = 8
-        notesBoxContainer.layer.cornerRadius = 8
+        yardageBoxContainer.layer.cornerRadius = globalCornerRadius
+        clubNameBox.layer.cornerRadius = globalCornerRadius
+        notesBoxContainer.layer.cornerRadius = globalCornerRadius
         clubNameLabel.adjustsFontSizeToFitWidth = true
 
         let pad: CGFloat = 10
@@ -67,48 +60,26 @@ class ClubCell: UITableViewCell {
         notesBoxContainer.addSubview(notesBox.mainContainer)
         notesBox.setupFrames(with: notesBoxContainer.frame)
         notesBox.layoutViews()
-//        notesBoxContainer.isUserInteractionEnabled = true
-//        let gesture = UIGestureRecognizer(target: self, action: #selector(didTapNotes))
-//        notesBoxContainer.addGestureRecognizer(gesture)
 
-//        yardageBox.frame = CGRect(x: <#T##Double#>, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
+        let notesTransparentButton = TransparentButton(superView: notesBoxContainer)
+        let yardageTransparentButton = TransparentButton(superView: yardageBoxContainer)
+        notesTransparentButton.addTarget(self, action: #selector(didTapNotes), for: .touchUpInside)
+        yardageTransparentButton.addTarget(self, action: #selector(didTapSwing), for: .touchUpInside)
+    }
 
-//        notesBox.addSubview(yardagesRect)
-//        yardagesRect.frame = CGRect(x: self.yardageBox.left + 5,
-//                                    y: self.yardageBox.top + 5,
-//                                    width: self.yardageBox.width - 10,
-//                                    height: self.yardageBox.height - 10)
-//        yardagesRect.frame = CGRect(x: 0,
-//                                    y: 0,
-//                                    width: 10,
-//                                    height: 10)
-//        yardagesRect.backgroundColor = .blue
-
-//        notesBox.addSubview(yardsBox.mainContainer)
-//        notesBox.backgroundColor = .darkGray
-//        let superFrame = notesBox.frame
-//        yardsBox.setupFrames(with: superFrame)
-//        var someBox = UIView(frame: superFrame)
-//        someBox.backgroundColor = .orange
-//        notesBox.addSubview(someBox)
-//        yardsBox.setupFrames(padFromSides: 0, nestedIn: yardageBox)
-
-        notesButton.frame = CGRect(x: 0, y: 0, width: notesBoxContainer.width, height: notesBoxContainer.height)
-        notesBox.mainContainer.isUserInteractionEnabled = true
-//        let gesture = UIGestureRecognizer(target: , action: #selector(didTapNotes))
-//        notesBox.mainContainer.addGestureRecognizer(gesture)
-//        self.notesBox.mainContainer.backgroundColor = .systemPink
+    @objc func didTapSwing() {
+        print("Swing was tapped")
     }
 
     @objc func didTapNotes() {
         print("Notes Was Tapped")
-//        super.showAnimation {
-//        }
-//        let notesVC = myViewController?.storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
-//
-//        notesVC.comingFrom = "club"
-//
-//        myViewController?.navigationController?.pushViewController(notesVC, animated: true)
+        super.showAnimation {
+        }
+        let notesVC = myViewController?.storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+
+        notesVC.comingFrom = "club"
+
+        myViewController?.navigationController?.pushViewController(notesVC, animated: true)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

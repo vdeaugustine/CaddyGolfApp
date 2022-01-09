@@ -32,8 +32,8 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         clubNumberPicker.dataSource = self
         submitButton.dropShadow()
         cancelButton.dropShadow()
-        submitButton.layer.cornerRadius = 8
-        cancelButton.layer.cornerRadius = 8
+        submitButton.layer.cornerRadius = globalCornerRadius
+        cancelButton.layer.cornerRadius = globalCornerRadius
     }
     
     override func viewWillDisappear(_ animated: Bool) {

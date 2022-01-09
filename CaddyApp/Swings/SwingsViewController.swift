@@ -57,7 +57,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let averageYardsContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = globalCornerRadius
         //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = true
@@ -67,7 +67,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let averageYardsHeader: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = globalCornerRadius
         //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = false
@@ -90,7 +90,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let fixedYardsContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = globalCornerRadius
         //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = true
@@ -100,7 +100,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let fixedYardsHeader: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
-        view.layer.cornerRadius = 8
+        view.layer.cornerRadius = globalCornerRadius
         //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = false

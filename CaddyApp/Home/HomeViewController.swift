@@ -8,30 +8,26 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    @IBOutlet var mainHeaderView: UIView!
 
-    @IBOutlet weak var mainHeaderView: UIView!
-    
-    @IBOutlet weak var clubsView: UIView!
-    
-    @IBOutlet weak var adviceView: UIView!
-    @IBOutlet weak var notesView: UIView!
-    
-    
+    @IBOutlet var clubsView: UIView!
+
+    @IBOutlet var adviceView: UIView!
+    @IBOutlet var notesView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         clubsView.isUserInteractionEnabled = true
         adviceView.isUserInteractionEnabled = true
         notesView.isUserInteractionEnabled = true
-    
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
     }
-    
-    
+
     override func viewWillLayoutSubviews() {
-        mainHeaderView.layer.cornerRadius = 8
+        mainHeaderView.layer.cornerRadius = globalCornerRadius
         mainHeaderView.dropShadow()
         let clubsTapped = UITapGestureRecognizer(target: self, action: #selector(didTapClubs))
         clubsView.addGestureRecognizer(clubsTapped)
@@ -40,40 +36,31 @@ class HomeViewController: UIViewController {
         adviceView.addGestureRecognizer(adviceTapped)
         clubsView.addGestureRecognizer(clubsTapped)
         notesView.addGestureRecognizer(notesTapped)
-        clubsView.layer.cornerRadius = 8
+        clubsView.layer.cornerRadius = globalCornerRadius
         clubsView.dropShadow()
-        adviceView.layer.cornerRadius = 8
+        adviceView.layer.cornerRadius = globalCornerRadius
         adviceView.dropShadow()
-        notesView.layer.cornerRadius = 8
+        notesView.layer.cornerRadius = globalCornerRadius
         notesView.dropShadow()
-        
-        
-    }
-    
-    @objc func didTapClubs() {
-        print("tapped clubs")
-        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
-        
-        navigationController?.pushViewController(clubsVC, animated: true)
-        
-    }
-    
-    @objc func didTapAdvice() {
-        print("tapped advice")
-        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
-        
-        navigationController?.pushViewController(clubsVC, animated: true)
-        
-    }
-    
-    @objc func didTapNotes() {
-        print("tapped notes")
-        let notesVC = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
-        
-        notesVC.comingFrom = "home"
-        
-        navigationController?.pushViewController(notesVC, animated: true)
-        
     }
 
+    @objc func didTapClubs() {
+        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+
+        navigationController?.pushViewController(clubsVC, animated: true)
+    }
+
+    @objc func didTapAdvice() {
+        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+
+        navigationController?.pushViewController(clubsVC, animated: true)
+    }
+
+    @objc func didTapNotes() {
+        let notesVC = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+
+        notesVC.comingFrom = "home"
+
+        navigationController?.pushViewController(notesVC, animated: true)
+    }
 }

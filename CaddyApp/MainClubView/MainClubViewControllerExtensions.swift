@@ -12,7 +12,7 @@ class LargeRect: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = true
-        layer.cornerRadius = 8
+        layer.cornerRadius = globalCornerRadius
         backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
         isUserInteractionEnabled = true
     }
@@ -27,7 +27,7 @@ extension MainClubViewController {
         override init(frame: CGRect) {
             super.init(frame: frame)
             translatesAutoresizingMaskIntoConstraints = true
-            layer.cornerRadius = 8
+            layer.cornerRadius = globalCornerRadius
             isUserInteractionEnabled = false
         }
 
@@ -42,7 +42,7 @@ extension MainClubViewController {
         override init(frame: CGRect) {
             super.init(frame: frame)
             translatesAutoresizingMaskIntoConstraints = true
-            layer.cornerRadius = 8
+            layer.cornerRadius = globalCornerRadius
             //    view.backgroundColor = .red
             backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
             isUserInteractionEnabled = true
@@ -115,7 +115,7 @@ extension MainClubViewController {
         init() {
             super.init(frame: CGRect())
             self.translatesAutoresizingMaskIntoConstraints = true
-            self.layer.cornerRadius = 8
+            self.layer.cornerRadius = globalCornerRadius
             self.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
             self.isUserInteractionEnabled = true
             self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
