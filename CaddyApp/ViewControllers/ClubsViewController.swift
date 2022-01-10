@@ -9,29 +9,24 @@ import UIKit
 
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
-    
-    
     @IBOutlet var clubsTableView: UITableView!
-    
 
     @IBOutlet var swingTypeToggle: UIButton!
 
     var currentSwingTypeState = swingTypeState.threeFourths
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        self.clubsTableView.delaysContentTouches = false
+        clubsTableView.delaysContentTouches = false
         clubsTableView.reloadData()
     }
-    
+
     override func viewWillLayoutSubviews() {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
-        self.clubsTableView.insetsContentViewsToSafeArea = true
+        clubsTableView.insetsContentViewsToSafeArea = true
         clubsTableView.cellLayoutMarginsFollowReadableWidth = true
-        
-        
+
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
         // ... although, this might be moved to viewDidLoad() or some other function at a later time. If the mainBag is a global variable that can be edited in other viewControllers, then we might not have to call from UserDefaults, because the mainBag will have already been updated
         do {
@@ -49,11 +44,10 @@ class ClubsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = myGreen
-        self.clubsTableView.backgroundColor = myGreen
+        view.backgroundColor = myGreen
+        clubsTableView.backgroundColor = myGreen
         ModalTransitionMediator.instance.setListener(listener: self)
-        
-        
+
         clubsTableView.dataSource = self
         clubsTableView.delegate = self
         clubsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -152,9 +146,9 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.yardsBox.layoutViews()
         cell.notesBox.layoutViews()
         cell.myViewController = self
-        
+
 //        cell.textLabel?.text = currentClubNameForCell
-        
+
 //        cell.yardsLabel.text = {
 //            switch currentSwingTypeState {
 //            case .fullSwing:
@@ -169,12 +163,10 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-    
-    
 
     // MARK: Row Selected
 
@@ -221,14 +213,13 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return mainBag.types[section]
 //    }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let someView = UIView(frame:  CGRect(x: 0,
-                                             y: 0,
-                                             width: self.view.width,
-                                             height: 75))
-        
-        
+        let someView = UIView(frame: CGRect(x: 0,
+                                            y: 0,
+                                            width: view.width,
+                                            height: 75))
+
         let sectionTitleString = mainBag.types[section]
         let sectionTitle = UILabel()
         sectionTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -241,26 +232,23 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         sectionTitle.adjustsFontSizeToFitWidth = true
 //        sectionTitle.center = CGPoint(x: 10, y: someView.frame.height / 2)
         NSLayoutConstraint.activate(
-            
             [
                 sectionTitle.leadingAnchor.constraint(equalTo: someView.leadingAnchor, constant: 10),
                 sectionTitle.centerYAnchor.constraint(equalTo: someView.centerYAnchor),
-                sectionTitle.widthAnchor.constraint(equalTo: someView.widthAnchor)
+                sectionTitle.widthAnchor.constraint(equalTo: someView.widthAnchor),
             ]
-                        
         )
-        
+
         return someView
     }
 }
 
-
 extension ClubsViewController: ModalTransitionListener {
-//other code
-//required delegate func
-func popoverDismissed() {
-    self.navigationController?.dismiss(animated: true, completion: nil)
-    sortBag()
-    clubsTableView.reloadData()
-}
+    // other code
+    // required delegate func
+    func popoverDismissed() {
+        navigationController?.dismiss(animated: true, completion: nil)
+        sortBag()
+        clubsTableView.reloadData()
+    }
 }

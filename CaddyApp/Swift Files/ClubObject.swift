@@ -24,11 +24,11 @@ struct ClubObject: Codable, CustomStringConvertible, Equatable {
     var previousThreeFourthsHits: String = ""
     var previousMaxHits: String = ""
     var allNotes = [String]()
-    
+
     var allPreviousSwings: String = ""
     var allPreviousSwingTypes: String = ""
     var mostRecentClubNoteTitle: String = "No notes yet"
-    
+
     public static func == (lhs: ClubObject, rhs: ClubObject) -> Bool {
         return lhs.name == rhs.name && lhs.type == rhs.type
     }

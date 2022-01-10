@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-
-
 /// How to use
 /// - init
 /// - call thisObjectsSuperView.addSubview(mainContainer)
@@ -67,8 +65,7 @@ class RoundedBox {
             theLabel.translatesAutoresizingMaskIntoConstraints = true
             theLabel.textAlignment = .center
             theLabel.numberOfLines = 0
-            
-            
+
             //        label.translatesAutoresizingMaskIntoConstraints = false
             return theLabel
         }()
@@ -78,7 +75,6 @@ class RoundedBox {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
     /// Call to set up the frames
     /// - Parameter thisFrame: the exact frame you want it to be
     func setupFrames(with thisFrame: CGRect) {
@@ -95,17 +91,17 @@ class RoundedBox {
                                    width: header.width - 4,
                                    height: header.height)
 
-        let mainSpaceToWorkWith =  CGRect(x: 0,
-                                          y: header.bottom,
-                                          width: mainContainer.width,
-                                          height: mainContainer.height - header.height)
+        let mainSpaceToWorkWith = CGRect(x: 0,
+                                         y: header.bottom,
+                                         width: mainContainer.width,
+                                         height: mainContainer.height - header.height)
         mainTextLabel.frame = CGRect(x: -4,
                                      y: header.bottom + 18,
                                      width: mainSpaceToWorkWith.width - 4,
                                      height: mainSpaceToWorkWith.height)
         mainTextLabel.center = CGPoint(x: mainSpaceToWorkWith.midX,
                                        y: mainSpaceToWorkWith.midY)
-        
+
 //        NSLayoutConstraint.activate([
 //
 //            mainTextLabel.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 5),
@@ -117,13 +113,12 @@ class RoundedBox {
 //        ])
     }
 
-    
     /// Set up frames
     /// - Parameters:
     ///   - padFromSides: distance from sides you want to inset
     ///   - superView: the box will go inside this view
     func setupFrames(padFromSides: CGFloat = 10, nestedIn superView: UIView) {
-        self.layoutViews()
+        layoutViews()
         let mainContSuper = superView
 
         let widthOfSwingTypeBoxes = superView.width - (padFromSides * 4)
@@ -146,10 +141,10 @@ class RoundedBox {
                                    height: header.height)
 
         mainTextLabel.translatesAutoresizingMaskIntoConstraints = true
-        let mainSpaceToWorkWith =  CGRect(x: 0,
-                                          y: header.bottom,
-                                          width: mainContainer.width,
-                                          height: mainContainer.height - header.height)
+        let mainSpaceToWorkWith = CGRect(x: 0,
+                                         y: header.bottom,
+                                         width: mainContainer.width,
+                                         height: mainContainer.height - header.height)
         mainTextLabel.frame = CGRect(x: -4,
                                      y: header.bottom + 18,
                                      width: mainSpaceToWorkWith.width - 4,

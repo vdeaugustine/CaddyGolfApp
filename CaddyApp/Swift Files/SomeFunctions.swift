@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-
-
-
-
 func currentClubTypeAsEnum() -> AllClubNames {
     switch currentClub.name.capitalized {
     case "9 Iron":
@@ -32,7 +28,7 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .twoIron
     case "1 Iron":
         return .oneIron
-        
+
     case "Driver":
         return .driver
     case "5 Wood":
@@ -43,7 +39,7 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .threeWood
     case "2 Wood":
         return .twoWood
-    
+
     case "5 Hybrid":
         return .fiveHybrid
     case "4 Hybrid":
@@ -54,7 +50,7 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .twoHybrid
     case "1 Hybrid":
         return .oneHybrid
-        
+
     case "60 Wedge":
         return .wedge60
     case "58 Wedge":
@@ -67,19 +63,17 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .wedge52
     case "P Wedge":
         return .pitchingWedge
-        
+
     default:
         print("Got", currentClub.name, "which is not a case")
         fatalError()
     }
 }
 
-
-func delay(_ delay:Double, closure:@escaping ()->()) {
+func delay(_ delay: Double, closure: @escaping () -> Void) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
-
 
 func getAllDistances(forTheseClubs clubs: [String]) -> [Int] {
     var distances = [Int]()
@@ -169,7 +163,7 @@ func saveCurrentClub() {
 // TODO: - Make this work for different type of hits
 func deleteFromCurrentClubPrevHits(thisIndex index: Int, from swingType: swingTypeState) {
     var arrOfPrevHitsByType: [String]
-    
+
     switch swingType {
     case .fullSwing:
         arrOfPrevHitsByType = currentClub.previousFullHits.components(separatedBy: ",")
@@ -222,6 +216,3 @@ func removeEmptyFromPrevHits() {
     currentClub.previousFullHits = prevHitsStr
     saveCurrentClub()
 }
-
-
-

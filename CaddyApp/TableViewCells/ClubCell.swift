@@ -13,7 +13,6 @@ class ClubCell: UITableViewCell {
     @IBOutlet var yardageBoxContainer: UIView!
     @IBOutlet var clubNameLabel: UILabel!
 
-
     var yardsBox = RoundedBox()
 
     /// The box that is smaller.
@@ -22,7 +21,7 @@ class ClubCell: UITableViewCell {
     var myViewController: UIViewController?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = myGreen
+        backgroundColor = myGreen
         yardageBoxContainer.layer.cornerRadius = globalCornerRadius
         clubNameBox.layer.cornerRadius = globalCornerRadius
         notesBoxContainer.layer.cornerRadius = globalCornerRadius

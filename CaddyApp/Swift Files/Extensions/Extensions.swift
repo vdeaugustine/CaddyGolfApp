@@ -47,7 +47,6 @@ extension UIView {
     public var centerY: CGFloat {
         return top + (height / 2)
     }
-    
 
     func dropShadow(scale: Bool = true) {
 //        layer.masksToBounds = false
@@ -85,48 +84,42 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
-    
-    
+
     func constrainEqualToSuperView() {
-        
         guard let superview = superview else {
             return
         }
         let constraints: [NSLayoutConstraint] = [
-            self.topAnchor.constraint(equalTo: superview.topAnchor),
-            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-            self.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+            topAnchor.constraint(equalTo: superview.topAnchor),
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            trailingAnchor.constraint(equalTo: superview.trailingAnchor),
         ]
         NSLayoutConstraint.activate(constraints)
-        
     }
-    
+
     func doTheseConstraints(_ theseConstraintsWithConstants: [(ConstraintTypes, CGFloat?)], to relativeView: UIView) {
         var listOfConstraints = [NSLayoutConstraint]()
         for item in theseConstraintsWithConstants {
             switch item.0 {
             case .topAnchor:
-                listOfConstraints.append(self.topAnchor.constraint(equalTo: relativeView.topAnchor, constant: item.1 ?? 0))
+                listOfConstraints.append(topAnchor.constraint(equalTo: relativeView.topAnchor, constant: item.1 ?? 0))
             case .bottomAnchor:
-                listOfConstraints.append(self.bottomAnchor.constraint(equalTo: relativeView.bottomAnchor, constant: item.1 ?? 0))
+                listOfConstraints.append(bottomAnchor.constraint(equalTo: relativeView.bottomAnchor, constant: item.1 ?? 0))
             case .leadingAnchor:
-                listOfConstraints.append(self.leadingAnchor.constraint(equalTo: relativeView.leadingAnchor, constant: item.1 ?? 0))
+                listOfConstraints.append(leadingAnchor.constraint(equalTo: relativeView.leadingAnchor, constant: item.1 ?? 0))
             case .trailingAnchor:
-                listOfConstraints.append(self.trailingAnchor.constraint(equalTo: relativeView.trailingAnchor, constant: item.1 ?? 0))
+                listOfConstraints.append(trailingAnchor.constraint(equalTo: relativeView.trailingAnchor, constant: item.1 ?? 0))
             case .centerX:
-                listOfConstraints.append(self.centerXAnchor.constraint(equalTo: relativeView.centerXAnchor, constant: item.1 ?? 0))
+                listOfConstraints.append(centerXAnchor.constraint(equalTo: relativeView.centerXAnchor, constant: item.1 ?? 0))
             case .centerY:
-                listOfConstraints.append(self.centerYAnchor.constraint(equalTo: relativeView.centerYAnchor, constant: item.1 ?? 0))
-           
-                
+                listOfConstraints.append(centerYAnchor.constraint(equalTo: relativeView.centerYAnchor, constant: item.1 ?? 0))
             }
         }
-        
+
         NSLayoutConstraint.activate(listOfConstraints)
     }
-    
-    
+
 //    }
 }
 
@@ -152,24 +145,20 @@ public extension UIView {
     }
 }
 
-
 extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
 
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
 
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }
-
-
-

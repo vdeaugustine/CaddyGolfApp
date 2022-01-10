@@ -15,17 +15,17 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     var clubName = "Driver" // Just default value because it's first on picker
     var clubTypeChangedAtLeastOnce = false
     var clubNumChangedAtLeastOnce = false
-    @IBOutlet weak var clubNumberPicker: UIPickerView!
-    @IBOutlet weak var clubTypeSegment: UISegmentedControl!
+    @IBOutlet var clubNumberPicker: UIPickerView!
+    @IBOutlet var clubTypeSegment: UISegmentedControl!
     var useThisArrForClubsOptions: [String] = woods
     var typeSelectedIndex: Int = 0
     var numSelectedIndex: Int = 0
 
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var mainTitleRectView: UIView!
-    @IBOutlet weak var mainTitleLabbel: UILabel!
-    
+    @IBOutlet var submitButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var mainTitleRectView: UIView!
+    @IBOutlet var mainTitleLabbel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         clubNumberPicker.delegate = self
@@ -35,10 +35,9 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         submitButton.layer.cornerRadius = globalCornerRadius
         cancelButton.layer.cornerRadius = globalCornerRadius
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
-
     }
 
     // MARK: - IBActions
@@ -46,8 +45,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
     @IBAction func exit(_ sender: UIButton) {
         super.dismiss(animated: true, completion: nil)
     }
-    
-    
+
     /// Function that is called when SAVE is tapped to save new club to bag
     @IBAction func saveClub(_ sender: UIButton) {
         print("Saved club tapped")
@@ -169,8 +167,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
 
         // Go back to previous view controller in the navigation stack
 //        _ = navigationController?.popViewController(animated: true)
-        
-        
+
 //
 //        if let firstVC = self.presentingViewController as? ClubsViewController {
 //            print("GOTHERE")
@@ -183,8 +180,6 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
 //        }
 //
         super.dismiss(animated: true, completion: nil)
-        
-        
     }
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {

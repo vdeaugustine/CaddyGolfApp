@@ -5,19 +5,17 @@
 //  Created by Vincent DeAugustine on 1/6/22.
 //
 
+import CoreData
 import Foundation
 import UIKit
-import CoreData
-
 
 var clubNotes = [ClubNote]()
 var mainNotes = [MainNote]()
 let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-
-
 // MARK: - FOR CLUBS
-//func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
+
+// func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
 //    do {
 //        clubNotes = try mainContext.fetch(ClubNote.fetchRequest())
 //
@@ -26,12 +24,12 @@ let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentCont
 //        return clubNotes
 //    } catch {}
 //    return [ClubNote]()
-//}
+// }
 
-func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
+func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote] {
     do {
         let request = ClubNote.fetchRequest() as NSFetchRequest<ClubNote>
-        
+
         let pred = NSPredicate(format: "clubName CONTAINS %@", clubName.rawValue)
         request.predicate = pred
         // Set filtering and sorting on the request
@@ -41,8 +39,6 @@ func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
     return [ClubNote]()
 }
 
-
-
 func createClubNote(title: String, subtitle: String, type: AllClubNames) {
     let newItem = ClubNote(context: mainContext)
     newItem.title = title
@@ -50,7 +46,7 @@ func createClubNote(title: String, subtitle: String, type: AllClubNames) {
     newItem.clubName = type.rawValue
     do {
         try mainContext.save()
-        let _ = getAllClubNotes(type)
+        _ = getAllClubNotes(type)
     } catch {}
 }
 
@@ -58,9 +54,8 @@ func deleteClubNote(note: ClubNote) {
     mainContext.delete(note)
     do {
         try mainContext.save()
-        
+
     } catch {
-        
         print("PROBLEM DELETING NOTE")
     }
 }
@@ -74,12 +69,13 @@ func updateClubNote(note: ClubNote, newTitle: String, newSubtitle: String, type:
 }
 
 // MARK: - FOR MAIN
-func getAllMainNotes() -> [MainNote]{
+
+func getAllMainNotes() -> [MainNote] {
     do {
         print("getting main notes")
         mainNotes = try mainContext.fetch(MainNote.fetchRequest())
         print("main notes gotten")
-        
+
         print(mainNotes)
         return mainNotes
     } catch {
@@ -93,23 +89,19 @@ func createMainNote(title: String, content: String) {
     newItem.title = title
     newItem.subTitle = content
     do {
-        
         try mainContext.save()
-        let _ = getAllMainNotes()
+        _ = getAllMainNotes()
     } catch {
-        
         print("problem saving main note")
     }
-    
 }
 
 func deleteMainNote(note: MainNote) {
     mainContext.delete(note)
     do {
         try mainContext.save()
-        
+
     } catch {
-        
         print("PROBLEM DELETING NOTE")
     }
 }

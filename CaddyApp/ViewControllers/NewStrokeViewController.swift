@@ -16,11 +16,10 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
     @IBOutlet var shotType: UISegmentedControl!
-    @IBOutlet weak var shotTypeLabel: UILabel!
-    @IBOutlet weak var lieTypeLabel: UILabel!
-    @IBOutlet weak var distanceToPinLabel: UILabel!
-    
-    
+    @IBOutlet var shotTypeLabel: UILabel!
+    @IBOutlet var lieTypeLabel: UILabel!
+    @IBOutlet var distanceToPinLabel: UILabel!
+
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
     var distanceToPin = 0
@@ -31,20 +30,17 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         scrollView.isScrollEnabled = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
-        
+
     }()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
-        self.distanceField.translatesAutoresizingMaskIntoConstraints = false
+        distanceField.translatesAutoresizingMaskIntoConstraints = false
 //        NSLayoutConstraint.activate([self.distanceField.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -((self.view.height / 3) + 5))])
-        
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         distanceField.placeholder = "0"
     }
@@ -52,7 +48,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)
-    
+
         saveEnteredDist()
     }
 
@@ -62,7 +58,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return false
     }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.placeholder = ""
         return true
@@ -149,7 +145,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                         closestClub = club
                     }
                 }
-               
             }
         }
         advice.closestClubBelow = closestClub
@@ -158,7 +153,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         advice.distanceToPin = distAsInt
         return closestClub
     }
-    
+
     func getClubAbove() -> ClubObject {
         var shortestClubGap = 999
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
@@ -177,7 +172,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                         closestClub = club
                     }
                 }
-               
             }
         }
         advice.closestClubAbove = closestClub

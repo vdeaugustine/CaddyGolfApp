@@ -8,7 +8,6 @@
 import UIKit
 
 class NoteTableViewCell: UITableViewCell {
-    
     @IBOutlet var noteTitle: UILabel!
     @IBOutlet var noteContentPreview: UITextView!
 
@@ -23,5 +22,4 @@ class NoteTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

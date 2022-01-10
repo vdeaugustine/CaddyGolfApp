@@ -14,14 +14,15 @@ class SwingTypeBox {
     let headerLabel: UIView
     var mainTextLabel: UILabel {
         willSet {
-            print("Swing TYPE: \(self.swingType.rawValue). NEW VAL: \(newValue)")
+            print("Swing TYPE: \(swingType.rawValue). NEW VAL: \(newValue)")
             print("GLobal Swing Type: \(currentSwingType.rawValue)")
         }
         didSet {
-            print("Swing TYPE: \(self.swingType.rawValue). OLD VAL: \(oldValue)")
+            print("Swing TYPE: \(swingType.rawValue). OLD VAL: \(oldValue)")
             print("GLobal Swing Type: \(currentSwingType.rawValue)")
         }
     }
+
     let swingType: swingTypeState
 //    var leftNeighborView: UIView?
 //    var rightNeighborView: UIView?
@@ -32,7 +33,7 @@ class SwingTypeBox {
         swingType = type
 
         let labelText: String
-        
+
         let yardageNum: Int
 
         switch type {
@@ -91,8 +92,6 @@ class SwingTypeBox {
             //        label.translatesAutoresizingMaskIntoConstraints = false
             return theView
         }()
-
-        
     }
 
     required init?(coder: NSCoder) {
@@ -100,18 +99,16 @@ class SwingTypeBox {
     }
 
     func setupFrames(padFromSides: CGFloat = 10, leftNeighbor: UIView? = nil, rightNeighbor: UIView? = nil, topNeighbor: UIView? = nil) {
-        
         guard let mainContSuper = mainContainer.superview else {
             fatalError()
         }
-        
-        
+
         let widthOfSwingTypeBoxes = (mainContSuper.frame.width - padFromSides * 4) / 3
         let heightOfSwingTypeBoxes: CGFloat = 110
         guard let topNeighbor = topNeighbor else {
             return
         }
-        
+
         if let leftNeighbor = leftNeighbor {
             mainContainer.frame = CGRect(x: leftNeighbor.right + padFromSides,
                                          y: topNeighbor.bottom + padFromSides,
@@ -123,37 +120,32 @@ class SwingTypeBox {
                                          width: widthOfSwingTypeBoxes,
                                          height: heightOfSwingTypeBoxes)
         }
-        
 
-
-    
         print("main container bounds", mainContainer.bounds)
         mainContainer.dropShadow()
         header.frame = CGRect(x: 0,
                               y: 0,
                               width: mainContainer.width,
                               height: mainContainer.height / 3)
-        
+
         headerLabel.frame = CGRect(x: 0,
                                    y: 0,
                                    width: header.width,
                                    height: header.height)
-        
+
         mainTextLabel.frame = CGRect(x: -2,
-                                          y: header.bottom + 18,
-                                          width: mainContainer.width,
-                                          height: mainContainer.height / 3)
-        
-        
+                                     y: header.bottom + 18,
+                                     width: mainContainer.width,
+                                     height: mainContainer.height / 3)
     }
-    
+
     func layoutViews() {
         mainContainer.addSubview(header)
         header.addSubview(headerLabel)
         mainContainer.addSubview(mainTextLabel)
     }
-    
-    /// Changes the mainTextLabel for the SwingTypeBox 
+
+    /// Changes the mainTextLabel for the SwingTypeBox
     func updateYardage() {
 //        yardageNumberLabel = currentClub
         switch swingType {

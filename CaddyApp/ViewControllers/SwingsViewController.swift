@@ -8,7 +8,6 @@
 import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     // MARK: - Properties
 
     @IBOutlet var viewForYardages: UIView!
@@ -26,7 +25,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         switch currentSwingType {
         case .fullSwing:
             swingTypeSegmentControl.selectedSegmentIndex = 1

@@ -14,7 +14,6 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     var thisClubNotes: [ClubNote]?
     var mainNotes: [MainNote]?
     var comingFrom: String = ""
-    
 
     @IBOutlet var notesTableView: UITableView!
 
@@ -23,9 +22,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         notesTableView.delegate = self
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        
-        
+        navigationController?.navigationBar.prefersLargeTitles = false
 
         // Do any additional setup after loading the view.
     }
@@ -33,12 +30,12 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         if comingFrom == "home" {
             mainNotes = getAllMainNotes()
-            self.title = "General Notes"
+            title = "General Notes"
             print("Viewwill appear main notes")
-            
+
         } else if comingFrom == "club" {
             thisClubNotes = getAllClubNotes(currentClubTypeAsEnum())
-            self.title = "\(currentClub.name.capitalized) Notes"
+            title = "\(currentClub.name.capitalized) Notes"
             print("view will appear club notes")
             print(clubNotes)
         }
@@ -54,7 +51,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             self.notesTableView.reloadData()
         }
 
-        newNoteVC.comingFrom = self.comingFrom
+        newNoteVC.comingFrom = comingFrom
         newNoteVC.hasContentAlready = false
         navigationController?.pushViewController(newNoteVC, animated: true)
     }
@@ -120,7 +117,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             return
         }
         vc.hasContentAlready = true
-        vc.comingFrom = self.comingFrom
+        vc.comingFrom = comingFrom
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -145,13 +142,13 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                 let currentNote = thisClubNotes![indexPath.row]
                 thisClubNotes!.remove(at: indexPath.row)
                 deleteClubNote(note: currentNote)
-                
             }
 
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         }
     }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

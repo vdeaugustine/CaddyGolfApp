@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         scrollView.addSubview(newLabel)
         newLabel.text = "Hello world"
         NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             newLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            newLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+            newLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
 
         ])
 

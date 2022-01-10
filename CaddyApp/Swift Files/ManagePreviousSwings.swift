@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 func addSwing(typeOfSwing: swingTypeState, distance: Int) {
-
     switch typeOfSwing {
     case .fullSwing:
         currentClub.previousFullHits.append("\(distance),")

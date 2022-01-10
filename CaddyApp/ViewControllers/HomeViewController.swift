@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         clubsView.backgroundColor = .lightText
         adviceView.backgroundColor = .lightText
         notesView.backgroundColor = .lightText
-        self.tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.backgroundColor = .white
         clubsView.isUserInteractionEnabled = true
         adviceView.isUserInteractionEnabled = true
         notesView.isUserInteractionEnabled = true
