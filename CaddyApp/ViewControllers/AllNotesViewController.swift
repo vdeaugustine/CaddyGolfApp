@@ -112,12 +112,17 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
             print("ERROR WITH INSTANTIATION")
             return
         }
-        vc.hasContentAlready = true
-        vc.comingFrom = comingFrom
+//        vc.hasContentAlready = true
+//        vc.comingFrom = comingFrom
+        if let thisClubNotes = thisClubNotes {
+            let currentNote = thisClubNotes[indexPath.row]
+            vc.titleText = currentNote.title
+            vc.noteText = currentNote.subTitle
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
 

@@ -44,8 +44,8 @@ class ClubsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = myGreen
-        clubsTableView.backgroundColor = myGreen
+//        view.backgroundColor = myGreen
+//        clubsTableView.backgroundColor = myGreen
         ModalTransitionMediator.instance.setListener(listener: self)
 
         clubsTableView.dataSource = self

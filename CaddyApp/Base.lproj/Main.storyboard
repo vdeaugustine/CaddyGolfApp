@@ -736,7 +736,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vvs-lz-Iub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3369.5652173913045" y="941.51785714285711"/>
+            <point key="canvasLocation" x="3370" y="948"/>
         </scene>
         <!--Main Club View Controller-->
         <scene sceneID="4cw-BA-d2U">
@@ -908,6 +908,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="606-dl-mdl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="105.13392857142857"/>
+        </scene>
+        <!--ViewSingleNoteViewController-->
+        <scene sceneID="4cZ-Q3-fvA">
+            <objects>
+                <viewController storyboardIdentifier="ViewSingleNoteViewController" title="ViewSingleNoteViewController" id="etG-eQ-1CQ" customClass="ViewSingleNoteViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W30-6O-2vO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZmI-F5-J1b">
+                                <rect key="frame" x="15" y="59" width="389" height="50"/>
+                                <accessibility key="accessibilityConfiguration" identifier="titlelabel"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NUL-e0-UGO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxu-fq-NW6">
+                                <rect key="frame" x="20" y="117" width="374" height="765"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Og-lE-lB9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZmI-F5-J1b" firstAttribute="leading" secondItem="5Og-lE-lB9" secondAttribute="leading" constant="15" id="2qb-go-8ig"/>
+                            <constraint firstItem="bxu-fq-NW6" firstAttribute="bottom" secondItem="5Og-lE-lB9" secondAttribute="bottom" constant="20" id="72N-Rp-2k6"/>
+                            <constraint firstItem="ZmI-F5-J1b" firstAttribute="top" secondItem="5Og-lE-lB9" secondAttribute="top" constant="15" id="V2d-Ja-Jbu"/>
+                            <constraint firstItem="bxu-fq-NW6" firstAttribute="leading" secondItem="5Og-lE-lB9" secondAttribute="leading" constant="20" id="Wq3-2J-XN6"/>
+                            <constraint firstItem="5Og-lE-lB9" firstAttribute="trailing" secondItem="ZmI-F5-J1b" secondAttribute="trailing" constant="10" id="XaE-Hi-ZNX"/>
+                            <constraint firstItem="bxu-fq-NW6" firstAttribute="top" secondItem="ZmI-F5-J1b" secondAttribute="bottom" constant="8" id="nDt-Bx-O3V"/>
+                            <constraint firstItem="5Og-lE-lB9" firstAttribute="trailing" secondItem="bxu-fq-NW6" secondAttribute="trailing" constant="20" id="y3G-Hr-wWO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainNoteTextView" destination="bxu-fq-NW6" id="YQm-YN-tBs"/>
+                        <outlet property="titleLabel" destination="ZmI-F5-J1b" id="hJo-U5-ibj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ysi-mj-ifM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3370" y="1629"/>
         </scene>
     </scenes>
     <resources>

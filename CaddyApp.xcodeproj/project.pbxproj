@@ -15,6 +15,7 @@
 		9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07054C278759E300496B37 /* NoteTableViewCell.swift */; };
 		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
 		9C52A405278A883600E07956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A404278A883600E07956 /* ViewController.swift */; };
+		9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
@@ -57,6 +58,7 @@
 		9C07054C278759E300496B37 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
 		9C52A404278A883600E07956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSingleNoteViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
 				9C52A404278A883600E07956 /* ViewController.swift */,
+				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
+				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */,
