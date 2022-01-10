@@ -20,7 +20,6 @@
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
 		9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStruct.swift */; };
 		9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A843276D8813005BAA31 /* ClubObject.swift */; };
-		9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A845276EF181005BAA31 /* SwingHistoryTableView.swift */; };
 		9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A847276EF2B4005BAA31 /* PreviousHits.swift */; };
 		9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B427671A0D00F49D93 /* UserBag.swift */; };
 		9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B62767CA4000F49D93 /* SaveBag.swift */; };
@@ -63,7 +62,6 @@
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9C72A841276D7B72005BAA31 /* AdviceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStruct.swift; sourceTree = "<group>"; };
 		9C72A843276D8813005BAA31 /* ClubObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubObject.swift; sourceTree = "<group>"; };
-		9C72A845276EF181005BAA31 /* SwingHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingHistoryTableView.swift; sourceTree = "<group>"; };
 		9C72A847276EF2B4005BAA31 /* PreviousHits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousHits.swift; sourceTree = "<group>"; };
 		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
@@ -105,87 +103,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9C07054B278759A600496B37 /* Notes */ = {
+		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9C070549278757E000496B37 /* AllNotesViewController.swift */,
-				9C070547278756DE00496B37 /* HandlingNotesCoreData.swift */,
-				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
-				9C07054C278759E300496B37 /* NoteTableViewCell.swift */,
-			);
-			path = Notes;
-			sourceTree = "<group>";
-		};
-		9C345EEF2787B38D007AB6A5 /* AllClubs */ = {
-			isa = PBXGroup;
-			children = (
-				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
-				9CF2AF60275F249300458646 /* ClubCell.swift */,
-			);
-			path = AllClubs;
-			sourceTree = "<group>";
-		};
-		9C345EF02787B3A1007AB6A5 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		9C345EF12787B447007AB6A5 /* AddClub */ = {
-			isa = PBXGroup;
-			children = (
-				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
-			);
-			path = AddClub;
-			sourceTree = "<group>";
-		};
-		9C345EF22787B46D007AB6A5 /* EditDistance */ = {
-			isa = PBXGroup;
-			children = (
+				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
-			);
-			path = EditDistance;
-			sourceTree = "<group>";
-		};
-		9C345EF32787B4F0007AB6A5 /* Swings */ = {
-			isa = PBXGroup;
-			children = (
 				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
+				9C070549278757E000496B37 /* AllNotesViewController.swift */,
+				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
 				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9C0705402785921000496B37 /* TestTBVC.swift */,
+				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
+				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
+				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
-			);
-			path = Swings;
-			sourceTree = "<group>";
-		};
-		9C345EF42787B511007AB6A5 /* NewSwingAndAdvice */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewSwingAndAdvice;
-			sourceTree = "<group>";
-		};
-		9C52A403278A881900E07956 /* TestingClasses */ = {
-			isa = PBXGroup;
-			children = (
 				9C52A404278A883600E07956 /* ViewController.swift */,
 			);
-			path = TestingClasses;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		9C7D80BB276AC2F500F49D93 /* Helper Functions */ = {
+		9C52A407278CB56600E07956 /* Swift Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C52A40B278CB68C00E07956 /* Classes */,
+				9C52A40A278CB68400E07956 /* Extensions */,
+				9C070547278756DE00496B37 /* HandlingNotesCoreData.swift */,
+				9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */,
 				9C7D80B62767CA4000F49D93 /* SaveBag.swift */,
 				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
-			);
-			path = "Helper Functions";
-			sourceTree = "<group>";
-		};
-		9C7D80BC276AC30800F49D93 /* Data Objects FIles */ = {
-			isa = PBXGroup;
-			children = (
+				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
 				9C72A841276D7B72005BAA31 /* AdviceStruct.swift */,
 				9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */,
 				9CF2AF5C275EAC8700458646 /* ClubsFile.swift */,
@@ -193,19 +139,38 @@
 				9C72A83F276D736C005BAA31 /* Enums.swift */,
 				9CF2AF5E275EF1A100458646 /* NewStrokeInfoStruct.swift */,
 				9C7D80B427671A0D00F49D93 /* UserBag.swift */,
-				9C72A845276EF181005BAA31 /* SwingHistoryTableView.swift */,
 				9C72A847276EF2B4005BAA31 /* PreviousHits.swift */,
+				9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */,
 			);
-			path = "Data Objects FIles";
+			path = "Swift Files";
 			sourceTree = "<group>";
 		};
-		9CDA2537277FA3EE00FDAAC2 /* MainClubView */ = {
+		9C52A408278CB58F00E07956 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
+				9C07054C278759E300496B37 /* NoteTableViewCell.swift */,
+				9CF2AF60275F249300458646 /* ClubCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		9C52A40A278CB68400E07956 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CDA253A277FA4C200FDAAC2 /* Extensions.swift */,
 				9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */,
 			);
-			path = MainClubView;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9C52A40B278CB68C00E07956 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9CB972572785571B0048AC54 /* RoundedBox.swift */,
+				9C52A401278A2F2000E07956 /* ExtraClasses.swift */,
+				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		9CF2AF33275AD61000458646 = {
@@ -227,26 +192,10 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
-				9C52A403278A881900E07956 /* TestingClasses */,
-				9C52A401278A2F2000E07956 /* ExtraClasses.swift */,
-				9C345EEF2787B38D007AB6A5 /* AllClubs */,
-				9C345EF12787B447007AB6A5 /* AddClub */,
-				9C345EF42787B511007AB6A5 /* NewSwingAndAdvice */,
-				9C345EF32787B4F0007AB6A5 /* Swings */,
-				9C345EF22787B46D007AB6A5 /* EditDistance */,
-				9CDA2537277FA3EE00FDAAC2 /* MainClubView */,
-				9C345EF02787B3A1007AB6A5 /* Home */,
-				9C07054B278759A600496B37 /* Notes */,
-				9C0705402785921000496B37 /* TestTBVC.swift */,
-				9CB972572785571B0048AC54 /* RoundedBox.swift */,
-				9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */,
-				9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */,
-				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
-				9CDA253A277FA4C200FDAAC2 /* Extensions.swift */,
-				9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */,
+				9C52A408278CB58F00E07956 /* TableViewCells */,
+				9C52A407278CB56600E07956 /* Swift Files */,
+				9C52A406278CB55D00E07956 /* ViewControllers */,
 				9CF2AF5B275DE94900458646 /* Delegates */,
-				9C7D80BB276AC2F500F49D93 /* Helper Functions */,
-				9C7D80BC276AC30800F49D93 /* Data Objects FIles */,
 				9CF2AF45275AD61000458646 /* Main.storyboard */,
 				9CF2AF48275AD61200458646 /* Assets.xcassets */,
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
@@ -362,7 +311,6 @@
 				9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */,
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
 				9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */,
-				9C72A846276EF181005BAA31 /* SwingHistoryTableView.swift in Sources */,
 				9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
