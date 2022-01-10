@@ -53,12 +53,12 @@ class ClubCell: UITableViewCell {
                                          height: spaceToWorkWith.height)
 
         yardageBoxContainer.addSubview(yardsBox.mainContainer)
-        yardsBox.setupFrames(with: yardageBoxContainer.frame)
+        yardsBox.setupFrames(padFromSides: 0, nestedIn: yardageBoxContainer)
         yardsBox.layoutViews()
 
         notesBox.setMainText("Some Notes Go Here")
         notesBoxContainer.addSubview(notesBox.mainContainer)
-        notesBox.setupFrames(with: notesBoxContainer.frame)
+        notesBox.setupFrames(padFromSides: 0, nestedIn: notesBoxContainer)
         notesBox.layoutViews()
 
         let notesTransparentButton = TransparentButton(superView: notesBoxContainer)

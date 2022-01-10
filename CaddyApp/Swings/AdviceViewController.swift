@@ -8,17 +8,222 @@
 import UIKit
 
 class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    override func viewWillLayoutSubviews() {
+        
+        let padFromNavBarView = UIView()
+
+        if let navController = navigationController {
+            view.addSubview(padFromNavBarView)
+            padFromNavBarView.backgroundColor = .clear
+            padFromNavBarView.frame = CGRect(x: 0, y: navController.navigationBar.bottom, width: view.bounds.width, height: 15)
+
+        } else {
+            print("nav controller is not there")
+        }
+
+        view.addSubview(scrollView)
+
+        scrollView.addSubview(underClubLargeContainer)
+        scrollView.addSubview(distanceLabel)
+        underClubLargeContainer.addSubview(underClubNameRect)
+        scrollView.addSubview(optionsLabel)
+        underClubNameRect.addSubview(underClubLabel)
+        
+        scrollView.addSubview(overClubLargeContainer)
+        overClubLargeContainer.addSubview(overClubNameRect)
+        overClubNameRect.addSubview(overClubLabel)
+        
+
+
+        // Center View Frame
+        // ((big container width) / 2) - ((width of View Frame) / 2)
+
+        
+        let thisHeight = tipsTypeSegControl.bottom + 20
+        scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
+        scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
+        
+        let distanceWidth = scrollView.width - (2 * 20)
+        distanceLabel.frame = CGRect(x: (scrollView.width / 2) - (distanceWidth / 2),
+                                     y: 20,
+                                     width: distanceWidth + 2,
+                                     height: 50)
+        
+        optionsLabel.frame =  CGRect(x: 20,
+                                     y: distanceLabel.bottom + 20,
+                                     width: 150,
+                                     height: 30)
+        
+        underClubLargeContainer.frame = CGRect(x: 0,
+                                               y: optionsLabel.bottom + 5,
+                                               width: scrollView.frame.width ,
+                                               height: 110)
+        underClubNameRect.frame = CGRect(x: 5,
+                                         y: 5,
+                                         width: underClubLargeContainer.width / 3,
+                                         height: underClubLargeContainer.height - 10)
+        
+        underClubLabel.frame =  CGRect(x: -2,
+                                       y: 2,
+                                       width: underClubNameRect.width,
+                                       height: underClubNameRect.height)
+        
+        overClubLargeContainer.frame = CGRect(x: 0,
+                                               y: underClubLargeContainer.bottom + 5,
+                                               width: scrollView.frame.width ,
+                                               height: 110)
+        overClubNameRect.frame = CGRect(x: 5,
+                                         y: 5,
+                                         width: overClubLargeContainer.width / 3,
+                                         height: overClubLargeContainer.height - 10)
+        
+        overClubLabel.frame =  CGRect(x: -2,
+                                       y: 2,
+                                       width: overClubNameRect.width,
+                                       height: overClubNameRect.height)
+        
+        let roomForBoxes = underClubLargeContainer.width - underClubNameRect.width - 5
+        underClubLargeContainer.addSubview(underClubSwingDistanceBox.mainContainer)
+        underClubLargeContainer.addSubview(underClubGapBox.mainContainer)
+        underClubSwingDistanceBox.setupFrames(with:  CGRect(x: underClubNameRect.right + 10,
+                                                         y: underClubNameRect.top,
+                                                         width: roomForBoxes / 2 - 10,
+                                                         height: underClubNameRect.height))
+        
+        underClubSwingDistanceBox.layoutViews()
+        underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
+        underClubSwingDistanceBox.setHeaderText("Full Swing")
+        
+        underClubGapBox.setupFrames(with:  CGRect(x: underClubSwingDistanceBox.mainContainer.right + 5,
+                                                  y: underClubSwingDistanceBox.mainContainer.top,
+                                                  width: underClubSwingDistanceBox.mainContainer.width,
+                                                  height: underClubSwingDistanceBox.mainContainer.height))
+        underClubGapBox.layoutViews()
+        underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
+        underClubGapBox.setHeaderText("Short".uppercased())
+        
+        
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        view.addSubview(scrollView)
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+
+
+    }
+
+    // MARK: - VIEWS & UIOBJECTS
+
+    
+    var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.clipsToBounds = true
+        
+        return scrollView
+    }()
+    
+    var distanceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = true
+        label.text = "Distance to Pin: \(advice.distanceToPin)"
+        label.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
+        label.adjustsFontSizeToFitWidth = true
+        label.layer.cornerRadius = globalCornerRadius
+//        label.clipsToBounds = true
+        label.numberOfLines = 0
+
+        return label
+
+    }()
+    
+    var optionsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = true
+        label.text = "Options"
+        label.font = UIFont(name: "Helvetica-BoldOblique", size: 20)
+        label.textColor = .placeholderText
+        label.adjustsFontSizeToFitWidth = true
+        label.layer.cornerRadius = globalCornerRadius
+//        label.clipsToBounds = true
+        label.numberOfLines = 0
+
+        return label
+
+    }()
+    
+    var underClubLargeContainer: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        return thisView
+    }()
+    
+    var underClubNameRect: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.dropShadow()
+        return thisView
+    }()
+    
+    var underClubLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(advice.closestClubBelow.name)"
+        label.font = UIFont(name: "Helvetica-BoldOblique", size: 40)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        return label
+    }()
+    
+    var overClubLargeContainer: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.layer.cornerRadius = globalCornerRadius
+        return thisView
+    }()
+    
+    var overClubNameRect: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.layer.cornerRadius = globalCornerRadius
+        thisView.dropShadow()
+        return thisView
+    }()
+
+    var overClubLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(advice.closestClubAbove.name)"
+        label.font = UIFont(name: "Helvetica-BoldOblique", size: 40)
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        return label
+    }()
+    
+    
     var clubRecLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Placeholder text"
         label.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
-        label.adjustsFontSizeToFitWidth = true
+//        label.adjustsFontSizeToFitWidth = true
 //        label.clipsToBounds = true
-        label.numberOfLines = 1
+        label.numberOfLines = 0
+
         return label
 
     }()
+    
+    var overClubSwingDistanceBox = RoundedBox()
+    var underClubGapBox = RoundedBox()
+    var underClubSwingDistanceBox = RoundedBox()
+    
+   
+    
+    
 
     var SelectedClubLabel: UILabel = {
         let label = UILabel()
@@ -38,110 +243,15 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         segControl.addTarget(self, action: #selector(clubTypeSelected(_:)), for: .valueChanged)
         segControl.translatesAutoresizingMaskIntoConstraints = false
         segControl.clipsToBounds = true
+        segControl.selectedSegmentIndex = 0
         return segControl
     }()
 
     var tableView = UITableView()
 
-    var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-
-    override func viewWillLayoutSubviews() {
-    }
     
+
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        view.addSubview(scrollView)
-        // Do any additional setup after loading the view.
-        tableView.delegate = self
-        tableView.dataSource = self
-
-       
-        
-        let padFromNavBarView = UIView()
-
-        if let navController = navigationController {
-            view.addSubview(padFromNavBarView)
-            padFromNavBarView.backgroundColor = .clear
-            padFromNavBarView.frame = CGRect(x: 0, y: navController.navigationBar.bottom, width: view.bounds.width, height: 15)
-
-        } else {
-            print("nav controller is not there")
-        }
-
-        
-        view.addSubview(scrollView)
-        scrollView.backgroundColor = .red
-        
-        scrollView.addSubview(tipsTypeSegControl)
-        scrollView.addSubview(clubRecLabel)
-        clubRecLabel.frame = CGRect(x: scrollView.left + 20, y: scrollView.top + 20, width: view.frame.width - 50, height: 50)
-        clubRecLabel.backgroundColor = .orange
-//        clubRecLabel.sizeThatFits(CGSize(width: 50, height: 50))
-        
-        
-        
-        
-//        NSLayoutConstraint.activate(
-//            [
-//                clubRecLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 15),
-//                clubRecLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15),
-//                clubRecLabel.widthAnchor.constraint(equalTo: view.widthAnchor)
-//            ]
-//        )
-        NSLayoutConstraint.activate(
-            [
-                tipsTypeSegControl.heightAnchor.constraint(equalToConstant: 50),
-                tipsTypeSegControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                tipsTypeSegControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                tipsTypeSegControl.topAnchor.constraint(equalTo: clubRecLabel.bottomAnchor)
-            ]
-        )
-        
-        let thisHeight = tipsTypeSegControl.bottom + 20
-        scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
-        scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
-        
-
-//        tipsTypeSegControl.frame = CGRect(x: 0, y: 0, width: view.width - 20, height: 50)
-
-//        tipsTypeSegControl.frame = CGRect(x: 20, y: 20, width: scrollView.width, height: scrollView.height)
-//        let tipsSegControlConstraints = [
-//            tipsTypeSegControl.topAnchor.constraint(equalTo: scrollView.topAnchor),
-//            tipsTypeSegControl.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-//            tipsTypeSegControl.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-//            tipsTypeSegControl.heightAnchor.constraint(equalToConstant: 50),
-//        ]
-//        NSLayoutConstraint.activate(tipsSegControlConstraints)
-
-//        tipsLabel.frame = CGRect(x: 20, y: 20, width: tipsTypeSegControl.width, height: 0)
-//        NSLayoutConstraint.activate([
-//            tipsLabel.topAnchor.constraint(equalTo: tipsTypeSegControl.bottomAnchor, constant: 30),
-//            tipsLabel.widthAnchor.constraint(equalToConstant: tipsTypeSegControl.width),
-//            tipsLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20)
-//        ])
-        tipsLabel.backgroundColor = .blue
-        scrollView.backgroundColor = .red
-
-//        let tipsLabelConstraints = [
-//            tipsLabel.topAnchor.constraint(equalTo: tipsTypeSegControl.bottomAnchor, constant: 35),
-//            tipsLabel.leadingAnchor.constraint(equalTo: tipsTypeSegControl.leadingAnchor),
-//            tipsLabel.trailingAnchor.constraint(equalTo: tipsTypeSegControl.trailingAnchor),
-//            tipsLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
-//        ]
-//        NSLayoutConstraint.activate(tipsLabelConstraints)
-
-        let longOrShort = advice.closestClubDistance - advice.distanceToPin < 0 ? "long" : "short"
-
-//        SelectedClubLabel.text = "Your \(advice.closestClub.name) goes \(advice.closestClub.fullDistance) which is a \(advice.closestClubGap) gap. Go with a \(longOrShort) \(advice.closestClub.name)"
-//        YardsToPin.text = "\(advice.distanceToPin) Yards to the Pin"
-
-//        view.addSubview(tableView)
-    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "some", for: indexPath)

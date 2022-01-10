@@ -58,8 +58,21 @@ func defaultBag() -> UserBag {
     woodsArray.append(ClubObject(name: "3 Wood", type: "Wood", fullDistance: 195, threeFourthsDistance: 185, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
     woodsArray.append(ClubObject(name: "5 Wood", type: "Wood", fullDistance: 185, threeFourthsDistance: 175, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
 
-    wedgesArray.append(ClubObject(name: "52 Wedge", type: "Wedge", fullDistance: 115, threeFourthsDistance: 105, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
-    wedgesArray.append(ClubObject(name: "60 Wedge", type: "Wedge", fullDistance: 60, threeFourthsDistance: 95, maxDistance: 220, averageFullDistance: 0, previousFullHits: ""))
+    wedgesArray.append(ClubObject(name: AllClubNames.wedge52.rawValue,
+                                  type: clubTypesEnum.wedges.rawValue,
+                                  fullDistance: standardDistanceForClub.wedge52.rawValue,
+                                  threeFourthsDistance: Int(Double(standardDistanceForClub.wedge52.rawValue) * 0.75),
+                                  maxDistance: Int(Double(standardDistanceForClub.wedge52.rawValue) * 1.10)))
+    wedgesArray.append(ClubObject(name: AllClubNames.wedge60.rawValue,
+                                  type: clubTypesEnum.wedges.rawValue,
+                                  fullDistance: standardDistanceForClub.wedge60.rawValue,
+                                  threeFourthsDistance: Int(Double(standardDistanceForClub.wedge60.rawValue) * 0.75),
+                                  maxDistance: Int(Double(standardDistanceForClub.wedge60.rawValue) * 1.10)))
+    wedgesArray.append(ClubObject(name: AllClubNames.pitchingWedge.rawValue,
+                                  type: clubTypesEnum.wedges.rawValue,
+                                  fullDistance: standardDistanceForClub.pitchingWedge.rawValue,
+                                  threeFourthsDistance: Int(Double(standardDistanceForClub.pitchingWedge.rawValue) * 0.75),
+                                  maxDistance: Int(125 * 1.10)))
 
     return UserBag(types: typesOfClubs,
                    clubsArray: clubsArray,

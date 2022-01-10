@@ -7,7 +7,8 @@
 
 import UIKit
 
-var clubForAdvice = currentClub
+var clubBelowForAdvice = currentClub
+var clubAboveForAdvice = currentClub
 var advice = Advice()
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
@@ -122,14 +123,15 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func getAdvice() {
         print("GETADVICE")
         distanceField.resignFirstResponder()
-        clubForAdvice = getClubForDistance()
-        print(clubForAdvice, "club for advice")
+        clubBelowForAdvice = getClubBelow()
+        clubAboveForAdvice = getClubAbove()
+        print(clubBelowForAdvice, "club for advice")
         let adviceVC = storyboard?.instantiateViewController(identifier: "advice") as! AdviceViewController
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)
     }
 
-    func getClubForDistance() -> ClubObject {
+    func getClubBelow() -> ClubObject {
         var shortestClubGap = 999
         guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
             print("Text entered is either not int or empty")
@@ -140,16 +142,47 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
-                let thisClubGap = abs(distAsInt - club.fullDistance)
-                if thisClubGap < shortestClubGap {
-                    shortestClubGap = thisClubGap
-                    closestClub = club
+                if club.fullDistance < distAsInt {
+                    let thisClubGap = abs(distAsInt - club.fullDistance)
+                    if thisClubGap < shortestClubGap {
+                        shortestClubGap = thisClubGap
+                        closestClub = club
+                    }
                 }
+               
             }
         }
-        advice.closestClub = closestClub
-        advice.closestClubDistance = advice.closestClub.fullDistance
-        advice.closestClubGap = shortestClubGap
+        advice.closestClubBelow = closestClub
+        advice.clubBelowDistance = advice.closestClubBelow.fullDistance
+        advice.clubBelowGap = shortestClubGap
+        advice.distanceToPin = distAsInt
+        return closestClub
+    }
+    
+    func getClubAbove() -> ClubObject {
+        var shortestClubGap = 999
+        guard let enteredDistance = distanceField.text, !enteredDistance.isEmpty, enteredDistance.isInt else {
+            print("Text entered is either not int or empty")
+            return ClubObject(name: "NONE", type: "NONE", fullDistance: 999, threeFourthsDistance: 500, maxDistance: 1000, averageFullDistance: 0, previousFullHits: "")
+        }
+
+        let distAsInt = Int("\(enteredDistance)")!
+        var closestClub = currentClub
+        for clubType in mainBag.allClubs2DArray {
+            for club in clubType {
+                if club.fullDistance > distAsInt {
+                    let thisClubGap = abs(club.fullDistance - distAsInt)
+                    if thisClubGap < shortestClubGap {
+                        shortestClubGap = thisClubGap
+                        closestClub = club
+                    }
+                }
+               
+            }
+        }
+        advice.closestClubAbove = closestClub
+        advice.clubAboveDistance = advice.closestClubAbove.fullDistance
+        advice.clubAboveGap = shortestClubGap
         advice.distanceToPin = distAsInt
         return closestClub
     }

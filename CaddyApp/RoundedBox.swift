@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 
+
+
+/// How to use
+/// - init
+/// - call thisObjectsSuperView.addSubview(mainContainer)
+/// - call setupFrames
+/// - call layoutViews
+/// - call setMainText
+/// - call setHeaderText
 class RoundedBox {
     var mainContainer: UIView
     let header: UIView
@@ -67,8 +76,11 @@ class RoundedBox {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
+    /// Call to set up the frames
+    /// - Parameter thisFrame: the exact frame you want it to be
     func setupFrames(with thisFrame: CGRect) {
-        mainContainer.frame = CGRect(x: 0, y: 0, width: thisFrame.width, height: thisFrame.height)
+        mainContainer.frame = CGRect(x: thisFrame.minX, y: thisFrame.minY, width: thisFrame.width, height: thisFrame.height)
 
         mainContainer.dropShadow()
         header.frame = CGRect(x: 0,
@@ -87,6 +99,11 @@ class RoundedBox {
                                      height: mainContainer.height / 3)
     }
 
+    
+    /// Set up frames
+    /// - Parameters:
+    ///   - padFromSides: distance from sides you want to inset
+    ///   - superView: the box will go inside this view
     func setupFrames(padFromSides: CGFloat = 10, nestedIn superView: UIView) {
         let mainContSuper = superView
 
