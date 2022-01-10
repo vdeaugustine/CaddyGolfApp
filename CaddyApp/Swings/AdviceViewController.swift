@@ -26,6 +26,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //        scrollView.addSubview(distanceLabel)
         underClubLargeContainer.addSubview(underClubNameRect)
         scrollView.addSubview(optionsLabel)
+        scrollView.addSubview(moreInfoButton)
+        moreInfoButton.addTarget(self, action: #selector(tappedMoreInfo), for: .touchUpInside)
+
+        
         underClubNameRect.addSubview(underClubLabel)
 
         scrollView.addSubview(overClubLargeContainer)
@@ -36,6 +40,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         underClubLargeContainer.addSubview(underClubGapBox.mainContainer)
         overClubLargeContainer.addSubview(overClubSwingDistanceBox.mainContainer)
         overClubLargeContainer.addSubview(overClubGapBox.mainContainer)
+        
 
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
@@ -59,8 +64,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 height: 50))
             someView.backgroundColor = .white
             someView.layer.cornerRadius = globalCornerRadius
-            someView.dropShadow()
-
             return someView
         }()
         scrollView.addSubview(distanceLabelContainerView)
@@ -95,6 +98,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     width: optionsLabel.width + 20,
                                     height: optionsLabel.height + 10)
         optionsLabel.textAlignment = .center
+        
+        moreInfoButton.frame =  CGRect(x: optionsLabel.right + 2,
+                                       y: optionsLabel.top,
+                                       width: 20,
+                                       height: 20)
+        moreInfoButton.center = CGPoint(x: moreInfoButton.frame.midX, y: optionsLabel.frame.midY)
 
         underClubLargeContainer.frame = CGRect(x: 0,
                                                y: optionsLabel.bottom + 5,
@@ -177,7 +186,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        view.backgroundColor = myGreen
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -221,6 +229,70 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return label
 
     }()
+    
+    var moreInfoButton: UIButton = {
+       let theButton = UIButton()
+        theButton.setBackgroundImage(UIImage(systemName: "info.circle"), for: .normal)
+
+        return theButton
+    }()
+    
+    let moreInfoView: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.backgroundColor = .lightGray
+        
+        return thisView
+    }()
+    
+    @objc func tappedMoreInfo () {
+        print("tapped more info")
+        
+        scrollView.addSubview(moreInfoView)
+//        scrollView.addSubview(moreInfoButton)
+//        scrollView.bringSubviewToFront(moreInfoView)
+        self.view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissInfoBox)))
+        moreInfoButton.addTarget(self, action: #selector(tappedMoreInfo), for: .touchUpInside)
+
+        
+        self.moreInfoView.frame =  CGRect(x: moreInfoButton.right + 20,
+                                 y: moreInfoButton.top,
+                                 width: 200,
+                                 height: 200)
+        let infoLabel: UILabel = {
+            let label = UILabel()
+            label.numberOfLines = 0
+            label.frame =  CGRect(x: 5,
+                                  y: 5,
+                                  width: self.moreInfoView.width - 10,
+                                  height: self.moreInfoView.height - 10)
+            label.backgroundColor = .magenta
+            label.text = "You clicked on more information"
+            
+            return label
+        }()
+        
+        let dismissButton: UIButton = {
+            let button = UIButton()
+            button.frame =  CGRect(x: 0,
+                                   y: 0,
+                                   width: moreInfoView.width,
+                                   height: moreInfoView.height)
+            button.addTarget(self, action: #selector(dismissInfoBox), for: .touchUpInside)
+            return button
+        }()
+        self.moreInfoView.addSubview(infoLabel)
+        moreInfoView.addSubview(dismissButton)
+        moreInfoView.bringSubviewToFront(dismissButton)
+
+        
+    }
+    
+    @objc func dismissInfoBox () {
+        self.moreInfoView.removeFromSuperview()
+        print("dismiss tapped")
+        
+    }
 
     var underClubLargeContainer: UIView = {
         let thisView = UIView()
