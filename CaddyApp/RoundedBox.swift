@@ -59,16 +59,18 @@ class RoundedBox {
         }()
 
         mainTextLabel = {
-            let theView = UILabel()
-            theView.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
-            theView.adjustsFontSizeToFitWidth = true
-            theView.text = "0"
+            let theLabel = UILabel()
+            theLabel.font = UIFont(name: "Helvetica-Bold", size: 40)
+            theLabel.adjustsFontSizeToFitWidth = true
+            theLabel.text = "0"
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
-            //        label.translatesAutoresizingMaskIntoConstraints = true
-            theView.textAlignment = .center
-            theView.numberOfLines = 0
+            theLabel.translatesAutoresizingMaskIntoConstraints = true
+            theLabel.textAlignment = .center
+            theLabel.numberOfLines = 0
+            
+            
             //        label.translatesAutoresizingMaskIntoConstraints = false
-            return theView
+            return theLabel
         }()
     }
 
@@ -88,15 +90,31 @@ class RoundedBox {
                               width: mainContainer.width,
                               height: mainContainer.height / 3)
 
-        headerLabel.frame = CGRect(x: 0,
+        headerLabel.frame = CGRect(x: 2,
                                    y: 0,
-                                   width: header.width,
+                                   width: header.width - 4,
                                    height: header.height)
 
-        mainTextLabel.frame = CGRect(x: -2,
+        let mainSpaceToWorkWith =  CGRect(x: 0,
+                                          y: header.bottom,
+                                          width: mainContainer.width,
+                                          height: mainContainer.height - header.height)
+        mainTextLabel.frame = CGRect(x: -4,
                                      y: header.bottom + 18,
-                                     width: mainContainer.width,
-                                     height: mainContainer.height / 3)
+                                     width: mainSpaceToWorkWith.width - 4,
+                                     height: mainSpaceToWorkWith.height)
+        mainTextLabel.center = CGPoint(x: mainSpaceToWorkWith.midX,
+                                       y: mainSpaceToWorkWith.midY)
+        
+//        NSLayoutConstraint.activate([
+//
+//            mainTextLabel.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 5),
+//            mainTextLabel.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -5),
+//            mainTextLabel.heightAnchor.constraint(equalToConstant: mainContainer.height / 3),
+//            mainTextLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 18)
+//
+//
+//        ])
     }
 
     
@@ -105,6 +123,7 @@ class RoundedBox {
     ///   - padFromSides: distance from sides you want to inset
     ///   - superView: the box will go inside this view
     func setupFrames(padFromSides: CGFloat = 10, nestedIn superView: UIView) {
+        self.layoutViews()
         let mainContSuper = superView
 
         let widthOfSwingTypeBoxes = superView.width - (padFromSides * 4)
@@ -121,15 +140,22 @@ class RoundedBox {
                               width: mainContainer.width,
                               height: mainContainer.height / 3)
 
-        headerLabel.frame = CGRect(x: 0,
+        headerLabel.frame = CGRect(x: 2,
                                    y: 0,
-                                   width: header.width,
+                                   width: header.width - 4,
                                    height: header.height)
 
-        mainTextLabel.frame = CGRect(x: -2,
+        mainTextLabel.translatesAutoresizingMaskIntoConstraints = true
+        let mainSpaceToWorkWith =  CGRect(x: 0,
+                                          y: header.bottom,
+                                          width: mainContainer.width,
+                                          height: mainContainer.height - header.height)
+        mainTextLabel.frame = CGRect(x: -4,
                                      y: header.bottom + 18,
-                                     width: mainContainer.width,
-                                     height: mainContainer.height / 3)
+                                     width: mainSpaceToWorkWith.width - 4,
+                                     height: mainSpaceToWorkWith.height)
+        mainTextLabel.center = CGPoint(x: mainSpaceToWorkWith.midX,
+                                       y: mainSpaceToWorkWith.midY)
     }
 
     func layoutViews() {

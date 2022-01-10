@@ -22,7 +22,7 @@ class ClubCell: UITableViewCell {
     var myViewController: UIViewController?
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        self.backgroundColor = myGreen
         yardageBoxContainer.layer.cornerRadius = globalCornerRadius
         clubNameBox.layer.cornerRadius = globalCornerRadius
         notesBoxContainer.layer.cornerRadius = globalCornerRadius
