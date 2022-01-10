@@ -35,7 +35,7 @@ enum AllClubNames: String {
     case wedge56 = "56 Wedge"
     case wedge54 = "54 Wedge"
     case wedge52 = "52 Wedge"
-    case pitchingWedge = "Pitching Wedge"
+    case pitchingWedge = "P Wedge"
 }
 
 enum standardDistanceForClub: Int {

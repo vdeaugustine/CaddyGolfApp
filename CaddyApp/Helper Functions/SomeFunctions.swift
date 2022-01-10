@@ -10,6 +10,8 @@ import UIKit
 
 
 
+
+
 func currentClubTypeAsEnum() -> AllClubNames {
     switch currentClub.name.capitalized {
     case "9 Iron":
@@ -63,7 +65,7 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .wedge54
     case "52 Wedge":
         return .wedge52
-    case "Pitching Wedge":
+    case "P Wedge":
         return .pitchingWedge
         
     default:

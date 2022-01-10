@@ -566,10 +566,10 @@
             </objects>
             <point key="canvasLocation" x="2190" y="-838"/>
         </scene>
-        <!--NewStroke-->
+        <!--NewStrokeViewController-->
         <scene sceneID="Wlq-YG-UbX">
             <objects>
-                <viewController storyboardIdentifier="NewStrokeVC" title="NewStroke" id="eN1-0R-PeP" customClass="NewStrokeViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewStrokeViewController" title="NewStrokeViewController" id="eN1-0R-PeP" customClass="NewStrokeViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pkb-rJ-ed8" userLabel="BigView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,7 +616,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="Yards" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IGp-pa-vS8">
-                                <rect key="frame" x="165" y="395" width="84" height="75"/>
+                                <rect key="frame" x="165" y="359" width="84" height="75"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
@@ -633,7 +633,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance to Pin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vr4-3A-RZZ">
-                                <rect key="frame" x="0.0" y="362" width="414" height="28"/>
+                                <rect key="frame" x="0.0" y="315" width="414" height="28"/>
                                 <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -644,9 +644,9 @@
                         <constraints>
                             <constraint firstItem="7Vm-oB-SxN" firstAttribute="top" secondItem="cxL-VD-a65" secondAttribute="bottom" constant="5" id="0Aw-3K-hHr"/>
                             <constraint firstItem="acK-wp-OFQ" firstAttribute="leading" secondItem="1H1-7P-fMf" secondAttribute="leading" constant="5" id="1UY-UJ-juU"/>
-                            <constraint firstItem="vr4-3A-RZZ" firstAttribute="top" secondItem="7Vm-oB-SxN" secondAttribute="bottom" constant="88" id="2b9-uV-ApE"/>
+                            <constraint firstItem="vr4-3A-RZZ" firstAttribute="top" secondItem="7Vm-oB-SxN" secondAttribute="bottom" constant="41" id="2b9-uV-ApE"/>
                             <constraint firstItem="cxL-VD-a65" firstAttribute="leading" secondItem="1H1-7P-fMf" secondAttribute="leading" constant="5" id="38v-kd-nk9"/>
-                            <constraint firstItem="IGp-pa-vS8" firstAttribute="top" secondItem="vr4-3A-RZZ" secondAttribute="bottom" constant="5" id="6x4-mY-cp2"/>
+                            <constraint firstItem="IGp-pa-vS8" firstAttribute="top" secondItem="vr4-3A-RZZ" secondAttribute="bottom" constant="16" id="6x4-mY-cp2"/>
                             <constraint firstItem="1H1-7P-fMf" firstAttribute="trailing" secondItem="acK-wp-OFQ" secondAttribute="trailing" constant="5" id="8Dv-Dd-Vna"/>
                             <constraint firstItem="7Vm-oB-SxN" firstAttribute="leading" secondItem="1H1-7P-fMf" secondAttribute="leading" constant="5" id="8pH-q0-EvG"/>
                             <constraint firstItem="lF4-aq-92o" firstAttribute="leading" secondItem="1H1-7P-fMf" secondAttribute="leading" constant="5" id="Ari-oJ-zRW"/>
@@ -853,10 +853,10 @@
             </objects>
             <point key="canvasLocation" x="6071" y="940"/>
         </scene>
-        <!--Advice View Controller-->
+        <!--AdviceViewController-->
         <scene sceneID="cch-4o-Oik">
             <objects>
-                <viewController storyboardIdentifier="advice" id="XQX-RD-vNA" customClass="AdviceViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdviceViewController" title="AdviceViewController" id="XQX-RD-vNA" customClass="AdviceViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tFb-07-erP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -872,7 +872,7 @@
         <!--New Stroke-->
         <scene sceneID="cPd-68-ZqF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="06g-3Q-Ctx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NewStrokeWithNav" automaticallyAdjustsScrollViewInsets="NO" id="06g-3Q-Ctx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New Stroke" image="plus" catalog="system" selectedImage="plus" id="fg3-sV-dNY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J6s-Ic-yUr">
@@ -892,7 +892,9 @@
         <scene sceneID="suk-8G-fgU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lJ9-UV-XLg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="wsA-Gb-rFY"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="wsA-Gb-rFY">
+                        <color key="badgeColor" systemColor="opaqueSeparatorColor"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qxx-zw-zcm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

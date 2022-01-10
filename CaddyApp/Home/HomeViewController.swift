@@ -17,7 +17,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = myGreen
+        mainHeaderView.backgroundColor = .lightText
+        clubsView.backgroundColor = .lightText
+        adviceView.backgroundColor = .lightText
+        notesView.backgroundColor = .lightText
+        self.tabBarController?.tabBar.backgroundColor = .white
         clubsView.isUserInteractionEnabled = true
         adviceView.isUserInteractionEnabled = true
         notesView.isUserInteractionEnabled = true
@@ -51,7 +56,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc func didTapAdvice() {
-        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+        let clubsVC = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
 
         navigationController?.pushViewController(clubsVC, animated: true)
     }
