@@ -122,6 +122,13 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             vc.titleText = currentNote.title
             vc.noteText = currentNote.subTitle
         }
+        if let mainNotes = mainNotes {
+            let currentNote = mainNotes[indexPath.row]
+            vc.titleText = currentNote.title
+            vc.noteText = currentNote.subTitle
+        }
+        
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 
