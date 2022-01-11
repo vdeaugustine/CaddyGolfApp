@@ -43,7 +43,10 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             let thisLabel = UILabel(frame: pageFrame)
             thisLabel.text = pages[index]
             thisLabel.textAlignment = .center
-            thisLabel.backgroundColor = colors[index]
+            thisLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
+            thisLabel.layer.cornerRadius = globalCornerRadius
+            thisLabel.layer.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1).cgColor
+//            thisLabel.backgroundColor = colors[index]
             self.scrollView.addSubview(thisLabel)
             self.scrollView.addSubview(thisButton)
             
