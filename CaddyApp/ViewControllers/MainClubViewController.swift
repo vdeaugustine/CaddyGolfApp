@@ -9,6 +9,7 @@ import UIKit
 
 class MainClubViewController: UIViewController {
     var swingsCollectionView: UICollectionView?
+    var notesCollectionView: UICollectionView?
 
     func layoutCollectionView() {
         //        let layout = UICollectionViewFlowLayout()
@@ -16,15 +17,15 @@ class MainClubViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //        view.backgroundColor = UIColor(red: 115 / 255.0, green: 197 / 255.0, blue: 114 / 255.0, alpha: 1.0)
-        newSetUpSubViews()
+        setUpSubviews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("currentSwingType", currentSwingType.rawValue)
         swingsCollectionView?.reloadData()
+        notesCollectionView?.reloadData()
         maxSwingContainer.updateYardage()
         tfSwingContainer.updateYardage()
         fullSwingContainer.updateYardage()
@@ -32,7 +33,7 @@ class MainClubViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        newLayoutSubviews()
+        layoutAllSubviews()
     }
 
     override func viewWillLayoutSubviews() {
@@ -50,7 +51,7 @@ class MainClubViewController: UIViewController {
 
     }()
 
-    func newSetUpSubViews() {
+    func setUpSubviews() {
         view.addSubview(scrollView)
         scrollView.addSubview(yardagesLargeRectView)
         yardagesLargeRectView.addSubview(yardagesRectTitle)
@@ -70,7 +71,7 @@ class MainClubViewController: UIViewController {
         maxSwingContainer.layoutViews()
     }
 
-    func newLayoutSubviews() {
+    func layoutAllSubviews() {
         let setUpDimensions = view.bounds
         let padRectsFromSides: CGFloat = 10
         let padLabel: CGFloat = 4
@@ -86,8 +87,25 @@ class MainClubViewController: UIViewController {
 
         addGestureRecognizers()
 
-        swingsLargeRectView.frame = CGRect(x: padRectsFromSides,
+        notesLargeRectView.frame = CGRect(x: padRectsFromSides,
                                            y: yardagesLargeRectView.bottom + padRectsFromSides * 2,
+                                           width: setUpDimensions.width - (2 * padRectsFromSides),
+                                           height: 275)
+        
+        
+
+//        notesLargeRectView.frame = CGRect(x: padRectsFromSides,
+//                                          y: swingsLargeRectView.bottom + padRectsFromSides * 2,
+//                                          width: setUpDimensions.width - (2 * padRectsFromSides),
+//                                          height: 201)
+        notesLargeRectView.dropShadow()
+        notesRectTitle.frame = CGRect(x: padLabel,
+                                      y: 2 * padRectsFromSides,
+                                      width: setUpDimensions.width - 50,
+                                      height: 50)
+        
+        swingsLargeRectView.frame = CGRect(x: padRectsFromSides,
+                                           y: notesLargeRectView.bottom + padRectsFromSides * 2,
                                            width: setUpDimensions.width - (2 * padRectsFromSides),
                                            height: 275)
         swingsLargeRectView.dropShadow()
@@ -97,16 +115,6 @@ class MainClubViewController: UIViewController {
                                        width: setUpDimensions.width - 50,
                                        height: 50)
 
-        notesLargeRectView.frame = CGRect(x: padRectsFromSides,
-                                          y: swingsLargeRectView.bottom + padRectsFromSides * 2,
-                                          width: setUpDimensions.width - (2 * padRectsFromSides),
-                                          height: 201)
-        notesLargeRectView.dropShadow()
-        notesRectTitle.frame = CGRect(x: padLabel,
-                                      y: 2 * padRectsFromSides,
-                                      width: setUpDimensions.width - 50,
-                                      height: 50)
-
         // MARK: Swing Types with Yardages
 
         tfSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: nil, rightNeighbor: nil, topNeighbor: yardagesRectTitle)
@@ -115,6 +123,43 @@ class MainClubViewController: UIViewController {
 
         maxSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: fullSwingContainer.mainContainer, topNeighbor: yardagesRectTitle)
 
+        
+        // MARK: - SETUP AND MAKE NOTES COLLECTIONVIEW
+        let notesLayout = UICollectionViewFlowLayout()
+        notesLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        notesLayout.itemSize = CGSize(width: 150, height: 150)
+        notesLayout.scrollDirection = .horizontal
+        let notesCollectionViewFrame = CGRect(x: padRectsFromSides,
+                                              y: notesRectTitle.bottom + 5,
+                                              width: (notesLargeRectView.width - padRectsFromSides * 2) * 0.75,
+                                              height: notesLargeRectView.height - notesRectTitle.frame.maxY - padRectsFromSides)
+
+        notesCollectionView = UICollectionView(frame: notesCollectionViewFrame, collectionViewLayout: notesLayout)
+
+        if let notesCollectionView = notesCollectionView {
+            print("MADE IT ")
+
+            notesCollectionView.frame = CGRect(x: notesLargeRectView.frame.minX,
+                                                y: notesRectTitle.bottom + 5,
+                                                width: notesLargeRectView.frame.width - 20,
+                                                height: notesLargeRectView.height - notesRectTitle.frame.maxY - padRectsFromSides)
+            notesCollectionView.backgroundColor = .systemBackground
+
+            notesCollectionView.delegate = self
+            notesCollectionView.dataSource = self
+
+            notesCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "NotesCell")
+
+            notesLargeRectView.addSubview(notesCollectionView)
+            notesCollectionView.addSubview(firstNoteRect)
+
+        } else {
+            print("DID NOT MAKE IT ")
+        }
+        
+        
+        
+        // MARK: - SETUP AND MAKE SWINGS COLLECTIONVIEW
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: 150, height: 150)
@@ -147,7 +192,7 @@ class MainClubViewController: UIViewController {
             print("DID NOT MAKE IT ")
         }
 
-        let thisheight = notesLargeRectView.frame.maxY + 20
+        let thisheight = swingsLargeRectView.frame.maxY + 20
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
 
@@ -174,6 +219,7 @@ class MainClubViewController: UIViewController {
     let notesRectTitle = RectTitle("Notes")
 
     let firstSwingRect = customView()
+    let firstNoteRect = customView()
 
     // MARK: - Button Actions
 

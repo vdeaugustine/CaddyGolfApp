@@ -122,24 +122,50 @@ extension MainClubViewController {
 
 extension MainClubViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var arrOfPrevHits: [String]
-        arrOfPrevHits = currentClub.allPreviousSwings.components(separatedBy: ",")
-        print(arrOfPrevHits.count)
-        return arrOfPrevHits.count
+        if collectionView == swingsCollectionView {
+            let mainArr = currentClub.allPreviousSwings.components(separatedBy: ",")
+            print(mainArr.count)
+            return mainArr.count
+        } else if collectionView == notesCollectionView {
+            let mainArr = getAllClubNotes(currentClubTypeAsEnum())
+            return mainArr.count
+        } else {
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwingCell", for: indexPath)
-        myCell.dropShadow()
-        let aSwingView = SwingTypeContainer()
-        aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
+        var myCell = UICollectionViewCell()
 
-        let x = UILabel(frame: CGRect())
-        x.text = "\(indexPath.row)"
-        aSwingView.addSubview(x)
-        x.frame = CGRect(x: aSwingView.width / 2, y: aSwingView.height / 2, width: 20, height: 20)
+        if collectionView == swingsCollectionView {
+            myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwingCell", for: indexPath)
+            myCell.dropShadow()
+            let aSwingView = SwingTypeContainer()
+            aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
 
-        myCell.addSubview(aSwingView)
+            let x = UILabel(frame: CGRect())
+            x.text = "\(indexPath.row)"
+            aSwingView.addSubview(x)
+            x.frame = CGRect(x: aSwingView.width / 2, y: aSwingView.height / 2, width: 20, height: 20)
+
+            myCell.addSubview(aSwingView)
+
+        } else if collectionView == notesCollectionView {
+            let thisClubNote = getAllClubNotes(currentClubTypeAsEnum())[indexPath.row]
+            myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCell", for: indexPath)
+            myCell.dropShadow()
+            let aNoteView = RoundedBox()
+//            aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
+            myCell.addSubview(aNoteView.mainContainer)
+            aNoteView.setupFrames(with:  CGRect(x: 0,
+                                                y: 0,
+                                                width: myCell.width,
+                                                height: myCell.height))
+            aNoteView.layoutViews()
+            aNoteView.setHeaderText(thisClubNote.title ?? "")
+            aNoteView.setMainText(thisClubNote.subTitle ?? "")
+            aNoteView.headerLabel.adjustsFontSizeToFitWidth = false
+        }
 
         return myCell
     }

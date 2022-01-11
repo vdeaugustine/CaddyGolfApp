@@ -59,11 +59,13 @@ class ClubCell: UITableViewCell {
         notesBoxContainer.addSubview(notesBox.mainContainer)
         notesBox.setupFrames(padFromSides: 0, nestedIn: notesBoxContainer)
         notesBox.layoutViews()
+        notesBox.headerLabel.adjustsFontSizeToFitWidth = false
+        notesBox.mainTextLabel.adjustsFontSizeToFitWidth = false
 
-        let notesTransparentButton = TransparentButton(superView: notesBoxContainer)
-        let yardageTransparentButton = TransparentButton(superView: yardageBoxContainer)
-        notesTransparentButton.addTarget(self, action: #selector(didTapNotes), for: .touchUpInside)
-        yardageTransparentButton.addTarget(self, action: #selector(didTapSwing), for: .touchUpInside)
+//        let notesTransparentButton = TransparentButton(superView: notesBoxContainer)
+//        let yardageTransparentButton = TransparentButton(superView: yardageBoxContainer)
+//        notesTransparentButton.addTarget(self, action: #selector(didTapNotes), for: .touchUpInside)
+//        yardageTransparentButton.addTarget(self, action: #selector(didTapSwing), for: .touchUpInside)
     }
 
     @objc func didTapSwing() {

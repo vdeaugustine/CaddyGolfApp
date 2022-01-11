@@ -44,8 +44,6 @@ class ClubsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = myGreen
-//        clubsTableView.backgroundColor = myGreen
         ModalTransitionMediator.instance.setListener(listener: self)
 
         clubsTableView.dataSource = self
@@ -206,41 +204,41 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         return mainBag.types.count
     }
 
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20
-//    }
-
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return mainBag.types[section]
-//    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let someView = UIView(frame: CGRect(x: 0,
-                                            y: 0,
-                                            width: view.width,
-                                            height: 75))
-
-        let sectionTitleString = mainBag.types[section]
-        let sectionTitle = UILabel()
-        sectionTitle.translatesAutoresizingMaskIntoConstraints = false
-        someView.addSubview(sectionTitle)
-        sectionTitle.textColor = .white
-//        sectionTitle.font.withSize(34)
-        sectionTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
-        sectionTitle.text = sectionTitleString
-        sectionTitle.clipsToBounds = true
-        sectionTitle.adjustsFontSizeToFitWidth = true
-//        sectionTitle.center = CGPoint(x: 10, y: someView.frame.height / 2)
-        NSLayoutConstraint.activate(
-            [
-                sectionTitle.leadingAnchor.constraint(equalTo: someView.leadingAnchor, constant: 10),
-                sectionTitle.centerYAnchor.constraint(equalTo: someView.centerYAnchor),
-                sectionTitle.widthAnchor.constraint(equalTo: someView.widthAnchor),
-            ]
-        )
-
-        return someView
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return mainBag.types[section]
+    }
+
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let someView = UIView(frame: CGRect(x: 0,
+//                                            y: 0,
+//                                            width: view.width,
+//                                            height: 75))
+//
+//        let sectionTitleString = mainBag.types[section]
+//        let sectionTitle = UILabel()
+//        sectionTitle.translatesAutoresizingMaskIntoConstraints = false
+//        someView.addSubview(sectionTitle)
+//        sectionTitle.textColor = .white
+////        sectionTitle.font.withSize(34)
+//        sectionTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
+//        sectionTitle.text = sectionTitleString
+//        sectionTitle.clipsToBounds = true
+//        sectionTitle.adjustsFontSizeToFitWidth = true
+////        sectionTitle.center = CGPoint(x: 10, y: someView.frame.height / 2)
+//        NSLayoutConstraint.activate(
+//            [
+//                sectionTitle.leadingAnchor.constraint(equalTo: someView.leadingAnchor, constant: 10),
+//                sectionTitle.centerYAnchor.constraint(equalTo: someView.centerYAnchor),
+//                sectionTitle.widthAnchor.constraint(equalTo: someView.widthAnchor),
+//            ]
+//        )
+//
+//        return someView
+//    }
 }
 
 extension ClubsViewController: ModalTransitionListener {

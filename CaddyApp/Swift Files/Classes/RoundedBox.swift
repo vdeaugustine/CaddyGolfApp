@@ -47,13 +47,13 @@ class RoundedBox {
         }()
 
         headerLabel = {
-            let theView = UILabel()
-            theView.font = UIFont(name: "Helvetica-Bold", size: 18)
-            theView.adjustsFontSizeToFitWidth = true
+            let theLabel = UILabel()
+            theLabel.font = UIFont(name: "Helvetica-Bold", size: 18)
+            theLabel.adjustsFontSizeToFitWidth = true
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
             //        label.translatesAutoresizingMaskIntoConstraints = true
-            theView.textAlignment = .center
-            return theView
+            theLabel.textAlignment = .center
+            return theLabel
         }()
 
         mainTextLabel = {
@@ -102,15 +102,6 @@ class RoundedBox {
         mainTextLabel.center = CGPoint(x: mainSpaceToWorkWith.midX,
                                        y: mainSpaceToWorkWith.midY)
 
-//        NSLayoutConstraint.activate([
-//
-//            mainTextLabel.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 5),
-//            mainTextLabel.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -5),
-//            mainTextLabel.heightAnchor.constraint(equalToConstant: mainContainer.height / 3),
-//            mainTextLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 18)
-//
-//
-//        ])
     }
 
     /// Set up frames

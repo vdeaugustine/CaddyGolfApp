@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = myGreen
         mainHeaderView.backgroundColor = .lightText
         clubsView.backgroundColor = .lightText
         adviceView.backgroundColor = .lightText

@@ -38,7 +38,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
         distanceField.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([self.distanceField.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -((self.view.height / 3) + 5))])
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
