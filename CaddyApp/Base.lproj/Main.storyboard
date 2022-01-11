@@ -710,26 +710,46 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="wEG-M3-n4v"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SYg-6u-Cze">
-                                <rect key="frame" x="131.33333333333334" y="382" width="112.66666666666666" height="25"/>
+                                <rect key="frame" x="131.33333333333334" y="339" width="112.66666666666666" height="25"/>
                                 <connections>
                                     <action selector="pageControlValChange:" destination="Bpb-xV-wRc" eventType="valueChanged" id="tPF-Qp-l95"/>
                                 </connections>
                             </pageControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-TA-jk5">
+                                <rect key="frame" x="0.0" y="383" width="375" height="346"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" id="5oO-YP-QVt" userLabel="Clubs" customClass="HomePageTableViewCell" customModule="CaddyApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5oO-YP-QVt" id="Ygs-Tn-6KJ" customClass="HomePageTableViewCell" customModule="CaddyApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cty-xB-HKw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="dLv-TA-jk5" secondAttribute="trailing" id="35S-pv-mez"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="top" secondItem="2r3-BZ-O1b" secondAttribute="bottom" constant="15" id="B33-Cc-0VZ"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="centerX" secondItem="a6J-XZ-ZdM" secondAttribute="centerX" id="Cer-Hm-IP0"/>
                             <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="2r3-BZ-O1b" secondAttribute="trailing" constant="10" id="HzW-1L-Qts"/>
-                            <constraint firstItem="2r3-BZ-O1b" firstAttribute="top" secondItem="cty-xB-HKw" secondAttribute="top" constant="53" id="Rep-Pu-hS2"/>
+                            <constraint firstItem="dLv-TA-jk5" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="JeK-JH-E6l"/>
+                            <constraint firstItem="cty-xB-HKw" firstAttribute="bottom" secondItem="dLv-TA-jk5" secondAttribute="bottom" id="L4r-u7-ajp"/>
+                            <constraint firstItem="2r3-BZ-O1b" firstAttribute="top" secondItem="cty-xB-HKw" secondAttribute="top" constant="10" id="Rep-Pu-hS2"/>
                             <constraint firstItem="2r3-BZ-O1b" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" constant="10" id="aOe-Ey-Ahc"/>
+                            <constraint firstItem="dLv-TA-jk5" firstAttribute="top" secondItem="SYg-6u-Cze" secondAttribute="bottom" constant="19" id="iT0-U7-FRW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XeN-7f-yj1"/>
                     <connections>
                         <outlet property="pageControl" destination="SYg-6u-Cze" id="7yj-Dm-Xvq"/>
                         <outlet property="scrollView" destination="2r3-BZ-O1b" id="AnL-8R-KlR"/>
+                        <outlet property="tableView" destination="dLv-TA-jk5" id="Tsh-Di-lCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZa-V8-SL7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

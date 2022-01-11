@@ -13,14 +13,16 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tableView: UITableView!
     var pages: [String] = ["Notes", "Clubs", "Settings"]
     var colors: [UIColor] = [.red, .green, .blue]
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames : [CGRect] = [CGRect]()
+    var tableViewModel = ["Notes", "Clubs", "Settings"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Home"
         pageControl.numberOfPages = pages.count
         setupScreens()
         scrollView.backgroundColor = .white
@@ -29,6 +31,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         scrollButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
         pageControl.tintColor = .blue
         pageControl.backgroundStyle = .prominent
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -114,4 +118,44 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     
     
 
+}
+
+
+extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomePageTableViewCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
+        
+        cell.textLabel!.text = tableViewModel[indexPath.row]
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+            vc.comingFrom = "home"
+            vc.title = "Notes"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 1:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            return
+        default:
+            return
+        }
+    }
+    
+    
 }
