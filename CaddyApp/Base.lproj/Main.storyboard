@@ -31,32 +31,32 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuL-S1-PdS">
-                                                            <rect key="frame" x="5" y="5" width="404" height="40"/>
+                                                            <rect key="frame" x="10" y="5" width="394" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="EAz-7Q-cE7"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Notes Content" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYI-Br-Fzm">
-                                                            <rect key="frame" x="5" y="50" width="404" height="73"/>
+                                                            <rect key="frame" x="10" y="50" width="394" height="73"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <color key="textColor" systemColor="labelColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="qYI-Br-Fzm" secondAttribute="trailing" constant="5" id="5Ro-U0-scM"/>
-                                                        <constraint firstItem="qYI-Br-Fzm" firstAttribute="leading" secondItem="iK5-WT-drU" secondAttribute="leading" constant="5" id="5dd-HD-Bze"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tuL-S1-PdS" secondAttribute="trailing" constant="5" id="MWH-tZ-m7a"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qYI-Br-Fzm" secondAttribute="trailing" constant="10" id="5Ro-U0-scM"/>
+                                                        <constraint firstItem="qYI-Br-Fzm" firstAttribute="leading" secondItem="iK5-WT-drU" secondAttribute="leading" constant="10" id="5dd-HD-Bze"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tuL-S1-PdS" secondAttribute="trailing" constant="10" id="MWH-tZ-m7a"/>
                                                         <constraint firstAttribute="height" constant="130" id="YFM-Gf-zCQ"/>
                                                         <constraint firstItem="qYI-Br-Fzm" firstAttribute="top" secondItem="tuL-S1-PdS" secondAttribute="bottom" constant="5" id="Yzo-9B-Lhj"/>
                                                         <constraint firstItem="tuL-S1-PdS" firstAttribute="top" secondItem="iK5-WT-drU" secondAttribute="top" constant="5" id="dsa-wR-BGU"/>
                                                         <constraint firstAttribute="bottom" secondItem="qYI-Br-Fzm" secondAttribute="bottom" constant="5" id="q7E-WI-pbJ"/>
-                                                        <constraint firstItem="tuL-S1-PdS" firstAttribute="leading" secondItem="iK5-WT-drU" secondAttribute="leading" constant="5" id="vOJ-s5-qBs"/>
+                                                        <constraint firstItem="tuL-S1-PdS" firstAttribute="leading" secondItem="iK5-WT-drU" secondAttribute="leading" constant="10" id="vOJ-s5-qBs"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -714,7 +714,7 @@
                                     <constraint firstAttribute="height" constant="50" id="0cq-D9-Z5z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="continue"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nbt-R4-nee"/>
@@ -953,7 +953,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ysi-mj-ifM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370" y="1629"/>
+            <point key="canvasLocation" x="4335" y="1637"/>
         </scene>
     </scenes>
     <resources>

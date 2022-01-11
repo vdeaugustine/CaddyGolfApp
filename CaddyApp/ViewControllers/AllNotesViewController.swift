@@ -24,7 +24,6 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
         navigationController?.navigationBar.prefersLargeTitles = false
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
