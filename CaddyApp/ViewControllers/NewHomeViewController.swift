@@ -8,136 +8,151 @@
 import UIKit
 
 class NewHomeViewController: UIViewController, UIScrollViewDelegate {
-    
-    
-
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var tableView: UITableView!
     var pages: [String] = ["Notes", "Clubs", "Settings"]
     var colors: [UIColor] = [.red, .green, .blue]
     var pageFrame = CGRect.zero
     var currentIndex = 0
-    var pageFrames : [CGRect] = [CGRect]()
+    var pageFrames: [CGRect] = [CGRect]()
     var tableViewModel = ["Notes", "Clubs", "Settings"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Home"
+        title = "Home"
         pageControl.numberOfPages = pages.count
         setupScreens()
         scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
-        var scrollButton = TransparentButton(superView: scrollView)
-        scrollButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+//        var scrollButton = TransparentButton(superView: scrollView)
+//        scrollButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
         pageControl.tintColor = .blue
         pageControl.backgroundStyle = .prominent
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        for frame in pageFrames {
+            print("page frame", frame)
+            print("scroll frame", scrollView.frame)
+            print("scroll content")
+        }
         // Do any additional setup after loading the view.
     }
-    
+
     func setupScreens() {
         for index in 0 ..< pages.count {
-            pageFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
+            pageFrame.origin.x = (scrollView.frame.size.width) * CGFloat(index)
             pageFrame.size = scrollView.frame.size
             pageFrames.append(pageFrame)
-            
-            let thisButton = UIButton(frame: pageFrame)
+
+            let backImage = UIImage(named: "background\(index+1)")
+            let backImageView = UIImageView(image: backImage)
+            backImageView.frame = pageFrame
+            scrollView.addSubview(backImageView)
+            let thisButton = UIButton(frame: CGRect(x: 0,
+                                                    y: 0,
+                                                    width: backImageView.width,
+                                                    height: backImageView.height))
             thisButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
-            let thisLabel = UILabel(frame: pageFrame)
+            let thisLabel = UILabel(frame:  CGRect(x: 0,
+                                                   y: 0,
+                                                   width: backImageView.width,
+                                                   height: backImageView.height))
             thisLabel.text = pages[index]
             thisLabel.textAlignment = .center
             thisLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
+            thisLabel.textColor = .white
             thisLabel.layer.cornerRadius = globalCornerRadius
-            thisLabel.layer.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1).cgColor
+            thisLabel.layer.backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.4).cgColor
+            
+            
 //            thisLabel.backgroundColor = colors[index]
-            self.scrollView.addSubview(thisLabel)
-            self.scrollView.addSubview(thisButton)
+            backImageView.addSubview(thisLabel)
+            backImageView.addSubview(thisButton)
             
         }
-        
-        scrollView.contentSize = CGSize(width: (scrollView.width * CGFloat(pages.count)),
+
+        scrollView.contentSize = CGSize(width: scrollView.width * CGFloat(pages.count),
                                         height: scrollView.height)
         scrollView.delegate = self
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+     }
+     */
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
         print("pageControlNumber", pageControl.currentPage)
+        
+        
+    }
+    
+    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+        print("did change")
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        print("Did zoom")
     }
     
     
     
+
     @IBAction func pageControlValChange(_ sender: Any) {
-        
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred(intensity: 1.0)
         currentIndex = pageControl.currentPage
         scrollView.scrollRectToVisible(pageFrames[currentIndex], animated: true)
         print(currentIndex)
-        
-        
-       
     }
-    
+
     @objc func goToPage() {
         print("tapped and current index", currentIndex)
-        
+
         switch pageControl.currentPage {
         case 0:
             let vc = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
             vc.comingFrom = "home"
             vc.title = "Notes"
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            navigationController?.pushViewController(vc, animated: true)
+
         case 1:
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         case 2:
             return
         default:
             return
         }
-        
-        
-        
-        
     }
-    
-    
-    
-
 }
-
 
 extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomePageTableViewCell
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
-        
+
         cell.textLabel!.text = tableViewModel[indexPath.row]
         return cell
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewModel.count
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
@@ -145,17 +160,15 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
             vc.comingFrom = "home"
             vc.title = "Notes"
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            navigationController?.pushViewController(vc, animated: true)
+
         case 1:
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         case 2:
             return
         default:
             return
         }
     }
-    
-    
 }
