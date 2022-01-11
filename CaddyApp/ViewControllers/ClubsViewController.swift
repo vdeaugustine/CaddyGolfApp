@@ -39,7 +39,8 @@ class ClubsViewController: UIViewController {
         sortBag()
         clubsTableView.reloadData()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset All", style: .done, target: self, action: #selector(resetAllClubDistances))
+        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     override func viewDidLoad() {
@@ -51,6 +52,7 @@ class ClubsViewController: UIViewController {
         clubsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let userDefaults = UserDefaults.standard
 
+        navigationItem.rightBarButtonItems?.append(UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetAllClubDistances)))
         // If there is nothing saved in the UserDefaults (i.e. the first time opening this app)
         if !userDefaults.bool(forKey: "setup") {
             print("\nOK NOT SETUP. LETS TRY\n")

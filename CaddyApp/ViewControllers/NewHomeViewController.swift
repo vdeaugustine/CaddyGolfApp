@@ -25,6 +25,10 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         setupScreens()
         scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
+        var scrollButton = TransparentButton(superView: scrollView)
+        scrollButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+        pageControl.tintColor = .blue
+        pageControl.backgroundStyle = .prominent
         // Do any additional setup after loading the view.
     }
     
@@ -34,11 +38,15 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             pageFrame.size = scrollView.frame.size
             pageFrames.append(pageFrame)
             
+            let thisButton = UIButton(frame: pageFrame)
+            thisButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
             let thisLabel = UILabel(frame: pageFrame)
             thisLabel.text = pages[index]
             thisLabel.textAlignment = .center
             thisLabel.backgroundColor = colors[index]
             self.scrollView.addSubview(thisLabel)
+            self.scrollView.addSubview(thisButton)
+            
         }
         
         scrollView.contentSize = CGSize(width: (scrollView.width * CGFloat(pages.count)),
@@ -59,16 +67,45 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
+        print("pageControlNumber", pageControl.currentPage)
     }
+    
+    
     
     @IBAction func pageControlValChange(_ sender: Any) {
         
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred(intensity: 1.0)
         currentIndex = pageControl.currentPage
         scrollView.scrollRectToVisible(pageFrames[currentIndex], animated: true)
-        
+        print(currentIndex)
         
         
        
+    }
+    
+    @objc func goToPage() {
+        print("tapped and current index", currentIndex)
+        
+        switch pageControl.currentPage {
+        case 0:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
+            vc.comingFrom = "home"
+            vc.title = "Notes"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 1:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            return
+        default:
+            return
+        }
+        
+        
+        
+        
     }
     
     
