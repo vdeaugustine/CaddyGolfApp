@@ -121,11 +121,13 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             let currentNote = thisClubNotes[indexPath.row]
             vc.titleText = currentNote.title
             vc.noteText = currentNote.subTitle
+            vc.thisClubNote = currentNote
         }
         if let mainNotes = mainNotes {
             let currentNote = mainNotes[indexPath.row]
             vc.titleText = currentNote.title
             vc.noteText = currentNote.subTitle
+            vc.thisMainNote = currentNote
         }
         
         

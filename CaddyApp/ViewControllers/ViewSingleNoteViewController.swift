@@ -8,20 +8,21 @@
 import UIKit
 
 class ViewSingleNoteViewController: UIViewController {
-
-    @IBOutlet weak var mainNoteTextView: UITextView!
-    @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet var mainNoteTextView: UITextView!
+    @IBOutlet var titleLabel: UITextField!
     var isInEditState = false
-    
+
     var titleText: String?
     var noteText: String?
-    
+    var thisClubNote: ClubNote?
+    var thisMainNote: MainNote?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Note"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEditNote))
-        self.mainNoteTextView.isUserInteractionEnabled = isInEditState
-        self.titleLabel.isUserInteractionEnabled = isInEditState
+        title = "Note"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEditNote))
+        mainNoteTextView.isUserInteractionEnabled = isInEditState
+        titleLabel.isUserInteractionEnabled = isInEditState
         if let titleText = titleText {
             titleLabel.text = titleText
         }
@@ -31,40 +32,48 @@ class ViewSingleNoteViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-    
+
     @objc func didTapEditNote() {
         print("tapped edit note")
+        isInEditState = !isInEditState
         if isInEditState {
 //            let rightButton = self.navigationItem.rightBarButtonItem!.customView as! UIButton
 //            rightButton.setTitle("Done", for: .normal)
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                                     target: self,
-                                                                     action: #selector(didTapEditNote))
-            
-            self.titleLabel.isUserInteractionEnabled = isInEditState
-            self.mainNoteTextView.isUserInteractionEnabled = isInEditState
-            isInEditState = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                                target: self,
+                                                                action: #selector(didTapEditNote))
+
+            titleLabel.isUserInteractionEnabled = isInEditState
+            mainNoteTextView.isUserInteractionEnabled = isInEditState
         } else {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
-                                                                     target: self,
-                                                                     action: #selector(didTapEditNote))
-            self.titleLabel.isUserInteractionEnabled = isInEditState
-            self.mainNoteTextView.isUserInteractionEnabled = isInEditState
-            isInEditState = true
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
+                                                                target: self,
+                                                                action: #selector(didTapEditNote))
+            
+            titleLabel.isUserInteractionEnabled = isInEditState
+            mainNoteTextView.isUserInteractionEnabled = isInEditState
+            saveNote()
+            
+            if let thisClubNote = thisClubNote {
+                updateClubNote(note: thisClubNote, newTitle: titleLabel.text!, newSubtitle: mainNoteTextView.text, type: currentClubTypeAsEnum())
+            }
+            if let thisMainNote = thisMainNote {
+                updateMainNote(note: thisMainNote, newTitle: titleLabel.text!, newContent: mainNoteTextView.text)
+            }
+            
         }
-        
-        
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+     }
+     */
+
+    func saveNote() {
     }
-    */
-
 }
