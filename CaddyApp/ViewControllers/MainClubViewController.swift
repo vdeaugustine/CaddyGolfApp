@@ -38,7 +38,7 @@ class MainClubViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        scrollView.contentSize = CGSize(width: view.bounds.maxX, height: view.bounds.maxY)
+        
     }
 
     // MARK: - Setup Views NEW

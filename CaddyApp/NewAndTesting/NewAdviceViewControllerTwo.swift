@@ -1,66 +1,24 @@
 //
-//  AdviceViewController.swift
+//  NewAdviceViewControllerTwo.swift
 //  CaddyApp
 //
-//  Created by Vincent on 12/6/21.
+//  Created by Vincent DeAugustine on 1/11/22.
 //
 
 import UIKit
 
-/// - View Hierarchy
-///     - view
-///         - scrollview
-///             - distanceLabelContainerView
-///                 - distanceLabel
-///             - underClubLargeContainer
-///                 - underClubNameRect
-///                     - underClubLabel
-///                 - underClubSwingDistanceBox.mainContainer
-///                 - underClubGapBox.mainContainer
-///
-///             - overClubLargeContainer
-///                 - overClubNameRect
-///                     - overClubLabel
-///                 - overClubSwingDistanceBox.mainContainer
-///                 - overClubGapBox.mainContainer
-///             - optionsLabel
-///             - moreInfoButton
-///
-///
-///
-
-class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewWillLayoutSubviews() {
-        addSubviews()
-        makeFramesForAllViews()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        if advice.clubBelowGap < advice.clubAboveGap {
-            underClubGapBox.mainTextLabel.textColor = myGreen
-            overClubGapBox.mainTextLabel.textColor = .red
-        } else if advice.clubBelowGap > advice.clubAboveGap {
-            underClubGapBox.mainTextLabel.textColor = .red
-            overClubGapBox.mainTextLabel.textColor = myGreen
+        let padFromNavBarView = UIView()
+
+        if let navController = navigationController {
+            view.addSubview(padFromNavBarView)
+            padFromNavBarView.backgroundColor = .clear
+            padFromNavBarView.frame = CGRect(x: 0, y: navController.navigationBar.bottom, width: view.bounds.width, height: 15)
+
+        } else {
+            print("nav controller is not there")
         }
-    }
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        view.addSubview(scrollView)
-        // Do any additional setup after loading the view.
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-
-    // MARK: - VIEWS & UIOBJECTS
-    
-    func addSubviews() {
-        
 
         view.addSubview(scrollView)
 
@@ -81,33 +39,21 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         underClubLargeContainer.addSubview(underClubGapBox.mainContainer)
         overClubLargeContainer.addSubview(overClubSwingDistanceBox.mainContainer)
         overClubLargeContainer.addSubview(overClubGapBox.mainContainer)
-        
-        scrollView.addSubview(aimShotBox)
 
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
 
-        
-    }
-
-    func makeFramesForAllViews() {
-        
-        let farBottomItemInScrollView = aimShotBox
-        let padFromNavBarView = UIView()
-
-        if let navController = navigationController {
-            view.addSubview(padFromNavBarView)
-            padFromNavBarView.backgroundColor = .clear
-            padFromNavBarView.frame = CGRect(x: 0, y: navController.navigationBar.bottom, width: view.bounds.width, height: 15)
-
-        } else {
-            print("nav controller is not there")
-        }
-        
-        let thisHeight = farBottomItemInScrollView.bottom + 20
+        let thisHeight = tipsTypeSegControl.bottom + 20
         scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
-    
+//
+//        NSLayoutConstraint.activate([
+//            distanceLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+//            distanceLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+//            distanceLabel.heightAnchor.constraint(equalToConstant: 50),
+//            distanceLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20)
+//
+//        ])
         let distanceWidth = scrollView.width - (2 * 20)
         let distanceLabelContainerView: UIView = {
             let someView = UIView(frame: CGRect(x: 20,
@@ -135,6 +81,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                      height: 50)
         distanceLabel.sizeToFit()
 
+//        distanceLabel.frame =  CGRect(x: distanceLabel.frame.minX,
+//                                      y: distanceLabel.frame.minY,
+//                                      width: distanceLabel.width + 20,
+//                                      height: distanceLabel.height + 10)
 
         optionsLabel.frame = CGRect(x: 20,
                                     y: distanceLabel.bottom + 20,
@@ -207,7 +157,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
         underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
-        underClubGapBox.setHeaderText("Long".uppercased())
+//        underClubGapBox.mainTextLabel.textColor = .blue
+        underClubGapBox.setHeaderText("Short".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - 5
 
@@ -225,9 +176,31 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 height: overClubSwingDistanceBox.mainContainer.height))
         overClubGapBox.layoutViews()
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
-        overClubGapBox.setHeaderText("Short".uppercased())
-        
+        overClubGapBox.setHeaderText("Long".uppercased())
     }
+    
+    override func viewDidLayoutSubviews() {
+        if advice.clubBelowGap < advice.clubAboveGap {
+            underClubGapBox.mainTextLabel.textColor = myGreen
+            overClubGapBox.mainTextLabel.textColor = .red
+        } else if advice.clubBelowGap > advice.clubAboveGap {
+            underClubGapBox.mainTextLabel.textColor = .red
+            overClubGapBox.mainTextLabel.textColor = myGreen
+        }
+    }
+    
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        view.addSubview(scrollView)
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    // MARK: - VIEWS & UIOBJECTS
+
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -244,6 +217,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.layer.cornerRadius = globalCornerRadius
         label.backgroundColor = .white
         label.textAlignment = .center
+//        label.clipsToBounds = true
         label.numberOfLines = 1
 
         return label
@@ -424,16 +398,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var underClubGapBox = RoundedBox()
     var underClubSwingDistanceBox = RoundedBox()
     var overClubGapBox = RoundedBox()
-    
-    
-    var aimShotBox: UIView = {
-        let thisView = UIView()
-        thisView.translatesAutoresizingMaskIntoConstraints = true
-        thisView.backgroundColor = .magenta
-        return thisView
-    }()
-    
-    
 
     var SelectedClubLabel: UILabel = {
         let label = UILabel()

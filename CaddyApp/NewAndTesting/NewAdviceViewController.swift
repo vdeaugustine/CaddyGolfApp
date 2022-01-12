@@ -9,6 +9,17 @@ import UIKit
 
 class NewAdviceViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // Distance label
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    // Options Label
+    @IBOutlet weak var optionsLabel: UILabel!
+    
+    
+    
+    
     // MARK: - Where to aim
     @IBOutlet weak var whereToAimShotContainer: UIView!
     @IBOutlet weak var aimShotTips: UILabel!
@@ -22,6 +33,7 @@ class NewAdviceViewController: UIViewController {
     
     
     // MARK: - Where to put ball in stance
+    @IBOutlet weak var ballPlacementContainer: UIView!
     @IBOutlet weak var ballPlacementImageView: UIImageView!
     @IBOutlet weak var ballPlacementLabel: UILabel!
     @IBOutlet weak var ballPlacementTips: UILabel!
@@ -32,6 +44,31 @@ class NewAdviceViewController: UIViewController {
     
     
     func setNecessaryAttributesForProperties() {
+        
+        // ScrollView
+//        scrollView.contentSize = CGSize(width: scrollView.width, height: ballPlacementContainer.bottom + 30)
+        scrollView.isScrollEnabled = true
+        
+        
+        // Distance Label
+        distanceLabel.translatesAutoresizingMaskIntoConstraints = true
+        distanceLabel.text = "Distance to Pin: \(advice.distanceToPin)"
+        distanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
+        distanceLabel.adjustsFontSizeToFitWidth = true
+        distanceLabel.layer.cornerRadius = globalCornerRadius
+        distanceLabel.backgroundColor = .white
+        distanceLabel.textAlignment = .center
+        distanceLabel.numberOfLines = 1
+        
+        
+        // Options Label
+        optionsLabel.translatesAutoresizingMaskIntoConstraints = true
+        optionsLabel.text = "Options"
+        optionsLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 20)
+        optionsLabel.adjustsFontSizeToFitWidth = false
+        optionsLabel.layer.cornerRadius = globalCornerRadius
+        optionsLabel.layer.backgroundColor = UIColor.white.cgColor
+        optionsLabel.numberOfLines = 1
         
         // whereToAimShotContainer
         whereToAimShotContainer.layer.cornerRadius = globalCornerRadius
@@ -52,6 +89,9 @@ class NewAdviceViewController: UIViewController {
         ballPlacementLabel.adjustsFontSizeToFitWidth = true
         moreButtonLabelBallPlacement.titleLabel?.numberOfLines = 1
         moreButtonLabelBallPlacement.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        
+        //
         
         
     }

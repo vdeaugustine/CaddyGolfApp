@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// - List of settings to implement
+///     - What type of swing you want to display by default
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var metersSwitch: UISwitch!
