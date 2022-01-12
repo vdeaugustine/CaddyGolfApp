@@ -122,7 +122,9 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         clubBelowForAdvice = getClubBelow()
         clubAboveForAdvice = getClubAbove()
         print(clubBelowForAdvice, "club for advice")
-        let adviceVC = storyboard?.instantiateViewController(identifier: "AdviceViewController") as! AdviceViewController
+//        let adviceVC = storyboard?.instantiateViewController(identifier: "AdviceViewController") as! AdviceViewController
+        let adviceVC = storyboard?.instantiateViewController(identifier: "NewAdviceViewController") as! NewAdviceViewController
+        
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)
     }
