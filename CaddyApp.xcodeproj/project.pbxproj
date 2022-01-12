@@ -14,6 +14,7 @@
 		9C07054A278757E000496B37 /* AllNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C070549278757E000496B37 /* AllNotesViewController.swift */; };
 		9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07054C278759E300496B37 /* NoteTableViewCell.swift */; };
 		9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */; };
+		9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */ = {isa = PBXBuildFile; fileRef = 9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */; };
 		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
 		9C52A405278A883600E07956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A404278A883600E07956 /* ViewController.swift */; };
 		9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */; };
@@ -63,6 +64,7 @@
 		9C070549278757E000496B37 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
 		9C07054C278759E300496B37 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewControllerTwo.swift; sourceTree = "<group>"; };
+		9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */ = {isa = PBXFileReference; lastKnownFileType = text; path = AdviceVCViewHierarchy; sourceTree = "<group>"; };
 		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
 		9C52A404278A883600E07956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSingleNoteViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
 				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
+				9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */,
 				9C070549278757E000496B37 /* AllNotesViewController.swift */,
 				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
 				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
@@ -303,6 +306,7 @@
 			files = (
 				9CF2AF4C275AD61200458646 /* LaunchScreen.storyboard in Resources */,
 				9CF2AF49275AD61200458646 /* Assets.xcassets in Resources */,
+				9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */,
 				9CF2AF47275AD61000458646 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

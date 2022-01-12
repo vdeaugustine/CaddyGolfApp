@@ -12,6 +12,8 @@ import UIKit
 ///         - scrollview
 ///             - distanceLabelContainerView
 ///                 - distanceLabel
+///             - optionsLabel
+///             - moreInfoButton
 ///             - underClubLargeContainer
 ///                 - underClubNameRect
 ///                     - underClubLabel
@@ -23,8 +25,7 @@ import UIKit
 ///                     - overClubLabel
 ///                 - overClubSwingDistanceBox.mainContainer
 ///                 - overClubGapBox.mainContainer
-///             - optionsLabel
-///             - moreInfoButton
+///
 ///
 ///
 ///
@@ -55,6 +56,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Result", style: .done, target: self, action: #selector(addResultOfStroke))
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -83,6 +85,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overClubLargeContainer.addSubview(overClubGapBox.mainContainer)
         
         scrollView.addSubview(aimShotBox)
+        aimShotBox.addSubview(aimShotHeader)
 
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
@@ -227,6 +230,16 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
         overClubGapBox.setHeaderText("Short".uppercased())
         
+        aimShotBox.frame =  CGRect(x: overClubLargeContainer.frame.minX,
+                                   y: overClubLargeContainer.bottom + 10,
+                                   width: overClubLargeContainer.width,
+                                   height: 150)
+        
+        aimShotHeader.frame =  CGRect(x: 5,
+                                      y: 5,
+                                      width: 150,
+                                      height: 50)
+        
     }
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -353,6 +366,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         moreInfoView.removeFromSuperview()
         print("dismiss tapped")
     }
+    
+    // MARK: - UnderClub
 
     var underClubLargeContainer: UIView = {
         let thisView = UIView()
@@ -379,6 +394,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.textAlignment = .center
         return label
     }()
+    
+    var underClubGapBox = RoundedBox()
+    var underClubSwingDistanceBox = RoundedBox()
+    
+    // MARK: - Over Club
 
     var overClubLargeContainer: UIView = {
         let thisView = UIView()
@@ -421,16 +441,26 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }()
 
     var overClubSwingDistanceBox = RoundedBox()
-    var underClubGapBox = RoundedBox()
-    var underClubSwingDistanceBox = RoundedBox()
     var overClubGapBox = RoundedBox()
     
+    
+    // MARK: - Aim Shot
     
     var aimShotBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
         thisView.backgroundColor = .magenta
         return thisView
+    }()
+    
+    var aimShotHeader: UILabel = {
+        let label = UILabel()
+        label.layer.backgroundColor = UIColor.blue.cgColor
+        label.font = UIFont(name: "Helvetica-Bold", size: 40)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Aim shot"
+        label.translatesAutoresizingMaskIntoConstraints = true
+        return label
     }()
     
     
@@ -491,5 +521,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         default:
             break
         }
+    }
+    
+    @objc func addResultOfStroke() {
+        
     }
 }
