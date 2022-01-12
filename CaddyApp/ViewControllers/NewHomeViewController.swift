@@ -166,7 +166,8 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            return
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
+            navigationController?.pushViewController(vc, animated: true)
         default:
             return
         }

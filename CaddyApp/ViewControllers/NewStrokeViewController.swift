@@ -138,7 +138,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
-                if club.fullDistance < distAsInt {
+                if club.fullDistance <= distAsInt {
                     let thisClubGap = abs(distAsInt - club.fullDistance)
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap
@@ -165,7 +165,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
-                if club.fullDistance > distAsInt {
+                if club.fullDistance >= distAsInt {
                     let thisClubGap = abs(club.fullDistance - distAsInt)
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap

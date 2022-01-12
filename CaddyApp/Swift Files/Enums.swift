@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum settingsKeys: String {
+    case useMeters = "useMeters"
+    case showThisSwingTypeByDefault = "swingTypeDefault"
+}
+
 enum AllClubNames: String {
     case nineIron = "9 Iron"
     case eightIron = "8 Iron"
@@ -152,7 +157,7 @@ enum clubTypesEnum: String, CaseIterable {
     case hybrids = "Hybrid"
 }
 
-enum swingTypeState: String {
+enum swingTypeState: String, CaseIterable {
     case fullSwing = "Full Swing"
     case maxSwing = "Max Swing"
     case threeFourths = "Three Fourths"

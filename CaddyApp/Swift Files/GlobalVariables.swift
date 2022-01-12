@@ -19,3 +19,6 @@ let globalCornerRadius: CGFloat = 8
 // let mastersGreen = UIColor(red: 7, green: 102, blue: 82, alpha: 1.0)
 let myGreen = UIColor(rgb: 0x076652)
 let myYellow = UIColor(rgb: 0xE5D743)
+
+var useMeters = false
+var showThisSwingTypeByDefault: swingTypeState = .fullSwing

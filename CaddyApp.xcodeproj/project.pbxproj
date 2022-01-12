@@ -19,6 +19,8 @@
 		9C52A40F278D526600E07956 /* PagingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A40E278D526600E07956 /* PagingTestViewController.swift */; };
 		9C52A411278D572E00E07956 /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A410278D572E00E07956 /* NewHomeViewController.swift */; };
 		9C52A413278DCAA000E07956 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */; };
+		9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674884278DF22200C74319 /* SettingsTableViewController.swift */; };
+		9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674886278E841F00C74319 /* NewAdviceViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
@@ -65,6 +67,8 @@
 		9C52A40E278D526600E07956 /* PagingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTestViewController.swift; sourceTree = "<group>"; };
 		9C52A410278D572E00E07956 /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
 		9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
+		9C674884278DF22200C74319 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		9C674886278E841F00C74319 /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
 				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
@@ -129,6 +134,7 @@
 				9C52A404278A883600E07956 /* ViewController.swift */,
 				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C52A40E278D526600E07956 /* PagingTestViewController.swift */,
+				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				9C07054A278757E000496B37 /* AllNotesViewController.swift in Sources */,
 				9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */,
 				9C7D80B927687DCC00F49D93 /* AddNewClubViewController.swift in Sources */,
+				9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */,
 				9CF2AF5D275EAC8700458646 /* ClubsFile.swift in Sources */,
 				9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */,
 				9C070548278756DE00496B37 /* HandlingNotesCoreData.swift in Sources */,
@@ -334,6 +341,7 @@
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
+				9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,

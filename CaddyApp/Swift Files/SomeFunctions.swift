@@ -8,6 +8,14 @@
 import Foundation
 import UIKit
 
+func setUpSettings() {
+    let defaults = UserDefaults()
+    useMeters = defaults.bool(forKey: "useMeters")
+//    if let swingTypeDefault = defaults.value(forKey: settingsKeys.showThisSwingTypeByDefault.rawValue) {
+//    }
+        
+}
+
 func currentClubTypeAsEnum() -> AllClubNames {
     switch currentClub.name.capitalized {
     case "9 Iron":
