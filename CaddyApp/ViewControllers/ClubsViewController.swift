@@ -13,6 +13,14 @@ class ClubsViewController: UIViewController {
 
     @IBOutlet var swingTypeToggle: UIButton!
 
+    @IBOutlet weak var swingTypeSegControl: UISegmentedControl!
+    @IBAction func changeSwingType(_ sender: Any) {
+        let generator = UIImpactFeedbackGenerator(style: .soft)
+        generator.impactOccurred(intensity: 1.0)
+        self.clubsTableView.reloadData()
+    }
+    
+    
     var currentSwingTypeState = swingTypeState.threeFourths
 
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +34,7 @@ class ClubsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         clubsTableView.insetsContentViewsToSafeArea = true
         clubsTableView.cellLayoutMarginsFollowReadableWidth = true
-
+        self.setContentScrollView(clubsTableView)
         // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
         // ... although, this might be moved to viewDidLoad() or some other function at a later time. If the mainBag is a global variable that can be edited in other viewControllers, then we might not have to call from UserDefaults, because the mainBag will have already been updated
         do {
@@ -139,8 +147,20 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
         let currentClubNameForCell = currentClubForCell.name.uppercased()
         cell.clubNameLabel.text = currentClubNameForCell
-        cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
-        cell.yardsBox.setHeaderText("Full Swing")
+        switch swingTypeSegControl.selectedSegmentIndex {
+        case 0:
+            cell.yardsBox.setMainText("\(currentClubForCell.threeFourthsDistance)")
+            cell.yardsBox.setHeaderText("3/4 Swing")
+        case 1:
+            cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
+            cell.yardsBox.setHeaderText("Full Swing")
+        case 2:
+            cell.yardsBox.setMainText("\(currentClubForCell.maxDistance)")
+            cell.yardsBox.setHeaderText("Max Swing")
+        default:
+            break
+        }
+        
         cell.notesBox.setHeaderText("Notes")
         cell.notesBox.setMainText(currentClubForCell.mostRecentClubNoteTitle)
         cell.yardsBox.layoutViews()

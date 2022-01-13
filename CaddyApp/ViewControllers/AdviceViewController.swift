@@ -59,7 +59,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Result", style: .done, target: self, action: #selector(addResultOfStroke))
         
-        tabBarController?.tabBar.isOpaque = true
+//        tabBarController?.tabBar.isOpaque = true
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
     }
 
