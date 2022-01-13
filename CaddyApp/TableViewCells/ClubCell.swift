@@ -61,6 +61,7 @@ class ClubCell: UITableViewCell {
         notesBox.layoutViews()
         notesBox.headerLabel.adjustsFontSizeToFitWidth = false
         notesBox.mainTextLabel.adjustsFontSizeToFitWidth = false
+        notesBox.mainTextLabel.minimumScaleFactor = 0.4
 
 //        let notesTransparentButton = TransparentButton(superView: notesBoxContainer)
 //        let yardageTransparentButton = TransparentButton(superView: yardageBoxContainer)

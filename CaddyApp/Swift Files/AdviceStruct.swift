@@ -17,6 +17,7 @@ struct Advice {
     var closestClubAbove: ClubObject = ClubObject(name: "", type: "", fullDistance: 0, threeFourthsDistance: 0, maxDistance: 0, averageFullDistance: 0, previousFullHits: "")
     var secondclosestClubDistance: Int = 0
     var secondClosestClubGap: Int = 0
+    var flagColor: String = "Red"
 
     var distanceToPin = 0
 }

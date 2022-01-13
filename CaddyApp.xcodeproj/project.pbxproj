@@ -29,6 +29,8 @@
 		9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStruct.swift */; };
 		9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A843276D8813005BAA31 /* ClubObject.swift */; };
 		9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A847276EF2B4005BAA31 /* PreviousHits.swift */; };
+		9C74246F278F7ADF000E824A /* LayingOutViewsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74246E278F7ADF000E824A /* LayingOutViewsFunctions.swift */; };
+		9C742471278F9793000E824A /* RulesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C742470278F9793000E824A /* RulesTableViewController.swift */; };
 		9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B427671A0D00F49D93 /* UserBag.swift */; };
 		9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B62767CA4000F49D93 /* SaveBag.swift */; };
 		9C7D80B927687DCC00F49D93 /* AddNewClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */; };
@@ -79,6 +81,8 @@
 		9C72A841276D7B72005BAA31 /* AdviceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStruct.swift; sourceTree = "<group>"; };
 		9C72A843276D8813005BAA31 /* ClubObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubObject.swift; sourceTree = "<group>"; };
 		9C72A847276EF2B4005BAA31 /* PreviousHits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousHits.swift; sourceTree = "<group>"; };
+		9C74246E278F7ADF000E824A /* LayingOutViewsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayingOutViewsFunctions.swift; sourceTree = "<group>"; };
+		9C742470278F9793000E824A /* RulesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesTableViewController.swift; sourceTree = "<group>"; };
 		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
 		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
 				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
+				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				9C7D80B427671A0D00F49D93 /* UserBag.swift */,
 				9C72A847276EF2B4005BAA31 /* PreviousHits.swift */,
 				9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */,
+				9C74246E278F7ADF000E824A /* LayingOutViewsFunctions.swift */,
 			);
 			path = "Swift Files";
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */,
 				9C070548278756DE00496B37 /* HandlingNotesCoreData.swift in Sources */,
 				9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */,
+				9C742471278F9793000E824A /* RulesTableViewController.swift in Sources */,
 				9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */,
 				9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */,
 				9CF2AF5A275DE5F900458646 /* SomeFunctions.swift in Sources */,
@@ -349,6 +356,7 @@
 				9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */,
 				9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */,
 				9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */,
+				9C74246F278F7ADF000E824A /* LayingOutViewsFunctions.swift in Sources */,
 				9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,

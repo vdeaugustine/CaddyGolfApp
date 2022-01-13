@@ -1,30 +1,19 @@
 //
-//  SettingsTableViewController.swift
+//  RulesTableViewController.swift
 //  CaddyApp
 //
-//  Created by Vincent DeAugustine on 1/11/22.
+//  Created by Vincent DeAugustine on 1/12/22.
 //
 
 import UIKit
 
-/// - List of settings to implement
-///     - What type of swing you want to display by default
-class SettingsTableViewController: UITableViewController {
-
-    @IBOutlet weak var metersSwitch: UISwitch!
+class RulesTableViewController: UITableViewController {
     
+    let rulesList = ["Hazards", "Stroke Penalties", "Mulligans", "Free Relief"]
 
-    @IBAction func metersChanged(_ sender: Any) {
-        useMeters = metersSwitch.isOn
-        let defaults = UserDefaults()
-        defaults.setValue(useMeters, forKey: "useMeters")
-        print(useMeters)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.metersSwitch.isOn = useMeters
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,37 +30,19 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return rulesList.count
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Defaults"
-        default:
-            return ""
-        }
-    }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("was tapped at", indexPath)
-        if indexPath.row == 1 {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "RulesTableViewController") as! RulesTableViewController
-            vc.title = "Rules and Information"
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rulesCell", for: indexPath)
 
+        cell.textLabel!.text = rulesList[indexPath.row]
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

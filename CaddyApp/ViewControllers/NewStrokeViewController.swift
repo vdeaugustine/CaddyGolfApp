@@ -15,8 +15,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
-    @IBOutlet var shotType: UISegmentedControl!
-    @IBOutlet var shotTypeLabel: UILabel!
+    @IBOutlet var flagColorSwgControl: UISegmentedControl!
+    @IBOutlet var flagColorLabel: UILabel!
     @IBOutlet var lieTypeLabel: UILabel!
     @IBOutlet var distanceToPinLabel: UILabel!
 
@@ -96,21 +96,22 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @IBAction func shotTypeSelected(_ sender: UISegmentedControl) {
+    @IBAction func flagColorChanged(_ sender: UISegmentedControl) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
-        switch shotType.selectedSegmentIndex {
+        switch flagColorSwgControl.selectedSegmentIndex {
         case 0:
-            print("Tee Shot Selected")
+            print("Red Selected")
+            advice.flagColor = "Red"
 
         case 1:
-            print("Approach Shot Selected")
+            print("White Selected")
+            advice.flagColor = "White"
 
         case 2:
-            print("Pitch Shot Selected")
+            print("Blue Selected")
+            advice.flagColor = "Blue"
 
-        case 3:
-            print("Chip Shot Selected")
         default:
             break
         }
@@ -181,5 +182,29 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         advice.clubAboveGap = shortestClubGap
         advice.distanceToPin = distAsInt
         return closestClub
+    }
+    
+    
+    @IBAction func tappedMoreInfo() {
+        let alert = UIAlertController(title: "Flag Colors",
+                                      message: "Flag colors indicate the pin placement on the green.\n\nA red flag means the pin is in the front of the green.\n\nA white flag means the pin is in the middle of the green.\n\nA blue flag means the pin is in the back of the green",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style {
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+            @unknown default:
+                print("whateverIDC")
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

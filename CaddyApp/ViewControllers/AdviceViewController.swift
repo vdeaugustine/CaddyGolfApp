@@ -25,6 +25,7 @@ import UIKit
 ///                     - overClubLabel
 ///                 - overClubSwingDistanceBox.mainContainer
 ///                 - overClubGapBox.mainContainer
+///             
 ///
 ///
 ///
@@ -57,6 +58,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Result", style: .done, target: self, action: #selector(addResultOfStroke))
+        
+        tabBarController?.tabBar.isOpaque = true
+        view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -86,7 +90,13 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         scrollView.addSubview(aimShotBox)
         aimShotBox.addSubview(aimShotHeader)
-
+        aimShotBox.addSubview(aimShotTips)
+        aimShotBox.addSubview(colorOfFlagImage)
+        
+        
+        scrollView.addSubview(hillBox)
+        hillBox.addSubview(hillHeaderLabel)
+        hillBox.addSubview(hillTipsLabel)
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
 
@@ -95,8 +105,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func makeFramesForAllViews() {
         
-        let farBottomItemInScrollView = aimShotBox
+        let pad: CGFloat = 5
+        
+        let farBottomItemInScrollView = hillBox
         let padFromNavBarView = UIView()
+        let largeBoxSize = CGSize(width: scrollView.width - pad * 2, height: 250)
+        let clubContainers = CGSize(width: scrollView.width - pad * 2, height: 110)
 
         if let navController = navigationController {
             view.addSubview(padFromNavBarView)
@@ -107,9 +121,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("nav controller is not there")
         }
         
-        let thisHeight = farBottomItemInScrollView.bottom + 20
+        let thisHeight = farBottomItemInScrollView.bottom + 200
         scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
+        self.setContentScrollView(scrollView)
     
         let distanceWidth = scrollView.width - (2 * 20)
         let distanceLabelContainerView: UIView = {
@@ -117,7 +132,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 y: 20,
                                                 width: scrollView.width - 40,
                                                 height: 50))
-            someView.backgroundColor = .white
+            someView.backgroundColor = .clear
             someView.layer.cornerRadius = globalCornerRadius
             return someView
         }()
@@ -157,11 +172,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         moreInfoButton.center = CGPoint(x: moreInfoButton.frame.midX, y: optionsLabel.frame.midY)
 
         underClubLargeContainer.frame = CGRect(x: 0,
-                                               y: optionsLabel.bottom + 5,
-                                               width: scrollView.frame.width,
-                                               height: 110)
-        underClubNameRect.frame = CGRect(x: 5,
-                                         y: 5,
+                                               y: optionsLabel.bottom + pad,
+                                               width: clubContainers.width,
+                                               height: clubContainers.height)
+        underClubNameRect.frame = CGRect(x: pad,
+                                         y: pad,
                                          width: underClubLargeContainer.width / 3,
                                          height: underClubLargeContainer.height - 10)
 
@@ -170,21 +185,21 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                       width: underClubNameRect.width - 20,
                                       height: underClubNameRect.height)
         NSLayoutConstraint.activate([
-            underClubLabel.leadingAnchor.constraint(equalTo: underClubNameRect.leadingAnchor, constant: 5),
-            underClubLabel.trailingAnchor.constraint(equalTo: underClubNameRect.trailingAnchor, constant: -5),
+            underClubLabel.leadingAnchor.constraint(equalTo: underClubNameRect.leadingAnchor, constant: pad),
+            underClubLabel.trailingAnchor.constraint(equalTo: underClubNameRect.trailingAnchor, constant: -pad),
             underClubLabel.centerYAnchor.constraint(equalTo: underClubNameRect.centerYAnchor),
-            overClubLabel.leadingAnchor.constraint(equalTo: overClubNameRect.leadingAnchor, constant: 5),
-            overClubLabel.trailingAnchor.constraint(equalTo: overClubNameRect.trailingAnchor, constant: -5),
+            overClubLabel.leadingAnchor.constraint(equalTo: overClubNameRect.leadingAnchor, constant: pad),
+            overClubLabel.trailingAnchor.constraint(equalTo: overClubNameRect.trailingAnchor, constant: -pad),
             overClubLabel.centerYAnchor.constraint(equalTo: overClubNameRect.centerYAnchor),
 
         ])
 
         overClubLargeContainer.frame = CGRect(x: 0,
-                                              y: underClubLargeContainer.bottom + 5,
-                                              width: scrollView.frame.width,
-                                              height: 110)
-        overClubNameRect.frame = CGRect(x: 5,
-                                        y: 5,
+                                              y: underClubLargeContainer.bottom + pad,
+                                              width: clubContainers.width,
+                                              height: clubContainers.height)
+        overClubNameRect.frame = CGRect(x: pad,
+                                        y: pad,
                                         width: overClubLargeContainer.width / 3,
                                         height: overClubLargeContainer.height - 10)
 
@@ -193,7 +208,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                      width: overClubNameRect.width,
                                      height: overClubNameRect.height)
 
-        let roomForUnderBoxes = underClubLargeContainer.width - underClubNameRect.width - 5
+        let roomForUnderBoxes = underClubLargeContainer.width - underClubNameRect.width - pad
 
         underClubSwingDistanceBox.setupFrames(with: CGRect(x: underClubNameRect.right + 10,
                                                            y: underClubNameRect.top,
@@ -204,7 +219,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
         underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
 
-        underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + 5,
+        underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + pad,
                                                  y: underClubSwingDistanceBox.mainContainer.top,
                                                  width: underClubSwingDistanceBox.mainContainer.width,
                                                  height: underClubSwingDistanceBox.mainContainer.height))
@@ -212,7 +227,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
         underClubGapBox.setHeaderText("Long".uppercased())
 
-        let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - 5
+        let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - pad
 
         overClubSwingDistanceBox.setupFrames(with: CGRect(x: overClubNameRect.right + 10,
                                                           y: overClubNameRect.top,
@@ -222,7 +237,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overClubSwingDistanceBox.setMainText("\(advice.closestClubAbove.fullDistance)")
         overClubSwingDistanceBox.setHeaderText("full swing".uppercased())
 
-        overClubGapBox.setupFrames(with: CGRect(x: overClubSwingDistanceBox.mainContainer.right + 5,
+        overClubGapBox.setupFrames(with: CGRect(x: overClubSwingDistanceBox.mainContainer.right + pad,
                                                 y: overClubSwingDistanceBox.mainContainer.top,
                                                 width: overClubSwingDistanceBox.mainContainer.width,
                                                 height: overClubSwingDistanceBox.mainContainer.height))
@@ -230,15 +245,41 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
         overClubGapBox.setHeaderText("Short".uppercased())
         
-        aimShotBox.frame =  CGRect(x: overClubLargeContainer.frame.minX,
+        aimShotBox.frame =  CGRect(x: pad,
                                    y: overClubLargeContainer.bottom + 10,
-                                   width: overClubLargeContainer.width,
-                                   height: 150)
+                                   width: largeBoxSize.width,
+                                   height: largeBoxSize.height)
         
-        aimShotHeader.frame =  CGRect(x: 5,
-                                      y: 5,
+        aimShotHeader.frame =  CGRect(x: pad,
+                                      y: pad,
                                       width: 150,
                                       height: 50)
+        
+        aimShotTips.frame =  CGRect(x: pad,
+                                    y: aimShotHeader.bottom + pad,
+                                    width: aimShotBox.width - pad - colorOfFlagImage.frame.width - pad - pad,
+                                    height: aimShotBox.height - aimShotHeader.height - pad - pad)
+        
+        
+        colorOfFlagImage.frame =  CGRect(x: aimShotBox.right - pad - colorOfFlagImage.frame.size.width,
+                                         y: pad,
+                                         width: colorOfFlagImage.frame.size.width,
+                                         height: colorOfFlagImage.frame.size.height)
+        
+        hillBox.frame =  CGRect(x: aimShotBox.left,
+                                y: aimShotBox.bottom + pad,
+                                width: largeBoxSize.width,
+                                height: largeBoxSize.height)
+        
+        hillHeaderLabel.frame =  CGRect(x: pad,
+                                        y: pad,
+                                        width: (hillBox.width / 2) - pad*2,
+                                        height: 50)
+        
+        hillTipsLabel.frame =  CGRect(x: pad,
+                                    y: hillHeaderLabel.bottom + pad,
+                                    width: aimShotBox.width - pad - colorOfFlagImage.frame.width - pad - pad,
+                                    height: hillBox.height - hillHeaderLabel.height - pad - pad)
         
     }
     var scrollView: UIScrollView = {
@@ -255,7 +296,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
-        label.backgroundColor = .white
+//        label.backgroundColor = .white
+        label.layer.backgroundColor = UIColor.clear.cgColor
+        label.backgroundColor = .clear
         label.textAlignment = .center
         label.numberOfLines = 1
 
@@ -272,7 +315,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
-        label.layer.backgroundColor = UIColor.white.cgColor
+//        label.layer.backgroundColor = UIColor.white.cgColor
 //        label.clipsToBounds = true
         label.numberOfLines = 0
 
@@ -290,7 +333,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let moreInfoView: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-        thisView.backgroundColor = .lightGray
+//        thisView.backgroundColor = .lightGray
 
         return thisView
     }()
@@ -378,7 +421,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var underClubNameRect: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-        thisView.backgroundColor = .white
+//        thisView.backgroundColor = .white
         thisView.layer.cornerRadius = globalCornerRadius
         thisView.dropShadow()
         return thisView
@@ -411,7 +454,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
         thisView.layer.cornerRadius = globalCornerRadius
-        thisView.backgroundColor = .white
+//        thisView.backgroundColor = .white
         thisView.dropShadow()
         return thisView
     }()
@@ -449,19 +492,93 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var aimShotBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-        thisView.backgroundColor = .magenta
+        thisView.layer.cornerRadius = globalCornerRadius
+//        thisView.backgroundColor = .magenta
+        thisView.backgroundColor = .white
+        thisView.dropShadow()
         return thisView
     }()
     
     var aimShotHeader: UILabel = {
         let label = UILabel()
-        label.layer.backgroundColor = UIColor.blue.cgColor
+//        label.layer.backgroundColor = UIColor.blue.cgColor
         label.font = UIFont(name: "Helvetica-Bold", size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.text = "Aim shot"
         label.translatesAutoresizingMaskIntoConstraints = true
         return label
     }()
+    
+    var aimShotTips: UILabel = {
+        let label = UILabel()
+//        label.layer.backgroundColor = UIColor.green.cgColor
+        label.font = UIFont(name: "Helvetica-Bold", size: 18)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "This is temp text"
+        label.translatesAutoresizingMaskIntoConstraints = true
+        
+        return label
+    }()
+    
+    var colorOfFlagImage: UIImageView = {
+       let image = UIImageView()
+        switch advice.flagColor {
+        case "Red":
+            image.image = UIImage(named: "basicRedFlag")
+        case "White":
+            image.image = UIImage(named: "basicWhiteFlag")
+        case "Blue":
+            image.image = UIImage(named: "basicBlueFlag")
+        default:
+            print("error, not the right flag color")
+        }
+        
+        image.translatesAutoresizingMaskIntoConstraints = true
+        image.frame.size = CGSize(width: 192, height: 108)
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
+    
+    
+    
+    // MARK: - Hill stuff
+    
+    var hillBox: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+//        thisView.backgroundColor = .orange
+        thisView.layer.cornerRadius = globalCornerRadius
+//        thisView.backgroundColor = .magenta
+        thisView.backgroundColor = .white
+        thisView.dropShadow()
+        return thisView
+    }()
+    
+    var hillHeaderLabel: UILabel = {
+        let label = UILabel()
+//        label.layer.backgroundColor = UIColor.blue.cgColor
+        label.font = UIFont(name: "Helvetica-Bold", size: 40)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Hill Slope"
+        label.translatesAutoresizingMaskIntoConstraints = true
+        
+        return label
+    }()
+    
+    var hillTipsLabel: UILabel = {
+        let label = UILabel()
+//        label.layer.backgroundColor = myGreen.cgColor
+        label.font = UIFont(name: "Helvetica-Bold", size: 18)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "You are on a slope.\nThese are the tips for the slope type"
+        label.translatesAutoresizingMaskIntoConstraints = true
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    
+    // MARK: - Stuff from old version
     
     
 
@@ -526,4 +643,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func addResultOfStroke() {
         
     }
+    
+    
 }

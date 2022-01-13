@@ -8,6 +8,17 @@
 import Foundation
 import UIKit
 
+//func putThisView(thisView: UIView, inThisView containerView: UIView, leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, topPadding: CGFloat = 0, bottomPadding: CGFloat = 0, aboveNeightbor: UIView?, leftNeighbor: UIView?, rightNeighbor: UIView?, belowNeightbor: UIView?) {
+//
+//    containerView.addSubview(thisView)
+//
+//
+//    thisView.frame =  CGRect(x: leftNeighbor?.right ?? 0 + leftPadding,
+//                             y: aboveNeightbor?.bottom ?? 0 + topPadding,
+//                             width: containerView.width - leftPadding - rightPadding - leftNeighbor?.width ?? 0 - rightNeighbor?.width ?? 0,
+//                             height: containerView.height - topPadding - bottomPadding - aboveNeightbor?.height ?? 0 - belowNeightbor?.height ?? 0)
+
+
 func setUpSettings() {
     let defaults = UserDefaults()
     useMeters = defaults.bool(forKey: "useMeters")
