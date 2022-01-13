@@ -21,3 +21,9 @@ struct Advice {
 
     var distanceToPin = 0
 }
+
+struct ClosestClubBelow {
+    var gap = 999
+    var clubName = ""
+    var swingType: swingTypeState
+}

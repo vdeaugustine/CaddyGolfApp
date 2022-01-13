@@ -26,7 +26,7 @@
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
 		9C6F3AA02784280200CC9129 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9F2784280200CC9129 /* HomeViewController.swift */; };
 		9C72A840276D736C005BAA31 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A83F276D736C005BAA31 /* Enums.swift */; };
-		9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStruct.swift */; };
+		9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A841276D7B72005BAA31 /* AdviceStructs.swift */; };
 		9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A843276D8813005BAA31 /* ClubObject.swift */; };
 		9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C72A847276EF2B4005BAA31 /* PreviousHits.swift */; };
 		9C74246F278F7ADF000E824A /* LayingOutViewsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C74246E278F7ADF000E824A /* LayingOutViewsFunctions.swift */; };
@@ -78,7 +78,7 @@
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
 		9C6F3A9F2784280200CC9129 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9C72A83F276D736C005BAA31 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		9C72A841276D7B72005BAA31 /* AdviceStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStruct.swift; sourceTree = "<group>"; };
+		9C72A841276D7B72005BAA31 /* AdviceStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceStructs.swift; sourceTree = "<group>"; };
 		9C72A843276D8813005BAA31 /* ClubObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubObject.swift; sourceTree = "<group>"; };
 		9C72A847276EF2B4005BAA31 /* PreviousHits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousHits.swift; sourceTree = "<group>"; };
 		9C74246E278F7ADF000E824A /* LayingOutViewsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayingOutViewsFunctions.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				9C7D80B62767CA4000F49D93 /* SaveBag.swift */,
 				9CF2AF59275DE5F900458646 /* SomeFunctions.swift */,
 				9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */,
-				9C72A841276D7B72005BAA31 /* AdviceStruct.swift */,
+				9C72A841276D7B72005BAA31 /* AdviceStructs.swift */,
 				9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */,
 				9CF2AF5C275EAC8700458646 /* ClubsFile.swift */,
 				9C72A843276D8813005BAA31 /* ClubObject.swift */,
@@ -367,7 +367,7 @@
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
 				9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
-				9C72A842276D7B72005BAA31 /* AdviceStruct.swift in Sources */,
+				9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

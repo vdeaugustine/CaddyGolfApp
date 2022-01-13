@@ -216,8 +216,20 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                            height: underClubNameRect.height))
 
         underClubSwingDistanceBox.layoutViews()
-        underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
-        underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
+        
+//        underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
+        switch closestClubBelow.swingType {
+            
+        case .fullSwing:
+            underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
+            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
+        case .maxSwing:
+            underClubSwingDistanceBox.setHeaderText("Max Swing".uppercased())
+            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.maxDistance)")
+        case .threeFourths:
+            underClubSwingDistanceBox.setHeaderText("3/4 Swing".uppercased())
+            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.threeFourthsDistance)")
+        }
 
         underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + pad,
                                                  y: underClubSwingDistanceBox.mainContainer.top,
@@ -225,7 +237,16 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
         underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
-        underClubGapBox.setHeaderText("Long".uppercased())
+        switch closestClubBelow.swingType {
+            
+        case .fullSwing:
+            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
+        case .maxSwing:
+            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.maxDistance)")
+        case .threeFourths:
+            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance)")
+        }
+        underClubGapBox.setHeaderText("gap".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - pad
 
@@ -243,7 +264,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 height: overClubSwingDistanceBox.mainContainer.height))
         overClubGapBox.layoutViews()
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
-        overClubGapBox.setHeaderText("Short".uppercased())
+        overClubGapBox.setHeaderText("gap".uppercased())
         
         aimShotBox.frame =  CGRect(x: pad,
                                    y: overClubLargeContainer.bottom + 10,

@@ -141,7 +141,23 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomePageTableViewCell
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
 
-        cell.textLabel!.text = tableViewModel[indexPath.row]
+//        cell.textLabel!.text = tableViewModel[indexPath.row]
+        
+        if indexPath.row == 0 {
+//            cell.leftIcon = UIImageView(image: UIImage(named: "notebookIcon"))
+//            cell.leftIcon = UIImageView(image: UIImage(named: "basicRedFlag"))
+            cell.leftIcon.image = UIImage(systemName: "note.text")?.withTintColor(.green)
+        }
+        if indexPath.row == 1 {
+            cell.leftIcon.image = UIImage(systemName: "list.dash")
+        }
+        
+        if indexPath.row == 2 {
+            cell.leftIcon.image = UIImage(systemName: "gearshape.2")
+        }
+        cell.mainLabel.text = tableViewModel[indexPath.row]
+
+        
         return cell
     }
 

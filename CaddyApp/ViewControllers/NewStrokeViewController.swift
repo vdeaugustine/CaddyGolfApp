@@ -10,6 +10,7 @@ import UIKit
 var clubBelowForAdvice = currentClub
 var clubAboveForAdvice = currentClub
 var advice = Advice()
+var closestClubBelow = ClosestClubBelow(gap: 999, clubName: currentClub.name, swingType: .fullSwing)
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var distanceField: UITextField!
@@ -38,7 +39,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
         distanceField.translatesAutoresizingMaskIntoConstraints = false
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +125,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         print(clubBelowForAdvice, "club for advice")
         let adviceVC = storyboard?.instantiateViewController(identifier: "AdviceViewController") as! AdviceViewController
 //        let adviceVC = storyboard?.instantiateViewController(identifier: "NewAdviceViewController") as! NewAdviceViewController
-        
+
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)
     }
@@ -146,6 +146,23 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap
                         closestClub = club
+                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .fullSwing)
+                    }
+                }
+                if club.threeFourthsDistance <= distAsInt {
+                    let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
+                    if thisClubGap < shortestClubGap {
+                        shortestClubGap = thisClubGap
+                        closestClub = club
+                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
+                    }
+                }
+                if club.maxDistance <= distAsInt {
+                    let thisClubGap = abs(distAsInt - club.maxDistance)
+                    if thisClubGap < shortestClubGap {
+                        shortestClubGap = thisClubGap
+                        closestClub = club
+                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
                     }
                 }
             }
@@ -183,24 +200,23 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         advice.distanceToPin = distAsInt
         return closestClub
     }
-    
-    
+
     @IBAction func tappedMoreInfo() {
         let alert = UIAlertController(title: "Flag Colors",
                                       message: "Flag colors indicate the pin placement on the green.\n\nA red flag means the pin is in the front of the green.\n\nA white flag means the pin is in the middle of the green.\n\nA blue flag means the pin is in the back of the green",
                                       preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
             case .default:
                 print("default")
-                
+
             case .cancel:
                 print("cancel")
-                
+
             case .destructive:
                 print("destructive")
-                
+
             @unknown default:
                 print("whateverIDC")
             }
