@@ -146,7 +146,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
 //            cell.leftIcon = UIImageView(image: UIImage(named: "notebookIcon"))
 //            cell.leftIcon = UIImageView(image: UIImage(named: "basicRedFlag"))
-            cell.leftIcon.image = UIImage(systemName: "note.text")?.withTintColor(.green)
+            cell.leftIcon.image = UIImage(systemName: "note.text")
         }
         if indexPath.row == 1 {
             cell.leftIcon.image = UIImage(systemName: "list.dash")

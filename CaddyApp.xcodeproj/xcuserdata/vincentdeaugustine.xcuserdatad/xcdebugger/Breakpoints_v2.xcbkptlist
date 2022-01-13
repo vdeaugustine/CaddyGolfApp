@@ -176,8 +176,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "viewWillDisappear(_:)"
-            landmarkType = "7">
+            landmarkName = "SwingsViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "AEDADFD5-A533-432F-97F7-35F357CE1520 - c97adbffc802634a"
@@ -224,7 +224,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "399"
             endingLineNumber = "399"
-            landmarkName = "fixedTapped()"
+            landmarkName = "doAddSwingAlert()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

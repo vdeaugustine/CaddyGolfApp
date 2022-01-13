@@ -9,6 +9,8 @@ import UIKit
 
 /// - List of settings to implement
 ///     - What type of swing you want to display by default
+///     - If you want to see notes or other swing type on clubsviewcontroller
+///     - Use manual yardage or average yardage from swings 
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var metersSwitch: UISwitch!
