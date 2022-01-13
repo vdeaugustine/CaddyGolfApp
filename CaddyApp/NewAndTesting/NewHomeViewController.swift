@@ -30,6 +30,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         pageControl.backgroundStyle = .prominent
         tableView.delegate = self
         tableView.dataSource = self
+        scrollView.bounces = false
         
         
         for frame in pageFrames {
@@ -63,8 +64,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             thisLabel.textAlignment = .center
             thisLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
             thisLabel.textColor = .white
-            thisLabel.layer.cornerRadius = globalCornerRadius
             thisLabel.layer.backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.4).cgColor
+            
             
             
 //            thisLabel.backgroundColor = colors[index]
@@ -92,17 +93,22 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
         print("pageControlNumber", pageControl.currentPage)
-        
+        let thisPageFrame = pageFrames[Int(pageNumber)]
+//        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
+        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
+//        scrollView.contentOffset = CGPoint(x: thisPageFrame.origin.x, y: 0)
         
     }
+    
+    
+    
+    
+    
     
     func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
         print("did change")
     }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        print("Did zoom")
-    }
+
     
     
     
@@ -112,6 +118,13 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         generator.impactOccurred(intensity: 1.0)
         currentIndex = pageControl.currentPage
         scrollView.scrollRectToVisible(pageFrames[currentIndex], animated: true)
+        print("pages frames")
+        for page in pageFrames {
+            print(page)
+        }
+        
+        print("scrollview rect")
+        print(scrollView.contentOffset)
         print(currentIndex)
     }
 
