@@ -140,6 +140,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         let distAsInt = Int("\(enteredDistance)")!
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
+            
+            
             for club in clubType {
                 if club.fullDistance <= distAsInt {
                     let thisClubGap = abs(distAsInt - club.fullDistance)
@@ -149,22 +151,27 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                         closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .fullSwing)
                     }
                 }
-                if club.threeFourthsDistance <= distAsInt {
-                    let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
-                    if thisClubGap < shortestClubGap {
-                        shortestClubGap = thisClubGap
-                        closestClub = club
-                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
+                
+                if useSwingTypes {
+                    if club.threeFourthsDistance <= distAsInt {
+                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
+                        if thisClubGap < shortestClubGap {
+                            shortestClubGap = thisClubGap
+                            closestClub = club
+                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
+                        }
+                    }
+                    if club.maxDistance <= distAsInt {
+                        let thisClubGap = abs(distAsInt - club.maxDistance)
+                        if thisClubGap < shortestClubGap {
+                            shortestClubGap = thisClubGap
+                            closestClub = club
+                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
+                        }
                     }
                 }
-                if club.maxDistance <= distAsInt {
-                    let thisClubGap = abs(distAsInt - club.maxDistance)
-                    if thisClubGap < shortestClubGap {
-                        shortestClubGap = thisClubGap
-                        closestClub = club
-                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
-                    }
-                }
+                
+                
             }
         }
         advice.closestClubBelow = closestClub
@@ -190,6 +197,25 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap
                         closestClub = club
+                    }
+                }
+                
+                if useSwingTypes {
+                    if club.threeFourthsDistance >= distAsInt {
+                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
+                        if thisClubGap < shortestClubGap {
+                            shortestClubGap = thisClubGap
+                            closestClub = club
+                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
+                        }
+                    }
+                    if club.maxDistance >= distAsInt {
+                        let thisClubGap = abs(distAsInt - club.maxDistance)
+                        if thisClubGap < shortestClubGap {
+                            shortestClubGap = thisClubGap
+                            closestClub = club
+                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
+                        }
                     }
                 }
             }

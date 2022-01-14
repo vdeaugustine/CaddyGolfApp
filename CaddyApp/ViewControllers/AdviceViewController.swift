@@ -224,13 +224,13 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         case .fullSwing:
             underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
+            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.fullDistance))")
         case .maxSwing:
             underClubSwingDistanceBox.setHeaderText("Max Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.maxDistance)")
+            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.maxDistance))")
         case .threeFourths:
             underClubSwingDistanceBox.setHeaderText("3/4 Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.threeFourthsDistance)")
+            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.threeFourthsDistance))")
         }
 
         underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + pad,
@@ -238,15 +238,15 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                  width: underClubSwingDistanceBox.mainContainer.width,
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
-        underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
+//        underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
         switch closestClubBelow.swingType {
             
         case .fullSwing:
-            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
+            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
         case .maxSwing:
-            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.maxDistance)")
+            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.maxDistance))")
         case .threeFourths:
-            underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance)")
+            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance))")
         }
         underClubGapBox.setHeaderText("gap".uppercased())
 

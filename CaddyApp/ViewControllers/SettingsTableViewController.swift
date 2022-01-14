@@ -14,6 +14,7 @@ import UIKit
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var metersSwitch: UISwitch!
+    @IBOutlet weak var swingTypeSwitch: UISwitch!
     
 
     @IBAction func metersChanged(_ sender: Any) {
@@ -21,6 +22,13 @@ class SettingsTableViewController: UITableViewController {
         let defaults = UserDefaults()
         defaults.setValue(useMeters, forKey: "useMeters")
         print(useMeters)
+    }
+    
+    @IBAction func swingTypesChanged(_ sender: Any) {
+        useSwingTypes = swingTypeSwitch.isOn
+        let defaults = UserDefaults()
+        defaults.setValue(useMeters, forKey: "useSwingTypes")
+        print(useSwingTypes)
     }
     
     override func viewDidLoad() {
@@ -38,18 +46,27 @@ class SettingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        switch section {
+        case 0:
+            return 4
+        case 1:
+            return 3
+        default:
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Defaults"
+        case 1:
+            return "Feeback"
         default:
             return ""
         }

@@ -149,13 +149,13 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.clubNameLabel.text = currentClubNameForCell
         switch swingTypeSegControl.selectedSegmentIndex {
         case 0:
-            cell.yardsBox.setMainText("\(currentClubForCell.threeFourthsDistance)")
+            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.threeFourthsDistance))")
             cell.yardsBox.setHeaderText("3/4 Swing")
         case 1:
-            cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
+            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.fullDistance))")
             cell.yardsBox.setHeaderText("Full Swing")
         case 2:
-            cell.yardsBox.setMainText("\(currentClubForCell.maxDistance)")
+            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.maxDistance))")
             cell.yardsBox.setHeaderText("Max Swing")
         default:
             break

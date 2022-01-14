@@ -102,7 +102,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
         print("pageControlNumber", pageControl.currentPage)
-        let thisPageFrame = pageFrames[Int(pageNumber)]
+//        let thisPageFrame = pageFrames[Int(pageNumber)]
 //        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
 //        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
 //        scrollView.contentOffset = CGPoint(x: thisPageFrame.origin.x, y: 0)

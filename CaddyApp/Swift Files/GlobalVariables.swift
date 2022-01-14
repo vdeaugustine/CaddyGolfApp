@@ -21,4 +21,5 @@ let myGreen = UIColor(rgb: 0x076652)
 let myYellow = UIColor(rgb: 0xE5D743)
 
 var useMeters = false
+var useSwingTypes = false
 var showThisSwingTypeByDefault: swingTypeState = .fullSwing

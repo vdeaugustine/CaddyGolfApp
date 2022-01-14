@@ -5,10 +5,11 @@
 //  Created by Vincent DeAugustine on 12/5/21.
 //
 
+import CloudKit
 import Foundation
 import UIKit
 
-//func putThisView(thisView: UIView, inThisView containerView: UIView, leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, topPadding: CGFloat = 0, bottomPadding: CGFloat = 0, aboveNeightbor: UIView?, leftNeighbor: UIView?, rightNeighbor: UIView?, belowNeightbor: UIView?) {
+// func putThisView(thisView: UIView, inThisView containerView: UIView, leftPadding: CGFloat = 0, rightPadding: CGFloat = 0, topPadding: CGFloat = 0, bottomPadding: CGFloat = 0, aboveNeightbor: UIView?, leftNeighbor: UIView?, rightNeighbor: UIView?, belowNeightbor: UIView?) {
 //
 //    containerView.addSubview(thisView)
 //
@@ -18,13 +19,21 @@ import UIKit
 //                             width: containerView.width - leftPadding - rightPadding - leftNeighbor?.width ?? 0 - rightNeighbor?.width ?? 0,
 //                             height: containerView.height - topPadding - bottomPadding - aboveNeightbor?.height ?? 0 - belowNeightbor?.height ?? 0)
 
+func getMetersOrYards(_ passedYards: Int) -> Int {
+    if useMeters {
+        let multFactor = 1.09361
+        return Int(round(multFactor * Double(passedYards)))
+
+    } else {
+        return passedYards
+    }
+}
 
 func setUpSettings() {
     let defaults = UserDefaults()
     useMeters = defaults.bool(forKey: "useMeters")
 //    if let swingTypeDefault = defaults.value(forKey: settingsKeys.showThisSwingTypeByDefault.rawValue) {
 //    }
-        
 }
 
 func currentClubTypeAsEnum() -> AllClubNames {
