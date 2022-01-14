@@ -30,7 +30,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         pageControl.backgroundStyle = .prominent
         tableView.delegate = self
         tableView.dataSource = self
-        scrollView.bounces = false
+//        scrollView.bounces = false
         
         
         for frame in pageFrames {
@@ -39,6 +39,15 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             print("scroll content")
         }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+//        pageControl.currentPage = Int(pageNumber)
+//        print("pageControlNumber", pageControl.currentPage)
+//        let thisPageFrame = pageFrames[Int(pageNumber)]
+//        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
+//        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
     }
 
     func setupScreens() {
@@ -95,7 +104,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         print("pageControlNumber", pageControl.currentPage)
         let thisPageFrame = pageFrames[Int(pageNumber)]
 //        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
-        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
+//        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
 //        scrollView.contentOffset = CGPoint(x: thisPageFrame.origin.x, y: 0)
         
     }

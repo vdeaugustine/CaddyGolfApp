@@ -92,6 +92,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotBox.addSubview(aimShotHeader)
         aimShotBox.addSubview(aimShotTips)
         aimShotBox.addSubview(colorOfFlagImage)
+//        aimShotBox.addSubview(flagExplanationLabel)
+        aimShotBox.addSubview(flagExplanationButton)
         
         
         scrollView.addSubview(hillBox)
@@ -277,15 +279,28 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                       height: 50)
         
         aimShotTips.frame =  CGRect(x: pad,
-                                    y: aimShotHeader.bottom + pad,
-                                    width: aimShotBox.width - pad - colorOfFlagImage.frame.width - pad - pad,
-                                    height: aimShotBox.height - aimShotHeader.height - pad - pad)
+                                    y: colorOfFlagImage.bottom + pad,
+                                    width: aimShotBox.width - 2 * pad,
+                                    height: aimShotBox.height - colorOfFlagImage.height - pad - pad)
         
         
         colorOfFlagImage.frame =  CGRect(x: aimShotBox.right - pad - colorOfFlagImage.frame.size.width,
                                          y: pad,
                                          width: colorOfFlagImage.frame.size.width,
                                          height: colorOfFlagImage.frame.size.height)
+        
+//        flagExplanationLabel.frame =  CGRect(x: aimShotHeader.right + pad,
+//                                             y: aimShotHeader.frame.origin.y,
+//                                             width: colorOfFlagImage.left - aimShotHeader.right - 2 * pad,
+//                                             height: colorOfFlagImage.height)
+        
+        let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
+        flagExplanationButton.frame =  CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
+                                              y: colorOfFlagImage.bottom - flagButtonSize - pad,
+                                              width: flagButtonSize,
+                                              height: flagButtonSize)
+        
+        
         
         hillBox.frame =  CGRect(x: aimShotBox.left,
                                 y: aimShotBox.bottom + pad,
@@ -537,6 +552,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.adjustsFontSizeToFitWidth = true
         label.text = "This is temp text"
         label.translatesAutoresizingMaskIntoConstraints = true
+        label.numberOfLines = 0
         
         return label
     }()
@@ -545,22 +561,49 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
        let image = UIImageView()
         switch advice.flagColor {
         case "Red":
-            image.image = UIImage(named: "basicRedFlag")
+            image.image = UIImage(named: "niceRedFlag")
         case "White":
-            image.image = UIImage(named: "basicWhiteFlag")
+            image.image = UIImage(named: "niceWhiteFlag")
         case "Blue":
-            image.image = UIImage(named: "basicBlueFlag")
+            image.image = UIImage(named: "niceBlueFlag")
         default:
             print("error, not the right flag color")
         }
         
+        let heightWanted: CGFloat = 80
         image.translatesAutoresizingMaskIntoConstraints = true
-        image.frame.size = CGSize(width: 192, height: 108)
+        image.frame.size = CGSize(width: heightWanted * 0.7, height: heightWanted)
         image.contentMode = .scaleAspectFit
         return image
     }()
     
+    var flagExplanationButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "info.circle"), for: .normal)
+        button.addTarget(self, action: #selector(getFlagExplanation), for: .touchUpInside)
+        return button
+    }()
     
+    var flagExplanationLabel: UILabel = {
+        let label = UILabel()
+        label.layer.backgroundColor = UIColor.clear.cgColor
+        label.font = UIFont(name: "Helvetica-Bold", size: 14)
+        label.adjustsFontSizeToFitWidth = true
+        switch advice.flagColor {
+        case "Red":
+            label.text = "A red flag means the pin is in the front of the green. So, if you hit your shot a little too far, you stil may hit the green, you just might have a long putt."
+        case "White":
+            label.text = "A white flag means the pin is in the front of the green. So, you can go a little short or a little past the pin and still hit the green. Don't want to miss too much in either direction, though."
+        case "Blue":
+            label.text = "A blue flag means the pin is in the back of the green. So, if you hit your shot a little too short, you stil may hit the green, you just might have a long putt."
+        default:
+            label.text = ""
+        }
+        label.translatesAutoresizingMaskIntoConstraints = true
+        label.numberOfLines = 0
+        
+        return label
+    }()
     
     
     // MARK: - Hill stuff
@@ -662,6 +705,43 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func addResultOfStroke() {
+        
+    }
+    
+    // MARK: - Button Actions
+    
+    @objc func getFlagExplanation() {
+        
+        var message = ""
+        switch advice.flagColor {
+        case "Red":
+            message = "A red flag means the pin is in the front of the green.\n\n So, if you hit your shot a little too far, you stil may hit the green, you just might have a long putt."
+        case "White":
+            message = "A white flag means the pin is in the front of the green.\n\n So, you can go a little short or a little past the pin and still hit the green. Don't want to miss too much in either direction, though."
+        case "Blue":
+            message = "A blue flag means the pin is in the back of the green.\n\n So, if you hit your shot a little too short, you stil may hit the green, you just might have a long putt."
+        default:
+            message = ""
+        }
+        
+        let alert = UIAlertController(title: "Pin-seeking Advice", message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style {
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+            @unknown default:
+                print("whateverIDC")
+            }
+        }))
+        present(alert, animated: true, completion: nil)
         
     }
     
