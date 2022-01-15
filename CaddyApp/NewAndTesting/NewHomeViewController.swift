@@ -53,12 +53,34 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             stackView.addArrangedSubview(thisPage)
             thisPage.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             thisPage.image = UIImage(named: "background\(pageNumber + 1)")
-            thisPage.isUserInteractionEnabled = true
-            thisPage.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(goToPage)))
+//            thisPage.isUserInteractionEnabled = true
+//            thisPage.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(goToPage)))
+            let tint: UIView = {
+                let thisView = UIView()
+                thisView.translatesAutoresizingMaskIntoConstraints = false
+                thisView.backgroundColor = .black
+                thisView.alpha = 0.4
+                return thisView
+            }()
+            
+//            print(thisPage.frame)
+//            print(tint.frame)
+            thisPage.addSubview(tint)
+            
+            NSLayoutConstraint.activate([
+                tint.leadingAnchor.constraint(equalTo: thisPage.leadingAnchor),
+                tint.topAnchor.constraint(equalTo: thisPage.topAnchor),
+                tint.rightAnchor.constraint(equalTo: thisPage.rightAnchor),
+                tint.bottomAnchor.constraint(equalTo: thisPage.bottomAnchor)
+            ])
+            
 
             pageFrame.origin.x = scrollView.frame.size.width * CGFloat(pageNumber)
             pageFrame.size = scrollView.frame.size
             pageFrames.append(pageFrame)
+            
+            
+            
 
             let pageLabel: UILabel = {
                 let label = UILabel()
@@ -67,6 +89,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
                 label.text = "\(pages[pageNumber])"
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.textColor = .white
+                
+                
 
                 return label
             }()
@@ -92,9 +116,11 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
                                       width: scrollView.width * CGFloat(pages.count),
                                       height: scrollView.height)
         goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+        
+      
         scrollView.addSubview(goToPageButton)
-        goToPageButton.backgroundColor = .black
-        goToPageButton.alpha = 0.4
+//        goToPageButton.backgroundColor = .black
+//        goToPageButton.alpha = 0.4
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
