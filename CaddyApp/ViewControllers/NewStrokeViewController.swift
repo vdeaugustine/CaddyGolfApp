@@ -20,6 +20,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var flagColorLabel: UILabel!
     @IBOutlet var lieTypeLabel: UILabel!
     @IBOutlet var distanceToPinLabel: UILabel!
+    @IBOutlet var moreInfoButton: UIButton!
 
     var lieTypeSelected: String = ""
     var StrokeInfo: NewStrokeInfo = NewStrokeInfo(distance: 0, lieType: "")
@@ -38,11 +39,25 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
-        distanceField.translatesAutoresizingMaskIntoConstraints = false
+//        distanceField.translatesAutoresizingMaskIntoConstraints = false
+//        moreInfoButton.translatesAutoresizingMaskIntoConstraints = false
+//        distanceToPinLabel.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        moreInfoButton.centerYAnchor.constraint(equalTo: distanceToPinLabel.centerYAnchor).isActive = true
+//        moreInfoButton.heightAnchor.constraint(equalTo: distanceToPinLabel.heightAnchor, multiplier: 1/3).isActive = true
+//        moreInfoButton.leadingAnchor.constraint(equalTo: distanceToPinLabel.trailingAnchor, constant: 3).isActive = true
+//        moreInfoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5).isActive = true
+//        moreInfoButton.widthAnchor.constraint(equalTo: moreInfoButton.heightAnchor).isActive = true
+//        moreInfoButton.bottomAnchor.constraint(equalTo: flagColorSwgControl.topAnchor).isActive = true
+    
     }
 
     override func viewWillAppear(_ animated: Bool) {
         distanceField.placeholder = "0"
+        
+//        for item in self.view.subviews {
+//            item.translatesAutoresizingMaskIntoConstraints = false
+//        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -124,7 +139,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         clubAboveForAdvice = getClubAbove()
         print(clubBelowForAdvice, "club for advice")
         let adviceVC = storyboard?.instantiateViewController(identifier: "AdviceViewController") as! AdviceViewController
-//        let adviceVC = storyboard?.instantiateViewController(identifier: "NewAdviceViewController") as! NewAdviceViewController
 
         adviceVC.title = "Shot Advice"
         navigationController?.pushViewController(adviceVC, animated: true)

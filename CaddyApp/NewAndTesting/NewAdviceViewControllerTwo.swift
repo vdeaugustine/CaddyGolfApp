@@ -212,7 +212,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Distance to Pin: \(advice.distanceToPin)"
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
+        label.font = UIFont(name: "Helvetica-Bold", size: 54)
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
         label.backgroundColor = .white
@@ -228,7 +228,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Options"
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 20)
+        label.font = UIFont(name: "Helvetica-Bold", size: 20)
 //        label.textColor = .placeholderText
 
         label.adjustsFontSizeToFitWidth = true
@@ -346,7 +346,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
     var underClubLabel: UILabel = {
         let label = UILabel()
         label.text = "\(advice.closestClubBelow.name)"
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 40)
+        label.font = UIFont(name: "Helvetica-Bold", size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
@@ -373,7 +373,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
     var overClubLabel: UILabel = {
         let label = UILabel()
         label.text = "\(advice.closestClubAbove.name)"
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 40)
+        label.font = UIFont(name: "Helvetica-Bold", size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -385,7 +385,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Placeholder text"
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
+        label.font = UIFont(name: "Helvetica-Bold", size: 54)
 //        label.adjustsFontSizeToFitWidth = true
 //        label.clipsToBounds = true
         label.numberOfLines = 0

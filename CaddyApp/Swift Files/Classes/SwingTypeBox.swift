@@ -83,7 +83,7 @@ class SwingTypeBox {
 
         mainTextLabel = {
             let theView = UILabel()
-            theView.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
+            theView.font = UIFont(name: "Helvetica-Bold", size: 80)
             theView.adjustsFontSizeToFitWidth = true
             theView.text = "\(yardageNum)"
             //    label.heightAnchor.constraint(equalToConstant: 49.0)

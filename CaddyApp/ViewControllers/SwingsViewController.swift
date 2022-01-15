@@ -120,7 +120,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     let averageNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
+        label.font = UIFont(name: "Helvetica-Bold", size: 80)
         label.adjustsFontSizeToFitWidth = true
         label.text = "\(0)"
         //    label.heightAnchor.constraint(equalToConstant: 49.0)
@@ -133,7 +133,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     let fixedNumberLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica-BoldOblique", size: 80)
+        label.font = UIFont(name: "Helvetica-Bold", size: 80)
         label.adjustsFontSizeToFitWidth = true
         switch currentSwingType {
         case .fullSwing:

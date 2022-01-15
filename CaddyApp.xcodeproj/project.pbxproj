@@ -34,6 +34,7 @@
 		9C7D80B527671A0D00F49D93 /* UserBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B427671A0D00F49D93 /* UserBag.swift */; };
 		9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B62767CA4000F49D93 /* SaveBag.swift */; };
 		9C7D80B927687DCC00F49D93 /* AddNewClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */; };
+		9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */; };
 		9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */; };
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
@@ -86,6 +87,7 @@
 		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
 		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
+		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewAddStrokeTableViewController.swift; path = ViewControllers/NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
 				9C0705442787567200496B37 /* NotesData.xcdatamodeld */,
 				9CF2AF4D275AD61200458646 /* Info.plist */,
+				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
 			);
 			path = CaddyApp;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
 				9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */,
+				9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,

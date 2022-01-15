@@ -73,7 +73,7 @@ extension MainClubViewController {
     class NumberLabel: UILabel {
         init(_ labelText: String) {
             super.init(frame: CGRect())
-            font = UIFont(name: "Helvetica-BoldOblique", size: 80)
+            font = UIFont(name: "Helvetica-Bold", size: 80)
             adjustsFontSizeToFitWidth = true
             text = labelText
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
@@ -95,7 +95,7 @@ extension MainClubViewController {
     class RectTitle: UILabel {
         init(_ titleText: String) {
             super.init(frame: CGRect())
-            font = UIFont(name: "Helvetica-BoldOblique", size: 34)
+            font = UIFont(name: "Helvetica-Bold", size: 34)
             text = titleText
         }
 

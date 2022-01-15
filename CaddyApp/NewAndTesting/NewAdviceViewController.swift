@@ -53,7 +53,7 @@ class NewAdviceViewController: UIViewController {
         // Distance Label
         distanceLabel.translatesAutoresizingMaskIntoConstraints = true
         distanceLabel.text = "Distance to Pin: \(advice.distanceToPin)"
-        distanceLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 54)
+        distanceLabel.font = UIFont(name: "Helvetica-Bold", size: 54)
         distanceLabel.adjustsFontSizeToFitWidth = true
         distanceLabel.layer.cornerRadius = globalCornerRadius
         distanceLabel.backgroundColor = .white
@@ -64,7 +64,7 @@ class NewAdviceViewController: UIViewController {
         // Options Label
         optionsLabel.translatesAutoresizingMaskIntoConstraints = true
         optionsLabel.text = "Options"
-        optionsLabel.font = UIFont(name: "Helvetica-BoldOblique", size: 20)
+        optionsLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
         optionsLabel.adjustsFontSizeToFitWidth = false
         optionsLabel.layer.cornerRadius = globalCornerRadius
         optionsLabel.layer.backgroundColor = UIColor.white.cgColor
