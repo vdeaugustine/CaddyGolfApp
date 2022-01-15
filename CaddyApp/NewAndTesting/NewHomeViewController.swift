@@ -11,6 +11,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var tableView: UITableView!
+    let stackView = UIStackView()
     var pages: [String] = ["Notes", "Clubs", "Settings"]
     var colors: [UIColor] = [.red, .green, .blue]
     var pageFrame = CGRect.zero
@@ -24,121 +25,91 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         setupScreens()
         scrollView.backgroundColor = .white
         scrollView.showsHorizontalScrollIndicator = false
-//        var scrollButton = TransparentButton(superView: scrollView)
-//        scrollButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+
         pageControl.tintColor = .blue
         pageControl.backgroundStyle = .prominent
         tableView.delegate = self
         tableView.dataSource = self
-//        scrollView.bounces = false
-        
-        
+        scrollView.delegate = self
+
         for frame in pageFrames {
             print("page frame", frame)
             print("scroll frame", scrollView.frame)
             print("scroll content")
         }
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
-//        pageControl.currentPage = Int(pageNumber)
-//        print("pageControlNumber", pageControl.currentPage)
-//        let thisPageFrame = pageFrames[Int(pageNumber)]
-//        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
-//        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
     }
 
     func setupScreens() {
-        for index in 0 ..< pages.count {
-            pageFrame.origin.x = (scrollView.frame.size.width) * CGFloat(index)
+        scrollView.addSubview(stackView)
+        scrollView.isPagingEnabled = true
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .horizontal
+
+        for pageNumber in 0 ..< pages.count {
+            let thisPage = UIImageView()
+            thisPage.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview(thisPage)
+            thisPage.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            thisPage.image = UIImage(named: "background\(pageNumber + 1)")
+            thisPage.isUserInteractionEnabled = true
+            thisPage.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(goToPage)))
+
+            pageFrame.origin.x = scrollView.frame.size.width * CGFloat(pageNumber)
             pageFrame.size = scrollView.frame.size
             pageFrames.append(pageFrame)
 
-            let backImage = UIImage(named: "background\(index+1)")
-            let backImageView = UIImageView(image: backImage)
-            backImageView.frame = pageFrame
-            scrollView.addSubview(backImageView)
-            let thisButton = UIButton(frame: CGRect(x: 0,
-                                                    y: 0,
-                                                    width: backImageView.width,
-                                                    height: backImageView.height))
-            thisButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
-            let thisLabel = UILabel(frame:  CGRect(x: 0,
-                                                   y: 0,
-                                                   width: backImageView.width,
-                                                   height: backImageView.height))
-            thisLabel.text = pages[index]
-            thisLabel.textAlignment = .center
-            thisLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
-            thisLabel.textColor = .white
-            thisLabel.layer.backgroundColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.4).cgColor
-            
-            
-            
-//            thisLabel.backgroundColor = colors[index]
-            backImageView.addSubview(thisLabel)
-            backImageView.addSubview(thisButton)
-            
+            let pageLabel: UILabel = {
+                let label = UILabel()
+                label.font = UIFont(name: "Helvetica-Bold", size: 48)
+                label.adjustsFontSizeToFitWidth = true
+                label.text = "\(pages[pageNumber])"
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.textColor = .white
+
+                return label
+            }()
+            thisPage.addSubview(pageLabel)
+            NSLayoutConstraint.activate([
+                pageLabel.centerXAnchor.constraint(equalTo: thisPage.centerXAnchor),
+                pageLabel.centerYAnchor.constraint(equalTo: thisPage.centerYAnchor),
+            ])
         }
+
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
 
         scrollView.contentSize = CGSize(width: scrollView.width * CGFloat(pages.count),
                                         height: scrollView.height)
-        scrollView.delegate = self
+
+        let goToPageButton = UIButton()
+        goToPageButton.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: scrollView.width * CGFloat(pages.count),
+                                      height: scrollView.height)
+        goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+        scrollView.addSubview(goToPageButton)
+        goToPageButton.backgroundColor = .black
+        goToPageButton.alpha = 0.4
     }
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
-        pageControl.currentPage = Int(pageNumber)
-        print("pageControlNumber", pageControl.currentPage)
-//        let thisPageFrame = pageFrames[Int(pageNumber)]
-//        scrollView.scrollRectToVisible(thisPageFrame, animated: true)
-//        scrollView.setContentOffset(thisPageFrame.origin, animated: true)
-//        scrollView.contentOffset = CGPoint(x: thisPageFrame.origin.x, y: 0)
-        
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(page)
     }
-    
-    
-    
-    
-    
-    
-    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        print("did change")
-    }
-
-    
-    
-    
 
     @IBAction func pageControlValChange(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred(intensity: 1.0)
-        currentIndex = pageControl.currentPage
-        scrollView.scrollRectToVisible(pageFrames[currentIndex], animated: true)
-        print("pages frames")
-        for page in pageFrames {
-            print(page)
-        }
-        
-        print("scrollview rect")
-        print(scrollView.contentOffset)
-        print(currentIndex)
+        scrollView.scrollRectToVisible(stackView.arrangedSubviews[pageControl.currentPage].frame, animated: true)
     }
 
     @objc func goToPage() {
-        print("tapped and current index", currentIndex)
+        print("tapped and current index", pageControl.currentPage)
 
         switch pageControl.currentPage {
         case 0:
@@ -151,7 +122,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            return
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
+            navigationController?.pushViewController(vc, animated: true)
         default:
             return
         }
@@ -161,25 +133,19 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
 extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomePageTableViewCell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
 
-//        cell.textLabel!.text = tableViewModel[indexPath.row]
-        
         if indexPath.row == 0 {
-//            cell.leftIcon = UIImageView(image: UIImage(named: "notebookIcon"))
-//            cell.leftIcon = UIImageView(image: UIImage(named: "basicRedFlag"))
             cell.leftIcon.image = UIImage(systemName: "note.text")
         }
         if indexPath.row == 1 {
             cell.leftIcon.image = UIImage(systemName: "list.dash")
         }
-        
+
         if indexPath.row == 2 {
             cell.leftIcon.image = UIImage(systemName: "gearshape.2")
         }
         cell.mainLabel.text = tableViewModel[indexPath.row]
 
-        
         return cell
     }
 
