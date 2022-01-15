@@ -36,7 +36,7 @@ class HomePageTableViewCell: UITableViewCell {
                                       y: 2,
                                       width: contentView.height - 4,
                                       height: contentView.height - 4)
-        self.mainLabel.frame =  CGRect(x: leftIcon.right + 5,
+        self.mainLabel.frame =  CGRect(x: leftIcon.right + 15,
                                        y: 2,
                                        width: self.contentView.width - self.leftIcon.right - 5,
                                        height: self.leftIcon.height)

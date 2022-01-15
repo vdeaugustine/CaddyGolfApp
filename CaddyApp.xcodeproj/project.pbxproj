@@ -87,7 +87,7 @@
 		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
 		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
-		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewAddStrokeTableViewController.swift; path = ViewControllers/NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
+		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
 				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
+				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
 				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
@@ -241,7 +242,6 @@
 				9CF2AF4A275AD61200458646 /* LaunchScreen.storyboard */,
 				9C0705442787567200496B37 /* NotesData.xcdatamodeld */,
 				9CF2AF4D275AD61200458646 /* Info.plist */,
-				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
 			);
 			path = CaddyApp;
 			sourceTree = "<group>";

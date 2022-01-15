@@ -155,7 +155,6 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCell", for: indexPath)
             myCell.dropShadow()
             let aNoteView = RoundedBox()
-//            aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
             myCell.addSubview(aNoteView.mainContainer)
             aNoteView.setupFrames(with:  CGRect(x: 0,
                                                 y: 0,
@@ -164,7 +163,9 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
             aNoteView.layoutViews()
             aNoteView.setHeaderText(thisClubNote.title ?? "")
             aNoteView.setMainText(thisClubNote.subTitle ?? "")
-            aNoteView.headerLabel.adjustsFontSizeToFitWidth = false
+            aNoteView.headerLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
+            aNoteView.headerLabel.adjustsFontSizeToFitWidth = true
+            
         }
 
         return myCell

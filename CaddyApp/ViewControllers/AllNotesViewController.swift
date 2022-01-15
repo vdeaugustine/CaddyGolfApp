@@ -87,6 +87,11 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteTableViewCell
 //        let currentNote = currentClubNotes[indexPath.row]
 //        let currentNote = models[indexPath.row]
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
+            print("ERROR WITH INSTANTIATION")
+            fatalError()
+        }
         if comingFrom == "home" {
             print("coming from home")
             if let mainNotes = mainNotes {
@@ -94,6 +99,8 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                 let currentNote = mainNotes[indexPath.row]
                 cell.noteTitle.text = currentNote.title
                 cell.noteContentPreview.text = currentNote.subTitle
+                vc.noteText = currentNote.subTitle
+                vc.titleText = currentNote.title
             }
         } else if comingFrom == "club" {
             print("in club notes")
@@ -101,16 +108,26 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                 let currentNote = thisClubNotes[indexPath.row]
                 cell.noteTitle.text = currentNote.title
                 cell.noteContentPreview.text = currentNote.subTitle
+                vc.noteText = currentNote.subTitle
+                vc.titleText = currentNote.title
+                
             }
         } else {
             print("problem in creating cell")
         }
+        cell.pageToGoToIfTapped = vc
+        cell.navigationController = self.navigationController!
 
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        print("tapped on note")
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
             print("ERROR WITH INSTANTIATION")
             return
@@ -122,6 +139,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             vc.titleText = currentNote.title
             vc.noteText = currentNote.subTitle
             vc.thisClubNote = currentNote
+            
         }
         if let mainNotes = mainNotes {
             let currentNote = mainNotes[indexPath.row]

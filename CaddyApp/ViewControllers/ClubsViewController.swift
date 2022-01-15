@@ -24,7 +24,9 @@ class ClubsViewController: UIViewController {
     var currentSwingTypeState = swingTypeState.threeFourths
 
     override func viewWillAppear(_ animated: Bool) {
+        swingTypeSegControl.selectedSegmentIndex = 1
         clubsTableView.delaysContentTouches = false
+        
         clubsTableView.reloadData()
     }
 

@@ -127,7 +127,8 @@ class MainClubViewController: UIViewController {
         // MARK: - SETUP AND MAKE NOTES COLLECTIONVIEW
         let notesLayout = UICollectionViewFlowLayout()
         notesLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        notesLayout.itemSize = CGSize(width: 150, height: 150)
+        notesLayout.itemSize = CGSize(width: notesLargeRectView.width - (notesLargeRectView.width / 5),
+                                      height: notesLargeRectView.height - notesRectTitle.frame.maxY - padRectsFromSides - (5 * 2))
         notesLayout.scrollDirection = .horizontal
         let notesCollectionViewFrame = CGRect(x: padRectsFromSides,
                                               y: notesRectTitle.bottom + 5,
