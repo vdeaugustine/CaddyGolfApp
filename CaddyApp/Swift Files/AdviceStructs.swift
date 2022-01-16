@@ -18,6 +18,8 @@ struct Advice {
     var secondclosestClubDistance: Int = 0
     var secondClosestClubGap: Int = 0
     var flagColor: String = "Red"
+    
+    var lieType: String = "SideHillDown"
 
     var distanceToPin = 0
 }

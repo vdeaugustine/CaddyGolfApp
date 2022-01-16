@@ -33,7 +33,7 @@ class ClubCell: UITableViewCell {
                                    y: pad,
                                    width: 150,
                                    height: super.height - pad * 2)
-        clubNameLabel.frame = CGRect(x: -2, y: 0, width: clubNameBox.width, height: clubNameBox.height)
+        clubNameLabel.frame = CGRect(x: 0, y: 0, width: clubNameBox.width, height: clubNameBox.height)
 
         let startNotesBoxAt = clubNameBox.right + pad
 

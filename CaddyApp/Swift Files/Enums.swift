@@ -163,6 +163,13 @@ enum swingTypeState: String, CaseIterable {
     case threeFourths = "Three Fourths"
 }
 
+enum lieTypes: String {
+    case sideHillDown = "SideHillDown"
+    case upHill = "UpHill"
+    case downHill = "DownHill"
+    case sideHillUp = "SideHillUp"
+}
+
 enum ConstraintTypes: CaseIterable {
     case topAnchor
     case bottomAnchor

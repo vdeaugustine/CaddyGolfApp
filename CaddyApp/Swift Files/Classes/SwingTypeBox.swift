@@ -133,7 +133,7 @@ class SwingTypeBox {
                                    width: header.width,
                                    height: header.height)
 
-        mainTextLabel.frame = CGRect(x: -2,
+        mainTextLabel.frame = CGRect(x: 0,
                                      y: header.bottom + 18,
                                      width: mainContainer.width,
                                      height: mainContainer.height / 3)

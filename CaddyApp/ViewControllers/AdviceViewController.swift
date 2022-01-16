@@ -103,6 +103,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         scrollView.addSubview(hillBox)
         hillBox.addSubview(hillHeaderLabel)
+        hillBox.addSubview(hillImageView)
         hillBox.addSubview(hillTipsLabel)
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
@@ -187,7 +188,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                          width: underClubLargeContainer.width / 3,
                                          height: underClubLargeContainer.height - 10)
 
-        underClubLabel.frame = CGRect(x: -2,
+        underClubLabel.frame = CGRect(x: 0,
                                       y: 2,
                                       width: underClubNameRect.width - 20,
                                       height: underClubNameRect.height)
@@ -210,7 +211,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                         width: overClubLargeContainer.width / 3,
                                         height: overClubLargeContainer.height - 10)
 
-        overClubLabel.frame = CGRect(x: -2,
+        overClubLabel.frame = CGRect(x: 0,
                                      y: 2,
                                      width: overClubNameRect.width,
                                      height: overClubNameRect.height)
@@ -296,24 +297,26 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotTips.sizeToFit()
         print("after size to fit", aimShotTips.frame)
         
-        aimShotBox.frame.size = CGSize(width: aimShotBox.width, height: aimShotBox.height - (aimShotBox.height - aimShotTips.bottom))
+//        aimShotBox.frame.size = CGSize(width: aimShotBox.width, height: aimShotBox.height - (aimShotBox.height - aimShotTips.bottom))
         
         
         
-        colorOfFlagImage.frame =  CGRect(x: aimShotBox.right - pad - colorOfFlagImage.frame.size.width,
+        // Center the flag image in the room available 
+        let roomForFlagImage = aimShotBox.width - aimShotHeader.right
+        
+        
+        colorOfFlagImage.frame =  CGRect(x: aimShotHeader.right + (roomForFlagImage / 2) - (colorOfFlagImage.width / 2),
                                          y: pad,
                                          width: colorOfFlagImage.frame.size.width,
                                          height: colorOfFlagImage.frame.size.height)
         
+        
+        // Resize the aimShot big boxto be just 25 points below the tips box
         aimShotBox.frame =  CGRect(x: aimShotBox.frame.minX,
                                    y: aimShotBox.frame.minY,
                                    width: aimShotBox.width,
-                                   height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
+                                   height: aimShotTips.frame.maxY + 25)
         
-//        flagExplanationLabel.frame =  CGRect(x: aimShotHeader.right + pad,
-//                                             y: aimShotHeader.frame.origin.y,
-//                                             width: colorOfFlagImage.left - aimShotHeader.right - 2 * pad,
-//                                             height: colorOfFlagImage.height)
         
         let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
         flagExplanationButton.frame =  CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
@@ -333,10 +336,32 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                         width: (hillBox.width / 2) - pad*2,
                                         height: 50)
         
+        // Center the flag image in the room available
+        let roomForHillImage = hillBox.width - hillHeaderLabel.right
+        
+        
+        hillImageView.frame =  CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
+                                         y: pad,
+                                         width: hillImageView.frame.size.width,
+                                         height: hillImageView.frame.size.height)
+        
+        
+        
         hillTipsLabel.frame =  CGRect(x: pad,
-                                    y: hillHeaderLabel.bottom + pad,
-                                    width: aimShotBox.width - pad - colorOfFlagImage.frame.width - pad - pad,
+                                    y: hillImageView.bottom + pad,
+                                      width: aimShotTips.width,
                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
+        
+        hillTipsLabel.sizeToFit()
+        
+        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.frame.maxY + 25)
+        
+        if let tabBar = self.tabBarController?.tabBar {
+            scrollView.contentSize = CGSize(width: scrollView.width, height: hillBox.bottom + (tabBar.height * 1.5))
+        }
+        
+        
+        self.setContentScrollView(scrollView)
         
     }
     
@@ -359,6 +384,14 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                    width: aimShotBox.width,
                                    height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
         
+        switch advice.lieType {
+        case lieTypes.sideHillDown.rawValue:
+            hillTipsLabel.text = AdviceOptions().sideHillDown
+        default:
+            fatalError()
+        }
+        hillTipsLabel.sizeToFit()
+        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.bottom + 25)
         
     }
     
@@ -565,7 +598,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.text = "This is temp text"
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
-        label.contentMode = .bottomRight
         label.sizeToFit()
         return label
     }()
@@ -657,6 +689,17 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
         return label
+    }()
+    
+    var hillImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "redFlagOnGreen")?.withHorizontallyFlippedOrientation()
+        let heightWanted: CGFloat = 80
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        imageView.frame.size = CGSize(width: heightWanted * 1.333, height: heightWanted)
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
     }()
     
     

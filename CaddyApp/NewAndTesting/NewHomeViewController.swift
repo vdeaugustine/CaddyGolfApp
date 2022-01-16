@@ -131,7 +131,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func pageControlValChange(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred(intensity: 1.0)
-        scrollView.scrollRectToVisible(stackView.arrangedSubviews[pageControl.currentPage].frame, animated: true)
+        scrollView.contentOffset = stackView.arrangedSubviews[pageControl.currentPage].frame.origin
     }
 
     @objc func goToPage() {

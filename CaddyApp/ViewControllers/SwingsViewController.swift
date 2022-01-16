@@ -110,7 +110,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let label = UILabel()
         label.font = UIFont(name: "Helvetica-Bold", size: 18)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Fixed"
+        label.text = "Enter Manually"
         //    label.heightAnchor.constraint(equalToConstant: 49.0)
         //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
@@ -207,12 +207,12 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                              width: fixedYardsHeader.width,
                                              height: fixedYardsHeader.height)
 
-        averageNumberLabel.frame = CGRect(x: -2,
+        averageNumberLabel.frame = CGRect(x: 0,
                                           y: averageYardsHeader.bottom + 18,
                                           width: averageYardsContainer.width,
                                           height: averageYardsContainer.height / 3)
 
-        fixedNumberLabel.frame = CGRect(x: -2,
+        fixedNumberLabel.frame = CGRect(x: 0,
                                         y: fixedYardsHeader.bottom + 18,
                                         width: fixedYardsContainer.width,
                                         height: fixedYardsContainer.height / 3)
@@ -359,7 +359,7 @@ extension SwingsViewController {
         print("fixedTapped")
 
         // 1. Create the alert controller.
-        let alert = UIAlertController(title: "Change Fixed Distance", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Change Manual Distance", message: nil, preferredStyle: .alert)
 
         // 2. Add the text field
         alert.addTextField { textField in

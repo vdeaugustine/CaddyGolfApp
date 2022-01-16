@@ -112,7 +112,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
                                          width: underClubLargeContainer.width / 3,
                                          height: underClubLargeContainer.height - 10)
 
-        underClubLabel.frame = CGRect(x: -2,
+        underClubLabel.frame = CGRect(x: 0,
                                       y: 2,
                                       width: underClubNameRect.width - 20,
                                       height: underClubNameRect.height)
@@ -135,7 +135,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
                                         width: overClubLargeContainer.width / 3,
                                         height: overClubLargeContainer.height - 10)
 
-        overClubLabel.frame = CGRect(x: -2,
+        overClubLabel.frame = CGRect(x: 0,
                                      y: 2,
                                      width: overClubNameRect.width,
                                      height: overClubNameRect.height)
