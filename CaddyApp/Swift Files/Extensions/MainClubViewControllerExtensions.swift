@@ -41,7 +41,6 @@ extension MainClubViewController {
             super.init(frame: frame)
             translatesAutoresizingMaskIntoConstraints = true
             layer.cornerRadius = globalCornerRadius
-            //    view.backgroundColor = .red
             backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
             isUserInteractionEnabled = true
             layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -76,17 +75,9 @@ extension MainClubViewController {
             font = UIFont(name: "Helvetica-Bold", size: 80)
             adjustsFontSizeToFitWidth = true
             text = labelText
-            //    label.heightAnchor.constraint(equalToConstant: 49.0)
-            //        label.translatesAutoresizingMaskIntoConstraints = true
             textAlignment = .center
-            //        label.translatesAutoresizingMaskIntoConstraints = false
         }
-
-//        override init(frame: CGRect) {
-//            super.init(frame: frame)
-//
-//        }
-
+        
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
@@ -123,8 +114,13 @@ extension MainClubViewController {
 extension MainClubViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == swingsCollectionView {
-            let mainArr = currentClub.allPreviousSwings.components(separatedBy: ",")
+            var mainArr = currentClub.allPreviousSwings.components(separatedBy: ",")
             print(mainArr.count)
+
+            if mainArr[mainArr.count - 1] == "" {
+                mainArr.remove(at: mainArr.count - 1)
+            }
+
             return mainArr.count
         } else if collectionView == notesCollectionView {
             let mainArr = getAllClubNotes(currentClubTypeAsEnum())
@@ -139,39 +135,38 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
 
         if collectionView == swingsCollectionView {
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwingCell", for: indexPath)
-//            myCell.dropShadow()
-            let aSwingView = SwingTypeContainer()
-            aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
 
-            let x = UILabel(frame: CGRect())
-            x.text = "\(indexPath.row)"
-            aSwingView.addSubview(x)
-            x.frame = CGRect(x: aSwingView.width / 2, y: aSwingView.height / 2, width: 20, height: 20)
-
-            myCell.addSubview(aSwingView)
+            let aSwingView = RoundedBox()
+            let arrOfPrevHits = currentClub.allPreviousSwings.components(separatedBy: ",").reversed() as [String]
+            print("arr of all swings", arrOfPrevHits)
+            let thisSwing = arrOfPrevHits[indexPath.row]
+            myCell.addSubview(aSwingView.mainContainer)
+            aSwingView.setupFrames(with: CGRect(x: 0,
+                                                y: 0,
+                                                width: myCell.width,
+                                                height: myCell.height))
+            aSwingView.layoutViews()
+            aSwingView.setHeaderText("Full Swing")
+            aSwingView.setMainText(thisSwing)
+            aSwingView.headerLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
+            aSwingView.headerLabel.adjustsFontSizeToFitWidth = true
 
         } else if collectionView == notesCollectionView {
             let thisClubNote = getAllClubNotes(currentClubTypeAsEnum())[indexPath.row]
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCell", for: indexPath)
-//            myCell.dropShadow()
             let aNoteView = RoundedBox()
             myCell.addSubview(aNoteView.mainContainer)
-            aNoteView.setupFrames(with:  CGRect(x: 0,
-                                                y: 0,
-                                                width: myCell.width,
-                                                height: myCell.height))
+            aNoteView.setupFrames(with: CGRect(x: 0,
+                                               y: 0,
+                                               width: myCell.width,
+                                               height: myCell.height))
             aNoteView.layoutViews()
             aNoteView.setHeaderText(thisClubNote.title ?? "")
             aNoteView.setMainText(thisClubNote.subTitle ?? "")
             aNoteView.headerLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
             aNoteView.headerLabel.adjustsFontSizeToFitWidth = true
-            
         }
 
         return myCell
     }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 150
-//    }
 }

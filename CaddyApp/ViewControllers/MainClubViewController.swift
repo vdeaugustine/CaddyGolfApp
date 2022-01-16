@@ -12,14 +12,11 @@ class MainClubViewController: UIViewController {
     var notesCollectionView: UICollectionView?
 
     func layoutCollectionView() {
-        //        let layout = UICollectionViewFlowLayout()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //        view.backgroundColor = UIColor(red: 115 / 255.0, green: 197 / 255.0, blue: 114 / 255.0, alpha: 1.0)
         setUpSubviews()
     }
 
@@ -94,12 +91,6 @@ class MainClubViewController: UIViewController {
                                            width: setUpDimensions.width - (2 * padRectsFromSides),
                                            height: 275)
         
-        
-
-//        notesLargeRectView.frame = CGRect(x: padRectsFromSides,
-//                                          y: swingsLargeRectView.bottom + padRectsFromSides * 2,
-//                                          width: setUpDimensions.width - (2 * padRectsFromSides),
-//                                          height: 201)
         notesLargeRectView.dropShadow()
         notesRectTitle.frame = CGRect(x: padLabel,
                                       y: 2 * padRectsFromSides,
@@ -193,7 +184,7 @@ class MainClubViewController: UIViewController {
             swingsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SwingCell")
 
             swingsLargeRectView.addSubview(swingsCollectionView)
-            swingsCollectionView.addSubview(firstSwingRect)
+//            swingsCollectionView.addSubview(firstSwingRect)
 
         } else {
             print("DID NOT MAKE IT ")
