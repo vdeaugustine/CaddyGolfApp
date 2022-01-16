@@ -39,6 +39,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         makeFramesForAllViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         if advice.clubBelowGap < advice.clubAboveGap {
             underClubGapBox.mainTextLabel.textColor = myGreen
@@ -350,6 +354,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         aimShotTips.frame.size = CGSize(width: aimShotTips.width, height: 40)
         aimShotTips.sizeToFit()
+        aimShotBox.frame =  CGRect(x: aimShotBox.frame.minX,
+                                   y: aimShotBox.frame.minY,
+                                   width: aimShotBox.width,
+                                   height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
         
         
     }
@@ -558,29 +566,33 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
         label.contentMode = .bottomRight
-        label.backgroundColor = .yellow
         label.sizeToFit()
         return label
     }()
     
     var colorOfFlagImage: UIImageView = {
-       let image = UIImageView()
+       let imageView = UIImageView()
         switch advice.flagColor {
         case "Red":
-            image.image = UIImage(named: "niceRedFlag")
+//            image.image = UIImage(named: "niceRedFlag")
+            imageView.image = UIImage(named: "redFlagOnGreen")
+
+            
         case "White":
-            image.image = UIImage(named: "niceWhiteFlag")
+            imageView.image = UIImage(named: "WhiteFlagOnGreen")
         case "Blue":
-            image.image = UIImage(named: "niceBlueFlag")
+            imageView.image = UIImage(named: "blueFlagOnGreen")
         default:
             print("error, not the right flag color")
         }
         
         let heightWanted: CGFloat = 80
-        image.translatesAutoresizingMaskIntoConstraints = true
-        image.frame.size = CGSize(width: heightWanted * 0.7, height: heightWanted)
-        image.contentMode = .scaleAspectFit
-        return image
+        imageView.translatesAutoresizingMaskIntoConstraints = true
+        imageView.frame.size = CGSize(width: heightWanted * 1.333, height: heightWanted)
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.image = imageView.image!.withHorizontallyFlippedOrientation()
+        return imageView
     }()
     
     var flagExplanationButton: UIButton = {
