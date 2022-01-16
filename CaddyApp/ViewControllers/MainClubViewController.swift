@@ -17,6 +17,8 @@ class MainClubViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         //        view.backgroundColor = UIColor(red: 115 / 255.0, green: 197 / 255.0, blue: 114 / 255.0, alpha: 1.0)
         setUpSubviews()
     }
@@ -140,6 +142,7 @@ class MainClubViewController: UIViewController {
         if let notesCollectionView = notesCollectionView {
             print("MADE IT ")
 
+            notesCollectionView.showsHorizontalScrollIndicator = false
             notesCollectionView.frame = CGRect(x: notesLargeRectView.frame.minX,
                                                 y: notesRectTitle.bottom + 5,
                                                 width: notesLargeRectView.frame.width - 20,
@@ -171,9 +174,12 @@ class MainClubViewController: UIViewController {
                                               height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides)
 
         swingsCollectionView = UICollectionView(frame: swingCollectionViewFrame, collectionViewLayout: layout)
+        
+        
 
         if let swingsCollectionView = swingsCollectionView {
             print("MADE IT ")
+            swingsCollectionView.showsHorizontalScrollIndicator = false
 
             swingsCollectionView.frame = CGRect(x: swingsLargeRectView.frame.minX,
                                                 y: swingsRectTitle.bottom + 5,

@@ -61,6 +61,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
 //        tabBarController?.tabBar.isOpaque = true
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
+        addAdvice()
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -111,7 +112,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let farBottomItemInScrollView = hillBox
         let padFromNavBarView = UIView()
-        let largeBoxSize = CGSize(width: scrollView.width - pad * 2, height: 250)
+        let largeBoxSize = CGSize(width: scrollView.width - pad * 2, height: 450)
         let clubContainers = CGSize(width: scrollView.width - pad * 2, height: 110)
 
         if let navController = navigationController {
@@ -173,7 +174,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                       height: 20)
         moreInfoButton.center = CGPoint(x: moreInfoButton.frame.midX, y: optionsLabel.frame.midY)
 
-        underClubLargeContainer.frame = CGRect(x: 0,
+        underClubLargeContainer.frame = CGRect(x: pad,
                                                y: optionsLabel.bottom + pad,
                                                width: clubContainers.width,
                                                height: clubContainers.height)
@@ -196,7 +197,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         ])
 
-        overClubLargeContainer.frame = CGRect(x: 0,
+        overClubLargeContainer.frame = CGRect(x: underClubLargeContainer.left,
                                               y: underClubLargeContainer.bottom + pad,
                                               width: clubContainers.width,
                                               height: clubContainers.height)
@@ -282,12 +283,28 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     y: colorOfFlagImage.bottom + pad,
                                     width: aimShotBox.width - 2 * pad,
                                     height: aimShotBox.height - colorOfFlagImage.height - pad - pad)
+        print("AIMSHOTTIPS FRAME", aimShotTips.frame)
+        
+//        aimShotTips.frame =  CGRect(x: pad,
+//                                    y: colorOfFlagImage.bottom + pad,
+//                                    width: aimShotBox.width - 2 * pad,
+//                                    height: 50)
+        aimShotTips.sizeToFit()
+        print("after size to fit", aimShotTips.frame)
+        
+        aimShotBox.frame.size = CGSize(width: aimShotBox.width, height: aimShotBox.height - (aimShotBox.height - aimShotTips.bottom))
+        
         
         
         colorOfFlagImage.frame =  CGRect(x: aimShotBox.right - pad - colorOfFlagImage.frame.size.width,
                                          y: pad,
                                          width: colorOfFlagImage.frame.size.width,
                                          height: colorOfFlagImage.frame.size.height)
+        
+        aimShotBox.frame =  CGRect(x: aimShotBox.frame.minX,
+                                   y: aimShotBox.frame.minY,
+                                   width: aimShotBox.width,
+                                   height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
         
 //        flagExplanationLabel.frame =  CGRect(x: aimShotHeader.right + pad,
 //                                             y: aimShotHeader.frame.origin.y,
@@ -318,6 +335,27 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
         
     }
+    
+    func addAdvice () {
+        
+        switch advice.flagColor {
+        case "Red":
+            aimShotTips.text = AdviceOptions().redFlagApproach
+        case "White":
+            aimShotTips.text = AdviceOptions().whiteFlagApproach
+        case "Blue":
+            aimShotTips.text = AdviceOptions().blueFlagApproach
+        default:
+            aimShotTips.text = ""
+        }
+        aimShotTips.frame.size = CGSize(width: aimShotTips.width, height: 40)
+        aimShotTips.sizeToFit()
+        
+        
+    }
+    
+    
+    
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -402,43 +440,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }))
         present(alert, animated: true, completion: nil)
         
-        //        print("tapped more info")
-//
-//        scrollView.addSubview(moreInfoView)
-////        scrollView.addSubview(moreInfoButton)
-////        scrollView.bringSubviewToFront(moreInfoView)
-//        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissInfoBox)))
-//        moreInfoButton.addTarget(self, action: #selector(tappedMoreInfo), for: .touchUpInside)
-//
-//        moreInfoView.frame = CGRect(x: moreInfoButton.right + 20,
-//                                    y: moreInfoButton.top,
-//                                    width: 200,
-//                                    height: 200)
-//        let infoLabel: UILabel = {
-//            let label = UILabel()
-//            label.numberOfLines = 0
-//            label.frame = CGRect(x: 5,
-//                                 y: 5,
-//                                 width: self.moreInfoView.width - 10,
-//                                 height: self.moreInfoView.height - 10)
-//            label.backgroundColor = .magenta
-//            label.text = "You clicked on more information"
-//
-//            return label
-//        }()
-//
-//        let dismissButton: UIButton = {
-//            let button = UIButton()
-//            button.frame = CGRect(x: 0,
-//                                  y: 0,
-//                                  width: moreInfoView.width,
-//                                  height: moreInfoView.height)
-//            button.addTarget(self, action: #selector(dismissInfoBox), for: .touchUpInside)
-//            return button
-//        }()
-//        moreInfoView.addSubview(infoLabel)
-//        moreInfoView.addSubview(dismissButton)
-//        moreInfoView.bringSubviewToFront(dismissButton)
     }
 
     @objc func dismissInfoBox() {
@@ -451,6 +452,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var underClubLargeContainer: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.layer.cornerRadius = globalCornerRadius
+        thisView.backgroundColor = .white
         return thisView
     }()
 
@@ -483,6 +486,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
         thisView.layer.cornerRadius = globalCornerRadius
+        thisView.backgroundColor = .white
         return thisView
     }()
 
@@ -548,12 +552,14 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var aimShotTips: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = UIColor.green.cgColor
-        label.font = UIFont(name: "Helvetica-Bold", size: 18)
+        label.font = UIFont(name: "Helvetica", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "This is temp text"
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
-        
+        label.contentMode = .bottomRight
+        label.backgroundColor = .yellow
+        label.sizeToFit()
         return label
     }()
     
@@ -633,7 +639,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var hillTipsLabel: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = myGreen.cgColor
-        label.font = UIFont(name: "Helvetica-Bold", size: 18)
+        label.font = UIFont(name: "Helvetica", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "You are on a slope.\nThese are the tips for the slope type"
         label.translatesAutoresizingMaskIntoConstraints = true

@@ -139,7 +139,7 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
 
         if collectionView == swingsCollectionView {
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwingCell", for: indexPath)
-            myCell.dropShadow()
+//            myCell.dropShadow()
             let aSwingView = SwingTypeContainer()
             aSwingView.frame = CGRect(x: 0, y: 0, width: myCell.width, height: myCell.height)
 
@@ -153,7 +153,7 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
         } else if collectionView == notesCollectionView {
             let thisClubNote = getAllClubNotes(currentClubTypeAsEnum())[indexPath.row]
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCell", for: indexPath)
-            myCell.dropShadow()
+//            myCell.dropShadow()
             let aNoteView = RoundedBox()
             myCell.addSubview(aNoteView.mainContainer)
             aNoteView.setupFrames(with:  CGRect(x: 0,

@@ -157,4 +157,8 @@ class SwingTypeBox {
             mainTextLabel.text = "\(currentClub.threeFourthsDistance)"
         }
     }
+    
+    func dropShadow() {
+        mainContainer.dropShadow()
+    }
 }
