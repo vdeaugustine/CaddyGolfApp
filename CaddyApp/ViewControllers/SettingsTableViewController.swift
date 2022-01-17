@@ -82,6 +82,7 @@ class SettingsTableViewController: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

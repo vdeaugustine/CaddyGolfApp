@@ -149,6 +149,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
+            vc.title = "Settings"
             navigationController?.pushViewController(vc, animated: true)
         default:
             return

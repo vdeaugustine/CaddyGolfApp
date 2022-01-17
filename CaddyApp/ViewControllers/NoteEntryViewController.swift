@@ -28,7 +28,9 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        noteField.returnKeyType = .default
         noteField.delegate = self
+        
         title = "New Note"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -38,7 +40,7 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
         }
 
         // Set up the placeholder for user beginning to edit
-        let sizeOfFont: CGFloat = 18
+        let sizeOfFont: CGFloat = 25
         // Set font of placeholder label and textView to same size
         textViewPlaceholder.font = textViewPlaceholder.font.withSize(sizeOfFont)
         noteField.font = noteField.font?.withSize(sizeOfFont)
@@ -63,6 +65,8 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
             NSLayoutConstraint.activate(placeholderConstraints)
         }
     }
+
+   
 
     @objc func didTapSave() {
         if let title = titleField.text, !title.isEmpty, let note = noteField.text, !note.isEmpty {
@@ -93,4 +97,10 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         textViewPlaceholder.isHidden = !textView.text.isEmpty
     }
+
+//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+//        textView.resignFirstResponder()
+//        noteField.resignFirstResponder()
+//        return true
+//    }
 }

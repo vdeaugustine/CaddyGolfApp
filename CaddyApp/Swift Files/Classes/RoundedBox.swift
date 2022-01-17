@@ -58,7 +58,7 @@ class RoundedBox {
 
         mainTextLabel = {
             let theLabel = UILabel()
-            theLabel.font = UIFont(name: "Helvetica-Bold", size: 30)
+            theLabel.font = UIFont(name: "Helvetica", size: 30)
             theLabel.adjustsFontSizeToFitWidth = true
             theLabel.text = "0"
             //    label.heightAnchor.constraint(equalToConstant: 49.0)
