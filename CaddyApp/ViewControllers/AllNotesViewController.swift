@@ -14,6 +14,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     var thisClubNotes: [ClubNote]?
     var mainNotes: [MainNote]?
     var comingFrom: String = ""
+    var atLeastOneNoteExists = false
 
     @IBOutlet var notesTableView: UITableView!
 
@@ -23,7 +24,6 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
         navigationController?.navigationBar.prefersLargeTitles = false
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,89 +67,140 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return currentClubNotes.count
-        if comingFrom == "home" {
-            guard let mainNotes = mainNotes else {
-                return 0
-            }
-            return mainNotes.count
-        } else if comingFrom == "club" {
-            guard let thisClubNotes = thisClubNotes else {
-                return 0
-            }
-            return thisClubNotes.count
 
+        var numOfCells = 0
+        if comingFrom == "home" {
+            if let mainNotes = mainNotes {
+                numOfCells = mainNotes.count
+            }
+
+        } else if comingFrom == "club" {
+            if let thisClubNotes = thisClubNotes {
+                numOfCells = thisClubNotes.count
+            }
+            
         } else {
             return 0
         }
+
+        if numOfCells > 0 {
+            atLeastOneNoteExists = true
+        }
+
+        if !atLeastOneNoteExists {
+            return 1
+        }
+
+        return numOfCells
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteTableViewCell
-//        let currentNote = currentClubNotes[indexPath.row]
-//        let currentNote = models[indexPath.row]
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
-            print("ERROR WITH INSTANTIATION")
-            fatalError()
-        }
-        if comingFrom == "home" {
-            print("coming from home")
-            if let mainNotes = mainNotes {
-                print("in mainnotes")
-                let currentNote = mainNotes[indexPath.row]
-                cell.noteTitle.text = currentNote.title
-                cell.noteContentPreview.text = currentNote.subTitle
-                vc.noteText = currentNote.subTitle
-                vc.titleText = currentNote.title
+        let nextVC: UIViewController
+
+        if !atLeastOneNoteExists {
+            cell.noteTitle.text = "No notes yet"
+            cell.noteContentPreview.text = "Tap this cell or the plus button in the top right corner to create new note"
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
+                print("ERROR WITH INSTANTIATION")
+                fatalError()
             }
-        } else if comingFrom == "club" {
-            print("in club notes")
-            if let thisClubNotes = thisClubNotes {
-                let currentNote = thisClubNotes[indexPath.row]
-                cell.noteTitle.text = currentNote.title
-                cell.noteContentPreview.text = currentNote.subTitle
-                vc.noteText = currentNote.subTitle
-                vc.titleText = currentNote.title
-                
-            }
-        } else {
-            print("problem in creating cell")
+            nextVC = vc
+            
         }
-        cell.pageToGoToIfTapped = vc
-        cell.navigationController = self.navigationController!
+        else {
+            
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
+                print("ERROR WITH INSTANTIATION")
+                fatalError()
+            }
+            
+            nextVC = vc
+            if comingFrom == "home" {
+                print("coming from home")
+                if let mainNotes = mainNotes {
+                    print("in mainnotes")
+                    let currentNote = mainNotes[indexPath.row]
+                    cell.noteTitle.text = currentNote.title
+                    cell.noteContentPreview.text = currentNote.subTitle
+                    vc.noteText = currentNote.subTitle
+                    vc.titleText = currentNote.title
+                }
+            } else if comingFrom == "club" {
+                print("in club notes")
+                if let thisClubNotes = thisClubNotes {
+                    let currentNote = thisClubNotes[indexPath.row]
+                    cell.noteTitle.text = currentNote.title
+                    cell.noteContentPreview.text = currentNote.subTitle
+                    vc.noteText = currentNote.subTitle
+                    vc.titleText = currentNote.title
+                }
+            } else {
+                print("problem in creating cell")
+            }
+            
+            
+        }
+        
+        cell.pageToGoToIfTapped = nextVC
+        cell.navigationController = navigationController!
+
+        return cell
 
         
-        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        print("tapped on note")
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
-            print("ERROR WITH INSTANTIATION")
-            return
-        }
-//        vc.hasContentAlready = true
-//        vc.comingFrom = comingFrom
-        if let thisClubNotes = thisClubNotes {
-            let currentNote = thisClubNotes[indexPath.row]
-            vc.titleText = currentNote.title
-            vc.noteText = currentNote.subTitle
-            vc.thisClubNote = currentNote
+
+        if !atLeastOneNoteExists {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
+                print("ERROR WITH INSTANTIATION")
+                fatalError()
+            }
+            if let navController = navigationController {
+                navController.pushViewController(vc, animated: true)
+            }
+        } else {
+            
+            print("tapped on note")
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
+                print("ERROR WITH INSTANTIATION")
+                return
+            }
+    //        vc.hasContentAlready = true
+    //        vc.comingFrom = comingFrom
+            if let thisClubNotes = thisClubNotes {
+                let currentNote = thisClubNotes[indexPath.row]
+                vc.titleText = currentNote.title
+                vc.noteText = currentNote.subTitle
+                vc.thisClubNote = currentNote
+                if vc.thisClubNote != nil {
+                    navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    fatalError()
+                }
+            }
+            if let mainNotes = mainNotes {
+                let currentNote = mainNotes[indexPath.row]
+                vc.titleText = currentNote.title
+                vc.noteText = currentNote.subTitle
+                vc.thisMainNote = currentNote
+                
+                if vc.thisMainNote != nil {
+                    navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    fatalError()
+                }
+            }
+
+            
             
         }
-        if let mainNotes = mainNotes {
-            let currentNote = mainNotes[indexPath.row]
-            vc.titleText = currentNote.title
-            vc.noteText = currentNote.subTitle
-            vc.thisMainNote = currentNote
-        }
         
         
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

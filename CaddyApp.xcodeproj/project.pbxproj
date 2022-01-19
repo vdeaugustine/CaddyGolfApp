@@ -22,6 +22,9 @@
 		9C52A411278D572E00E07956 /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A410278D572E00E07956 /* NewHomeViewController.swift */; };
 		9C52A413278DCAA000E07956 /* HomePageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */; };
 		9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5407CD2793AC0E002C65E9 /* AdviceOptions.swift */; };
+		9C5407D02795CB40002C65E9 /* VocabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */; };
+		9C5407D3279652F3002C65E9 /* golfhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407D2279652F3002C65E9 /* golfhit.wav */; };
+		9C5407DB27965E7C002C65E9 /* scribble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407DA27965E7C002C65E9 /* scribble.mp3 */; };
 		9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674884278DF22200C74319 /* SettingsTableViewController.swift */; };
 		9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674886278E841F00C74319 /* NewAdviceViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
@@ -76,6 +79,9 @@
 		9C52A410278D572E00E07956 /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
 		9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		9C5407CD2793AC0E002C65E9 /* AdviceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceOptions.swift; sourceTree = "<group>"; };
+		9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTableViewController.swift; sourceTree = "<group>"; };
+		9C5407D2279652F3002C65E9 /* golfhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = golfhit.wav; sourceTree = "<group>"; };
+		9C5407DA27965E7C002C65E9 /* scribble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scribble.mp3; sourceTree = "<group>"; };
 		9C674884278DF22200C74319 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C674886278E841F00C74319 /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
+				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +222,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		9C5407D1279652E3002C65E9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9C5407DA27965E7C002C65E9 /* scribble.mp3 */,
+				9C5407D2279652F3002C65E9 /* golfhit.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +250,7 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C5407D1279652E3002C65E9 /* Sounds */,
 				9C285723278F53EF00E225C8 /* NewAndTesting */,
 				9C52A408278CB58F00E07956 /* TableViewCells */,
 				9C52A407278CB56600E07956 /* Swift Files */,
@@ -316,7 +333,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5407DB27965E7C002C65E9 /* scribble.mp3 in Resources */,
 				9CF2AF4C275AD61200458646 /* LaunchScreen.storyboard in Resources */,
+				9C5407D3279652F3002C65E9 /* golfhit.wav in Resources */,
 				9CF2AF49275AD61200458646 /* Assets.xcassets in Resources */,
 				9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */,
 				9CF2AF47275AD61000458646 /* Main.storyboard in Resources */,
@@ -373,6 +392,7 @@
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
 				9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */,
 				9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */,
+				9C5407D02795CB40002C65E9 /* VocabTableViewController.swift in Sources */,
 				9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */,

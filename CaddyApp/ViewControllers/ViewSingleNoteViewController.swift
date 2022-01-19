@@ -10,6 +10,10 @@ import UIKit
 class ViewSingleNoteViewController: UIViewController {
     @IBOutlet var mainNoteTextView: UITextView!
     @IBOutlet var titleLabel: UITextField!
+    
+    @IBOutlet weak var mainNoteBottomConstraint: NSLayoutConstraint!
+    
+    
     var isInEditState = false
 
     var titleText: String?
@@ -45,6 +49,7 @@ class ViewSingleNoteViewController: UIViewController {
 
             titleLabel.isUserInteractionEnabled = isInEditState
             mainNoteTextView.isUserInteractionEnabled = isInEditState
+            
         } else {
             // Editing is not enabled at the moment
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
@@ -54,20 +59,39 @@ class ViewSingleNoteViewController: UIViewController {
             titleLabel.isUserInteractionEnabled = isInEditState
             mainNoteTextView.isUserInteractionEnabled = isInEditState
             
-            mainNoteTextView.translatesAutoresizingMaskIntoConstraints = false
-            mainNoteTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 20).isActive = true
+//            mainNoteTextView.translatesAutoresizingMaskIntoConstraints = false
+//            mainNoteTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 20).isActive = true
+//            mainNoteTextView.frame.size = CGSize(width: mainNoteTextView.width, height: mainNoteTextView.height + (self.additionalSafeAreaInsets.bottom - mainNoteTextView.bottom) - 20)
+            
+//            mainNoteTextView.removeConstraint(mainNoteTextView.bottomAnchor)
+//            NSLayoutConstraint.activate([
+//                mainNoteTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//            ])
+            
+            mainNoteBottomConstraint.constant = -5
+            
             mainNoteTextView.backgroundColor = .blue
-            
-            
-            
+            playSound(whichSound: "Scribble")
             saveNote()
             
-            if let thisClubNote = thisClubNote {
+            var mainNoteUpdated = false
+            var clubNoteUpdated = false
+            
+            if let thisClubNote = self.thisClubNote {
                 updateClubNote(note: thisClubNote, newTitle: titleLabel.text!, newSubtitle: mainNoteTextView.text, type: currentClubTypeAsEnum())
+                clubNoteUpdated = true
             }
-            if let thisMainNote = thisMainNote {
+            if let thisMainNote = self.thisMainNote {
                 updateMainNote(note: thisMainNote, newTitle: titleLabel.text!, newContent: mainNoteTextView.text)
+                mainNoteUpdated = true
             }
+            
+            if !mainNoteUpdated && !clubNoteUpdated {
+                print (self.thisClubNote)
+                print(self.thisMainNote)
+                fatalError()
+            }
+            
             
         }
     }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Properties
@@ -385,6 +387,8 @@ extension SwingsViewController {
 
                 saveCurrentClub()
                 self.swingsTableView.reloadData()
+                playSound(whichSound: "Scribble")
+
             }
 
             print("Text field: \(textField?.text ?? "")")
@@ -397,6 +401,7 @@ extension SwingsViewController {
     }
 
     @objc func doAddSwingAlert() {
+        
         // 1. Create the alert controller.
         let alert = UIAlertController(title: "Enter Distance of Previous Shot".uppercased(), message: nil, preferredStyle: .alert)
 
@@ -424,6 +429,8 @@ extension SwingsViewController {
 
                 saveCurrentClub()
                 self.swingsTableView.reloadData()
+                playSound(whichSound: "Scribble")
+                
             } else {
                 print("NOT ADDING")
             }

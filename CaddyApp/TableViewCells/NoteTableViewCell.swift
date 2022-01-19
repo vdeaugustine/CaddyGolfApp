@@ -10,7 +10,7 @@ import UIKit
 class NoteTableViewCell: UITableViewCell {
     @IBOutlet var noteTitle: UILabel!
     @IBOutlet var noteContentPreview: UITextView!
-    var pageToGoToIfTapped: UIViewController!
+    var pageToGoToIfTapped: UIViewController?
     var navigationController: UINavigationController!
 
     override func awakeFromNib() {
@@ -42,6 +42,10 @@ class NoteTableViewCell: UITableViewCell {
     @objc func goToPage() {
         print("label was tapped")
         
-        navigationController.pushViewController(pageToGoToIfTapped, animated: true)
+        guard let pageToGo = self.pageToGoToIfTapped else {
+            return
+        }
+        
+        navigationController.pushViewController(pageToGo, animated: true)
     }
 }

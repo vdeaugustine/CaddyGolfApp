@@ -15,16 +15,6 @@ let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentCont
 
 // MARK: - FOR CLUBS
 
-// func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote]{
-//    do {
-//        clubNotes = try mainContext.fetch(ClubNote.fetchRequest())
-//
-//        for item in clubNotes {
-//        }
-//        return clubNotes
-//    } catch {}
-//    return [ClubNote]()
-// }
 
 func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote] {
     do {
@@ -75,8 +65,6 @@ func getAllMainNotes() -> [MainNote] {
         print("getting main notes")
         mainNotes = try mainContext.fetch(MainNote.fetchRequest())
         print("main notes gotten")
-
-        print(mainNotes)
         return mainNotes
     } catch {
         print("problem getting main notes")
@@ -111,5 +99,7 @@ func updateMainNote(note: MainNote, newTitle: String, newContent: String) {
     note.subTitle = newContent
     do {
         try mainContext.save()
-    } catch {}
+    } catch {
+        fatalError("FAIL TO UDPATE MAIN NOTE")
+    }
 }

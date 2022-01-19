@@ -5,6 +5,7 @@
 //  Created by Vincent DeAugustine on 12/5/21.
 //
 
+import AVFoundation
 import CloudKit
 import Foundation
 import UIKit
@@ -18,6 +19,51 @@ import UIKit
 //                             y: aboveNeightbor?.bottom ?? 0 + topPadding,
 //                             width: containerView.width - leftPadding - rightPadding - leftNeighbor?.width ?? 0 - rightNeighbor?.width ?? 0,
 //                             height: containerView.height - topPadding - bottomPadding - aboveNeightbor?.height ?? 0 - belowNeightbor?.height ?? 0)
+
+func playSound(whichSound: String) {
+    var thisURL: URL
+    var fileType: AVFileType
+    switch whichSound {
+    case "Swing":
+        guard let url = Bundle.main.url(forResource: "golfhit", withExtension: "wav") else {
+            fatalError()
+        }
+        thisURL = url
+        fileType = .wav
+    case "Scribble":
+        guard let url = Bundle.main.url(forResource: "scribble", withExtension: "mp3") else {
+            fatalError()
+        }
+        thisURL = url
+        fileType = .mp3
+    default:
+        fatalError()
+    }
+
+    do {
+        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+        try AVAudioSession.sharedInstance().setActive(true)
+
+        /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+        audioPlayer = try AVAudioPlayer(contentsOf: thisURL, fileTypeHint: fileType.rawValue)
+
+        /* iOS 10 and earlier require the following line:
+         player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+
+        guard let player = audioPlayer else {
+            fatalError()
+        }
+
+        player.play()
+
+    } catch let error {
+        print(error.localizedDescription)
+        fatalError()
+    }
+}
+
+func playGolfSound() {
+}
 
 func getMetersOrYards(_ passedYards: Int) -> Int {
     if useMeters {

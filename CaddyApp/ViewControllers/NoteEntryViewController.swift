@@ -26,6 +26,7 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
     var titleContent = ""
     var comingFrom = ""
 
+    @IBOutlet weak var noteContentBottomAnchor: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         noteField.returnKeyType = .default
@@ -92,6 +93,10 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                 }
             }
         }
+        
+//        playSound(whichSound: "Scribble")
+        self.view.backgroundColor = .blue
+        noteContentBottomAnchor.constant = -5
     }
 
     func textViewDidChange(_ textView: UITextView) {

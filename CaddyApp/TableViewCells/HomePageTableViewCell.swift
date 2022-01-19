@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class HomePageTableViewCell: UITableViewCell {
 
     
@@ -32,14 +33,31 @@ class HomePageTableViewCell: UITableViewCell {
         self.contentView.addSubview(leftIcon)
         self.contentView.addSubview(mainLabel)
         
-        self.leftIcon.frame =  CGRect(x: 5,
-                                      y: 2,
-                                      width: contentView.height - 4,
-                                      height: contentView.height - 4)
-        self.mainLabel.frame =  CGRect(x: leftIcon.right + 15,
-                                       y: 2,
-                                       width: self.contentView.width - self.leftIcon.right - 5,
-                                       height: self.leftIcon.height)
+//        self.leftIcon.frame =  CGRect(x: 5,
+//                                      y: contentView.centerY - (leftIcon.height / 2),
+//                                      width: contentView.height - 4,
+//                                      height: contentView.height - 4)
+//        print(leftIcon.center)
+//        print(contentView.centerY)
+//        self.mainLabel.frame =  CGRect(x: leftIcon.right + 15,
+//                                       y: 2,
+//                                       width: self.contentView.width - self.leftIcon.right - 5,
+//                                       height: self.leftIcon.height)
+        leftIcon.translatesAutoresizingMaskIntoConstraints = false
+        mainLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            leftIcon.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+            leftIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            leftIcon.heightAnchor.constraint(equalToConstant: contentView.height - 4),
+            leftIcon.widthAnchor.constraint(equalToConstant: contentView.height - 4),
+            
+            mainLabel.centerYAnchor.constraint(equalTo: leftIcon.centerYAnchor),
+            mainLabel.leftAnchor.constraint(equalTo: leftIcon.rightAnchor, constant: 15),
+            mainLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 5)
+        
+        
+        ])
+        
         
         
     }

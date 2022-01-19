@@ -37,6 +37,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
 //        distanceField.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +55,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         distanceField.placeholder = "0"
-        
 //        for item in self.view.subviews {
 //            item.translatesAutoresizingMaskIntoConstraints = false
 //        }
@@ -134,6 +134,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func getAdvice() {
         print("GETADVICE")
+        playSound(whichSound: "Swing")
+
         distanceField.resignFirstResponder()
         clubBelowForAdvice = getClubBelow()
         clubAboveForAdvice = getClubAbove()

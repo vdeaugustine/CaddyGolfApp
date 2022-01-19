@@ -124,7 +124,7 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
             return mainArr.count
         } else if collectionView == notesCollectionView {
             let mainArr = getAllClubNotes(currentClubTypeAsEnum())
-            return mainArr.count
+            return mainArr.count > 0 ? mainArr.count : 1
         } else {
             return 0
         }
@@ -152,7 +152,7 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
             aSwingView.headerLabel.adjustsFontSizeToFitWidth = true
 
         } else if collectionView == notesCollectionView {
-            let thisClubNote = getAllClubNotes(currentClubTypeAsEnum())[indexPath.row]
+            let allTheseNotes = getAllClubNotes(currentClubTypeAsEnum())
             myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NotesCell", for: indexPath)
             let aNoteView = RoundedBox()
             myCell.addSubview(aNoteView.mainContainer)
@@ -161,10 +161,21 @@ extension MainClubViewController: UICollectionViewDelegate, UICollectionViewData
                                                width: myCell.width,
                                                height: myCell.height))
             aNoteView.layoutViews()
-            aNoteView.setHeaderText(thisClubNote.title ?? "")
-            aNoteView.setMainText(thisClubNote.subTitle ?? "")
             aNoteView.headerLabel.font = UIFont(name: "Helvetica-Bold", size: 45)
             aNoteView.headerLabel.adjustsFontSizeToFitWidth = true
+
+            if allTheseNotes.count <= 0 {
+                aNoteView.setHeaderText("No notes for this club yet")
+                aNoteView.setMainText("Tap to add notes")
+                return myCell
+            }
+            let thisClubNote = allTheseNotes[indexPath.row]
+            
+            aNoteView.setHeaderText(thisClubNote.title ?? "")
+            aNoteView.setMainText(thisClubNote.subTitle ?? "")
+            
+            return myCell
+            
         }
 
         return myCell
