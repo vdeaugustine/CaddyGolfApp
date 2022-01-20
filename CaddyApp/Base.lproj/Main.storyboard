@@ -651,11 +651,11 @@
                             <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="dLv-TA-jk5" secondAttribute="trailing" id="35S-pv-mez"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="top" secondItem="2r3-BZ-O1b" secondAttribute="bottom" constant="15" id="B33-Cc-0VZ"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="centerX" secondItem="a6J-XZ-ZdM" secondAttribute="centerX" id="Cer-Hm-IP0"/>
-                            <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="2r3-BZ-O1b" secondAttribute="trailing" constant="10" id="HzW-1L-Qts"/>
+                            <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="2r3-BZ-O1b" secondAttribute="trailing" id="HzW-1L-Qts"/>
                             <constraint firstItem="dLv-TA-jk5" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="JeK-JH-E6l"/>
                             <constraint firstItem="cty-xB-HKw" firstAttribute="bottom" secondItem="dLv-TA-jk5" secondAttribute="bottom" id="L4r-u7-ajp"/>
                             <constraint firstItem="2r3-BZ-O1b" firstAttribute="top" secondItem="cty-xB-HKw" secondAttribute="top" constant="10" id="Rep-Pu-hS2"/>
-                            <constraint firstItem="2r3-BZ-O1b" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" constant="10" id="aOe-Ey-Ahc"/>
+                            <constraint firstItem="2r3-BZ-O1b" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="aOe-Ey-Ahc"/>
                             <constraint firstItem="dLv-TA-jk5" firstAttribute="top" secondItem="SYg-6u-Cze" secondAttribute="bottom" constant="19" id="iT0-U7-FRW"/>
                         </constraints>
                     </view>

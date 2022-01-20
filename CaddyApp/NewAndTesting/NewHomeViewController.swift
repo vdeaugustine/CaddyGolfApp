@@ -12,12 +12,12 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var tableView: UITableView!
     let stackView = UIStackView()
-    var pages: [String] = ["Notes", "Clubs", "Settings"]
+    var pages: [String] = ["Notes", "Clubs", "New Stroke"]
     var colors: [UIColor] = [.red, .green, .blue]
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "Settings"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke"]
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
@@ -169,7 +169,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         if indexPath.row == 2 {
-            cell.leftIcon.image = UIImage(systemName: "gearshape.2")
+            cell.leftIcon.image = UIImage(systemName: "plus")
         }
         cell.mainLabel.text = tableViewModel[indexPath.row]
 
