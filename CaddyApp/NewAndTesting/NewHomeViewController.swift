@@ -148,8 +148,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
-            vc.title = "Settings"
+            let vc = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
+//            vc.title = "NewStrokeViewController"
             navigationController?.pushViewController(vc, animated: true)
         default:
             return
@@ -197,7 +197,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ClubsViewController") as! ClubsViewController
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "SettingsTableViewController") as! SettingsTableViewController
+            let vc = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
             navigationController?.pushViewController(vc, animated: true)
         default:
             return

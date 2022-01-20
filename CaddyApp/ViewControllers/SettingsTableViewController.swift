@@ -34,7 +34,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.metersSwitch.isOn = useMeters
+//        self.metersSwitch.isOn = useMeters
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

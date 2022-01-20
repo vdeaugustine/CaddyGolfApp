@@ -22,6 +22,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         swingsTableView.delegate = self
         swingsTableView.dataSource = self
+        swingsTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -38,6 +39,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             swingTypeSegmentControl.selectedSegmentIndex = 0
             averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
         }
+        swingsTableView.reloadData()
     }
 
     override func viewWillLayoutSubviews() {

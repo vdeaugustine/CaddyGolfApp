@@ -54,8 +54,8 @@ class MainClubViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(yardagesLargeRectView)
         yardagesLargeRectView.addSubview(yardagesRectTitle)
-        scrollView.addSubview(swingsLargeRectView)
-        swingsLargeRectView.addSubview(swingsRectTitle)
+//        scrollView.addSubview(swingsLargeRectView)
+//        swingsLargeRectView.addSubview(swingsRectTitle)
         scrollView.addSubview(notesLargeRectView)
         notesLargeRectView.addSubview(notesRectTitle)
 
@@ -190,7 +190,7 @@ class MainClubViewController: UIViewController {
 //            print("DID NOT MAKE IT ")
 //        }
 
-        let thisheight = swingsLargeRectView.frame.maxY + 20
+        let thisheight = notesLargeRectView.frame.maxY + 20
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
 
