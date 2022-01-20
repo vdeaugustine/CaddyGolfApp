@@ -12,7 +12,7 @@ enum settingsKeys: String {
     case showThisSwingTypeByDefault = "swingTypeDefault"
 }
 
-enum AllClubNames: String {
+enum AllClubNames: String, CaseIterable {
     case nineIron = "9 Iron"
     case eightIron = "8 Iron"
     case sevenIron = "7 Iron"

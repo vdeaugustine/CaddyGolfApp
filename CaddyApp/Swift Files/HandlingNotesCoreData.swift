@@ -28,6 +28,18 @@ func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote] {
     } catch {}
     return [ClubNote]()
 }
+func getAllClubNotes(_ clubName: String) -> [ClubNote] {
+    do {
+        let request = ClubNote.fetchRequest() as NSFetchRequest<ClubNote>
+
+        let pred = NSPredicate(format: "clubName CONTAINS %@", clubName)
+        request.predicate = pred
+        // Set filtering and sorting on the request
+        clubNotes = try mainContext.fetch(request)
+        return clubNotes
+    } catch {}
+    return [ClubNote]()
+}
 
 func createClubNote(title: String, subtitle: String, type: AllClubNames) {
     let newItem = ClubNote(context: mainContext)

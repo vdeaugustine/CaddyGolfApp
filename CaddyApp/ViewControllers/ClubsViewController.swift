@@ -147,7 +147,9 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-        let currentClubNameForCell = currentClubForCell.name.uppercased()
+        // if something is broken, look here first
+//        let currentClubNameForCell = currentClubForCell.name.uppercased()
+        let currentClubNameForCell = currentClubForCell.name
         cell.clubNameLabel.text = currentClubNameForCell
         switch swingTypeSegControl.selectedSegmentIndex {
         case 0:
@@ -164,7 +166,27 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.notesBox.setHeaderText("Notes")
-        cell.notesBox.setMainText(currentClubForCell.mostRecentClubNoteTitle)
+        
+//        var thisClubIdentifier: AllClubNames = .driver
+//        for item in AllClubNames.allCases {
+//            if item.rawValue == currentClubNameForCell {
+//                thisClubIdentifier = item
+//                break
+//            }
+//        }
+        
+        let recentNotesArr = getAllClubNotes(currentClubNameForCell)
+        if recentNotesArr.count > 0 {
+            let recentNote = recentNotesArr[0]
+            cell.notesBox.setMainText(recentNote.subTitle ?? "")
+
+        } else {
+            cell.notesBox.setMainText("No notes yet.")
+        }
+        
+       
+
+        
         cell.yardsBox.layoutViews()
         cell.notesBox.layoutViews()
         cell.myViewController = self
