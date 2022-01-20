@@ -131,6 +131,8 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
                             distRet = standardDistanceForClub.wedge52.rawValue
                         case .pitching:
                             distRet = standardDistanceForClub.pitchingWedge.rawValue
+                        case .wedge48:
+                            distRet = standardDistanceForClub.wedge48.rawValue
                         }
                     }
                 case .hybrids:

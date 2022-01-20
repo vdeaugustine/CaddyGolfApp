@@ -40,6 +40,7 @@ enum AllClubNames: String, CaseIterable {
     case wedge56 = "56 Wedge"
     case wedge54 = "54 Wedge"
     case wedge52 = "52 Wedge"
+    case wedge48 = "48 Wedge"
     case pitchingWedge = "P Wedge"
 }
 
@@ -72,6 +73,7 @@ enum standardDistanceForClub: Int {
     case wedge56 = 85
     case wedge58 = 70
     case wedge60 = 60
+    
 
     case pitchingWedge = 135
 }
@@ -147,6 +149,7 @@ enum wedgesTypes: String, CaseIterable {
     case wedge56 = "56 Wedge"
     case wedge54 = "54 Wedge"
     case wedge52 = "52 Wedge"
+    case wedge48 = "48 Wedge"
     case pitching = "Pitching"
 }
 
