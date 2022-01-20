@@ -90,12 +90,12 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                     createClubNote(title: titleContent, subtitle: noteContent, type: currentClubTypeAsEnum())
                     currentClub.mostRecentClubNoteTitle = titleContent
                     saveCurrentClub()
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
         
 //        playSound(whichSound: "Scribble")
-        self.view.backgroundColor = .blue
         noteContentBottomAnchor.constant = -5
     }
 

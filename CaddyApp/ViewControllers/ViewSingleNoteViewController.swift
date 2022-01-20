@@ -20,10 +20,14 @@ class ViewSingleNoteViewController: UIViewController {
     var noteText: String?
     var thisClubNote: ClubNote?
     var thisMainNote: MainNote?
-
+    var typeOfNote: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Note"
+        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEditNote))
         mainNoteTextView.isUserInteractionEnabled = isInEditState
         titleLabel.isUserInteractionEnabled = isInEditState
@@ -38,7 +42,11 @@ class ViewSingleNoteViewController: UIViewController {
     }
 
     @objc func didTapEditNote() {
+        guard thisMainNote != nil else {
+            fatalError()
+        }
         print("tapped edit note")
+        
         isInEditState = !isInEditState
         // Editing is enabled
         if isInEditState {
@@ -70,7 +78,6 @@ class ViewSingleNoteViewController: UIViewController {
             
             mainNoteBottomConstraint.constant = -5
             
-            mainNoteTextView.backgroundColor = .blue
             playSound(whichSound: "Scribble")
             saveNote()
             

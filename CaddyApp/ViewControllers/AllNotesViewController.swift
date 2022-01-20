@@ -187,7 +187,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                 vc.titleText = currentNote.title
                 vc.noteText = currentNote.subTitle
                 vc.thisMainNote = currentNote
-                
+                vc.typeOfNote = "main"
                 if vc.thisMainNote != nil {
                     navigationController?.pushViewController(vc, animated: true)
                 } else {
