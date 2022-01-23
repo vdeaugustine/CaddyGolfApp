@@ -37,20 +37,19 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
 //        distanceField.translatesAutoresizingMaskIntoConstraints = false
 //        moreInfoButton.translatesAutoresizingMaskIntoConstraints = false
 //        distanceToPinLabel.translatesAutoresizingMaskIntoConstraints = false
-//        
+//
 //        moreInfoButton.centerYAnchor.constraint(equalTo: distanceToPinLabel.centerYAnchor).isActive = true
 //        moreInfoButton.heightAnchor.constraint(equalTo: distanceToPinLabel.heightAnchor, multiplier: 1/3).isActive = true
 //        moreInfoButton.leadingAnchor.constraint(equalTo: distanceToPinLabel.trailingAnchor, constant: 3).isActive = true
 //        moreInfoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5).isActive = true
 //        moreInfoButton.widthAnchor.constraint(equalTo: moreInfoButton.heightAnchor).isActive = true
 //        moreInfoButton.bottomAnchor.constraint(equalTo: flagColorSwgControl.topAnchor).isActive = true
-    
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -156,18 +155,16 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         let distAsInt = Int("\(enteredDistance)")!
         var closestClub = currentClub
         for clubType in mainBag.allClubs2DArray {
-            
-            
             for club in clubType {
                 if club.fullDistance <= distAsInt {
                     let thisClubGap = abs(distAsInt - club.fullDistance)
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap
                         closestClub = club
-                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .fullSwing)
+//                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .fullSwing)
                     }
                 }
-                
+
 //                if useSwingTypes {
 //                    if club.threeFourthsDistance <= distAsInt {
 //                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
@@ -186,8 +183,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 //                        }
 //                    }
 //                }
-                
-                
             }
         }
         advice.closestClubBelow = closestClub
@@ -215,7 +210,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                         closestClub = club
                     }
                 }
-                
+
 //                if useSwingTypes {
 //                    if club.threeFourthsDistance >= distAsInt {
 //                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)

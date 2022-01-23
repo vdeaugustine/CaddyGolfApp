@@ -256,7 +256,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         case .threeFourths:
             underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance))")
         }
-        underClubGapBox.setHeaderText("gap".uppercased())
+        underClubGapBox.setHeaderText("yards short of flag".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - pad
 
@@ -274,7 +274,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 height: overClubSwingDistanceBox.mainContainer.height))
         overClubGapBox.layoutViews()
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
-        overClubGapBox.setHeaderText("gap".uppercased())
+        overClubGapBox.setHeaderText("yards beyond flag".uppercased())
         
         aimShotBox.frame =  CGRect(x: pad,
                                    y: overClubLargeContainer.bottom + 10,

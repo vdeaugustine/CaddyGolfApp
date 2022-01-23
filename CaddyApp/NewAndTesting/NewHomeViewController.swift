@@ -17,7 +17,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "New Stroke"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Quick Tips"]
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
@@ -171,6 +171,11 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 2 {
             cell.leftIcon.image = UIImage(systemName: "plus")
         }
+        
+        if indexPath.row == 3 {
+            cell.leftIcon.image = UIImage(systemName: "lightbulb")
+        }
+        
         cell.mainLabel.text = tableViewModel[indexPath.row]
 
         return cell
