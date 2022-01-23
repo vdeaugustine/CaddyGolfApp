@@ -91,11 +91,12 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                     currentClub.mostRecentClubNoteTitle = titleContent
                     saveCurrentClub()
                     self.dismiss(animated: true, completion: nil)
+                    
                 }
             }
         }
         
-//        playSound(whichSound: "Scribble")
+        playSound(whichSound: "Scribble")
         noteContentBottomAnchor.constant = -5
     }
 

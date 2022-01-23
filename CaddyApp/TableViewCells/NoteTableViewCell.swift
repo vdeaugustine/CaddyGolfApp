@@ -12,6 +12,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet var noteContentPreview: UITextView!
     var pageToGoToIfTapped: UIViewController?
     var navigationController: UINavigationController!
+    var letButtonBeTapped = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +27,11 @@ class NoteTableViewCell: UITableViewCell {
 //            button.backgroundColor = .red
 //            return button
 //        }()
-        let goToPageButton = TransparentButton(superView: noteContentPreview)
-        goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+        if letButtonBeTapped {
+            let goToPageButton = TransparentButton(superView: noteContentPreview)
+            goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
+        }
+        
         // Initialization code
     }
 

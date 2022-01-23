@@ -179,9 +179,12 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         if recentNotesArr.count > 0 {
             let recentNote = recentNotesArr[0]
             cell.notesBox.setMainText(recentNote.subTitle ?? "")
+            cell.notesBox.mainTextLabel.textColor = .black
+
 
         } else {
             cell.notesBox.setMainText("No notes yet.")
+            cell.notesBox.mainTextLabel.textColor = .red
         }
         
        
@@ -222,7 +225,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         taptic.impactOccurred(intensity: 1.0)
 
         // Create new view controller that will be used to edit club distance
-        let clubVC = storyboard?.instantiateViewController(identifier: "sketchTest") as! MainClubViewController
+        let clubVC = storyboard?.instantiateViewController(identifier: "MainClubViewController") as! MainClubViewController
         let clubName = mainBag.allClubs2DArray[indexPath.section][indexPath.row].name
         clubVC.title = "\(clubName)".capitalized
 

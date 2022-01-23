@@ -107,7 +107,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         hillBox.addSubview(hillTipsLabel)
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
-
+        
+        
+        
         
     }
 
@@ -362,6 +364,15 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         self.setContentScrollView(scrollView)
+        
+        let goToPageOverClub = TransparentButton(superView: overClubLargeContainer)
+        goToPageOverClub.backgroundColor = .clear
+        goToPageOverClub.addTarget(self, action: #selector(goToOverClub), for: .touchUpInside)
+        
+        let goToPageUnderButton = TransparentButton(superView: underClubLargeContainer)
+        goToPageUnderButton.backgroundColor = .clear
+        goToPageUnderButton.addTarget(self, action: #selector(goToUnderClub), for: .touchUpInside)
+        
         
     }
     
@@ -805,6 +816,28 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         present(alert, animated: true, completion: nil)
         
     }
+    
+    
+    @objc func goToUnderClub() {
+        print("tapped")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MainClubViewController") as! MainClubViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.title = advice.closestClubBelow.name
+        currentClub = advice.closestClubBelow
+        
+    }
+    
+    @objc func goToOverClub() {
+        print("tapped")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MainClubViewController") as! MainClubViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.title = advice.closestClubAbove.name
+        currentClub = advice.closestClubAbove
+        
+        
+    }
+    
+    
     
     
 }

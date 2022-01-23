@@ -98,10 +98,10 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteTableViewCell
         
         let nextVC: UIViewController
-
+        cell.letButtonBeTapped = atLeastOneNoteExists
         if !atLeastOneNoteExists {
             cell.noteTitle.text = "No notes yet"
-            cell.noteContentPreview.text = "Tap this cell or the plus button in the top right corner to create new note"
+            cell.noteContentPreview.text = "Tap the plus button in the top right corner to create new note"
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
                 print("ERROR WITH INSTANTIATION")
                 fatalError()
@@ -155,13 +155,13 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
 
         if !atLeastOneNoteExists {
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
-                print("ERROR WITH INSTANTIATION")
-                fatalError()
-            }
-            if let navController = navigationController {
-                navController.pushViewController(vc, animated: true)
-            }
+//            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
+//                print("ERROR WITH INSTANTIATION")
+//                fatalError()
+//            }
+//            if let navController = navigationController {
+//                navController.pushViewController(vc, animated: true)
+//            }
         } else {
             
             print("tapped on note")
