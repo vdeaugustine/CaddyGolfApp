@@ -5,12 +5,12 @@
 //  Created by Vincent DeAugustine on 1/10/22.
 //
 
-import UIKit
 import GoogleMobileAds
+import UIKit
 
 class NewHomeViewController: UIViewController, UIScrollViewDelegate {
-    @IBOutlet weak var viewContainerForBanner: UIView!
-    
+    @IBOutlet var viewContainerForBanner: UIView!
+
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
@@ -20,8 +20,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
 
         return banner
     }()
-    
-    
+
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var tableView: UITableView!
@@ -32,21 +31,20 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
     var tableViewModel = ["Notes", "Clubs", "New Stroke", "Tip Jar"]
-    
+
     override func viewWillAppear(_ animated: Bool) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred(intensity: 0.88)
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-        
+
         banner.rootViewController = self
         banner.load(GADRequest())
 //        banner.delegate = self
-        
+
         pageControl.numberOfPages = pages.count
         setupScreens()
         scrollView.backgroundColor = .white
@@ -67,14 +65,13 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
 
     func setupScreens() {
         viewContainerForBanner.addSubview(banner)
-        
 
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
             banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
             banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
         ])
 
         scrollView.addSubview(stackView)
@@ -90,8 +87,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             stackView.addArrangedSubview(thisPage)
             thisPage.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             thisPage.image = UIImage(named: "background\(pageNumber + 1)")
-//            thisPage.isUserInteractionEnabled = true
-//            thisPage.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(goToPage)))
+
             let tint: UIView = {
                 let thisView = UIView()
                 thisView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,25 +95,19 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
                 thisView.alpha = 0.4
                 return thisView
             }()
-            
-//            print(thisPage.frame)
-//            print(tint.frame)
+
             thisPage.addSubview(tint)
-            
+
             NSLayoutConstraint.activate([
                 tint.leadingAnchor.constraint(equalTo: thisPage.leadingAnchor),
                 tint.topAnchor.constraint(equalTo: thisPage.topAnchor),
                 tint.rightAnchor.constraint(equalTo: thisPage.rightAnchor),
-                tint.bottomAnchor.constraint(equalTo: thisPage.bottomAnchor)
+                tint.bottomAnchor.constraint(equalTo: thisPage.bottomAnchor),
             ])
-            
 
             pageFrame.origin.x = scrollView.frame.size.width * CGFloat(pageNumber)
             pageFrame.size = scrollView.frame.size
             pageFrames.append(pageFrame)
-            
-            
-            
 
             let pageLabel: UILabel = {
                 let label = UILabel()
@@ -126,8 +116,6 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
                 label.text = "\(pages[pageNumber])"
                 label.translatesAutoresizingMaskIntoConstraints = false
                 label.textColor = .white
-                
-                
 
                 return label
             }()
@@ -153,11 +141,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
                                       width: scrollView.width * CGFloat(pages.count),
                                       height: scrollView.height)
         goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
-        
-      
+
         scrollView.addSubview(goToPageButton)
-//        goToPageButton.backgroundColor = .black
-//        goToPageButton.alpha = 0.4
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -186,7 +171,6 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
-//            vc.title = "NewStrokeViewController"
             navigationController?.pushViewController(vc, animated: true)
         default:
             return
@@ -208,11 +192,11 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 2 {
             cell.leftIcon.image = UIImage(systemName: "plus")
         }
-        
+
         if indexPath.row == 3 {
             cell.leftIcon.image = UIImage(systemName: "dollarsign.square")
         }
-        
+
         cell.mainLabel.text = tableViewModel[indexPath.row]
 
         return cell
@@ -241,7 +225,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
             navigationController?.pushViewController(vc, animated: true)
-        
+
         case 3:
             let vc = storyboard?.instantiateViewController(withIdentifier: "TipJarViewController") as! TipJarViewController
             navigationController?.pushViewController(vc, animated: true)

@@ -7,11 +7,7 @@
 
 import UIKit
 
-
 class MainClubViewController: UIViewController {
-    
-    
-    
     var swingsCollectionView: UICollectionView?
     var notesCollectionView: UICollectionView?
 
@@ -20,7 +16,7 @@ class MainClubViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setUpSubviews()
     }
 
@@ -41,7 +37,6 @@ class MainClubViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
     }
 
     // MARK: - Setup Views NEW
@@ -58,11 +53,9 @@ class MainClubViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(yardagesLargeRectView)
         yardagesLargeRectView.addSubview(yardagesRectTitle)
-//        scrollView.addSubview(swingsLargeRectView)
-//        swingsLargeRectView.addSubview(swingsRectTitle)
         scrollView.addSubview(notesLargeRectView)
         notesLargeRectView.addSubview(notesRectTitle)
-        
+
         yardagesLargeRectView.addSubview(tfSwingContainer.mainContainer)
         yardagesLargeRectView.addSubview(fullSwingContainer.mainContainer)
         yardagesLargeRectView.addSubview(maxSwingContainer.mainContainer)
@@ -91,16 +84,16 @@ class MainClubViewController: UIViewController {
         addGestureRecognizers()
 
         notesLargeRectView.frame = CGRect(x: padRectsFromSides,
-                                           y: yardagesLargeRectView.bottom + padRectsFromSides * 2,
-                                           width: setUpDimensions.width - (2 * padRectsFromSides),
-                                           height: 275)
-        
+                                          y: yardagesLargeRectView.bottom + padRectsFromSides * 2,
+                                          width: setUpDimensions.width - (2 * padRectsFromSides),
+                                          height: 275)
+
         notesLargeRectView.dropShadow()
         notesRectTitle.frame = CGRect(x: padLabel,
                                       y: 2 * padRectsFromSides,
                                       width: setUpDimensions.width - 50,
                                       height: 50)
-        
+
         swingsLargeRectView.frame = CGRect(x: padRectsFromSides,
                                            y: notesLargeRectView.bottom + padRectsFromSides * 2,
                                            width: setUpDimensions.width - (2 * padRectsFromSides),
@@ -120,8 +113,8 @@ class MainClubViewController: UIViewController {
 
         maxSwingContainer.setupFrames(padFromSides: padRectsFromSides, leftNeighbor: fullSwingContainer.mainContainer, topNeighbor: yardagesRectTitle)
 
-        
         // MARK: - SETUP AND MAKE NOTES COLLECTIONVIEW
+
         let notesLayout = UICollectionViewFlowLayout()
         notesLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         notesLayout.itemSize = CGSize(width: notesLargeRectView.width - (notesLargeRectView.width / 5),
@@ -139,9 +132,9 @@ class MainClubViewController: UIViewController {
 
             notesCollectionView.showsHorizontalScrollIndicator = false
             notesCollectionView.frame = CGRect(x: notesLargeRectView.frame.minX,
-                                                y: notesRectTitle.bottom + 5,
-                                                width: notesLargeRectView.frame.width - 20,
-                                                height: notesLargeRectView.height - notesRectTitle.frame.maxY - padRectsFromSides)
+                                               y: notesRectTitle.bottom + 5,
+                                               width: notesLargeRectView.frame.width - 20,
+                                               height: notesLargeRectView.height - notesRectTitle.frame.maxY - padRectsFromSides)
             notesCollectionView.backgroundColor = .systemBackground
 
             notesCollectionView.delegate = self
@@ -155,9 +148,7 @@ class MainClubViewController: UIViewController {
         } else {
             print("DID NOT MAKE IT ")
         }
-        
 
-        
         let thisheight = notesLargeRectView.frame.maxY + 20
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
@@ -236,7 +227,6 @@ class MainClubViewController: UIViewController {
     }
 
     @objc private func didTapNotesButton() {
-        
         print("Notes Was Tapped")
         notesLargeRectView.showAnimation {
         }

@@ -50,8 +50,6 @@ class RoundedBox {
             let theLabel = UILabel()
             theLabel.font = UIFont(name: "Helvetica-Bold", size: 18)
             theLabel.adjustsFontSizeToFitWidth = true
-            //    label.heightAnchor.constraint(equalToConstant: 49.0)
-            //        label.translatesAutoresizingMaskIntoConstraints = true
             theLabel.textAlignment = .center
             return theLabel
         }()
@@ -61,12 +59,9 @@ class RoundedBox {
             theLabel.font = UIFont(name: "Helvetica", size: 30)
             theLabel.adjustsFontSizeToFitWidth = true
             theLabel.text = "0"
-            //    label.heightAnchor.constraint(equalToConstant: 49.0)
             theLabel.translatesAutoresizingMaskIntoConstraints = true
             theLabel.textAlignment = .center
             theLabel.numberOfLines = 0
-
-            //        label.translatesAutoresizingMaskIntoConstraints = false
             return theLabel
         }()
     }

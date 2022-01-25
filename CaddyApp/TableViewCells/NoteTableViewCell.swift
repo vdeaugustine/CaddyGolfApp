@@ -20,36 +20,23 @@ class NoteTableViewCell: UITableViewCell {
         noteContentPreview.isUserInteractionEnabled = true
         let noteContextGesture = UIGestureRecognizer(target: self, action: #selector(goToPage))
         noteContentPreview.addGestureRecognizer(noteContextGesture)
-//        let goToPageButton: TransparentButton = {
-//            let button = TransparentButton(superView: self.noteContentPreview)
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
-//            button.backgroundColor = .red
-//            return button
-//        }()
         if letButtonBeTapped {
             let goToPageButton = TransparentButton(superView: noteContentPreview)
             goToPageButton.addTarget(self, action: #selector(goToPage), for: .touchUpInside)
         }
-        
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
-    
-    
+
     @objc func goToPage() {
         print("label was tapped")
-        
-        guard let pageToGo = self.pageToGoToIfTapped else {
+
+        guard let pageToGo = pageToGoToIfTapped else {
             return
         }
-        
+
         navigationController.pushViewController(pageToGo, animated: true)
     }
 }

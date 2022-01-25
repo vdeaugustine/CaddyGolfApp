@@ -24,10 +24,6 @@ class SwingTypeBox {
     }
 
     let swingType: swingTypeState
-//    var leftNeighborView: UIView?
-//    var rightNeighborView: UIView?
-//    var topNeighborView: UIView?
-//    var padFromSides: CGFloat?
 
     init(type: swingTypeState) {
         swingType = type
@@ -52,7 +48,6 @@ class SwingTypeBox {
             let theView = UIView()
             theView.translatesAutoresizingMaskIntoConstraints = true
             theView.layer.cornerRadius = globalCornerRadius
-            //            view.backgroundColor = .red
             theView.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
             theView.isUserInteractionEnabled = true
             return theView
@@ -62,7 +57,6 @@ class SwingTypeBox {
             let theView = UIView()
             theView.translatesAutoresizingMaskIntoConstraints = true
             theView.layer.cornerRadius = globalCornerRadius
-            //    view.backgroundColor = .red
             theView.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
             theView.isUserInteractionEnabled = true
             theView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -75,8 +69,6 @@ class SwingTypeBox {
             theView.font = UIFont(name: "Helvetica-Bold", size: 18)
             theView.adjustsFontSizeToFitWidth = true
             theView.text = labelText
-            //    label.heightAnchor.constraint(equalToConstant: 49.0)
-            //        label.translatesAutoresizingMaskIntoConstraints = true
             theView.textAlignment = .center
             return theView
         }()
@@ -86,10 +78,7 @@ class SwingTypeBox {
             theView.font = UIFont(name: "Helvetica-Bold", size: 80)
             theView.adjustsFontSizeToFitWidth = true
             theView.text = "\(yardageNum)"
-            //    label.heightAnchor.constraint(equalToConstant: 49.0)
-            //        label.translatesAutoresizingMaskIntoConstraints = true
             theView.textAlignment = .center
-            //        label.translatesAutoresizingMaskIntoConstraints = false
             return theView
         }()
     }
@@ -147,7 +136,6 @@ class SwingTypeBox {
 
     /// Changes the mainTextLabel for the SwingTypeBox
     func updateYardage() {
-//        yardageNumberLabel = currentClub
         switch swingType {
         case .fullSwing:
             mainTextLabel.text = "\(currentClub.fullDistance)"
@@ -157,7 +145,7 @@ class SwingTypeBox {
             mainTextLabel.text = "\(currentClub.threeFourthsDistance)"
         }
     }
-    
+
     func dropShadow() {
         mainContainer.dropShadow()
     }

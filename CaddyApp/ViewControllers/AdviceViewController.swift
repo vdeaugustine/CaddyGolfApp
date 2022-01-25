@@ -5,9 +5,8 @@
 //  Created by Vincent on 12/6/21.
 //
 
-import UIKit
 import GoogleMobileAds
-
+import UIKit
 
 /// - View Hierarchy
 ///     - view
@@ -36,14 +35,12 @@ import GoogleMobileAds
 class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADFullScreenContentDelegate {
     private var interstitial: GADInterstitialAd?
 
-    
     override func viewWillLayoutSubviews() {
         addSubviews()
         makeFramesForAllViews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
                                request: request,
@@ -67,28 +64,20 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             overClubGapBox.mainTextLabel.textColor = myGreen
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         if let interstitial = interstitial {
-          interstitial.present(fromRootViewController: self)
+            interstitial.present(fromRootViewController: self)
         } else {
-          print("Ad wasn't ready")
+            print("Ad wasn't ready")
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-//        view.addSubview(scrollView)
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Result", style: .done, target: self, action: #selector(addResultOfStroke))
 
-//        tabBarController?.tabBar.isOpaque = true
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
         addAdvice()
     }
@@ -99,7 +88,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.addSubview(scrollView)
 
         scrollView.addSubview(underClubLargeContainer)
-//        scrollView.addSubview(distanceLabel)
         underClubLargeContainer.addSubview(underClubNameRect)
         scrollView.addSubview(optionsLabel)
         scrollView.addSubview(moreInfoButton)
@@ -120,15 +108,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotBox.addSubview(aimShotHeader)
         aimShotBox.addSubview(aimShotTips)
         aimShotBox.addSubview(colorOfFlagImage)
-//        aimShotBox.addSubview(flagExplanationLabel)
         aimShotBox.addSubview(flagExplanationButton)
 
         scrollView.addSubview(hillBox)
         hillBox.addSubview(hillHeaderLabel)
-//        hillBox.addSubview(hillImageView)
         hillBox.addSubview(hillTipsLabel)
-        // Center View Frame
-        // ((big container width) / 2) - ((width of View Frame) / 2)
     }
 
     func makeFramesForAllViews() {
@@ -245,18 +229,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
         underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
-//        underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
-//        switch closestClubBelow.swingType {
-//        case .fullSwing:
-//            underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
-//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.fullDistance))")
-//        case .maxSwing:
-//            underClubSwingDistanceBox.setHeaderText("Max Swing".uppercased())
-//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.maxDistance))")
-//        case .threeFourths:
-//            underClubSwingDistanceBox.setHeaderText("3/4 Swing".uppercased())
-//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.threeFourthsDistance))")
-//        }
 
         underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + pad,
                                                  y: underClubSwingDistanceBox.mainContainer.top,
@@ -264,15 +236,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
         underClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
-//        underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
-//        switch closestClubBelow.swingType {
-//        case .fullSwing:
-//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
-//        case .maxSwing:
-//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.maxDistance))")
-//        case .threeFourths:
-//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance))")
-//        }
+
         underClubGapBox.setHeaderText("short of flag".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - pad
@@ -308,13 +272,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                    width: aimShotBox.width - 2 * pad,
                                    height: aimShotBox.height - colorOfFlagImage.height - pad - pad)
 
-//        aimShotTips.frame =  CGRect(x: pad,
-//                                    y: colorOfFlagImage.bottom + pad,
-//                                    width: aimShotBox.width - 2 * pad,
-//                                    height: 50)
         aimShotTips.sizeToFit()
-
-//        aimShotBox.frame.size = CGSize(width: aimShotBox.width, height: aimShotBox.height - (aimShotBox.height - aimShotTips.bottom))
 
         // Center the flag image in the room available
         let roomForFlagImage = aimShotBox.width - aimShotHeader.right
@@ -420,7 +378,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont(name: "Helvetica-Bold", size: 54)
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
-//        label.backgroundColor = .white
         label.layer.backgroundColor = UIColor.clear.cgColor
         label.backgroundColor = .clear
         label.textAlignment = .center
@@ -435,12 +392,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Options"
         label.font = UIFont(name: "Helvetica-Bold", size: 20)
-//        label.textColor = .placeholderText
 
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
-//        label.layer.backgroundColor = UIColor.white.cgColor
-//        label.clipsToBounds = true
         label.numberOfLines = 0
 
         return label
@@ -457,15 +411,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let moreInfoView: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-//        thisView.backgroundColor = .lightGray
 
         return thisView
     }()
 
     @objc func tappedMoreInfo() {
         print("tapped")
-
-//        let alert = UIAlertController(title: "Club Gaps Explained", message: "The 'SHORT' box indicates the club that wouldn't necessarily reach the distance to the pin if hit normal distance. \n\nThe 'LONG' club is the club whose distance is further than the distance to the pin.\n\nThe number that is green indicates the closer club", preferredStyle: .alert)
 
         let alert = UIAlertController(title: "Club Gaps Explained", message: "The listed clubs are the clubs whose distances are right below and right above the distance to the pin.\n\nThe number in the box indicates the gap between this club's distance and the distance to the pin.\n\nThe green number is the closer club", preferredStyle: .alert)
 
@@ -505,7 +456,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var underClubNameRect: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-//        thisView.backgroundColor = .white
         thisView.layer.cornerRadius = globalCornerRadius
         thisView.dropShadow()
         return thisView
@@ -539,7 +489,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
         thisView.layer.cornerRadius = globalCornerRadius
-//        thisView.backgroundColor = .white
         thisView.dropShadow()
         return thisView
     }()
@@ -560,8 +509,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Placeholder text"
         label.font = UIFont(name: "Helvetica-Bold", size: 54)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.clipsToBounds = true
+
         label.numberOfLines = 0
 
         return label
@@ -577,7 +525,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
         thisView.layer.cornerRadius = globalCornerRadius
-//        thisView.backgroundColor = .magenta
         thisView.backgroundColor = .white
         thisView.dropShadow()
         return thisView
@@ -585,7 +532,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var aimShotHeader: UILabel = {
         let label = UILabel()
-//        label.layer.backgroundColor = UIColor.blue.cgColor
         label.font = UIFont(name: "Helvetica-Bold", size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.text = "Aim shot"
@@ -595,7 +541,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var aimShotTips: UILabel = {
         let label = UILabel()
-//        label.layer.backgroundColor = UIColor.green.cgColor
         label.font = UIFont(name: "Helvetica", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "This is temp text"
@@ -609,7 +554,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let imageView = UIImageView()
         switch advice.flagColor {
         case "Red":
-//            image.image = UIImage(named: "niceRedFlag")
             imageView.image = UIImage(named: "redFlagOnGreen")
         case "White":
             imageView.image = UIImage(named: "whiteFlagGreen")
@@ -661,9 +605,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var hillBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-//        thisView.backgroundColor = .orange
         thisView.layer.cornerRadius = globalCornerRadius
-//        thisView.backgroundColor = .magenta
         thisView.backgroundColor = .white
         thisView.dropShadow()
         return thisView
@@ -671,7 +613,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var hillHeaderLabel: UILabel = {
         let label = UILabel()
-//        label.layer.backgroundColor = UIColor.blue.cgColor
         label.font = UIFont(name: "Helvetica-Bold", size: 40)
         label.adjustsFontSizeToFitWidth = true
         label.text = "Hill Slope"
@@ -682,7 +623,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var hillTipsLabel: UILabel = {
         let label = UILabel()
-//        label.layer.backgroundColor = myGreen.cgColor
         label.font = UIFont(name: "Helvetica", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "You are on a slope.\nThese are the tips for the slope type"

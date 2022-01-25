@@ -23,7 +23,6 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         view.addSubview(scrollView)
 
         scrollView.addSubview(underClubLargeContainer)
-//        scrollView.addSubview(distanceLabel)
         underClubLargeContainer.addSubview(underClubNameRect)
         scrollView.addSubview(optionsLabel)
         scrollView.addSubview(moreInfoButton)
@@ -40,20 +39,10 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         overClubLargeContainer.addSubview(overClubSwingDistanceBox.mainContainer)
         overClubLargeContainer.addSubview(overClubGapBox.mainContainer)
 
-        // Center View Frame
-        // ((big container width) / 2) - ((width of View Frame) / 2)
-
         let thisHeight = tipsTypeSegControl.bottom + 20
         scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
-//
-//        NSLayoutConstraint.activate([
-//            distanceLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-//            distanceLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-//            distanceLabel.heightAnchor.constraint(equalToConstant: 50),
-//            distanceLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20)
-//
-//        ])
+
         let distanceWidth = scrollView.width - (2 * 20)
         let distanceLabelContainerView: UIView = {
             let someView = UIView(frame: CGRect(x: 20,
@@ -80,11 +69,6 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
                                      width: distanceWidth + 2,
                                      height: 50)
         distanceLabel.sizeToFit()
-
-//        distanceLabel.frame =  CGRect(x: distanceLabel.frame.minX,
-//                                      y: distanceLabel.frame.minY,
-//                                      width: distanceLabel.width + 20,
-//                                      height: distanceLabel.height + 10)
 
         optionsLabel.frame = CGRect(x: 20,
                                     y: distanceLabel.bottom + 20,
@@ -157,7 +141,6 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
         underClubGapBox.setMainText("\(advice.distanceToPin - advice.closestClubBelow.fullDistance)")
-//        underClubGapBox.mainTextLabel.textColor = .blue
         underClubGapBox.setHeaderText("Short".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - 5
@@ -178,7 +161,7 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
         overClubGapBox.setHeaderText("Long".uppercased())
     }
-    
+
     override func viewDidLayoutSubviews() {
         if advice.clubBelowGap < advice.clubAboveGap {
             underClubGapBox.mainTextLabel.textColor = myGreen
@@ -188,13 +171,9 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
             overClubGapBox.mainTextLabel.textColor = myGreen
         }
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.addSubview(scrollView)
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -217,7 +196,6 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         label.layer.cornerRadius = globalCornerRadius
         label.backgroundColor = .white
         label.textAlignment = .center
-//        label.clipsToBounds = true
         label.numberOfLines = 1
 
         return label
@@ -229,12 +207,10 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Options"
         label.font = UIFont(name: "Helvetica-Bold", size: 20)
-//        label.textColor = .placeholderText
 
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = globalCornerRadius
         label.layer.backgroundColor = UIColor.white.cgColor
-//        label.clipsToBounds = true
         label.numberOfLines = 0
 
         return label
@@ -255,72 +231,28 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
 
         return thisView
     }()
-    
-   
-    
-    
 
     @objc func tappedMoreInfo() {
         print("tapped")
-        
-//        let alert = UIAlertController(title: "Club Gaps Explained", message: "The 'SHORT' box indicates the club that wouldn't necessarily reach the distance to the pin if hit normal distance. \n\nThe 'LONG' club is the club whose distance is further than the distance to the pin.\n\nThe number that is green indicates the closer club", preferredStyle: .alert)
-        
+
         let alert = UIAlertController(title: "Club Gaps Explained", message: "The listed clubs are the clubs whose distances are right below and right above the distance to the pin.\n\nThe number in the box indicates the gap between this club's distance and the distance to the pin.\n\nThe green number is the closer club", preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
             case .default:
                 print("default")
-                
+
             case .cancel:
                 print("cancel")
-                
+
             case .destructive:
                 print("destructive")
-                
+
             @unknown default:
                 print("whateverIDC")
             }
         }))
         present(alert, animated: true, completion: nil)
-        
-        //        print("tapped more info")
-//
-//        scrollView.addSubview(moreInfoView)
-////        scrollView.addSubview(moreInfoButton)
-////        scrollView.bringSubviewToFront(moreInfoView)
-//        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(dismissInfoBox)))
-//        moreInfoButton.addTarget(self, action: #selector(tappedMoreInfo), for: .touchUpInside)
-//
-//        moreInfoView.frame = CGRect(x: moreInfoButton.right + 20,
-//                                    y: moreInfoButton.top,
-//                                    width: 200,
-//                                    height: 200)
-//        let infoLabel: UILabel = {
-//            let label = UILabel()
-//            label.numberOfLines = 0
-//            label.frame = CGRect(x: 5,
-//                                 y: 5,
-//                                 width: self.moreInfoView.width - 10,
-//                                 height: self.moreInfoView.height - 10)
-//            label.backgroundColor = .magenta
-//            label.text = "You clicked on more information"
-//
-//            return label
-//        }()
-//
-//        let dismissButton: UIButton = {
-//            let button = UIButton()
-//            button.frame = CGRect(x: 0,
-//                                  y: 0,
-//                                  width: moreInfoView.width,
-//                                  height: moreInfoView.height)
-//            button.addTarget(self, action: #selector(dismissInfoBox), for: .touchUpInside)
-//            return button
-//        }()
-//        moreInfoView.addSubview(infoLabel)
-//        moreInfoView.addSubview(dismissButton)
-//        moreInfoView.bringSubviewToFront(dismissButton)
     }
 
     @objc func dismissInfoBox() {
@@ -386,8 +318,6 @@ class NewAdviceViewControllerTwo: UIViewController, UITableViewDelegate, UITable
         label.translatesAutoresizingMaskIntoConstraints = true
         label.text = "Placeholder text"
         label.font = UIFont(name: "Helvetica-Bold", size: 54)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.clipsToBounds = true
         label.numberOfLines = 0
 
         return label

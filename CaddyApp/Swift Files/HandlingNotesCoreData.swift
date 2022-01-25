@@ -15,7 +15,6 @@ let mainContext = (UIApplication.shared.delegate as! AppDelegate).persistentCont
 
 // MARK: - FOR CLUBS
 
-
 func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote] {
     do {
         let request = ClubNote.fetchRequest() as NSFetchRequest<ClubNote>
@@ -28,6 +27,7 @@ func getAllClubNotes(_ clubName: AllClubNames) -> [ClubNote] {
     } catch {}
     return [ClubNote]()
 }
+
 func getAllClubNotes(_ clubName: String) -> [ClubNote] {
     do {
         let request = ClubNote.fetchRequest() as NSFetchRequest<ClubNote>

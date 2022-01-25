@@ -44,6 +44,7 @@
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
 		9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F32279F997F00470472 /* AdTestViewController.swift */; };
 		9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F34279FD18800470472 /* TipJarViewController.swift */; };
+		9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
 		9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */; };
@@ -104,6 +105,7 @@
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
 		9CBA2F32279F997F00470472 /* AdTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTestViewController.swift; sourceTree = "<group>"; };
 		9CBA2F34279FD18800470472 /* TipJarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewController.swift; sourceTree = "<group>"; };
+		9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveTipViewController.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +155,6 @@
 		9C285723278F53EF00E225C8 /* NewAndTesting */ = {
 			isa = PBXGroup;
 			children = (
-				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
 				9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */,
 				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
@@ -166,6 +167,7 @@
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
 				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
 				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
@@ -183,6 +185,7 @@
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
 				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
+				9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */,
 				9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
+				9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */,
 				9C52A405278A883600E07956 /* ViewController.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */,

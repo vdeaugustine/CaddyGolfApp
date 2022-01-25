@@ -21,7 +21,6 @@ class ClubCell: UITableViewCell {
     var myViewController: UIViewController?
     override func awakeFromNib() {
         super.awakeFromNib()
-//        backgroundColor = myGreen
         yardageBoxContainer.layer.cornerRadius = globalCornerRadius
         clubNameBox.layer.cornerRadius = globalCornerRadius
         notesBoxContainer.layer.cornerRadius = globalCornerRadius
@@ -63,11 +62,6 @@ class ClubCell: UITableViewCell {
         notesBox.mainTextLabel.adjustsFontSizeToFitWidth = false
         notesBox.mainTextLabel.minimumScaleFactor = 0.4
         notesBox.mainTextLabel.font = UIFont(name: "Helvetica", size: 16)
-
-//        let notesTransparentButton = TransparentButton(superView: notesBoxContainer)
-//        let yardageTransparentButton = TransparentButton(superView: yardageBoxContainer)
-//        notesTransparentButton.addTarget(self, action: #selector(didTapNotes), for: .touchUpInside)
-//        yardageTransparentButton.addTarget(self, action: #selector(didTapSwing), for: .touchUpInside)
     }
 
     @objc func didTapSwing() {
@@ -91,10 +85,5 @@ class ClubCell: UITableViewCell {
 
     @IBAction func notesTapped() {
         print("Notes tapped")
-//        let notesVC = myViewController?.storyboard?.instantiateViewController(withIdentifier: "allNotesViewController") as! AllNotesViewController
-//
-//        notesVC.comingFrom = "club"
-//
-//        myViewController?.navigationController?.pushViewController(notesVC, animated: true)
     }
 }
