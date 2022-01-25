@@ -254,7 +254,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5sT-6Q-tMF">
-                                <rect key="frame" x="0.0" y="138" width="375" height="674"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="541"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="club" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="club" rowHeight="110" id="cy0-on-ucm" customClass="ClubCell" customModule="CaddyApp" customModuleProvider="target">
@@ -299,6 +299,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W52-PW-pRM">
+                                <rect key="frame" x="0.0" y="679" width="375" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="v9E-79-1W6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -306,10 +313,13 @@
                             <constraint firstItem="5sT-6Q-tMF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1GK-ud-7IQ"/>
                             <constraint firstItem="o3m-f1-4eo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AFe-fC-1GW"/>
                             <constraint firstItem="5sT-6Q-tMF" firstAttribute="top" secondItem="o3m-f1-4eo" secondAttribute="bottom" id="EXu-1F-dWU"/>
-                            <constraint firstAttribute="bottom" secondItem="5sT-6Q-tMF" secondAttribute="bottom" id="FSs-ob-RcG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W52-PW-pRM" secondAttribute="bottom" id="IYP-uO-AOk"/>
+                            <constraint firstItem="W52-PW-pRM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NIm-2k-0Nc"/>
+                            <constraint firstItem="W52-PW-pRM" firstAttribute="top" secondItem="5sT-6Q-tMF" secondAttribute="bottom" id="iOP-pf-ucH"/>
                             <constraint firstItem="o3m-f1-4eo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k7a-gp-e06"/>
                             <constraint firstItem="5sT-6Q-tMF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wgd-cB-rmf"/>
                             <constraint firstItem="o3m-f1-4eo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yOc-Dc-oEj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W52-PW-pRM" secondAttribute="trailing" id="zyy-Qi-tVk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Clubs" id="xBG-qU-7Kf">
@@ -320,6 +330,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bannerContainer" destination="W52-PW-pRM" id="RsF-wh-ckM"/>
                         <outlet property="clubsTableView" destination="5sT-6Q-tMF" id="Iux-Ot-jTX"/>
                         <outlet property="swingTypeSegControl" destination="P5H-He-qVt" id="J1p-XB-gXd"/>
                     </connections>
@@ -1160,7 +1171,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="01A-KL-uwq">
-                                <rect key="frame" x="0.0" y="211" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="211" width="375" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addNew" id="lTi-Xe-gbx">
@@ -1214,6 +1225,13 @@
                                     <constraint firstAttribute="height" constant="120" id="mmL-Ge-xHI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-OD-pbB">
+                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z04-pu-Yeg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bWM-Aa-poo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1221,16 +1239,20 @@
                             <constraint firstItem="5vW-4r-M5A" firstAttribute="top" secondItem="UM1-fu-fbC" secondAttribute="bottom" constant="10" id="7Ia-ia-bLi"/>
                             <constraint firstItem="5vW-4r-M5A" firstAttribute="trailing" secondItem="bWM-Aa-poo" secondAttribute="trailing" id="AfN-3e-Kkq"/>
                             <constraint firstItem="UM1-fu-fbC" firstAttribute="trailing" secondItem="bWM-Aa-poo" secondAttribute="trailing" id="BDR-PH-n7E"/>
+                            <constraint firstItem="Gdg-OD-pbB" firstAttribute="top" secondItem="01A-KL-uwq" secondAttribute="bottom" id="KHI-fN-I53"/>
                             <constraint firstItem="UM1-fu-fbC" firstAttribute="top" secondItem="bWM-Aa-poo" secondAttribute="top" id="KJp-og-Fil"/>
                             <constraint firstItem="01A-KL-uwq" firstAttribute="leading" secondItem="5vW-4r-M5A" secondAttribute="leading" id="N1q-Gu-AXN"/>
                             <constraint firstItem="5vW-4r-M5A" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="aem-IS-hbi"/>
                             <constraint firstItem="01A-KL-uwq" firstAttribute="trailing" secondItem="5vW-4r-M5A" secondAttribute="trailing" id="bMF-qR-3nh"/>
-                            <constraint firstItem="01A-KL-uwq" firstAttribute="bottom" secondItem="bWM-Aa-poo" secondAttribute="bottom" id="cpM-jt-yPs"/>
+                            <constraint firstItem="bWM-Aa-poo" firstAttribute="bottom" secondItem="Gdg-OD-pbB" secondAttribute="bottom" id="dQ4-ar-08u"/>
                             <constraint firstItem="01A-KL-uwq" firstAttribute="top" secondItem="5vW-4r-M5A" secondAttribute="bottom" constant="6" id="ePO-gd-dJu"/>
+                            <constraint firstItem="bWM-Aa-poo" firstAttribute="trailing" secondItem="Gdg-OD-pbB" secondAttribute="trailing" id="hZ2-b7-FQ6"/>
                             <constraint firstItem="UM1-fu-fbC" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="o0H-dp-7sA"/>
+                            <constraint firstItem="Gdg-OD-pbB" firstAttribute="leading" secondItem="bWM-Aa-poo" secondAttribute="leading" id="zty-Xo-rZN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerContainer" destination="Gdg-OD-pbB" id="emw-IE-obQ"/>
                         <outlet property="swingTypeSegmentControl" destination="UM1-fu-fbC" id="Nph-vz-KKq"/>
                         <outlet property="swingsTableView" destination="01A-KL-uwq" id="Yky-O3-hsk"/>
                         <outlet property="viewForYardages" destination="5vW-4r-M5A" id="paw-UZ-tRg"/>
@@ -1238,7 +1260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktP-3H-TBo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6071" y="940"/>
+            <point key="canvasLocation" x="6069.6000000000004" y="939.90147783251234"/>
         </scene>
         <!--AdviceViewController-->
         <scene sceneID="cch-4o-Oik">
@@ -1675,20 +1697,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Bunker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvR-U8-EO3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bunker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvR-U8-EO3">
                                                     <rect key="frame" x="16" y="11" width="80" height="29"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-ic-sak">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LLR-ic-sak">
                                                     <rect key="frame" x="26" y="50" width="323" height="105"/>
                                                     <string key="text">A hollow comprised of sand or grass or both that exists as an obstacle and, in some cases, a hazard. (The greens at Winged Foot were protected by deep bunkers). </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="57K-wx-h9o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="57K-wx-h9o">
                                                     <rect key="frame" x="286.33333333333331" y="160" width="72.666666666666686" height="14"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" systemColor="placeholderTextColor"/>
@@ -1716,20 +1738,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Carry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdT-T1-goC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Carry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdT-T1-goC">
                                                     <rect key="frame" x="16" y="11" width="63" height="29"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z9n-vh-WBR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z9n-vh-WBR">
                                                     <rect key="frame" x="26" y="50" width="323" height="105"/>
                                                     <string key="text">The distance a ball will fly in the air, usually to carry a hazard or safely reach a target. (Many of the holes at Pine Valley require a substantial carry over waste areas). </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ccc-wr-IlL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ccc-wr-IlL">
                                                     <rect key="frame" x="286.33333333333331" y="160" width="72.666666666666686" height="14"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" systemColor="placeholderTextColor"/>
@@ -1757,20 +1779,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Chunk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFG-2b-6ja">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Chunk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFG-2b-6ja">
                                                     <rect key="frame" x="16" y="11" width="74" height="29"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-dh-aEj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-dh-aEj">
                                                     <rect key="frame" x="26" y="50" width="323" height="105"/>
                                                     <string key="text">A poor shot caused by hitting the turf well behind the ball, resulting in a fat shot. (The defending champion's defense ended when he chunked his tee shot on the par-3 16th and hit the ball into the pond guarding the green).</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n50-sJ-8T0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="per: PGA.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n50-sJ-8T0">
                                                     <rect key="frame" x="286.33333333333331" y="160" width="72.666666666666686" height="14"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" systemColor="placeholderTextColor"/>

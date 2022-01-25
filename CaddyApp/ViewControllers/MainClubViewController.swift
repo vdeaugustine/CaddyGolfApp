@@ -7,7 +7,11 @@
 
 import UIKit
 
+
 class MainClubViewController: UIViewController {
+    
+    
+    
     var swingsCollectionView: UICollectionView?
     var notesCollectionView: UICollectionView?
 
@@ -58,7 +62,7 @@ class MainClubViewController: UIViewController {
 //        swingsLargeRectView.addSubview(swingsRectTitle)
         scrollView.addSubview(notesLargeRectView)
         notesLargeRectView.addSubview(notesRectTitle)
-
+        
         yardagesLargeRectView.addSubview(tfSwingContainer.mainContainer)
         yardagesLargeRectView.addSubview(fullSwingContainer.mainContainer)
         yardagesLargeRectView.addSubview(maxSwingContainer.mainContainer)
@@ -152,44 +156,8 @@ class MainClubViewController: UIViewController {
             print("DID NOT MAKE IT ")
         }
         
-        
-        
-//        // MARK: - SETUP AND MAKE SWINGS COLLECTIONVIEW
-//        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.itemSize = CGSize(width: 150, height: 150)
-//        layout.scrollDirection = .horizontal
-//        let swingCollectionViewFrame = CGRect(x: padRectsFromSides,
-//                                              y: swingsRectTitle.bottom + 5,
-//                                              width: (swingsLargeRectView.width - padRectsFromSides * 2) * 0.75,
-//                                              height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides)
-//
-//        swingsCollectionView = UICollectionView(frame: swingCollectionViewFrame, collectionViewLayout: layout)
-//
-//
-//
-//        if let swingsCollectionView = swingsCollectionView {
-//            print("MADE IT ")
-//            swingsCollectionView.showsHorizontalScrollIndicator = false
-//
-//            swingsCollectionView.frame = CGRect(x: swingsLargeRectView.frame.minX,
-//                                                y: swingsRectTitle.bottom + 5,
-//                                                width: swingsLargeRectView.frame.width - 20,
-//                                                height: swingsLargeRectView.height - swingsRectTitle.frame.maxY - padRectsFromSides)
-//            swingsCollectionView.backgroundColor = .systemBackground
-//
-//            swingsCollectionView.delegate = self
-//            swingsCollectionView.dataSource = self
-//
-//            swingsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SwingCell")
-//
-//            swingsLargeRectView.addSubview(swingsCollectionView)
-////            swingsCollectionView.addSubview(firstSwingRect)
-//
-//        } else {
-//            print("DID NOT MAKE IT ")
-//        }
 
+        
         let thisheight = notesLargeRectView.frame.maxY + 20
         scrollView.frame = CGRect(x: 0, y: 0, width: setUpDimensions.width, height: setUpDimensions.height)
         scrollView.contentSize = CGSize(width: setUpDimensions.width, height: thisheight)
