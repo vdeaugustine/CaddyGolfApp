@@ -73,7 +73,8 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
             banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
             banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
             banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
-            banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor)
+            banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor),
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
         ])
 
         scrollView.addSubview(stackView)

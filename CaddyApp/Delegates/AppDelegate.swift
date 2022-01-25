@@ -13,6 +13,11 @@ import GoogleMobileAds
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
+        
+        if !adsEnabled { bannerHeight = 50 } else { bannerHeight = 0 }
+        
         // Override point for customization after application launch.
         setUpSettings()
         GADMobileAds.sharedInstance().start(completionHandler: nil)

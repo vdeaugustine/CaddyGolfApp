@@ -47,7 +47,8 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
+            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
         ])
         
     }

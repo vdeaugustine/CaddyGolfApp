@@ -621,6 +621,7 @@
 				DEVELOPMENT_TEAM = KR268MWQL4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CaddyApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dialed In Golf";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -653,6 +654,7 @@
 				DEVELOPMENT_TEAM = KR268MWQL4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CaddyApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dialed In Golf";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

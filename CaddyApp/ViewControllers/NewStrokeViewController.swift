@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 
 var clubBelowForAdvice = currentClub
 var clubAboveForAdvice = currentClub
@@ -13,6 +15,7 @@ var advice = Advice()
 var closestClubBelow = ClosestClubBelow(gap: 999, clubName: currentClub.name, swingType: .fullSwing)
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var bannerContainer: UIView!
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
@@ -34,9 +37,36 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         return scrollView
 
     }()
+    
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+//        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        banner.translatesAutoresizingMaskIntoConstraints = false
+        banner.backgroundColor = .secondarySystemBackground
+
+        return banner
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        banner.rootViewController = self
+        banner.load(GADRequest())
+        bannerContainer.addSubview(banner)
+        
+        NSLayoutConstraint.activate([
+            banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+            banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+            banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+//            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
+            // use the above code if you want to turn off ads
+            // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
+        ])
 
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
