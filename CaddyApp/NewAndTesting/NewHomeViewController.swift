@@ -31,7 +31,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "New Stroke"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Tip Jar"]
     
     override func viewWillAppear(_ animated: Bool) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -210,7 +210,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if indexPath.row == 3 {
-            cell.leftIcon.image = UIImage(systemName: "lightbulb")
+            cell.leftIcon.image = UIImage(systemName: "dollarsign.square")
         }
         
         cell.mainLabel.text = tableViewModel[indexPath.row]
@@ -240,6 +240,10 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(withIdentifier: "NewStrokeViewController") as! NewStrokeViewController
+            navigationController?.pushViewController(vc, animated: true)
+        
+        case 3:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TipJarViewController") as! TipJarViewController
             navigationController?.pushViewController(vc, animated: true)
         default:
             return

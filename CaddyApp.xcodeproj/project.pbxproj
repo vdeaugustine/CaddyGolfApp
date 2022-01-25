@@ -43,6 +43,7 @@
 		9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */; };
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
 		9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F32279F997F00470472 /* AdTestViewController.swift */; };
+		9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F34279FD18800470472 /* TipJarViewController.swift */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
 		9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */; };
@@ -102,6 +103,7 @@
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
 		9CBA2F32279F997F00470472 /* AdTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTestViewController.swift; sourceTree = "<group>"; };
+		9CBA2F34279FD18800470472 /* TipJarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewController.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
+				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
+				9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */,
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */,
 				9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */,

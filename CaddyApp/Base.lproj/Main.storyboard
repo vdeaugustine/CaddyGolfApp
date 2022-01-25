@@ -1277,6 +1277,46 @@
             </objects>
             <point key="canvasLocation" x="3168" y="104"/>
         </scene>
+        <!--Tip Jar-->
+        <scene sceneID="0Zv-AU-pez">
+            <objects>
+                <viewController storyboardIdentifier="TipJarViewController" title="Tip Jar" id="1De-9v-SFj" customClass="TipJarViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M07-5l-ctD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rXC-aL-gGE">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="I70-1N-3uI">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I70-1N-3uI" id="MbU-3j-ruI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6sS-mB-z7I"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rXC-aL-gGE" firstAttribute="top" secondItem="6sS-mB-z7I" secondAttribute="top" id="0O3-dL-TjR"/>
+                            <constraint firstItem="rXC-aL-gGE" firstAttribute="leading" secondItem="6sS-mB-z7I" secondAttribute="leading" id="Fag-09-0ll"/>
+                            <constraint firstItem="6sS-mB-z7I" firstAttribute="bottom" secondItem="rXC-aL-gGE" secondAttribute="bottom" id="uvg-Ct-xzn"/>
+                            <constraint firstItem="6sS-mB-z7I" firstAttribute="trailing" secondItem="rXC-aL-gGE" secondAttribute="trailing" id="zxT-QT-jmB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="rXC-aL-gGE" id="9Ad-eo-lgd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSA-ib-q2d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-574" y="947"/>
+        </scene>
         <!--New Stroke-->
         <scene sceneID="cPd-68-ZqF">
             <objects>
