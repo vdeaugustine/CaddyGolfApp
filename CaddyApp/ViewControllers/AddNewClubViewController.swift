@@ -186,7 +186,7 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func clubTypeSelected(_ sender: UISegmentedControl) {
         clubTypeChangedAtLeastOnce = true
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
         typeSelectedIndex = clubTypeSegment.selectedSegmentIndex
         switch clubTypeSegment.selectedSegmentIndex {

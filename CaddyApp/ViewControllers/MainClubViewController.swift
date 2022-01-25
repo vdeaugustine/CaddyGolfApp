@@ -222,6 +222,8 @@ class MainClubViewController: UIViewController {
     // MARK: - Button Actions
 
     @objc private func didTapYardagesButton() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
         print("Yardages Was Tapped")
         yardagesLargeRectView.showAnimation {
         }
@@ -252,6 +254,8 @@ class MainClubViewController: UIViewController {
     }
 
     @objc private func didTapSwingsButton() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
         print("Swings Was Tapped")
         swingsLargeRectView.showAnimation {
         }
@@ -264,6 +268,7 @@ class MainClubViewController: UIViewController {
     }
 
     @objc private func didTapNotesButton() {
+        
         print("Notes Was Tapped")
         notesLargeRectView.showAnimation {
         }

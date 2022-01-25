@@ -53,6 +53,9 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
         distanceField.placeholder = "0"
 //        for item in self.view.subviews {
 //            item.translatesAutoresizingMaskIntoConstraints = false
@@ -153,7 +156,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         }
 
         let distAsInt = Int("\(enteredDistance)")!
-        var closestClub = currentClub
+        var closestClub = getLowestClub()
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
                 if club.fullDistance <= distAsInt {
@@ -200,7 +203,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         }
 
         let distAsInt = Int("\(enteredDistance)")!
-        var closestClub = currentClub
+        var closestClub = getHighestClub()
         for clubType in mainBag.allClubs2DArray {
             for club in clubType {
                 if club.fullDistance >= distAsInt {

@@ -25,24 +25,21 @@ import UIKit
 ///                     - overClubLabel
 ///                 - overClubSwingDistanceBox.mainContainer
 ///                 - overClubGapBox.mainContainer
-///             
+///
 ///
 ///
 ///
 ///
 
 class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
     override func viewWillLayoutSubviews() {
         addSubviews()
         makeFramesForAllViews()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        
     }
-    
+
     override func viewDidLayoutSubviews() {
         if advice.clubBelowGap < advice.clubAboveGap {
             underClubGapBox.mainTextLabel.textColor = myGreen
@@ -52,8 +49,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             overClubGapBox.mainTextLabel.textColor = myGreen
         }
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,17 +57,15 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Result", style: .done, target: self, action: #selector(addResultOfStroke))
-        
+
 //        tabBarController?.tabBar.isOpaque = true
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
         addAdvice()
     }
 
     // MARK: - VIEWS & UIOBJECTS
-    
-    func addSubviews() {
-        
 
+    func addSubviews() {
         view.addSubview(scrollView)
 
         scrollView.addSubview(underClubLargeContainer)
@@ -92,31 +85,25 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         underClubLargeContainer.addSubview(underClubGapBox.mainContainer)
         overClubLargeContainer.addSubview(overClubSwingDistanceBox.mainContainer)
         overClubLargeContainer.addSubview(overClubGapBox.mainContainer)
-        
+
         scrollView.addSubview(aimShotBox)
         aimShotBox.addSubview(aimShotHeader)
         aimShotBox.addSubview(aimShotTips)
         aimShotBox.addSubview(colorOfFlagImage)
 //        aimShotBox.addSubview(flagExplanationLabel)
         aimShotBox.addSubview(flagExplanationButton)
-        
-        
+
         scrollView.addSubview(hillBox)
         hillBox.addSubview(hillHeaderLabel)
-        hillBox.addSubview(hillImageView)
+//        hillBox.addSubview(hillImageView)
         hillBox.addSubview(hillTipsLabel)
         // Center View Frame
         // ((big container width) / 2) - ((width of View Frame) / 2)
-        
-        
-        
-        
     }
 
     func makeFramesForAllViews() {
-        
         let pad: CGFloat = 5
-        
+
         let farBottomItemInScrollView = hillBox
         let padFromNavBarView = UIView()
         let largeBoxSize = CGSize(width: scrollView.width - pad * 2, height: 450)
@@ -130,12 +117,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             print("nav controller is not there")
         }
-        
+
         let thisHeight = farBottomItemInScrollView.bottom + 200
         scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
-        self.setContentScrollView(scrollView)
-    
+        setContentScrollView(scrollView)
+
         let distanceWidth = scrollView.width - (2 * 20)
         let distanceLabelContainerView: UIView = {
             let someView = UIView(frame: CGRect(x: 20,
@@ -162,7 +149,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                      width: distanceWidth + 2,
                                      height: 50)
         distanceLabel.sizeToFit()
-
 
         optionsLabel.frame = CGRect(x: 20,
                                     y: distanceLabel.bottom + 20,
@@ -226,37 +212,38 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                            height: underClubNameRect.height))
 
         underClubSwingDistanceBox.layoutViews()
-        
+
+        underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
+        underClubSwingDistanceBox.setMainText("\(advice.closestClubBelow.fullDistance)")
 //        underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
-        switch closestClubBelow.swingType {
-            
-        case .fullSwing:
-            underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.fullDistance))")
-        case .maxSwing:
-            underClubSwingDistanceBox.setHeaderText("Max Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.maxDistance))")
-        case .threeFourths:
-            underClubSwingDistanceBox.setHeaderText("3/4 Swing".uppercased())
-            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.threeFourthsDistance))")
-        }
+//        switch closestClubBelow.swingType {
+//        case .fullSwing:
+//            underClubSwingDistanceBox.setHeaderText("Full Swing".uppercased())
+//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.fullDistance))")
+//        case .maxSwing:
+//            underClubSwingDistanceBox.setHeaderText("Max Swing".uppercased())
+//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.maxDistance))")
+//        case .threeFourths:
+//            underClubSwingDistanceBox.setHeaderText("3/4 Swing".uppercased())
+//            underClubSwingDistanceBox.setMainText("\(getMetersOrYards(advice.closestClubBelow.threeFourthsDistance))")
+//        }
 
         underClubGapBox.setupFrames(with: CGRect(x: underClubSwingDistanceBox.mainContainer.right + pad,
                                                  y: underClubSwingDistanceBox.mainContainer.top,
                                                  width: underClubSwingDistanceBox.mainContainer.width,
                                                  height: underClubSwingDistanceBox.mainContainer.height))
         underClubGapBox.layoutViews()
+        underClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
 //        underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
-        switch closestClubBelow.swingType {
-            
-        case .fullSwing:
-            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
-        case .maxSwing:
-            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.maxDistance))")
-        case .threeFourths:
-            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance))")
-        }
-        underClubGapBox.setHeaderText("yards short of flag".uppercased())
+//        switch closestClubBelow.swingType {
+//        case .fullSwing:
+//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.fullDistance))")
+//        case .maxSwing:
+//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.maxDistance))")
+//        case .threeFourths:
+//            underClubGapBox.setMainText("\(getMetersOrYards(advice.distanceToPin - advice.closestClubBelow.threeFourthsDistance))")
+//        }
+        underClubGapBox.setHeaderText("short of flag".uppercased())
 
         let roomForOverBoxes = overClubLargeContainer.width - overClubNameRect.width - pad
 
@@ -274,110 +261,94 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                 height: overClubSwingDistanceBox.mainContainer.height))
         overClubGapBox.layoutViews()
         overClubGapBox.setMainText("\(abs(advice.distanceToPin - advice.closestClubAbove.fullDistance))")
-        overClubGapBox.setHeaderText("yards beyond flag".uppercased())
-        
-        aimShotBox.frame =  CGRect(x: pad,
-                                   y: overClubLargeContainer.bottom + 10,
-                                   width: largeBoxSize.width,
-                                   height: largeBoxSize.height)
-        
-        aimShotHeader.frame =  CGRect(x: pad,
-                                      y: pad,
-                                      width: 150,
-                                      height: 50)
-        
-        aimShotTips.frame =  CGRect(x: pad,
-                                    y: colorOfFlagImage.bottom + pad,
-                                    width: aimShotBox.width - 2 * pad,
-                                    height: aimShotBox.height - colorOfFlagImage.height - pad - pad)
-        print("AIMSHOTTIPS FRAME", aimShotTips.frame)
-        
+        overClubGapBox.setHeaderText("beyond flag".uppercased())
+
+        aimShotBox.frame = CGRect(x: pad,
+                                  y: overClubLargeContainer.bottom + 10,
+                                  width: largeBoxSize.width,
+                                  height: largeBoxSize.height)
+
+        aimShotHeader.frame = CGRect(x: pad,
+                                     y: pad,
+                                     width: 150,
+                                     height: 50)
+
+        aimShotTips.frame = CGRect(x: pad,
+                                   y: colorOfFlagImage.bottom + pad,
+                                   width: aimShotBox.width - 2 * pad,
+                                   height: aimShotBox.height - colorOfFlagImage.height - pad - pad)
+
 //        aimShotTips.frame =  CGRect(x: pad,
 //                                    y: colorOfFlagImage.bottom + pad,
 //                                    width: aimShotBox.width - 2 * pad,
 //                                    height: 50)
         aimShotTips.sizeToFit()
-        print("after size to fit", aimShotTips.frame)
-        
+
 //        aimShotBox.frame.size = CGSize(width: aimShotBox.width, height: aimShotBox.height - (aimShotBox.height - aimShotTips.bottom))
-        
-        
-        
-        // Center the flag image in the room available 
+
+        // Center the flag image in the room available
         let roomForFlagImage = aimShotBox.width - aimShotHeader.right
-        
-        
-        colorOfFlagImage.frame =  CGRect(x: aimShotHeader.right + (roomForFlagImage / 2) - (colorOfFlagImage.width / 2),
-                                         y: pad,
-                                         width: colorOfFlagImage.frame.size.width,
-                                         height: colorOfFlagImage.frame.size.height)
-        
-        
-        // Resize the aimShot big boxto be just 25 points below the tips box
-        aimShotBox.frame =  CGRect(x: aimShotBox.frame.minX,
-                                   y: aimShotBox.frame.minY,
-                                   width: aimShotBox.width,
-                                   height: aimShotTips.frame.maxY + 25)
-        
-        
-        let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
-        flagExplanationButton.frame =  CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
-                                              y: colorOfFlagImage.bottom - flagButtonSize - pad,
-                                              width: flagButtonSize,
-                                              height: flagButtonSize)
-        
-        
-        
-        hillBox.frame =  CGRect(x: aimShotBox.left,
-                                y: aimShotBox.bottom + pad,
-                                width: largeBoxSize.width,
-                                height: largeBoxSize.height)
-        
-        hillHeaderLabel.frame =  CGRect(x: pad,
+
+        colorOfFlagImage.frame = CGRect(x: aimShotHeader.right + (roomForFlagImage / 2) - (colorOfFlagImage.width / 2),
                                         y: pad,
-                                        width: (hillBox.width / 2) - pad*2,
-                                        height: 50)
-        
+                                        width: colorOfFlagImage.frame.size.width,
+                                        height: colorOfFlagImage.frame.size.height)
+
+        // Resize the aimShot big boxto be just 25 points below the tips box
+        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
+                                  y: aimShotBox.frame.minY,
+                                  width: aimShotBox.width,
+                                  height: aimShotTips.frame.maxY + 25)
+
+        let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
+        flagExplanationButton.frame = CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
+                                             y: colorOfFlagImage.bottom - flagButtonSize - pad,
+                                             width: flagButtonSize,
+                                             height: flagButtonSize)
+
+        hillBox.frame = CGRect(x: aimShotBox.left,
+                               y: aimShotBox.bottom + pad,
+                               width: largeBoxSize.width,
+                               height: largeBoxSize.height)
+
+        hillHeaderLabel.frame = CGRect(x: pad,
+                                       y: pad,
+                                       width: (hillBox.width / 2) - pad * 2,
+                                       height: 50)
+
         // Center the flag image in the room available
         let roomForHillImage = hillBox.width - hillHeaderLabel.right
-        
-        
-        hillImageView.frame =  CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
-                                         y: pad,
-                                         width: hillImageView.frame.size.width,
-                                         height: hillImageView.frame.size.height)
-        
-        
-        
-        hillTipsLabel.frame =  CGRect(x: pad,
-                                    y: hillImageView.bottom + pad,
-                                      width: aimShotTips.width,
-                                    height: hillBox.height - hillHeaderLabel.height - pad - pad)
-        
+
+        hillImageView.frame = CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
+                                     y: pad,
+                                     width: hillImageView.frame.size.width,
+                                     height: hillImageView.frame.size.height)
+
+        hillTipsLabel.frame = CGRect(x: pad,
+                                     y: hillImageView.bottom + pad,
+                                     width: aimShotTips.width,
+                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
+
         hillTipsLabel.sizeToFit()
-        
+
         hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.frame.maxY + 25)
-        
-        if let tabBar = self.tabBarController?.tabBar {
+
+        if let tabBar = tabBarController?.tabBar {
             scrollView.contentSize = CGSize(width: scrollView.width, height: hillBox.bottom + (tabBar.height * 1.5))
         }
-        
-        
-        self.setContentScrollView(scrollView)
-        
+
+        setContentScrollView(scrollView)
+
         let goToPageOverClub = TransparentButton(superView: overClubLargeContainer)
         goToPageOverClub.backgroundColor = .clear
         goToPageOverClub.addTarget(self, action: #selector(goToOverClub), for: .touchUpInside)
-        
+
         let goToPageUnderButton = TransparentButton(superView: underClubLargeContainer)
         goToPageUnderButton.backgroundColor = .clear
         goToPageUnderButton.addTarget(self, action: #selector(goToUnderClub), for: .touchUpInside)
-        
-        
     }
-    
-    func addAdvice () {
-        
+
+    func addAdvice() {
         switch advice.flagColor {
         case "Red":
             aimShotTips.text = AdviceOptions().redFlagApproach
@@ -390,11 +361,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         aimShotTips.frame.size = CGSize(width: aimShotTips.width, height: 40)
         aimShotTips.sizeToFit()
-        aimShotBox.frame =  CGRect(x: aimShotBox.frame.minX,
-                                   y: aimShotBox.frame.minY,
-                                   width: aimShotBox.width,
-                                   height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
-        
+        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
+                                  y: aimShotBox.frame.minY,
+                                  width: aimShotBox.width,
+                                  height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
+
         switch advice.lieType {
         case lieTypes.sideHillDown.rawValue:
             hillTipsLabel.text = AdviceOptions().sideHillDown
@@ -403,11 +374,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         hillTipsLabel.sizeToFit()
         hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.bottom + 25)
-        
     }
-    
-    
-    
+
     var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -463,42 +431,37 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         return thisView
     }()
-    
-   
-    
-    
 
     @objc func tappedMoreInfo() {
         print("tapped")
-        
+
 //        let alert = UIAlertController(title: "Club Gaps Explained", message: "The 'SHORT' box indicates the club that wouldn't necessarily reach the distance to the pin if hit normal distance. \n\nThe 'LONG' club is the club whose distance is further than the distance to the pin.\n\nThe number that is green indicates the closer club", preferredStyle: .alert)
-        
+
         let alert = UIAlertController(title: "Club Gaps Explained", message: "The listed clubs are the clubs whose distances are right below and right above the distance to the pin.\n\nThe number in the box indicates the gap between this club's distance and the distance to the pin.\n\nThe green number is the closer club", preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
             case .default:
                 print("default")
-                
+
             case .cancel:
                 print("cancel")
-                
+
             case .destructive:
                 print("destructive")
-                
+
             @unknown default:
                 print("whateverIDC")
             }
         }))
         present(alert, animated: true, completion: nil)
-        
     }
 
     @objc func dismissInfoBox() {
         moreInfoView.removeFromSuperview()
         print("dismiss tapped")
     }
-    
+
     // MARK: - UnderClub
 
     var underClubLargeContainer: UIView = {
@@ -528,10 +491,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.textAlignment = .center
         return label
     }()
-    
+
     var underClubGapBox = RoundedBox()
     var underClubSwingDistanceBox = RoundedBox()
-    
+
     // MARK: - Over Club
 
     var overClubLargeContainer: UIView = {
@@ -577,10 +540,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var overClubSwingDistanceBox = RoundedBox()
     var overClubGapBox = RoundedBox()
-    
-    
+
     // MARK: - Aim Shot
-    
+
     var aimShotBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
@@ -590,7 +552,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         thisView.dropShadow()
         return thisView
     }()
-    
+
     var aimShotHeader: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = UIColor.blue.cgColor
@@ -600,7 +562,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         return label
     }()
-    
+
     var aimShotTips: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = UIColor.green.cgColor
@@ -612,39 +574,37 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.sizeToFit()
         return label
     }()
-    
+
     var colorOfFlagImage: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         switch advice.flagColor {
         case "Red":
 //            image.image = UIImage(named: "niceRedFlag")
             imageView.image = UIImage(named: "redFlagOnGreen")
-
-            
         case "White":
-            imageView.image = UIImage(named: "WhiteFlagOnGreen")
+            imageView.image = UIImage(named: "whiteFlagGreen")
         case "Blue":
             imageView.image = UIImage(named: "blueFlagOnGreen")
         default:
             print("error, not the right flag color")
         }
-        
+
         let heightWanted: CGFloat = 80
         imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.frame.size = CGSize(width: heightWanted * 1.333, height: heightWanted)
         imageView.contentMode = .scaleAspectFit
-        
+
         imageView.image = imageView.image!.withHorizontallyFlippedOrientation()
         return imageView
     }()
-    
+
     var flagExplanationButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "info.circle"), for: .normal)
         button.addTarget(self, action: #selector(getFlagExplanation), for: .touchUpInside)
         return button
     }()
-    
+
     var flagExplanationLabel: UILabel = {
         let label = UILabel()
         label.layer.backgroundColor = UIColor.clear.cgColor
@@ -662,13 +622,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
-        
+
         return label
     }()
-    
-    
+
     // MARK: - Hill stuff
-    
+
     var hillBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
@@ -679,7 +638,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         thisView.dropShadow()
         return thisView
     }()
-    
+
     var hillHeaderLabel: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = UIColor.blue.cgColor
@@ -687,10 +646,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.adjustsFontSizeToFitWidth = true
         label.text = "Hill Slope"
         label.translatesAutoresizingMaskIntoConstraints = true
-        
+
         return label
     }()
-    
+
     var hillTipsLabel: UILabel = {
         let label = UILabel()
 //        label.layer.backgroundColor = myGreen.cgColor
@@ -701,7 +660,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.numberOfLines = 0
         return label
     }()
-    
+
     var hillImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "redFlagOnGreen")?.withHorizontallyFlippedOrientation()
@@ -709,14 +668,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.frame.size = CGSize(width: heightWanted * 1.333, height: heightWanted)
         imageView.contentMode = .scaleAspectFit
-        
+
         return imageView
     }()
-    
-    
+
     // MARK: - Stuff from old version
-    
-    
 
     var SelectedClubLabel: UILabel = {
         let label = UILabel()
@@ -775,15 +731,13 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             break
         }
     }
-    
+
     @objc func addResultOfStroke() {
-        
     }
-    
+
     // MARK: - Button Actions
-    
+
     @objc func getFlagExplanation() {
-        
         var message = ""
         switch advice.flagColor {
         case "Red":
@@ -795,49 +749,40 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         default:
             message = ""
         }
-        
+
         let alert = UIAlertController(title: "Pin-seeking Advice", message: message, preferredStyle: .alert)
-        
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style {
             case .default:
                 print("default")
-                
+
             case .cancel:
                 print("cancel")
-                
+
             case .destructive:
                 print("destructive")
-                
+
             @unknown default:
                 print("whateverIDC")
             }
         }))
         present(alert, animated: true, completion: nil)
-        
     }
-    
-    
+
     @objc func goToUnderClub() {
         print("tapped")
         let vc = storyboard?.instantiateViewController(withIdentifier: "MainClubViewController") as! MainClubViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
         vc.title = advice.closestClubBelow.name
         currentClub = advice.closestClubBelow
-        
     }
-    
+
     @objc func goToOverClub() {
         print("tapped")
         let vc = storyboard?.instantiateViewController(withIdentifier: "MainClubViewController") as! MainClubViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
         vc.title = advice.closestClubAbove.name
         currentClub = advice.closestClubAbove
-        
-        
     }
-    
-    
-    
-    
 }

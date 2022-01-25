@@ -28,6 +28,8 @@ class ClubsViewController: UIViewController {
         clubsTableView.delaysContentTouches = false
         
         clubsTableView.reloadData()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
     }
 
     override func viewWillLayoutSubviews() {
@@ -153,13 +155,13 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.clubNameLabel.text = currentClubNameForCell
         switch swingTypeSegControl.selectedSegmentIndex {
         case 0:
-            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.threeFourthsDistance))")
+            cell.yardsBox.setMainText("\(currentClubForCell.threeFourthsDistance)")
             cell.yardsBox.setHeaderText("3/4 Swing")
         case 1:
-            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.fullDistance))")
+            cell.yardsBox.setMainText("\(currentClubForCell.fullDistance)")
             cell.yardsBox.setHeaderText("Full Swing")
         case 2:
-            cell.yardsBox.setMainText("\(getMetersOrYards(currentClubForCell.maxDistance))")
+            cell.yardsBox.setMainText("\(currentClubForCell.maxDistance)")
             cell.yardsBox.setHeaderText("Max Swing")
         default:
             break
@@ -221,8 +223,8 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         print("\(mainBag.allClubs2DArray[indexPath.section][indexPath.row]) selected")
         tableView.deselectRow(at: indexPath, animated: true)
         currentClub = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-        let taptic = UIImpactFeedbackGenerator(style: .rigid)
-        taptic.impactOccurred(intensity: 1.0)
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
 
         // Create new view controller that will be used to edit club distance
         let clubVC = storyboard?.instantiateViewController(identifier: "MainClubViewController") as! MainClubViewController

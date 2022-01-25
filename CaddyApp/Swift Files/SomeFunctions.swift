@@ -62,7 +62,30 @@ func playSound(whichSound: String) {
     }
 }
 
-func playGolfSound() {
+func getHighestClub() -> ClubObject {
+    var highestClub = ClubObject(name: "", type: "", fullDistance: 0, threeFourthsDistance: 0, maxDistance: 0)
+    for clubType in mainBag.allClubs2DArray {
+        for club in clubType {
+            if club.fullDistance >= highestClub.fullDistance {
+                highestClub = club
+            }
+        }
+    }
+    return highestClub
+}
+
+
+
+func getLowestClub() -> ClubObject {
+    var lowestClub = ClubObject(name: "", type: "", fullDistance: 999, threeFourthsDistance: 999, maxDistance: 999)
+    for clubType in mainBag.allClubs2DArray {
+        for club in clubType {
+            if club.fullDistance <= lowestClub.fullDistance {
+                lowestClub = club
+            }
+        }
+    }
+    return lowestClub
 }
 
 func getMetersOrYards(_ passedYards: Int) -> Int {

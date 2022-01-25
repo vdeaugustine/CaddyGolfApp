@@ -27,6 +27,9 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
+        
         if comingFrom == "home" {
             mainNotes = getAllMainNotes()
             title = "General Notes"

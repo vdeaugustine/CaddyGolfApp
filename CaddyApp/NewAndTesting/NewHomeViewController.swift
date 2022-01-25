@@ -17,7 +17,14 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Quick Tips"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred(intensity: 0.88)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
