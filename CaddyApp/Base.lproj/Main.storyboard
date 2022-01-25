@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-lG-1vR">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noteCell" rowHeight="128" id="SL5-tL-Kpz" customClass="NoteTableViewCell" customModule="CaddyApp" customModuleProvider="target">
@@ -74,23 +74,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hb-hk-bPI" userLabel="adBanner">
+                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="EeT-zC-KbA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NVQ-SS-cka"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NVQ-SS-cka" firstAttribute="trailing" secondItem="4Hb-hk-bPI" secondAttribute="trailing" id="9rY-Xr-FKF"/>
+                            <constraint firstItem="4Hb-hk-bPI" firstAttribute="top" secondItem="FiA-lG-1vR" secondAttribute="bottom" id="Kps-ev-efA"/>
                             <constraint firstItem="FiA-lG-1vR" firstAttribute="trailing" secondItem="NVQ-SS-cka" secondAttribute="trailing" id="R6J-WV-vAb"/>
+                            <constraint firstItem="NVQ-SS-cka" firstAttribute="bottom" secondItem="4Hb-hk-bPI" secondAttribute="bottom" id="g7W-rp-ANk"/>
                             <constraint firstItem="FiA-lG-1vR" firstAttribute="top" secondItem="NVQ-SS-cka" secondAttribute="top" id="iu2-zl-r2A"/>
                             <constraint firstItem="FiA-lG-1vR" firstAttribute="leading" secondItem="NVQ-SS-cka" secondAttribute="leading" id="lbt-2Y-QbD"/>
-                            <constraint firstItem="FiA-lG-1vR" firstAttribute="bottom" secondItem="NVQ-SS-cka" secondAttribute="bottom" id="mjN-vS-es8"/>
+                            <constraint firstItem="4Hb-hk-bPI" firstAttribute="leading" secondItem="NVQ-SS-cka" secondAttribute="leading" id="yCs-Dk-9EW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerContainer" destination="4Hb-hk-bPI" id="3Nx-Gc-DF2"/>
                         <outlet property="notesTableView" destination="FiA-lG-1vR" id="Zmj-9A-kld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZY-u3-WvY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4334.7826086956529" y="939.50892857142856"/>
+            <point key="canvasLocation" x="4333.6000000000004" y="939.16256157635473"/>
         </scene>
         <!--Add New Club-->
         <scene sceneID="gIU-37-7Dl">
@@ -439,6 +450,32 @@
             </objects>
             <point key="canvasLocation" x="5703" y="105"/>
         </scene>
+        <!--Ad Test View Controller-->
+        <scene sceneID="qLC-tl-lMP">
+            <objects>
+                <viewController storyboardIdentifier="AdTestViewController" id="c2P-ew-baJ" customClass="AdTestViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OK8-rF-zvR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7G-u2-rtt">
+                                <rect key="frame" x="154" y="315" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="doSomething:" destination="c2P-ew-baJ" eventType="touchUpInside" id="PdB-EH-hO0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FiO-6x-Raw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hT-g0-fQl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-815" y="105"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yyq-MX-Ft1">
             <objects>
@@ -630,7 +667,7 @@
                                 </connections>
                             </pageControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dLv-TA-jk5">
-                                <rect key="frame" x="0.0" y="383" width="375" height="346"/>
+                                <rect key="frame" x="0.0" y="383" width="375" height="286"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" id="5oO-YP-QVt" userLabel="Clubs" customClass="HomePageTableViewCell" customModule="CaddyApp" customModuleProvider="target">
@@ -644,19 +681,28 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-JM-D8x" userLabel="AdBanner">
+                                <rect key="frame" x="0.0" y="669" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a0j-Fn-Hb9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cty-xB-HKw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="dLv-TA-jk5" secondAttribute="trailing" id="35S-pv-mez"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="top" secondItem="2r3-BZ-O1b" secondAttribute="bottom" constant="15" id="B33-Cc-0VZ"/>
+                            <constraint firstItem="cty-xB-HKw" firstAttribute="bottom" secondItem="1iF-JM-D8x" secondAttribute="bottom" constant="10" id="BTZ-Js-cM8"/>
                             <constraint firstItem="SYg-6u-Cze" firstAttribute="centerX" secondItem="a6J-XZ-ZdM" secondAttribute="centerX" id="Cer-Hm-IP0"/>
+                            <constraint firstItem="1iF-JM-D8x" firstAttribute="top" secondItem="dLv-TA-jk5" secondAttribute="bottom" id="Dw1-ym-G5z"/>
                             <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="2r3-BZ-O1b" secondAttribute="trailing" id="HzW-1L-Qts"/>
                             <constraint firstItem="dLv-TA-jk5" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="JeK-JH-E6l"/>
-                            <constraint firstItem="cty-xB-HKw" firstAttribute="bottom" secondItem="dLv-TA-jk5" secondAttribute="bottom" id="L4r-u7-ajp"/>
                             <constraint firstItem="2r3-BZ-O1b" firstAttribute="top" secondItem="cty-xB-HKw" secondAttribute="top" constant="10" id="Rep-Pu-hS2"/>
                             <constraint firstItem="2r3-BZ-O1b" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="aOe-Ey-Ahc"/>
                             <constraint firstItem="dLv-TA-jk5" firstAttribute="top" secondItem="SYg-6u-Cze" secondAttribute="bottom" constant="19" id="iT0-U7-FRW"/>
+                            <constraint firstItem="cty-xB-HKw" firstAttribute="trailing" secondItem="1iF-JM-D8x" secondAttribute="trailing" id="lpD-sN-RnJ"/>
+                            <constraint firstItem="1iF-JM-D8x" firstAttribute="leading" secondItem="cty-xB-HKw" secondAttribute="leading" id="pFH-lG-Uxq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XeN-7f-yj1"/>
@@ -664,11 +710,12 @@
                         <outlet property="pageControl" destination="SYg-6u-Cze" id="7yj-Dm-Xvq"/>
                         <outlet property="scrollView" destination="2r3-BZ-O1b" id="AnL-8R-KlR"/>
                         <outlet property="tableView" destination="dLv-TA-jk5" id="Tsh-Di-lCc"/>
+                        <outlet property="viewContainerForBanner" destination="1iF-JM-D8x" id="c1H-Vh-Vsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZa-V8-SL7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214.4927536231885" y="1731.6964285714284"/>
+            <point key="canvasLocation" x="1213.5999999999999" y="1731.2807881773399"/>
         </scene>
         <!--New Stroke-->
         <scene sceneID="qAF-F2-n38">

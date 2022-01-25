@@ -6,10 +6,24 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 // TODO: - Add some padding to the all notes table view. right now the text of the notes looks like it is too close to the edge of the screen
 
 class AllNotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var bannerContainer: UIView!
+    
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+//        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        banner.translatesAutoresizingMaskIntoConstraints = false
+        banner.backgroundColor = .secondarySystemBackground
+
+        return banner
+    }()
+    
     var models = [(title: String, note: String)]()
     var thisClubNotes: [ClubNote]?
     var mainNotes: [MainNote]?
@@ -24,6 +38,18 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        banner.rootViewController = self
+        banner.load(GADRequest())
+        bannerContainer.addSubview(banner)
+        
+        NSLayoutConstraint.activate([
+            banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+            banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+            banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
+        ])
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

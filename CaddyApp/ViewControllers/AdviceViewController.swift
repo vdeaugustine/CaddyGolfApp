@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 
 /// - View Hierarchy
 ///     - view
@@ -31,13 +33,29 @@ import UIKit
 ///
 ///
 
-class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADFullScreenContentDelegate {
+    private var interstitial: GADInterstitialAd?
+
+    
     override func viewWillLayoutSubviews() {
         addSubviews()
         makeFramesForAllViews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+                                   if let error = error {
+                                       print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                                       return
+                                   }
+                                   interstitial = ad
+                                   interstitial?.fullScreenContentDelegate = self
+                               }
+        )
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,9 +67,21 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             overClubGapBox.mainTextLabel.textColor = myGreen
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let interstitial = interstitial {
+          interstitial.present(fromRootViewController: self)
+        } else {
+          print("Ad wasn't ready")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
 //        view.addSubview(scrollView)
         // Do any additional setup after loading the view.
         tableView.delegate = self

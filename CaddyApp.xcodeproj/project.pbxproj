@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371585F2E6E6672E7340A925 /* Pods_CaddyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */; };
 		9C0705412785921000496B37 /* TestTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705402785921000496B37 /* TestTBVC.swift */; };
 		9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705422786C16300496B37 /* NoteEntryViewController.swift */; };
 		9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705442787567200496B37 /* NotesData.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 		9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */; };
 		9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */; };
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
+		9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F32279F997F00470472 /* AdTestViewController.swift */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
 		9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */; };
@@ -64,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaddyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0705402785921000496B37 /* TestTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTBVC.swift; sourceTree = "<group>"; };
 		9C0705422786C16300496B37 /* NoteEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryViewController.swift; sourceTree = "<group>"; };
 		9C0705452787567200496B37 /* NotesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesData.xcdatamodel; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
+		9CBA2F32279F997F00470472 /* AdTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTestViewController.swift; sourceTree = "<group>"; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		9CF2AF5E275EF1A100458646 /* NewStrokeInfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStrokeInfoStruct.swift; sourceTree = "<group>"; };
 		9CF2AF60275F249300458646 /* ClubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubCell.swift; sourceTree = "<group>"; };
 		9CF2AF62275F2B3500458646 /* AdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewController.swift; sourceTree = "<group>"; };
+		B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaddyApp.debug.xcconfig"; path = "Target Support Files/Pods-CaddyApp/Pods-CaddyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaddyApp.release.xcconfig"; path = "Target Support Files/Pods-CaddyApp/Pods-CaddyApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,12 +133,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371585F2E6E6672E7340A925 /* Pods_CaddyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A27E602602A90EDBDB7B35C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C285723278F53EF00E225C8 /* NewAndTesting */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +156,7 @@
 				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
 				9C52A40E278D526600E07956 /* PagingTestViewController.swift */,
+				9CBA2F32279F997F00470472 /* AdTestViewController.swift */,
 			);
 			path = NewAndTesting;
 			sourceTree = "<group>";
@@ -236,6 +252,8 @@
 			children = (
 				9CF2AF3E275AD61000458646 /* CaddyApp */,
 				9CF2AF3D275AD61000458646 /* Products */,
+				B74EC438BB9C5D43705B2B52 /* Pods */,
+				7A27E602602A90EDBDB7B35C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -275,6 +293,15 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		B74EC438BB9C5D43705B2B52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */,
+				E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,9 +309,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CF2AF50275AD61200458646 /* Build configuration list for PBXNativeTarget "CaddyApp" */;
 			buildPhases = (
+				BE4EC39A6E7194A530E8B12E /* [CP] Check Pods Manifest.lock */,
 				9CF2AF38275AD61000458646 /* Sources */,
 				9CF2AF39275AD61000458646 /* Frameworks */,
 				9CF2AF3A275AD61000458646 /* Resources */,
+				A3CA7E14D03133AB1F110B35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,6 +373,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A3CA7E14D03133AB1F110B35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE4EC39A6E7194A530E8B12E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CaddyApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9CF2AF38275AD61000458646 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -387,6 +458,7 @@
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */,
+				9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */,
 				9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
@@ -540,6 +612,7 @@
 		};
 		9CF2AF51275AD61200458646 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -571,6 +644,7 @@
 		};
 		9CF2AF52275AD61200458646 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

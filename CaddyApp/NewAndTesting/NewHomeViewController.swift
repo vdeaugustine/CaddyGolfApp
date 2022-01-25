@@ -6,8 +6,22 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class NewHomeViewController: UIViewController, UIScrollViewDelegate {
+    @IBOutlet weak var viewContainerForBanner: UIView!
+    
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+//        let banner = GADBannerView(adSize: GADAdSizeBanner)
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        banner.translatesAutoresizingMaskIntoConstraints = false
+        banner.backgroundColor = .secondarySystemBackground
+
+        return banner
+    }()
+    
+    
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var tableView: UITableView!
@@ -28,6 +42,11 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
+        
+        banner.rootViewController = self
+        banner.load(GADRequest())
+//        banner.delegate = self
+        
         pageControl.numberOfPages = pages.count
         setupScreens()
         scrollView.backgroundColor = .white
@@ -47,6 +66,16 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func setupScreens() {
+        viewContainerForBanner.addSubview(banner)
+        
+
+        NSLayoutConstraint.activate([
+            banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
+            banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
+            banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
+            banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor)
+        ])
+
         scrollView.addSubview(stackView)
         scrollView.isPagingEnabled = true
 
