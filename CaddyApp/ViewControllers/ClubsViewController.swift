@@ -5,15 +5,13 @@
 //  Created by Vincent DeAugustine on 12/3/21.
 //
 
-import UIKit
 import GoogleMobileAds
-
+import UIKit
 
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
-    
-    @IBOutlet weak var bannerContainer: UIView!
-    
+    @IBOutlet var bannerContainer: UIView!
+
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
@@ -23,25 +21,24 @@ class ClubsViewController: UIViewController {
 
         return banner
     }()
-    
+
     @IBOutlet var clubsTableView: UITableView!
 
     @IBOutlet var swingTypeToggle: UIButton!
 
-    @IBOutlet weak var swingTypeSegControl: UISegmentedControl!
+    @IBOutlet var swingTypeSegControl: UISegmentedControl!
     @IBAction func changeSwingType(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
-        self.clubsTableView.reloadData()
+        clubsTableView.reloadData()
     }
-    
-    
+
     var currentSwingTypeState = swingTypeState.threeFourths
 
     override func viewWillAppear(_ animated: Bool) {
         swingTypeSegControl.selectedSegmentIndex = 1
         clubsTableView.delaysContentTouches = false
-        
+
         clubsTableView.reloadData()
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred(intensity: 0.88)
@@ -53,9 +50,8 @@ class ClubsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         clubsTableView.insetsContentViewsToSafeArea = true
         clubsTableView.cellLayoutMarginsFollowReadableWidth = true
-        self.setContentScrollView(clubsTableView)
-        // When the clubs view is loaded, it should update mainBag with whatever is in the userDefaults
-        // ... although, this might be moved to viewDidLoad() or some other function at a later time. If the mainBag is a global variable that can be edited in other viewControllers, then we might not have to call from UserDefaults, because the mainBag will have already been updated
+        setContentScrollView(clubsTableView)
+
         do {
             let getUserBag = try UserDefaults.standard.getCustomObject(forKey: "user_bag", castTo: UserBag.self)
             print("immediately after")
@@ -65,32 +61,26 @@ class ClubsViewController: UIViewController {
         }
         sortBag()
         clubsTableView.reloadData()
-
-        
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .done, target: self, action: #selector(resetAllClubDistances))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         banner.rootViewController = self
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
-        
+
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
 //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
             // use the above code if you want to turn off ads
             // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
         ])
 
-        
-        
         ModalTransitionMediator.instance.setListener(listener: self)
 
         clubsTableView.dataSource = self
@@ -183,8 +173,7 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "club", for: indexPath) as! ClubCell
         let currentClubForCell = mainBag.allClubs2DArray[indexPath.section][indexPath.row]
-        // if something is broken, look here first
-//        let currentClubNameForCell = currentClubForCell.name.uppercased()
+
         let currentClubNameForCell = currentClubForCell.name
         cell.clubNameLabel.text = currentClubNameForCell
         switch swingTypeSegControl.selectedSegmentIndex {
@@ -200,49 +189,23 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
+
         cell.notesBox.setHeaderText("Notes")
-        
-//        var thisClubIdentifier: AllClubNames = .driver
-//        for item in AllClubNames.allCases {
-//            if item.rawValue == currentClubNameForCell {
-//                thisClubIdentifier = item
-//                break
-//            }
-//        }
-        
+
         let recentNotesArr = getAllClubNotes(currentClubNameForCell)
         if recentNotesArr.count > 0 {
             let recentNote = recentNotesArr[0]
             cell.notesBox.setMainText(recentNote.subTitle ?? "")
             cell.notesBox.mainTextLabel.textColor = .black
 
-
         } else {
             cell.notesBox.setMainText("No notes yet.")
             cell.notesBox.mainTextLabel.textColor = .red
         }
-        
-       
 
-        
         cell.yardsBox.layoutViews()
         cell.notesBox.layoutViews()
         cell.myViewController = self
-
-//        cell.textLabel?.text = currentClubNameForCell
-
-//        cell.yardsLabel.text = {
-//            switch currentSwingTypeState {
-//            case .fullSwing:
-//                return "\(currentClubForCell.fullDistance)"
-//            case .threeFourths:
-//                return "\(currentClubForCell.threeFourthsDistance)"
-//            case .maxSwing:
-//                return "\(currentClubForCell.maxDistance)"
-//            }
-//
-//        }()
 
         return cell
     }
@@ -296,34 +259,6 @@ extension ClubsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return mainBag.types[section]
     }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let someView = UIView(frame: CGRect(x: 0,
-//                                            y: 0,
-//                                            width: view.width,
-//                                            height: 75))
-//
-//        let sectionTitleString = mainBag.types[section]
-//        let sectionTitle = UILabel()
-//        sectionTitle.translatesAutoresizingMaskIntoConstraints = false
-//        someView.addSubview(sectionTitle)
-//        sectionTitle.textColor = .white
-////        sectionTitle.font.withSize(34)
-//        sectionTitle.font = UIFont(name: "Helvetica-BoldOblique", size: 24)
-//        sectionTitle.text = sectionTitleString
-//        sectionTitle.clipsToBounds = true
-//        sectionTitle.adjustsFontSizeToFitWidth = true
-////        sectionTitle.center = CGPoint(x: 10, y: someView.frame.height / 2)
-//        NSLayoutConstraint.activate(
-//            [
-//                sectionTitle.leadingAnchor.constraint(equalTo: someView.leadingAnchor, constant: 10),
-//                sectionTitle.centerYAnchor.constraint(equalTo: someView.centerYAnchor),
-//                sectionTitle.widthAnchor.constraint(equalTo: someView.widthAnchor),
-//            ]
-//        )
-//
-//        return someView
-//    }
 }
 
 extension ClubsViewController: ModalTransitionListener {

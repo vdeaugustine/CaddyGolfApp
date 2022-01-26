@@ -5,15 +5,14 @@
 //  Created by Vincent DeAugustine on 1/6/22.
 //
 
-import UIKit
 import GoogleMobileAds
+import UIKit
 
 // TODO: - Add some padding to the all notes table view. right now the text of the notes looks like it is too close to the edge of the screen
 
 class AllNotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var bannerContainer: UIView!
-    
+    @IBOutlet var bannerContainer: UIView!
+
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
@@ -23,7 +22,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 
         return banner
     }()
-    
+
     var models = [(title: String, note: String)]()
     var thisClubNotes: [ClubNote]?
     var mainNotes: [MainNote]?
@@ -38,25 +37,24 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
         navigationController?.navigationBar.prefersLargeTitles = false
-        
+
         banner.rootViewController = self
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
-        
+
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
         ])
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred(intensity: 0.88)
-        
+
         if comingFrom == "home" {
             mainNotes = getAllMainNotes()
             title = "General Notes"
@@ -85,19 +83,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.pushViewController(newNoteVC, animated: true)
     }
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return currentClubNotes.count
-
         var numOfCells = 0
         if comingFrom == "home" {
             if let mainNotes = mainNotes {
@@ -108,7 +94,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             if let thisClubNotes = thisClubNotes {
                 numOfCells = thisClubNotes.count
             }
-            
+
         } else {
             return 0
         }
@@ -126,7 +112,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteTableViewCell
-        
+
         let nextVC: UIViewController
         cell.letButtonBeTapped = atLeastOneNoteExists
         if !atLeastOneNoteExists {
@@ -137,15 +123,12 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                 fatalError()
             }
             nextVC = vc
-            
-        }
-        else {
-            
+        } else {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
                 print("ERROR WITH INSTANTIATION")
                 fatalError()
             }
-            
+
             nextVC = vc
             if comingFrom == "home" {
                 print("coming from home")
@@ -169,38 +152,25 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             } else {
                 print("problem in creating cell")
             }
-            
-            
         }
-        
+
         cell.pageToGoToIfTapped = nextVC
         cell.navigationController = navigationController!
 
         return cell
-
-        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         if !atLeastOneNoteExists {
-//            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NoteEntryViewController") as? NoteEntryViewController else {
-//                print("ERROR WITH INSTANTIATION")
-//                fatalError()
-//            }
-//            if let navController = navigationController {
-//                navController.pushViewController(vc, animated: true)
-//            }
         } else {
-            
             print("tapped on note")
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "ViewSingleNoteViewController") as? ViewSingleNoteViewController else {
                 print("ERROR WITH INSTANTIATION")
                 return
             }
-    //        vc.hasContentAlready = true
-    //        vc.comingFrom = comingFrom
+
             if let thisClubNotes = thisClubNotes {
                 let currentNote = thisClubNotes[indexPath.row]
                 vc.titleText = currentNote.title
@@ -224,17 +194,10 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
                     fatalError()
                 }
             }
-
-            
-            
         }
-        
-        
-        
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             // Remove it from the data model
 
@@ -265,8 +228,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return atLeastOneNoteExists
     }

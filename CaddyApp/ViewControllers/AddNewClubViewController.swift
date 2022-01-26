@@ -167,20 +167,6 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
         mainBag.wedgesArray = mainBag.allClubs2DArray[3]
         doSave(userDefaults: userDefaults, saveThisBag: mainBag)
 
-        // Go back to previous view controller in the navigation stack
-//        _ = navigationController?.popViewController(animated: true)
-
-//
-//        if let firstVC = self.presentingViewController as? ClubsViewController {
-//            print("GOTHERE")
-//                    DispatchQueue.main.async {
-//                        firstVC.clubsTableView.reloadData()
-//                    }
-//                }
-//        else {
-//            print("DIDNOTGETHERE")
-//        }
-//
         super.dismiss(animated: true, completion: nil)
     }
 

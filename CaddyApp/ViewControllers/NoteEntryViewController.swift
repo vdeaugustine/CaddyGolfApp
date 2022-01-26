@@ -26,12 +26,12 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
     var titleContent = ""
     var comingFrom = ""
 
-    @IBOutlet weak var noteContentBottomAnchor: NSLayoutConstraint!
+    @IBOutlet var noteContentBottomAnchor: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         noteField.returnKeyType = .default
         noteField.delegate = self
-        
+
         title = "New Note"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSave))
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -67,8 +67,6 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-   
-
     @objc func didTapSave() {
         if let title = titleField.text, !title.isEmpty, let note = noteField.text, !note.isEmpty {
             completion?(title, noteField.text)
@@ -90,12 +88,11 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
                     createClubNote(title: titleContent, subtitle: noteContent, type: currentClubTypeAsEnum())
                     currentClub.mostRecentClubNoteTitle = titleContent
                     saveCurrentClub()
-                    self.dismiss(animated: true, completion: nil)
-                    
+                    dismiss(animated: true, completion: nil)
                 }
             }
         }
-        
+
         playSound(whichSound: "Scribble")
         noteContentBottomAnchor.constant = -5
     }
@@ -103,10 +100,4 @@ class NoteEntryViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         textViewPlaceholder.isHidden = !textView.text.isEmpty
     }
-
-//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-//        textView.resignFirstResponder()
-//        noteField.resignFirstResponder()
-//        return true
-//    }
 }

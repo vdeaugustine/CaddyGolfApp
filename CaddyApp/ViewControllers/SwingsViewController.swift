@@ -5,15 +5,15 @@
 //  Created by Vincent DeAugustine on 1/1/22.
 //
 
-import UIKit
 import AVFoundation
 import GoogleMobileAds
+import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Properties
 
-    @IBOutlet weak var bannerContainer: UIView!
-    
+    @IBOutlet var bannerContainer: UIView!
+
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
@@ -23,9 +23,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         return banner
     }()
-    
-    
-    
+
     @IBOutlet var viewForYardages: UIView!
 
     @IBOutlet var swingsTableView: UITableView!
@@ -37,23 +35,21 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         swingsTableView.delegate = self
         swingsTableView.dataSource = self
         swingsTableView.reloadData()
-        
+
         banner.rootViewController = self
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
-        
+
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
 //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
             // use the above code if you want to turn off ads
             // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
         ])
-
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +85,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
         view.layer.cornerRadius = globalCornerRadius
-        //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = true
         return view
@@ -99,7 +94,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
         view.layer.cornerRadius = globalCornerRadius
-        //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = false
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -111,8 +105,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont(name: "Helvetica-Bold", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "AVERAGE"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
 
         return label
@@ -122,7 +114,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
         view.layer.cornerRadius = globalCornerRadius
-        //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = true
         return view
@@ -132,7 +123,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = true
         view.layer.cornerRadius = globalCornerRadius
-        //    view.backgroundColor = .red
         view.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
         view.isUserInteractionEnabled = false
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -144,8 +134,6 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont(name: "Helvetica-Bold", size: 18)
         label.adjustsFontSizeToFitWidth = true
         label.text = "Enter Manually"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
 
         return label
@@ -156,10 +144,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont(name: "Helvetica-Bold", size: 80)
         label.adjustsFontSizeToFitWidth = true
         label.text = "\(0)"
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
-        //        label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
     }()
@@ -177,10 +162,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             label.text = "\(currentClub.threeFourthsDistance)"
         }
 
-        //    label.heightAnchor.constraint(equalToConstant: 49.0)
-        //        label.translatesAutoresizingMaskIntoConstraints = true
         label.textAlignment = .center
-        //        label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
     }()
@@ -419,7 +401,6 @@ extension SwingsViewController {
                 saveCurrentClub()
                 self.swingsTableView.reloadData()
                 playSound(whichSound: "Scribble")
-
             }
 
             print("Text field: \(textField?.text ?? "")")
@@ -432,7 +413,6 @@ extension SwingsViewController {
     }
 
     @objc func doAddSwingAlert() {
-        
         // 1. Create the alert controller.
         let alert = UIAlertController(title: "Enter Distance of Previous Shot".uppercased(), message: nil, preferredStyle: .alert)
 
@@ -461,7 +441,7 @@ extension SwingsViewController {
                 saveCurrentClub()
                 self.swingsTableView.reloadData()
                 playSound(whichSound: "Scribble")
-                
+
             } else {
                 print("NOT ADDING")
             }

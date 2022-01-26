@@ -34,8 +34,6 @@ class ViewSingleNoteViewController: UIViewController {
         if let noteText = noteText {
             mainNoteTextView.text = noteText
         }
-
-        // Do any additional setup after loading the view.
     }
 
     @objc func didTapEditNote() {
@@ -63,15 +61,6 @@ class ViewSingleNoteViewController: UIViewController {
             titleLabel.isUserInteractionEnabled = isInEditState
             mainNoteTextView.isUserInteractionEnabled = isInEditState
 
-//            mainNoteTextView.translatesAutoresizingMaskIntoConstraints = false
-//            mainNoteTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 20).isActive = true
-//            mainNoteTextView.frame.size = CGSize(width: mainNoteTextView.width, height: mainNoteTextView.height + (self.additionalSafeAreaInsets.bottom - mainNoteTextView.bottom) - 20)
-
-//            mainNoteTextView.removeConstraint(mainNoteTextView.bottomAnchor)
-//            NSLayoutConstraint.activate([
-//                mainNoteTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//            ])
-
             mainNoteBottomConstraint.constant = -5
 
             playSound(whichSound: "Scribble")
@@ -96,16 +85,6 @@ class ViewSingleNoteViewController: UIViewController {
             }
         }
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
 
     func saveNote() {
     }

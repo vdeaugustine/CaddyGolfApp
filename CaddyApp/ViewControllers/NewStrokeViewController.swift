@@ -5,9 +5,8 @@
 //  Created by Vincent DeAugustine on 12/5/21.
 //
 
-import UIKit
 import GoogleMobileAds
-
+import UIKit
 
 var clubBelowForAdvice = currentClub
 var clubAboveForAdvice = currentClub
@@ -15,7 +14,7 @@ var advice = Advice()
 var closestClubBelow = ClosestClubBelow(gap: 999, clubName: currentClub.name, swingType: .fullSwing)
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var bannerContainer: UIView!
+    @IBOutlet var bannerContainer: UIView!
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
@@ -37,7 +36,7 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
         return scrollView
 
     }()
-    
+
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
@@ -47,22 +46,20 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
         return banner
     }()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         banner.rootViewController = self
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
-        
+
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight)
+            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
 //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
             // use the above code if you want to turn off ads
             // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
@@ -70,26 +67,12 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))
-//        distanceField.translatesAutoresizingMaskIntoConstraints = false
-//        moreInfoButton.translatesAutoresizingMaskIntoConstraints = false
-//        distanceToPinLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//        moreInfoButton.centerYAnchor.constraint(equalTo: distanceToPinLabel.centerYAnchor).isActive = true
-//        moreInfoButton.heightAnchor.constraint(equalTo: distanceToPinLabel.heightAnchor, multiplier: 1/3).isActive = true
-//        moreInfoButton.leadingAnchor.constraint(equalTo: distanceToPinLabel.trailingAnchor, constant: 3).isActive = true
-//        moreInfoButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 5).isActive = true
-//        moreInfoButton.widthAnchor.constraint(equalTo: moreInfoButton.heightAnchor).isActive = true
-//        moreInfoButton.bottomAnchor.constraint(equalTo: flagColorSwgControl.topAnchor).isActive = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred(intensity: 0.88)
         distanceField.placeholder = "0"
-//        for item in self.view.subviews {
-//            item.translatesAutoresizingMaskIntoConstraints = false
-//        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -194,28 +177,8 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                     if thisClubGap < shortestClubGap {
                         shortestClubGap = thisClubGap
                         closestClub = club
-//                        closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .fullSwing)
                     }
                 }
-
-//                if useSwingTypes {
-//                    if club.threeFourthsDistance <= distAsInt {
-//                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
-//                        if thisClubGap < shortestClubGap {
-//                            shortestClubGap = thisClubGap
-//                            closestClub = club
-//                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
-//                        }
-//                    }
-//                    if club.maxDistance <= distAsInt {
-//                        let thisClubGap = abs(distAsInt - club.maxDistance)
-//                        if thisClubGap < shortestClubGap {
-//                            shortestClubGap = thisClubGap
-//                            closestClub = club
-//                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
-//                        }
-//                    }
-//                }
             }
         }
         advice.closestClubBelow = closestClub
@@ -243,25 +206,6 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
                         closestClub = club
                     }
                 }
-
-//                if useSwingTypes {
-//                    if club.threeFourthsDistance >= distAsInt {
-//                        let thisClubGap = abs(distAsInt - club.threeFourthsDistance)
-//                        if thisClubGap < shortestClubGap {
-//                            shortestClubGap = thisClubGap
-//                            closestClub = club
-//                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .threeFourths)
-//                        }
-//                    }
-//                    if club.maxDistance >= distAsInt {
-//                        let thisClubGap = abs(distAsInt - club.maxDistance)
-//                        if thisClubGap < shortestClubGap {
-//                            shortestClubGap = thisClubGap
-//                            closestClub = club
-//                            closestClubBelow = ClosestClubBelow(gap: thisClubGap, clubName: club.name, swingType: .maxSwing)
-//                        }
-//                    }
-//                }
             }
         }
         advice.closestClubAbove = closestClub
