@@ -42,7 +42,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910",
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5903531577896836/3152967325",
                                request: request,
                                completionHandler: { [self] ad, error in
                                    if let error = error {
@@ -79,7 +79,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
 
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
-        addAdvice()
+//        addAdvice()
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -109,16 +109,25 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotBox.addSubview(aimShotTips)
         aimShotBox.addSubview(colorOfFlagImage)
         aimShotBox.addSubview(flagExplanationButton)
+        aimShotBox.addSubview(extactDistanceContainer)
+        
 
-        scrollView.addSubview(hillBox)
-        hillBox.addSubview(hillHeaderLabel)
-        hillBox.addSubview(hillTipsLabel)
+        extactDistanceContainer.addSubview(exactDistanceLabel)
+        extactDistanceContainer.addSubview(exactDistanceBox)
+        
+        
+        exactDistanceBox.addSubview(exactDetailsLabel)
+//        extactDistanceContainer.addSubview(exactDistanceNumberLabel)
+
+//        scrollView.addSubview(hillBox)
+//        hillBox.addSubview(hillHeaderLabel)
+//        hillBox.addSubview(hillTipsLabel)
     }
 
     func makeFramesForAllViews() {
         let pad: CGFloat = 5
 
-        let farBottomItemInScrollView = hillBox
+        let farBottomItemInScrollView = aimShotBox
         let padFromNavBarView = UIView()
         let largeBoxSize = CGSize(width: scrollView.width - pad * 2, height: 450)
         let clubContainers = CGSize(width: scrollView.width - pad * 2, height: 110)
@@ -286,7 +295,43 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
                                   y: aimShotBox.frame.minY,
                                   width: aimShotBox.width,
-                                  height: aimShotTips.frame.maxY + 25)
+                                  height: 750)
+
+        
+        
+        // MARK: - Exact setup
+        extactDistanceContainer.frame =  CGRect(x: pad,
+                                                y: colorOfFlagImage.bottom + pad,
+                                                width: aimShotBox.width - pad * 2,
+                                                height: aimShotBox.bottom - colorOfFlagImage.bottom - 20)
+        
+        exactDistanceLabel.frame =  CGRect(x: pad,
+                                           y: pad,
+                                           width: extactDistanceContainer.width - pad * 2,
+                                           height: 50)
+        exactDistanceLabel.sizeToFit()
+        
+        exactDistanceBox.frame =  CGRect(x: pad,
+                                         y: exactDistanceLabel.bottom + pad,
+                                         width: extactDistanceContainer.width - pad * 2,
+                                         height: 250)
+        
+        exactDetailsLabel.frame =  CGRect(x: pad,
+                                          y: pad,
+                                          width: exactDistanceBox.width - pad * 2,
+                                          height: exactDistanceBox.height - pad * 2)
+        exactDetailsLabel.backgroundColor = .red
+        
+        
+        
+
+        // Constrain extactDistanceContainer to it's superview
+//        NSLayoutConstraint.activate([
+//            extactDistanceContainer.leadingAnchor.constraint(equalTo: aimShotBox.leadingAnchor, constant: 10),
+//            extactDistanceContainer.topAnchor.constraint(equalTo: colorOfFlagImage.bottomAnchor, constant: 10),
+//            extactDistanceContainer.rightAnchor.constraint(equalTo: aimShotBox.rightAnchor, constant: -10),
+//            extactDistanceContainer.bottomAnchor.constraint(equalTo: aimShotBox.bottomAnchor, constant: -10),
+//        ])
 
         let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
         flagExplanationButton.frame = CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
@@ -294,35 +339,76 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                              width: flagButtonSize,
                                              height: flagButtonSize)
 
-        hillBox.frame = CGRect(x: aimShotBox.left,
-                               y: aimShotBox.bottom + pad,
-                               width: largeBoxSize.width,
-                               height: largeBoxSize.height)
+        
+        
+        
+        
 
-        hillHeaderLabel.frame = CGRect(x: pad,
-                                       y: pad,
-                                       width: (hillBox.width / 2) - pad * 2,
-                                       height: 50)
+//        NSLayoutConstraint.activate([
+//            exactDistanceBox.leadingAnchor.constraint(equalTo: extactDistanceContainer.leadingAnchor),
+//            exactDistanceBox.topAnchor.constraint(equalTo: extactDistanceContainer.topAnchor),
+//            exactDistanceBox.trailingAnchor.constraint(equalTo: extactDistanceContainer.centerXAnchor),
+//            exactDistanceBox.heightAnchor.constraint(equalToConstant: clubContainers.height),
+//
+//
+//
+//        ])
 
-        // Center the flag image in the room available
-        let roomForHillImage = hillBox.width - hillHeaderLabel.right
+//        NSLayoutConstraint.activate([
+//            exactDistanceLabel.leadingAnchor.constraint(equalTo: extactDistanceContainer.leadingAnchor),
+//            exactDistanceLabel.topAnchor.constraint(equalTo: extactDistanceContainer.topAnchor),
+//            exactDistanceLabel.rightAnchor.constraint(equalTo: extactDistanceContainer.centerXAnchor)
+//            ])
+//
+//        exactDistanceLabel.sizeToFit()
+//
+//        NSLayoutConstraint.activate([
+//            exactDistanceNumberLabel.leadingAnchor.constraint(equalTo: exactDistanceLabel.leadingAnchor),
+//            exactDistanceNumberLabel.topAnchor.constraint(equalTo: exactDistanceLabel.bottomAnchor, constant: 5),
+//            exactDistanceNumberLabel.trailingAnchor.constraint(equalTo: exactDistanceLabel.trailingAnchor)
+//        ])
+//
+//        exactDistanceNumberLabel.text = "\(advice.clubAboveGap)"
+//
 
-        hillImageView.frame = CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
-                                     y: pad,
-                                     width: hillImageView.frame.size.width,
-                                     height: hillImageView.frame.size.height)
+//        NSLayoutConstraint.activate([
+//            exactDistanceHeader.leadingAnchor.constraint(equalTo: exactDistanceBox.leadingAnchor),
+//            exactDistanceHeader.topAnchor.constraint(equalTo: exactDistanceBox.topAnchor),
+//            exactDistanceHeader.widthAnchor.constraint(equalToConstant: clubContainers.width),
+//            exactDistanceHeader.heightAnchor.constraint(equalToConstant: clubContainers.height / 3)
+//        ])
 
-        hillTipsLabel.frame = CGRect(x: pad,
-                                     y: hillImageView.bottom + pad,
-                                     width: aimShotTips.width,
-                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
+        // MARK: - Hill Setup
 
-        hillTipsLabel.sizeToFit()
-
-        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.frame.maxY + 25)
+//        hillBox.frame = CGRect(x: aimShotBox.left,
+//                               y: aimShotBox.bottom + pad,
+//                               width: largeBoxSize.width,
+//                               height: largeBoxSize.height)
+//
+//        hillHeaderLabel.frame = CGRect(x: pad,
+//                                       y: pad,
+//                                       width: (hillBox.width / 2) - pad * 2,
+//                                       height: 50)
+//
+//        // Center the flag image in the room available
+//        let roomForHillImage = hillBox.width - hillHeaderLabel.right
+//
+//        hillImageView.frame = CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
+//                                     y: pad,
+//                                     width: hillImageView.frame.size.width,
+//                                     height: hillImageView.frame.size.height)
+//
+//        hillTipsLabel.frame = CGRect(x: pad,
+//                                     y: hillImageView.bottom + pad,
+//                                     width: aimShotTips.width,
+//                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
+//
+//        hillTipsLabel.sizeToFit()
+//
+//        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.frame.maxY + 25)
 
         if let tabBar = tabBarController?.tabBar {
-            scrollView.contentSize = CGSize(width: scrollView.width, height: hillBox.bottom + (tabBar.height * 1.5))
+            scrollView.contentSize = CGSize(width: scrollView.width, height: farBottomItemInScrollView.bottom + (tabBar.height * 1.5))
         }
 
         setContentScrollView(scrollView)
@@ -543,7 +629,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 18)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "This is temp text"
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
         label.sizeToFit()
@@ -597,6 +682,52 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.translatesAutoresizingMaskIntoConstraints = true
         label.numberOfLines = 0
 
+        return label
+    }()
+
+    // MARK: - Flag color club choice options
+
+    var extactDistanceContainer: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        return thisView
+    }()
+
+    
+    
+
+    var exactDistanceBox: UIView = {
+        let thisView = UIView()
+        thisView.translatesAutoresizingMaskIntoConstraints = true
+        thisView.backgroundColor = .lightGray
+        thisView.layer.cornerRadius = globalCornerRadius
+        return thisView
+    }()
+//
+//    var exactDistanceHeader: UIView = {
+//        let thisView = UIView()
+//        thisView.translatesAutoresizingMaskIntoConstraints = false
+//        return thisView
+//    }()
+//
+    var exactDistanceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Helvetica", size: 30)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Exact Distance"
+        label.translatesAutoresizingMaskIntoConstraints = true
+
+        return label
+    }()
+    
+    var exactDetailsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Helvetica", size: 22)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Go with a club here. You want to go exactly this many yards"
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = true
+        
         return label
     }()
 
