@@ -79,7 +79,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
 
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
-//        addAdvice()
+        addAdvice()
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -320,18 +320,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                           y: pad,
                                           width: exactDistanceBox.width - pad * 2,
                                           height: exactDistanceBox.height - pad * 2)
-        exactDetailsLabel.backgroundColor = .red
+        exactDetailsLabel.sizeToFit()
         
-        
-        
-
-        // Constrain extactDistanceContainer to it's superview
-//        NSLayoutConstraint.activate([
-//            extactDistanceContainer.leadingAnchor.constraint(equalTo: aimShotBox.leadingAnchor, constant: 10),
-//            extactDistanceContainer.topAnchor.constraint(equalTo: colorOfFlagImage.bottomAnchor, constant: 10),
-//            extactDistanceContainer.rightAnchor.constraint(equalTo: aimShotBox.rightAnchor, constant: -10),
-//            extactDistanceContainer.bottomAnchor.constraint(equalTo: aimShotBox.bottomAnchor, constant: -10),
-//        ])
+     
 
         let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
         flagExplanationButton.frame = CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
@@ -339,74 +330,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                              width: flagButtonSize,
                                              height: flagButtonSize)
 
-        
-        
-        
-        
-
-//        NSLayoutConstraint.activate([
-//            exactDistanceBox.leadingAnchor.constraint(equalTo: extactDistanceContainer.leadingAnchor),
-//            exactDistanceBox.topAnchor.constraint(equalTo: extactDistanceContainer.topAnchor),
-//            exactDistanceBox.trailingAnchor.constraint(equalTo: extactDistanceContainer.centerXAnchor),
-//            exactDistanceBox.heightAnchor.constraint(equalToConstant: clubContainers.height),
-//
-//
-//
-//        ])
-
-//        NSLayoutConstraint.activate([
-//            exactDistanceLabel.leadingAnchor.constraint(equalTo: extactDistanceContainer.leadingAnchor),
-//            exactDistanceLabel.topAnchor.constraint(equalTo: extactDistanceContainer.topAnchor),
-//            exactDistanceLabel.rightAnchor.constraint(equalTo: extactDistanceContainer.centerXAnchor)
-//            ])
-//
-//        exactDistanceLabel.sizeToFit()
-//
-//        NSLayoutConstraint.activate([
-//            exactDistanceNumberLabel.leadingAnchor.constraint(equalTo: exactDistanceLabel.leadingAnchor),
-//            exactDistanceNumberLabel.topAnchor.constraint(equalTo: exactDistanceLabel.bottomAnchor, constant: 5),
-//            exactDistanceNumberLabel.trailingAnchor.constraint(equalTo: exactDistanceLabel.trailingAnchor)
-//        ])
-//
-//        exactDistanceNumberLabel.text = "\(advice.clubAboveGap)"
-//
-
-//        NSLayoutConstraint.activate([
-//            exactDistanceHeader.leadingAnchor.constraint(equalTo: exactDistanceBox.leadingAnchor),
-//            exactDistanceHeader.topAnchor.constraint(equalTo: exactDistanceBox.topAnchor),
-//            exactDistanceHeader.widthAnchor.constraint(equalToConstant: clubContainers.width),
-//            exactDistanceHeader.heightAnchor.constraint(equalToConstant: clubContainers.height / 3)
-//        ])
-
-        // MARK: - Hill Setup
-
-//        hillBox.frame = CGRect(x: aimShotBox.left,
-//                               y: aimShotBox.bottom + pad,
-//                               width: largeBoxSize.width,
-//                               height: largeBoxSize.height)
-//
-//        hillHeaderLabel.frame = CGRect(x: pad,
-//                                       y: pad,
-//                                       width: (hillBox.width / 2) - pad * 2,
-//                                       height: 50)
-//
-//        // Center the flag image in the room available
-//        let roomForHillImage = hillBox.width - hillHeaderLabel.right
-//
-//        hillImageView.frame = CGRect(x: hillHeaderLabel.right + (roomForHillImage / 2) - (hillImageView.width / 2),
-//                                     y: pad,
-//                                     width: hillImageView.frame.size.width,
-//                                     height: hillImageView.frame.size.height)
-//
-//        hillTipsLabel.frame = CGRect(x: pad,
-//                                     y: hillImageView.bottom + pad,
-//                                     width: aimShotTips.width,
-//                                     height: hillBox.height - hillHeaderLabel.height - pad - pad)
-//
-//        hillTipsLabel.sizeToFit()
-//
-//        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.frame.maxY + 25)
-
+   
         if let tabBar = tabBarController?.tabBar {
             scrollView.contentSize = CGSize(width: scrollView.width, height: farBottomItemInScrollView.bottom + (tabBar.height * 1.5))
         }
@@ -423,31 +347,39 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func addAdvice() {
-        switch advice.flagColor {
-        case "Red":
-            aimShotTips.text = AdviceOptions().redFlagApproach
-        case "White":
-            aimShotTips.text = AdviceOptions().whiteFlagApproach
-        case "Blue":
-            aimShotTips.text = AdviceOptions().blueFlagApproach
-        default:
-            aimShotTips.text = ""
-        }
-        aimShotTips.frame.size = CGSize(width: aimShotTips.width, height: 40)
-        aimShotTips.sizeToFit()
-        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
-                                  y: aimShotBox.frame.minY,
-                                  width: aimShotBox.width,
-                                  height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
-
-        switch advice.lieType {
-        case lieTypes.sideHillDown.rawValue:
-            hillTipsLabel.text = AdviceOptions().sideHillDown
-        default:
-            fatalError()
-        }
-        hillTipsLabel.sizeToFit()
-        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.bottom + 25)
+        
+        let exactClub = advice.getExactClubForFlag()
+        
+        exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\nSince it is a \(advice.flagColor) flag, landing a little short/long here will give you the best chance of hitting the green"
+        
+        
+        
+        
+//        switch advice.flagColor {
+//        case "Red":
+//            aimShotTips.text = AdviceOptions().redFlagApproach
+//        case "White":
+//            aimShotTips.text = AdviceOptions().whiteFlagApproach
+//        case "Blue":
+//            aimShotTips.text = AdviceOptions().blueFlagApproach
+//        default:
+//            aimShotTips.text = ""
+//        }
+//        aimShotTips.frame.size = CGSize(width: aimShotTips.width, height: 40)
+//        aimShotTips.sizeToFit()
+//        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
+//                                  y: aimShotBox.frame.minY,
+//                                  width: aimShotBox.width,
+//                                  height: aimShotBox.frame.maxY - colorOfFlagImage.height - aimShotTips.height)
+//
+//        switch advice.lieType {
+//        case lieTypes.sideHillDown.rawValue:
+//            hillTipsLabel.text = AdviceOptions().sideHillDown
+//        default:
+//            fatalError()
+//        }
+//        hillTipsLabel.sizeToFit()
+//        hillBox.frame.size = CGSize(width: hillBox.width, height: hillTipsLabel.bottom + 25)
     }
 
     var scrollView: UIScrollView = {
@@ -886,4 +818,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         vc.title = advice.closestClubAbove.name
         currentClub = advice.closestClubAbove
     }
+    
+    
+    
 }
