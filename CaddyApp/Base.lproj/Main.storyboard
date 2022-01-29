@@ -1048,6 +1048,91 @@
             </objects>
             <point key="canvasLocation" x="4241" y="3238"/>
         </scene>
+        <!--Ask For Tip View Controller-->
+        <scene sceneID="Wpq-kO-u79">
+            <objects>
+                <viewController storyboardIdentifier="AskForTipViewController" id="1AR-Ze-gGa" customClass="AskForTipViewController" customModule="CaddyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2E3-cP-IDH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has Dialed In Golf Helped You at All?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re0-IP-uMe">
+                                <rect key="frame" x="21" y="115" width="333" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If so, consider leaving a tip or a review!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXd-gC-9Fp">
+                                <rect key="frame" x="12.666666666666657" y="171" width="350" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K22-cp-NFd">
+                                <rect key="frame" x="126" y="256" width="123" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="K22-cp-NFd" secondAttribute="height" multiplier="123:35" id="4Jp-AN-fd7"/>
+                                    <constraint firstAttribute="width" constant="123" id="wxk-Pu-tLw"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Leave a Review"/>
+                                <connections>
+                                    <action selector="didTapLeaveReview:" destination="6mK-hs-Oy1" eventType="touchUpInside" id="9rp-nm-chD"/>
+                                    <action selector="didTapLeaveReview:" destination="1AR-Ze-gGa" eventType="touchUpInside" id="ZWU-GR-Hun"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2s-T1-jL0">
+                                <rect key="frame" x="126" y="312" width="123" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="z2s-T1-jL0" secondAttribute="height" multiplier="123:35" id="h85-8g-MWF"/>
+                                    <constraint firstAttribute="width" constant="123" id="zAS-hY-6Rn"/>
+                                </constraints>
+                                <color key="tintColor" red="0.21522754429999999" green="0.4822331071" blue="0.1332250535" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Leave a Tip"/>
+                                <connections>
+                                    <action selector="didTapLeaveTip:" destination="1AR-Ze-gGa" eventType="touchUpInside" id="EhR-mF-Q3O"/>
+                                    <action selector="didTapLeaveTip:" destination="6mK-hs-Oy1" eventType="touchUpInside" id="zR9-Xl-WLQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPx-QS-B8W">
+                                <rect key="frame" x="126" y="372" width="123" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="jaG-ae-v3Y"/>
+                                    <constraint firstAttribute="width" secondItem="OPx-QS-B8W" secondAttribute="height" multiplier="123:35" id="sXV-iK-iY0"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="No Thanks"/>
+                                <connections>
+                                    <action selector="didTapNoThanks:" destination="6mK-hs-Oy1" eventType="touchUpInside" id="03B-z3-Aeb"/>
+                                    <action selector="didTapNoThanks:" destination="1AR-Ze-gGa" eventType="touchUpInside" id="bCu-JI-BYL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ofl-hh-fQ2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K22-cp-NFd" firstAttribute="centerX" secondItem="2E3-cP-IDH" secondAttribute="centerX" id="5gG-2P-DDs"/>
+                            <constraint firstItem="z2s-T1-jL0" firstAttribute="top" secondItem="K22-cp-NFd" secondAttribute="bottom" constant="21" id="5hP-K9-KmC"/>
+                            <constraint firstItem="K22-cp-NFd" firstAttribute="top" secondItem="kXd-gC-9Fp" secondAttribute="bottom" constant="59" id="Cq2-R1-Viz"/>
+                            <constraint firstItem="OPx-QS-B8W" firstAttribute="top" secondItem="z2s-T1-jL0" secondAttribute="bottom" constant="25" id="DBW-xb-WEX"/>
+                            <constraint firstItem="Re0-IP-uMe" firstAttribute="leading" secondItem="Ofl-hh-fQ2" secondAttribute="leading" constant="21" id="LVP-sW-DRw"/>
+                            <constraint firstItem="Re0-IP-uMe" firstAttribute="top" secondItem="Ofl-hh-fQ2" secondAttribute="top" constant="71" id="LiN-og-2o3"/>
+                            <constraint firstItem="Re0-IP-uMe" firstAttribute="centerX" secondItem="2E3-cP-IDH" secondAttribute="centerX" id="OMR-va-AhN"/>
+                            <constraint firstItem="Ofl-hh-fQ2" firstAttribute="trailing" secondItem="Re0-IP-uMe" secondAttribute="trailing" constant="21" id="QdF-oR-buX"/>
+                            <constraint firstItem="kXd-gC-9Fp" firstAttribute="centerX" secondItem="2E3-cP-IDH" secondAttribute="centerX" id="VQV-T3-cG9"/>
+                            <constraint firstItem="kXd-gC-9Fp" firstAttribute="top" secondItem="Re0-IP-uMe" secondAttribute="bottom" constant="30" id="Wki-8m-Osi"/>
+                            <constraint firstItem="z2s-T1-jL0" firstAttribute="centerX" secondItem="2E3-cP-IDH" secondAttribute="centerX" id="d6l-4f-veh"/>
+                            <constraint firstItem="OPx-QS-B8W" firstAttribute="centerX" secondItem="2E3-cP-IDH" secondAttribute="centerX" id="fAH-K3-fhn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fq5-oP-Gb3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6mK-hs-Oy1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5204" y="2691"/>
+        </scene>
         <!--Note Entry View Controller-->
         <scene sceneID="9du-k7-aLa">
             <objects>
@@ -1321,7 +1406,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy8-Bk-37X">
-                                <rect key="frame" x="20" y="269" width="335" height="50"/>
+                                <rect key="frame" x="20" y="327.66666666666669" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XhC-vg-IWB"/>
                                 </constraints>
@@ -1330,7 +1415,29 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="purchaseButton:" destination="3Jh-Bi-oO5" eventType="touchUpInside" id="ir6-cO-zJ3"/>
+                                    <action selector="didTapPurchase:" destination="3Jh-Bi-oO5" eventType="touchUpInside" id="B5k-zS-Pum"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDT-gs-vyj">
+                                <rect key="frame" x="20" y="179" width="335" height="101.66666666666669"/>
+                                <string key="text">Benefits of leaving a tip
+- Support the developer
+- No more ads
+- Etc 
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKL-eY-JUc">
+                                <rect key="frame" x="20" y="395" width="335" height="50"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Nevermind">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapNevermind:" destination="3Jh-Bi-oO5" eventType="touchUpInside" id="yxF-p1-Fvf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1338,10 +1445,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EkC-eX-Qmz" firstAttribute="trailing" secondItem="Yy8-Bk-37X" secondAttribute="trailing" constant="20" id="04b-Ea-D3n"/>
+                            <constraint firstItem="bKL-eY-JUc" firstAttribute="width" secondItem="Yy8-Bk-37X" secondAttribute="width" id="91h-bS-PL8"/>
                             <constraint firstItem="EkC-eX-Qmz" firstAttribute="trailing" secondItem="uYC-87-mhf" secondAttribute="trailing" constant="10" id="BAJ-Yg-gBc"/>
+                            <constraint firstItem="vDT-gs-vyj" firstAttribute="leading" secondItem="EkC-eX-Qmz" secondAttribute="leading" constant="20" id="EpX-oK-8g1"/>
+                            <constraint firstItem="vDT-gs-vyj" firstAttribute="top" secondItem="uYC-87-mhf" secondAttribute="bottom" constant="10" id="PTH-Jl-Fsn"/>
+                            <constraint firstItem="bKL-eY-JUc" firstAttribute="leading" secondItem="EkC-eX-Qmz" secondAttribute="leading" constant="20" id="PoJ-6F-dSh"/>
+                            <constraint firstItem="bKL-eY-JUc" firstAttribute="top" secondItem="Yy8-Bk-37X" secondAttribute="bottom" constant="17.329999999999998" id="Q3a-NS-JLX"/>
                             <constraint firstItem="uYC-87-mhf" firstAttribute="top" secondItem="EkC-eX-Qmz" secondAttribute="top" constant="50" id="UBL-3A-dVe"/>
-                            <constraint firstItem="Yy8-Bk-37X" firstAttribute="top" secondItem="uYC-87-mhf" secondAttribute="bottom" constant="100" id="ZGG-n3-r4i"/>
+                            <constraint firstItem="EkC-eX-Qmz" firstAttribute="trailing" secondItem="bKL-eY-JUc" secondAttribute="trailing" constant="20" id="dKh-rk-vpy"/>
                             <constraint firstItem="Yy8-Bk-37X" firstAttribute="leading" secondItem="EkC-eX-Qmz" secondAttribute="leading" constant="20" id="hW9-2p-j7z"/>
+                            <constraint firstItem="Yy8-Bk-37X" firstAttribute="top" secondItem="vDT-gs-vyj" secondAttribute="bottom" constant="47" id="hxW-a5-fHq"/>
+                            <constraint firstItem="bKL-eY-JUc" firstAttribute="height" secondItem="Yy8-Bk-37X" secondAttribute="height" id="l0X-vO-VEC"/>
+                            <constraint firstItem="EkC-eX-Qmz" firstAttribute="trailing" secondItem="vDT-gs-vyj" secondAttribute="trailing" constant="20" id="rpP-H1-nhQ"/>
                             <constraint firstItem="uYC-87-mhf" firstAttribute="leading" secondItem="EkC-eX-Qmz" secondAttribute="leading" constant="10" id="tKl-ua-pKy"/>
                         </constraints>
                     </view>

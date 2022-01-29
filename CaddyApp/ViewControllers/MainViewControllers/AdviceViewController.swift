@@ -32,7 +32,19 @@ import UIKit
 ///
 ///
 
-class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADFullScreenContentDelegate {
+class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADFullScreenContentDelegate, AskForSupport {
+    func nowGoTo(thisViewController: UIViewController) {
+        print("now go to")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TipJarViewController") as! TipJarViewController
+        
+        guard let navigationController = navigationController else {
+            print ("no nav controller")
+            return
+        }
+        navigationController.pushViewController(vc, animated: true)
+        
+    }
+    
     private var interstitial: GADInterstitialAd?
 
     override func viewWillLayoutSubviews() {
@@ -41,6 +53,12 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        var numberOfAppearances = UserDefaults.standard.integer(forKey: "totalVisits")
+        numberOfAppearances += 1
+        UserDefaults.standard.setValue(numberOfAppearances, forKey: "totalVisits")
+        
+        
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5903531577896836/3152967325",
                                request: request,
@@ -71,6 +89,8 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             print("Ad wasn't ready")
         }
+        
+        
     }
 
     override func viewDidLoad() {
@@ -78,6 +98,23 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
 
+        let currNumVisits = UserDefaults.standard.integer(forKey: "totalVisits")
+        print(currNumVisits)
+        if currNumVisits > 0 && (currNumVisits % askAfterThisManyVisits == 0) {
+            let newVC = storyboard?.instantiateViewController(withIdentifier: "AskForTipViewController") as! AskForTipViewController
+            newVC.presentingDelegate = self
+            self.present(newVC, animated: true, completion: nil)
+        } else {
+            if (currNumVisits > 1) == false {
+                print("not greater than 0")
+            }
+            if (currNumVisits % askAfterThisManyVisits == 0) == false {
+               print("not divisible by two")
+                print("\(currNumVisits) % \(askAfterThisManyVisits) = \(currNumVisits % askAfterThisManyVisits)")
+            }
+        }
+        
+        
         view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
         addAdvice()
     }

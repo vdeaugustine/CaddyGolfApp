@@ -13,11 +13,20 @@ import UIKit
 func playSound(whichSound: String) {
     var thisURL: URL
     var fileType: AVFileType
+    var methodStart = Date()
+
+    /* ... Do whatever you need to do ... */
+    var methodInterval = Date()
     switch whichSound {
     case "Swing":
+        
         guard let url = Bundle.main.url(forResource: "golfhit", withExtension: "wav") else {
             fatalError()
         }
+        methodInterval = Date()
+        print("get url resource", methodInterval.timeIntervalSince(methodStart))
+        methodStart = Date()
+        
         thisURL = url
         fileType = .wav
     case "Scribble":
@@ -31,20 +40,29 @@ func playSound(whichSound: String) {
     }
 
     do {
-        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-        try AVAudioSession.sharedInstance().setActive(true)
+        
+        
 
         /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+        
         audioPlayer = try AVAudioPlayer(contentsOf: thisURL, fileTypeHint: fileType.rawValue)
-
+        methodInterval = Date()
+        print("contents of", methodInterval.timeIntervalSince(methodStart))
+        methodStart = Date()
         /* iOS 10 and earlier require the following line:
          player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
 
+        
         guard let player = audioPlayer else {
             fatalError()
         }
 
+        
         player.play()
+        methodInterval = Date()
+        print("play",methodInterval.timeIntervalSince(methodStart))
+        methodStart = Date()
+        
 
     } catch let error {
         print(error.localizedDescription)

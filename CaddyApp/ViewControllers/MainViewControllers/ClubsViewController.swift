@@ -69,12 +69,15 @@ class ClubsViewController: UIViewController {
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
 
+        print(adsEnabled ? "ads are enabled": "ads are not enabled")
         NSLayoutConstraint.activate([
             banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
             banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
             banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
             banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
             banner.heightAnchor.constraint(equalToConstant: bannerHeight),
+            
+            bannerContainer.heightAnchor.constraint(equalToConstant: bannerHeight)
 //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
             // use the above code if you want to turn off ads
             // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off

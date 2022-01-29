@@ -8,17 +8,36 @@
 import CoreData
 import GoogleMobileAds
 import UIKit
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
 
+        adsEnabled = false
         if !adsEnabled { bannerHeight = 50 } else { bannerHeight = 0 }
 
         // Override point for customization after application launch.
         setUpSettings()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        // This is to make sure the audio doesn't take a while to load the first time 
+        do {
+            var methodStart = Date()
+            var methodInterval = Date()
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            methodInterval = Date()
+            print("set category",methodInterval.timeIntervalSince(methodStart))
+            methodStart = Date()
+            try AVAudioSession.sharedInstance().setActive(true)
+            methodInterval = Date()
+            print("setactive",methodInterval.timeIntervalSince(methodStart))
+            methodStart = Date()
+            
+        } catch {
+            
+        }
 
         return true
     }

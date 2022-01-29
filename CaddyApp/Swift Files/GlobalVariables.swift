@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVFoundation
 
+let askAfterThisManyVisits = 1
+
 var bannerHeight: CGFloat = 0
 
 var adsEnabled: Bool = true

@@ -33,8 +33,9 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         swingsTableView.delegate = self
         swingsTableView.dataSource = self
-        swingsTableView.reloadData()
-
+        DispatchQueue.main.async {
+            self.swingsTableView.reloadData()
+        }
         banner.rootViewController = self
         banner.load(GADRequest())
         bannerContainer.addSubview(banner)
@@ -63,7 +64,9 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             swingTypeSegmentControl.selectedSegmentIndex = 0
             averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
         }
-        swingsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.swingsTableView.reloadData()
+        }
     }
 
     override func viewWillLayoutSubviews() {
@@ -256,7 +259,9 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         default:
             print()
         }
-        swingsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.swingsTableView.reloadData()
+        }
     }
 
     @IBAction func deleteAllButtonTapped(_ sender: UIButton) {
@@ -282,7 +287,9 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     averageNumberLabel.text = "\(currentClub.averageThreeFourthsDistance)"
                 }
                 saveCurrentClub()
-                swingsTableView.reloadData()
+                DispatchQueue.main.async {
+                    swingsTableView.reloadData()
+                }
             }
         }))
         alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
@@ -398,7 +405,9 @@ extension SwingsViewController {
                 }
 
                 saveCurrentClub()
-                self.swingsTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.swingsTableView.reloadData()
+                }
                 playSound(whichSound: "Scribble")
             }
 
@@ -438,7 +447,9 @@ extension SwingsViewController {
                 }
 
                 saveCurrentClub()
-                self.swingsTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.swingsTableView.reloadData()
+                }
                 playSound(whichSound: "Scribble")
 
             } else {

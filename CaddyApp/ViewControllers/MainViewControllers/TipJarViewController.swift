@@ -83,7 +83,9 @@ class TipJarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
                 
             }
-            present(newVC, animated: true, completion: nil)
+            present(newVC, animated: true, completion: {
+                print("completion")
+            })
             
             
         }

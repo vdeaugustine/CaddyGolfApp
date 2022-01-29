@@ -26,6 +26,7 @@
 		9C5407D02795CB40002C65E9 /* VocabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */; };
 		9C5407D3279652F3002C65E9 /* golfhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407D2279652F3002C65E9 /* golfhit.wav */; };
 		9C5407DB27965E7C002C65E9 /* scribble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407DA27965E7C002C65E9 /* scribble.mp3 */; };
+		9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */; };
 		9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674884278DF22200C74319 /* SettingsTableViewController.swift */; };
 		9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674886278E841F00C74319 /* NewAdviceViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
@@ -46,6 +47,7 @@
 		9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F34279FD18800470472 /* TipJarViewController.swift */; };
 		9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */; };
 		9CBA2F3927A1947700470472 /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */; };
+		9CBA2F5B27A461C200470472 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBA2F5A27A461C200470472 /* StoreKit.framework */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
 		9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */; };
@@ -88,6 +90,7 @@
 		9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTableViewController.swift; sourceTree = "<group>"; };
 		9C5407D2279652F3002C65E9 /* golfhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = golfhit.wav; sourceTree = "<group>"; };
 		9C5407DA27965E7C002C65E9 /* scribble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scribble.mp3; sourceTree = "<group>"; };
+		9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTipViewController.swift; sourceTree = "<group>"; };
 		9C674884278DF22200C74319 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C674886278E841F00C74319 /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		9CBA2F34279FD18800470472 /* TipJarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewController.swift; sourceTree = "<group>"; };
 		9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveTipViewController.swift; sourceTree = "<group>"; };
 		9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPurchaseViewController.swift; sourceTree = "<group>"; };
+		9CBA2F5A27A461C200470472 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9CBA2F5C27A522AE00470472 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = CaddyApp/ViewControllers/Configuration.storekit; sourceTree = SOURCE_ROOT; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				371585F2E6E6672E7340A925 /* Pods_CaddyApp.framework in Frameworks */,
+				9CBA2F5B27A461C200470472 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +155,7 @@
 		7A27E602602A90EDBDB7B35C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CBA2F5A27A461C200470472 /* StoreKit.framework */,
 				1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */,
 			);
 			name = Frameworks;
@@ -157,6 +164,7 @@
 		9C285723278F53EF00E225C8 /* NewAndTesting */ = {
 			isa = PBXGroup;
 			children = (
+				9CBA2F5C27A522AE00470472 /* Configuration.storekit */,
 				9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */,
 				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
@@ -169,26 +177,16 @@
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
-				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
-				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
-				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
+				9C62B83827A5DA4300B1C496 /* MainViewControllers */,
 				9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */,
-				9C070549278757E000496B37 /* AllNotesViewController.swift */,
-				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
-				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
-				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
 				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
-				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
 				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
 				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
-				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
 				9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */,
-				9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +252,25 @@
 				9C5407D2279652F3002C65E9 /* golfhit.wav */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		9C62B83827A5DA4300B1C496 /* MainViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
+				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
+				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
+				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
+				9C070549278757E000496B37 /* AllNotesViewController.swift */,
+				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
+				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
+				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
+				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
+				9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */,
+				9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */,
+			);
+			path = MainViewControllers;
 			sourceTree = "<group>";
 		};
 		9CF2AF33275AD61000458646 = {
@@ -471,6 +488,7 @@
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */,
 				9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */,
+				9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */,
 				9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
@@ -628,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR268MWQL4;
@@ -647,8 +666,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.CaddyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -661,6 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR268MWQL4;
@@ -680,8 +701,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.CaddyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

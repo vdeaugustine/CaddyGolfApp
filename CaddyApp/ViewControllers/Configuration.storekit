@@ -1,0 +1,33 @@
+{
+  "identifier" : "C4D54C9F",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "5CD437E5",
+      "localizations" : [
+        {
+          "description" : "Thank you",
+          "displayName" : "Leave a Tip Please ",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.DialedIn.LeaveTip",
+      "referenceName" : "Leave Tip",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
