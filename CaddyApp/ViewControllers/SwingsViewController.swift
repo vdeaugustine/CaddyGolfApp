@@ -17,7 +17,7 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         banner.translatesAutoresizingMaskIntoConstraints = false
 
         return banner

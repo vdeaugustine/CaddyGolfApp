@@ -8,14 +8,14 @@
 import GoogleMobileAds
 import UIKit
 
-class NewHomeViewController: UIViewController, UIScrollViewDelegate {
+class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerViewDelegate {
     @IBOutlet var viewContainerForBanner: UIView!
 
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
         banner.translatesAutoresizingMaskIntoConstraints = false
+        banner.backgroundColor = .clear
 
         return banner
     }()
@@ -29,20 +29,39 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Tip Jar"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Show Support and Remove Ads"]
 
     override func viewWillAppear(_ animated: Bool) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred(intensity: 0.88)
+        if adsEnabled {
+            NSLayoutConstraint.activate([
+                banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
+                banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
+                banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
+                banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor)
+            ])
+        } else {
+            print("not enabled!!!!!!!")
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            viewContainerForBanner.removeFromSuperview()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Home"
-
-        banner.rootViewController = self
-        banner.load(GADRequest())
-//        banner.delegate = self
+        if adsEnabled {
+//            Real id
+//            banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
+//            Test ID
+            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            banner.rootViewController = self
+            banner.load(GADRequest())
+            banner.delegate = self
+        } else {
+            print("!!! NOPE NOT ENABLED!!")
+        }
 
         pageControl.numberOfPages = pages.count
         setupScreens()
@@ -62,16 +81,11 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    override func viewDidLayoutSubviews() {
+    }
+
     func setupScreens() {
         viewContainerForBanner.addSubview(banner)
-
-        NSLayoutConstraint.activate([
-            banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
-            banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
-            banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
-            banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
-        ])
 
         scrollView.addSubview(stackView)
         scrollView.isPagingEnabled = true
@@ -193,7 +207,7 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         if indexPath.row == 3 {
-            cell.leftIcon.image = UIImage(systemName: "dollarsign.square")
+            cell.leftIcon.image = UIImage(systemName: "star")
         }
 
         cell.mainLabel.text = tableViewModel[indexPath.row]
@@ -232,4 +246,33 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
     }
+}
+
+extension NewHomeViewController {
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("bannerViewDidReceiveAd")
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillDIsmissScreen")
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("bannerViewDidDismissScreen")
+    }
+    
+    
 }

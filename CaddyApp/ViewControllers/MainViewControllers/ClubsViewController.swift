@@ -15,7 +15,7 @@ class ClubsViewController: UIViewController {
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         banner.translatesAutoresizingMaskIntoConstraints = false
 
         return banner
@@ -29,7 +29,10 @@ class ClubsViewController: UIViewController {
     @IBAction func changeSwingType(_ sender: Any) {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred(intensity: 1.0)
-        clubsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.clubsTableView.reloadData()
+        }
+        
     }
 
     var currentSwingTypeState = swingTypeState.threeFourths
@@ -38,9 +41,10 @@ class ClubsViewController: UIViewController {
         swingTypeSegControl.selectedSegmentIndex = 1
         clubsTableView.delaysContentTouches = false
 
-        clubsTableView.reloadData()
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred(intensity: 0.88)
+        DispatchQueue.main.async {
+            
+            self.clubsTableView.reloadData()
+        }
     }
 
     override func viewWillLayoutSubviews() {
@@ -59,29 +63,40 @@ class ClubsViewController: UIViewController {
             print(error.localizedDescription)
         }
         sortBag()
-        clubsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.clubsTableView.reloadData()
+        }
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if adsEnabled {
+            banner.rootViewController = self
+            banner.load(GADRequest())
+            bannerContainer.addSubview(banner)
 
-        banner.rootViewController = self
-        banner.load(GADRequest())
-        bannerContainer.addSubview(banner)
+            print("ENABLED")
+            NSLayoutConstraint.activate([
+                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
+                banner.heightAnchor.constraint(equalToConstant: 50)
+                
+    //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
+                // use the above code if you want to turn off ads
+                // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
+            ])
+        } else {
+            print("not enabled!!!!!!!")
+            clubsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            bannerContainer.removeFromSuperview()
 
-        print(adsEnabled ? "ads are enabled": "ads are not enabled")
-        NSLayoutConstraint.activate([
-            banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-            banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-            banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
-            
-            bannerContainer.heightAnchor.constraint(equalToConstant: bannerHeight)
-//            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
-            // use the above code if you want to turn off ads
-            // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
-        ])
+        }
+
+        
 
         ModalTransitionMediator.instance.setListener(listener: self)
 
@@ -117,7 +132,10 @@ class ClubsViewController: UIViewController {
                 print("yes default")
                 mainBag = defaultBag()
                 doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
-                self.clubsTableView.reloadData()
+                
+                DispatchQueue.main.async {
+                    self.clubsTableView.reloadData()
+                }
             case .cancel:
                 print("yes cancel")
 
@@ -163,7 +181,9 @@ class ClubsViewController: UIViewController {
             currentSwingTypeState = .fullSwing
             swingTypeToggle.setTitle("FULL", for: .normal)
         }
-        clubsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.clubsTableView.reloadData()
+        }
     }
 }
 
@@ -269,6 +289,8 @@ extension ClubsViewController: ModalTransitionListener {
     func popoverDismissed() {
         navigationController?.dismiss(animated: true, completion: nil)
         sortBag()
-        clubsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.clubsTableView.reloadData()
+        }
     }
 }

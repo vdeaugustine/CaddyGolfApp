@@ -13,10 +13,19 @@ import AVFoundation
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let numberOfTimesOpened = UserDefaults.standard.integer(forKey: "numberOfTimesOpened")
+        
+        if numberOfTimesOpened == 0 {
+            adsEnabled = true
+            UserDefaults.standard.setValue(adsEnabled, forKey: "adsEnabled")
+            UserDefaults.standard.setValue(1, forKey: "numberOfTimesOpened")
+        }
+        
+        UserDefaults.standard.setValue(numberOfTimesOpened + 1, forKey: "numberOfTimesOpened")
+        print("opened for the", numberOfTimesOpened + 1, "time")
+        
         adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
-
-        adsEnabled = false
-        if !adsEnabled { bannerHeight = 50 } else { bannerHeight = 0 }
 
         // Override point for customization after application launch.
         setUpSettings()

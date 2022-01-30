@@ -23,8 +23,11 @@ class MainClubViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("currentSwingType", currentSwingType.rawValue)
-        swingsCollectionView?.reloadData()
-        notesCollectionView?.reloadData()
+        DispatchQueue.main.async {
+            self.swingsCollectionView?.reloadData()
+            self.notesCollectionView?.reloadData()
+        }
+        
         maxSwingContainer.updateYardage()
         tfSwingContainer.updateYardage()
         fullSwingContainer.updateYardage()

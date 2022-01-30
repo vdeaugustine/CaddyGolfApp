@@ -7,17 +7,47 @@
     {
       "displayPrice" : "0.99",
       "familyShareable" : false,
-      "internalID" : "5CD437E5",
+      "internalID" : "27AD6D38",
       "localizations" : [
         {
-          "description" : "Thank you",
-          "displayName" : "Leave a Tip Please ",
+          "description" : "",
+          "displayName" : "",
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.DialedIn.LeaveTip",
-      "referenceName" : "Leave Tip",
-      "type" : "NonConsumable"
+      "productID" : "com.DialedInGolf.OneDollarTip",
+      "referenceName" : "One Dollar",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "10.99",
+      "familyShareable" : false,
+      "internalID" : "AD447CC9",
+      "localizations" : [
+        {
+          "description" : "Thank you so much",
+          "displayName" : "Very Generous Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.DialedInGolf.TenDollarTip",
+      "referenceName" : "Ten Dollar",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "20E09A44",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.DialedInGolf.FiveDollarTip",
+      "referenceName" : "Five Dollar",
+      "type" : "Consumable"
     }
   ],
   "settings" : {

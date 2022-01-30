@@ -27,6 +27,7 @@
 		9C5407D3279652F3002C65E9 /* golfhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407D2279652F3002C65E9 /* golfhit.wav */; };
 		9C5407DB27965E7C002C65E9 /* scribble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407DA27965E7C002C65E9 /* scribble.mp3 */; };
 		9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */; };
+		9C62B83C27A624D700B1C496 /* TipTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */; };
 		9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674884278DF22200C74319 /* SettingsTableViewController.swift */; };
 		9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674886278E841F00C74319 /* NewAdviceViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
@@ -91,6 +92,7 @@
 		9C5407D2279652F3002C65E9 /* golfhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = golfhit.wav; sourceTree = "<group>"; };
 		9C5407DA27965E7C002C65E9 /* scribble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scribble.mp3; sourceTree = "<group>"; };
 		9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTipViewController.swift; sourceTree = "<group>"; };
+		9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTypeTableViewCell.swift; sourceTree = "<group>"; };
 		9C674884278DF22200C74319 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C674886278E841F00C74319 /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				9CF2AF60275F249300458646 /* ClubCell.swift */,
 				9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */,
 				9C52A404278A883600E07956 /* ViewController.swift */,
+				9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */,
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
+				9C62B83C27A624D700B1C496 /* TipTypeTableViewCell.swift in Sources */,
 				9CBA2F3927A1947700470472 /* TipPurchaseViewController.swift in Sources */,
 				9C52A413278DCAA000E07956 /* HomePageTableViewCell.swift in Sources */,
 				9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */,

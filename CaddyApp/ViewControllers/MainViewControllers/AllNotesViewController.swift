@@ -16,7 +16,7 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
     private let banner: GADBannerView = {
         let banner = GADBannerView()
 //        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         banner.translatesAutoresizingMaskIntoConstraints = false
 
         return banner
@@ -32,27 +32,40 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if adsEnabled {
+//            Real id
+//            banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
+//            Test ID
+            print("ENABLED!")
+            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            banner.rootViewController = self
+            banner.load(GADRequest())
+            bannerContainer.addSubview(banner)
+
+            NSLayoutConstraint.activate([
+                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
+                banner.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        } else {
+            notesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            bannerContainer.removeFromSuperview()
+            print("!!! NOPE NOT ENABLED!!")
+        }
+        
+        
         notesTableView.delegate = self
         notesTableView.dataSource = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapNewNote))
         navigationController?.navigationBar.prefersLargeTitles = false
 
-        banner.rootViewController = self
-        banner.load(GADRequest())
-        bannerContainer.addSubview(banner)
-
-        NSLayoutConstraint.activate([
-            banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-            banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-            banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-            banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-            banner.heightAnchor.constraint(equalToConstant: bannerHeight),
-        ])
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred(intensity: 0.88)
 
         if comingFrom == "home" {
             mainNotes = getAllMainNotes()
@@ -65,7 +78,10 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             print("view will appear club notes")
             print(clubNotes)
         }
-        notesTableView.reloadData()
+        DispatchQueue.main.async {
+            self.notesTableView.reloadData()
+        }
+        
     }
 
     @objc func didTapNewNote() {
@@ -74,7 +90,10 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
         newNoteVC.completion = { noteTitle, noteContent in
             self.navigationController?.popToViewController(self, animated: true)
             self.models.append((noteTitle, noteContent))
-            self.notesTableView.reloadData()
+            DispatchQueue.main.async {
+                self.notesTableView.reloadData()
+            }
+            
         }
 
         newNoteVC.comingFrom = comingFrom
@@ -220,7 +239,11 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
             }
 
             tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+            
         }
     }
 

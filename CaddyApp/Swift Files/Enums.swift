@@ -180,3 +180,10 @@ enum ConstraintTypes: CaseIterable {
     case centerX
     case centerY
 }
+
+enum tipAmounts: String {
+    
+case oneDollar = "com.DialedInGolf.OneDollarTip"
+case fiveDollars = "com.DialedInGolf.FiveDollarTip"
+case tenDollars = "com.DialedInGolf.TenDollarTip"
+}

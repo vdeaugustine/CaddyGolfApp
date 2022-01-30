@@ -14,23 +14,34 @@ class TipPurchaseViewController: UIViewController, TipDelegate, SKProductsReques
     
 
     @IBOutlet var tipLabel: UILabel!
-    var amountToShow: Int = 0
+    var amountToShow: tipAmounts = .fiveDollars
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tipLabel.text = "Leave a $\(amountToShow) Tip"
+        switch amountToShow {
+        case .oneDollar:
+            tipLabel.text = "Leave a $\(1) Tip"
+        case .fiveDollars:
+            tipLabel.text = "Leave a $\(5) Tip"
+        case .tenDollars:
+            tipLabel.text = "Leave a $\(10) Tip"
+        
+            break
+        }
+        
         fetchProducts()
     }
 
     func fetchProducts() {
 //        com.DialedIn.LeaveTip
-        let request = SKProductsRequest(productIdentifiers: ["com.DialedIn.LeaveTip"])
+       
+        let request = SKProductsRequest(productIdentifiers: [amountToShow.rawValue])
         request.delegate = self
         print("request", request)
         request.start()
     }
 
-    func tipAmount(_ amount: Int) {
+    func tipAmount(_ amount: tipAmounts) {
         amountToShow = amount
     }
 
@@ -46,6 +57,10 @@ class TipPurchaseViewController: UIViewController, TipDelegate, SKProductsReques
         } else {
             print("Problem getting product from response.products.first")
         }
+        
+        
+        
+        
     }
     
     
@@ -59,6 +74,27 @@ class TipPurchaseViewController: UIViewController, TipDelegate, SKProductsReques
             case .purchased, .restored:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
+                let alert = UIAlertController(title: "Thank you so much!", message: "Your generous donation will go towards adding new features and making this app better.\n\nEnjoy the app with no ads!", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "You are welcome!", style: .default, handler: { action in
+                    switch action.style {
+                    case .default:
+                        self.dismiss(animated: true, completion: nil)
+
+                    case .cancel:
+                        print("cancel")
+
+                    case .destructive:
+                        print("destructive")
+
+                    @unknown default:
+                        print("whateverIDC")
+                    }
+                }))
+                
+                
+                
+                present(alert, animated: true, completion: nil)
             case .failed, .deferred:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
@@ -68,6 +104,8 @@ class TipPurchaseViewController: UIViewController, TipDelegate, SKProductsReques
             }
         }
     }
+    
+    
 
     @IBAction func didTapPurchase(_ sender: Any) {
         print("Tap Purchase")

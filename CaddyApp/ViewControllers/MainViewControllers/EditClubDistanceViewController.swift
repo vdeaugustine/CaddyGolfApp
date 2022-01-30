@@ -27,7 +27,10 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         prevHitsTableView.delegate = self
         prevHitsTableView.dataSource = self
         removeEmptyFromPrevHits()
-        prevHitsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.prevHitsTableView.reloadData()
+        }
+        
     }
 
     /// Will be used to save the club if the return button is hit on the text field keyboard
@@ -139,7 +142,10 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
         default:
             print()
         }
-        prevHitsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.prevHitsTableView.reloadData()
+        }
+        
         saveClub()
     }
 
@@ -162,7 +168,10 @@ class EditClubDistanceViewController: UIViewController, UITextFieldDelegate {
                     avgDistance.text = "Average Distance: 0"
                 }
                 saveCurrentClub()
-                prevHitsTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.prevHitsTableView.reloadData()
+                }
+                
             }
         }))
         alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
@@ -255,7 +264,11 @@ extension EditClubDistanceViewController: UITableViewDelegate, UITableViewDataSo
                 }
 
                 print("Text field: \(textField?.text ?? "")")
-                tableView.reloadData()
+                
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
+                
 
             }))
 

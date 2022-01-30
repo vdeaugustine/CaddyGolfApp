@@ -178,7 +178,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("nav controller is not there")
         }
 
-        let thisHeight = farBottomItemInScrollView.bottom + 200
+        let thisHeight = farBottomItemInScrollView.bottom + 30
         scrollView.frame = CGRect(x: 0, y: padFromNavBarView.bottom, width: view.width, height: view.bounds.height)
         scrollView.contentSize = CGSize(width: view.bounds.maxX, height: thisHeight)
         setContentScrollView(scrollView)
@@ -329,10 +329,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                         height: colorOfFlagImage.frame.size.height)
 
         // Resize the aimShot big boxto be just 25 points below the tips box
-        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
-                                  y: aimShotBox.frame.minY,
-                                  width: aimShotBox.width,
-                                  height: 750)
+        
 
         
         
@@ -359,6 +356,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                           height: exactDistanceBox.height - pad * 2)
         exactDetailsLabel.sizeToFit()
         
+        aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
+                                  y: aimShotBox.frame.minY,
+                                  width: aimShotBox.width,
+                                  height: 450)
      
 
         let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
@@ -387,7 +388,20 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let exactClub = advice.getExactClubForFlag()
         
-        exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\nSince it is a \(advice.flagColor) flag, landing a little short/long here will give you the best chance of hitting the green"
+        // this value being > 0 means the club distance is a little short
+        
+        switch advice.flagColor {
+        case "Red":
+            exactDetailsLabel.text = "-You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little long (beyond the flag) here will give you the best chance of hitting the green"
+        case "White":
+            exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, we want to pick a club distance as close to the flag distance as possible.\n\n-This way, if you hit it a little shorter or a little longer than expected, you still have a good chance of hitting the green. "
+        case "Blue":
+            exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little short of the flag here will give you the best chance of hitting the green.\n\n-Landing short will also allow the ball to run on the green towards the flag."
+            // "- There is a blue flag on this approach. This means the pin is in the back of the green.\n\n- If you go with the shorter club option, you might give yourself a better chance of hitting the green. \n\n- Remember, getting on the green and putting as soon as possible is the goal.\n\n- If you go with the longer club option, you might have a better chance of getting closer to the pin, provided  you hit it perfectly. However, if you mishit it, you could leave yourself with more work to do to get onto the green."
+        default:
+            break
+        }
+        
         
         
         
@@ -668,7 +682,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var exactDistanceBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
-        thisView.backgroundColor = .lightGray
+//        thisView.backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 255 / 255)
         thisView.layer.cornerRadius = globalCornerRadius
         return thisView
     }()
@@ -683,8 +697,9 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 30)
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Exact Distance"
+        label.text = "Recommendation"
         label.translatesAutoresizingMaskIntoConstraints = true
+        
 
         return label
     }()
