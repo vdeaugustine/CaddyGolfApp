@@ -70,7 +70,8 @@ class TipJarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
                 UserDefaults.standard.setValue(false, forKey: "adsEnabled")
-                let alert = UIAlertController(title: "Thank you so much!", message: "Your generous donation will go towards adding new features and making this app better.\n\nEnjoy the app with no ads!", preferredStyle: .alert)
+                UserDefaults.standard.setValue(true, forKey: "didAlreadyGiveTip")
+                let alert = UIAlertController(title: "Thank you so much!", message: "Your generous donation will go towards adding new features and making this app better", preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "You are welcome!", style: .default, handler: { action in
                     switch action.style {
@@ -170,7 +171,7 @@ class TipJarViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "All Tip Sizes Remove Ads"
+            return "Leave a Tip"
         case 1:
             return "Other Ways to Support"
         default:
@@ -273,6 +274,7 @@ class TipJarViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 
                 defaults.set(true, forKey: "hasPresentedStoreKitRatePrompt")
+                UserDefaults.standard.setValue(true, forKey: "didAlreadyLeaveRating")
             } else {
                 
                 let alert = UIAlertController(title: "You have already left a review", message: "Thank you for already leaving a review. I truly appreciate your feedback", preferredStyle: .alert)

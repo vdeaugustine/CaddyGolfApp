@@ -36,16 +36,15 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func nowGoTo(thisViewController: UIViewController) {
         print("now go to")
         let vc = storyboard?.instantiateViewController(withIdentifier: "TipJarViewController") as! TipJarViewController
-        
+
         guard let navigationController = navigationController else {
-            print ("no nav controller")
+            print("no nav controller")
             return
         }
         navigationController.pushViewController(vc, animated: true)
-        
     }
-    
-    private var interstitial: GADInterstitialAd?
+
+//    private var interstitial: GADInterstitialAd?
 
     override func viewWillLayoutSubviews() {
         addSubviews()
@@ -53,24 +52,22 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        
         var numberOfAppearances = UserDefaults.standard.integer(forKey: "totalVisits")
         numberOfAppearances += 1
         UserDefaults.standard.setValue(numberOfAppearances, forKey: "totalVisits")
-        
-        
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5903531577896836/3152967325",
-                               request: request,
-                               completionHandler: { [self] ad, error in
-                                   if let error = error {
-                                       print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                                       return
-                                   }
-                                   interstitial = ad
-                                   interstitial?.fullScreenContentDelegate = self
-                               }
-        )
+
+//        let request = GADRequest()
+//        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5903531577896836/3152967325",
+//                               request: request,
+//                               completionHandler: { [self] ad, error in
+//                                   if let error = error {
+//                                       print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                                       return
+//                                   }
+//                                   interstitial = ad
+//                                   interstitial?.fullScreenContentDelegate = self
+//                               }
+//        )
     }
 
     override func viewDidLayoutSubviews() {
@@ -84,13 +81,11 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        if let interstitial = interstitial {
-            interstitial.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready")
-        }
-        
-        
+//        if let interstitial = interstitial {
+//            interstitial.present(fromRootViewController: self)
+//        } else {
+//            print("Ad wasn't ready")
+//        }
     }
 
     override func viewDidLoad() {
@@ -100,23 +95,27 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         let currNumVisits = UserDefaults.standard.integer(forKey: "totalVisits")
         print(currNumVisits)
-        if currNumVisits > 0 && (currNumVisits % askAfterThisManyVisits == 0) {
-            let newVC = storyboard?.instantiateViewController(withIdentifier: "AskForTipViewController") as! AskForTipViewController
-            newVC.presentingDelegate = self
-            self.present(newVC, animated: true, completion: nil)
-        } else {
-            if (currNumVisits > 1) == false {
-                print("not greater than 0")
+
+        let alreadyRated = UserDefaults.standard.bool(forKey: "didAlreadyLeaveRating")
+        let alreadyTipped = UserDefaults.standard.bool(forKey: "didAlreadyGiveTip")
+        if !(alreadyRated && alreadyTipped) {
+            if currNumVisits > 0 && (currNumVisits % askAfterThisManyVisits == 0) {
+                let newVC = storyboard?.instantiateViewController(withIdentifier: "AskForTipViewController") as! AskForTipViewController
+                newVC.presentingDelegate = self
+                present(newVC, animated: true, completion: nil)
+            } else {
+                if (currNumVisits > 1) == false {
+                    print("not greater than 0")
+                }
+                if (currNumVisits % askAfterThisManyVisits == 0) == false {
+                    print("not divisible by two")
+                    print("\(currNumVisits) % \(askAfterThisManyVisits) = \(currNumVisits % askAfterThisManyVisits)")
+                }
             }
-            if (currNumVisits % askAfterThisManyVisits == 0) == false {
-               print("not divisible by two")
-                print("\(currNumVisits) % \(askAfterThisManyVisits) = \(currNumVisits % askAfterThisManyVisits)")
-            }
+
+            view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
+            addAdvice()
         }
-        
-        
-        view.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
-        addAdvice()
     }
 
     // MARK: - VIEWS & UIOBJECTS
@@ -147,12 +146,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         aimShotBox.addSubview(colorOfFlagImage)
         aimShotBox.addSubview(flagExplanationButton)
         aimShotBox.addSubview(extactDistanceContainer)
-        
 
         extactDistanceContainer.addSubview(exactDistanceLabel)
         extactDistanceContainer.addSubview(exactDistanceBox)
-        
-        
+
         exactDistanceBox.addSubview(exactDetailsLabel)
 //        extactDistanceContainer.addSubview(exactDistanceNumberLabel)
 
@@ -329,38 +326,35 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                         height: colorOfFlagImage.frame.size.height)
 
         // Resize the aimShot big boxto be just 25 points below the tips box
-        
 
-        
-        
         // MARK: - Exact setup
-        extactDistanceContainer.frame =  CGRect(x: pad,
-                                                y: colorOfFlagImage.bottom + pad,
-                                                width: aimShotBox.width - pad * 2,
-                                                height: aimShotBox.bottom - colorOfFlagImage.bottom - 20)
-        
-        exactDistanceLabel.frame =  CGRect(x: pad,
-                                           y: pad,
-                                           width: extactDistanceContainer.width - pad * 2,
-                                           height: 50)
-        exactDistanceLabel.sizeToFit()
-        
-        exactDistanceBox.frame =  CGRect(x: pad,
-                                         y: exactDistanceLabel.bottom + pad,
-                                         width: extactDistanceContainer.width - pad * 2,
-                                         height: 250)
-        
-        exactDetailsLabel.frame =  CGRect(x: pad,
+
+        extactDistanceContainer.frame = CGRect(x: pad,
+                                               y: colorOfFlagImage.bottom + pad,
+                                               width: aimShotBox.width - pad * 2,
+                                               height: aimShotBox.bottom - colorOfFlagImage.bottom - 20)
+
+        exactDistanceLabel.frame = CGRect(x: pad,
                                           y: pad,
-                                          width: exactDistanceBox.width - pad * 2,
-                                          height: exactDistanceBox.height - pad * 2)
+                                          width: extactDistanceContainer.width - pad * 2,
+                                          height: 50)
+        exactDistanceLabel.sizeToFit()
+
+        exactDistanceBox.frame = CGRect(x: pad,
+                                        y: exactDistanceLabel.bottom + pad,
+                                        width: extactDistanceContainer.width - pad * 2,
+                                        height: 250)
+
+        exactDetailsLabel.frame = CGRect(x: pad,
+                                         y: pad,
+                                         width: exactDistanceBox.width - pad * 2,
+                                         height: exactDistanceBox.height - pad * 2)
         exactDetailsLabel.sizeToFit()
-        
+
         aimShotBox.frame = CGRect(x: aimShotBox.frame.minX,
                                   y: aimShotBox.frame.minY,
                                   width: aimShotBox.width,
                                   height: 450)
-     
 
         let flagButtonSize = CGFloat(colorOfFlagImage.height / 5)
         flagExplanationButton.frame = CGRect(x: colorOfFlagImage.left - pad - flagButtonSize,
@@ -368,7 +362,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                              width: flagButtonSize,
                                              height: flagButtonSize)
 
-   
         if let tabBar = tabBarController?.tabBar {
             scrollView.contentSize = CGSize(width: scrollView.width, height: farBottomItemInScrollView.bottom + (tabBar.height * 1.5))
         }
@@ -385,27 +378,22 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func addAdvice() {
-        
         let exactClub = advice.getExactClubForFlag()
-        
+
         // this value being > 0 means the club distance is a little short
-        
+
         switch advice.flagColor {
         case "Red":
-            exactDetailsLabel.text = "-You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little long (beyond the flag) here will give you the best chance of hitting the green"
+            exactDetailsLabel.text = "-You might want to go with a \(exactClub.name), which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little long (beyond the flag) here will give you the best chance of hitting the green"
         case "White":
-            exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, we want to pick a club distance as close to the flag distance as possible.\n\n-This way, if you hit it a little shorter or a little longer than expected, you still have a good chance of hitting the green. "
+            exactDetailsLabel.text = "You might want to go with a \(exactClub.name), which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, we want to pick a club distance as close to the flag distance as possible.\n\n-This way, if you hit it a little shorter or a little longer than expected, you still have a good chance of hitting the green. "
         case "Blue":
-            exactDetailsLabel.text = "You wanna go with a \(exactClub.name) which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little short of the flag here will give you the best chance of hitting the green.\n\n-Landing short will also allow the ball to run on the green towards the flag."
-            // "- There is a blue flag on this approach. This means the pin is in the back of the green.\n\n- If you go with the shorter club option, you might give yourself a better chance of hitting the green. \n\n- Remember, getting on the green and putting as soon as possible is the goal.\n\n- If you go with the longer club option, you might have a better chance of getting closer to the pin, provided  you hit it perfectly. However, if you mishit it, you could leave yourself with more work to do to get onto the green."
+            exactDetailsLabel.text = "You might want to go with a \(exactClub.name), which will put you at \(exactClub.fullDistance) yards.\n\n-Since it is a \(advice.flagColor) flag, landing a little short of the flag here will give you the best chance of hitting the green.\n\n-Landing short will also allow the ball to run on the green towards the flag."
+        // "- There is a blue flag on this approach. This means the pin is in the back of the green.\n\n- If you go with the shorter club option, you might give yourself a better chance of hitting the green. \n\n- Remember, getting on the green and putting as soon as possible is the goal.\n\n- If you go with the longer club option, you might have a better chance of getting closer to the pin, provided  you hit it perfectly. However, if you mishit it, you could leave yourself with more work to do to get onto the green."
         default:
             break
         }
-        
-        
-        
-        
-        
+
 //        switch advice.flagColor {
 //        case "Red":
 //            aimShotTips.text = AdviceOptions().redFlagApproach
@@ -676,9 +664,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return thisView
     }()
 
-    
-    
-
     var exactDistanceBox: UIView = {
         let thisView = UIView()
         thisView.translatesAutoresizingMaskIntoConstraints = true
@@ -686,6 +671,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         thisView.layer.cornerRadius = globalCornerRadius
         return thisView
     }()
+
 //
 //    var exactDistanceHeader: UIView = {
 //        let thisView = UIView()
@@ -699,11 +685,10 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.adjustsFontSizeToFitWidth = true
         label.text = "Recommendation"
         label.translatesAutoresizingMaskIntoConstraints = true
-        
 
         return label
     }()
-    
+
     var exactDetailsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 22)
@@ -711,7 +696,7 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.text = "Go with a club here. You want to go exactly this many yards"
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = true
-        
+
         return label
     }()
 
@@ -870,7 +855,4 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         vc.title = advice.closestClubAbove.name
         currentClub = advice.closestClubAbove
     }
-    
-    
-    
 }

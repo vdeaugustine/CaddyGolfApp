@@ -29,7 +29,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerVi
     var pageFrame = CGRect.zero
     var currentIndex = 0
     var pageFrames: [CGRect] = [CGRect]()
-    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Show Support and Remove Ads"]
+    var tableViewModel = ["Notes", "Clubs", "New Stroke", "Support Development"]
 
     override func viewWillAppear(_ animated: Bool) {
         let generator = UIImpactFeedbackGenerator(style: .medium)

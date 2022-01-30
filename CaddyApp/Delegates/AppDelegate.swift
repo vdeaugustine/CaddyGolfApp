@@ -16,16 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let numberOfTimesOpened = UserDefaults.standard.integer(forKey: "numberOfTimesOpened")
         
-        if numberOfTimesOpened == 0 {
-            adsEnabled = true
-            UserDefaults.standard.setValue(adsEnabled, forKey: "adsEnabled")
-            UserDefaults.standard.setValue(1, forKey: "numberOfTimesOpened")
-        }
+//        if numberOfTimesOpened == 0 {
+//            adsEnabled = true
+//            UserDefaults.standard.setValue(adsEnabled, forKey: "adsEnabled")
+//            UserDefaults.standard.setValue(1, forKey: "numberOfTimesOpened")
+//        }
         
         UserDefaults.standard.setValue(numberOfTimesOpened + 1, forKey: "numberOfTimesOpened")
         print("opened for the", numberOfTimesOpened + 1, "time")
         
-        adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
+//        adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
 
         // Override point for customization after application launch.
         setUpSettings()

@@ -13,7 +13,7 @@ let askAfterThisManyVisits = 10
 
 var bannerHeight: CGFloat = 50
 
-var adsEnabled: Bool = true
+var adsEnabled: Bool = false
 
 
 var currentClub: ClubObject = ClubObject(name: "Driver", type: "Wood", fullDistance: 275, threeFourthsDistance: 265, maxDistance: 285, averageFullDistance: 0, previousFullHits: "")
