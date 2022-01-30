@@ -5,7 +5,7 @@
 //  Created by Vincent DeAugustine on 1/6/22.
 //
 
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 
 // TODO: - Add some padding to the all notes table view. right now the text of the notes looks like it is too close to the edge of the screen
@@ -13,14 +13,14 @@ import UIKit
 class AllNotesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var bannerContainer: UIView!
 
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-//        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        banner.translatesAutoresizingMaskIntoConstraints = false
-
-        return banner
-    }()
+//    private let banner: GADBannerView = {
+//        let banner = GADBannerView()
+////        let banner = GADBannerView(adSize: GADAdSizeBanner)
+//        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        banner.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return banner
+//    }()
 
     var models = [(title: String, note: String)]()
     var thisClubNotes: [ClubNote]?
@@ -37,19 +37,19 @@ class AllNotesViewController: UIViewController, UITableViewDataSource, UITableVi
 //            Real id
 //            banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
 //            Test ID
-            print("ENABLED!")
-            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            banner.rootViewController = self
-            banner.load(GADRequest())
-            bannerContainer.addSubview(banner)
-
-            NSLayoutConstraint.activate([
-                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-                banner.heightAnchor.constraint(equalToConstant: 50)
-            ])
+//            print("ENABLED!")
+//            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//            banner.rootViewController = self
+//            banner.load(GADRequest())
+//            bannerContainer.addSubview(banner)
+//
+//            NSLayoutConstraint.activate([
+//                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+//                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+//                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+//                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
+//                banner.heightAnchor.constraint(equalToConstant: 50)
+//            ])
         } else {
             notesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             bannerContainer.removeFromSuperview()

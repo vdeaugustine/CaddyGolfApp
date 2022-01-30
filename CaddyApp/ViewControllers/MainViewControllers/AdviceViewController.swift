@@ -5,7 +5,7 @@
 //  Created by Vincent on 12/6/21.
 //
 
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 
 /// - View Hierarchy
@@ -32,7 +32,7 @@ import UIKit
 ///
 ///
 
-class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADFullScreenContentDelegate, AskForSupport {
+class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AskForSupport {
     func nowGoTo(thisViewController: UIViewController) {
         print("now go to")
         let vc = storyboard?.instantiateViewController(withIdentifier: "TipJarViewController") as! TipJarViewController

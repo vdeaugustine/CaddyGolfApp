@@ -5,20 +5,20 @@
 //  Created by Vincent DeAugustine on 1/10/22.
 //
 
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 
-class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerViewDelegate {
+class NewHomeViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var viewContainerForBanner: UIView!
 
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-//        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.translatesAutoresizingMaskIntoConstraints = false
-        banner.backgroundColor = .clear
-
-        return banner
-    }()
+//    private let banner: GADBannerView = {
+//        let banner = GADBannerView()
+////        let banner = GADBannerView(adSize: GADAdSizeBanner)
+//        banner.translatesAutoresizingMaskIntoConstraints = false
+//        banner.backgroundColor = .clear
+//
+//        return banner
+//    }()
 
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var scrollView: UIScrollView!
@@ -36,10 +36,10 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerVi
         generator.impactOccurred(intensity: 0.88)
         if adsEnabled {
             NSLayoutConstraint.activate([
-                banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
-                banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
-                banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
-                banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor)
+//                banner.leadingAnchor.constraint(equalTo: viewContainerForBanner.leadingAnchor),
+//                banner.topAnchor.constraint(equalTo: viewContainerForBanner.topAnchor),
+//                banner.rightAnchor.constraint(equalTo: viewContainerForBanner.rightAnchor),
+//                banner.bottomAnchor.constraint(equalTo: viewContainerForBanner.bottomAnchor)
             ])
         } else {
             print("not enabled!!!!!!!")
@@ -55,10 +55,10 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerVi
 //            Real id
 //            banner.adUnitID = "ca-app-pub-5903531577896836/2414600726"
 //            Test ID
-            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            banner.rootViewController = self
-            banner.load(GADRequest())
-            banner.delegate = self
+//            banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//            banner.rootViewController = self
+//            banner.load(GADRequest())
+//            banner.delegate = self
         } else {
             print("!!! NOPE NOT ENABLED!!")
         }
@@ -85,7 +85,7 @@ class NewHomeViewController: UIViewController, UIScrollViewDelegate, GADBannerVi
     }
 
     func setupScreens() {
-        viewContainerForBanner.addSubview(banner)
+//        viewContainerForBanner.addSubview(banner)
 
         scrollView.addSubview(stackView)
         scrollView.isPagingEnabled = true
@@ -248,31 +248,4 @@ extension NewHomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension NewHomeViewController {
-    
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-      print("bannerViewDidReceiveAd")
-    }
 
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-
-    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-      print("bannerViewDidRecordImpression")
-    }
-
-    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillPresentScreen")
-    }
-
-    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewWillDIsmissScreen")
-    }
-
-    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-      print("bannerViewDidDismissScreen")
-    }
-    
-    
-}

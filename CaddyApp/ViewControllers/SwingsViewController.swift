@@ -6,7 +6,7 @@
 //
 
 import AVFoundation
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 
 class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -14,14 +14,14 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet var bannerContainer: UIView!
 
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-//        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        banner.translatesAutoresizingMaskIntoConstraints = false
-
-        return banner
-    }()
+//    private let banner: GADBannerView = {
+//        let banner = GADBannerView()
+////        let banner = GADBannerView(adSize: GADAdSizeBanner)
+//        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        banner.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return banner
+//    }()
 
     @IBOutlet var viewForYardages: UIView!
 
@@ -37,12 +37,12 @@ class SwingsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.swingsTableView.reloadData()
         }
         if adsEnabled {
-            NSLayoutConstraint.activate([
-                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
-            ])
+//            NSLayoutConstraint.activate([
+//                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+//                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+//                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+//                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
+//            ])
         } else {
             print("not enabled!!!!!!!")
             swingsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -336,7 +336,7 @@ extension SwingsViewController {
                 arrOfPrevHits = getSwings(typeOfSwing: .threeFourths)
             }
 
-            cell.textLabel?.text = arrOfPrevHits[indexPath.row - 1]
+            cell.textLabel?.text = "\(arrOfPrevHits[indexPath.row - 1]) yards"
             return cell
         }
     }

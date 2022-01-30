@@ -6,7 +6,7 @@
 //
 
 import CoreData
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 import AVFoundation
 
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         setUpSettings()
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // This is to make sure the audio doesn't take a while to load the first time 
         do {

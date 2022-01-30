@@ -37,7 +37,7 @@ class ViewSingleNoteViewController: UIViewController {
     }
 
     @objc func didTapEditNote() {
-        guard thisMainNote != nil else {
+        guard !(thisMainNote == nil && thisClubNote == nil) else {
             return
         }
         print("tapped edit note")

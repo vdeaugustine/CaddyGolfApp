@@ -44,7 +44,6 @@
 		9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */; };
 		9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */; };
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
-		9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F32279F997F00470472 /* AdTestViewController.swift */; };
 		9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F34279FD18800470472 /* TipJarViewController.swift */; };
 		9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */; };
 		9CBA2F3927A1947700470472 /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */; };
@@ -109,7 +108,6 @@
 		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
-		9CBA2F32279F997F00470472 /* AdTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTestViewController.swift; sourceTree = "<group>"; };
 		9CBA2F34279FD18800470472 /* TipJarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewController.swift; sourceTree = "<group>"; };
 		9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveTipViewController.swift; sourceTree = "<group>"; };
 		9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPurchaseViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
 				9C52A40E278D526600E07956 /* PagingTestViewController.swift */,
-				9CBA2F32279F997F00470472 /* AdTestViewController.swift */,
 			);
 			path = NewAndTesting;
 			sourceTree = "<group>";
@@ -184,7 +181,6 @@
 				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
 				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
-				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
@@ -267,6 +263,7 @@
 				9C070549278757E000496B37 /* AllNotesViewController.swift */,
 				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
 				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
 				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
@@ -491,7 +488,6 @@
 				9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */,
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */,
-				9CBA2F33279F997F00470472 /* AdTestViewController.swift in Sources */,
 				9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */,
 				9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,

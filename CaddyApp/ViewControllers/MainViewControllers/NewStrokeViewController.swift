@@ -5,7 +5,7 @@
 //  Created by Vincent DeAugustine on 12/5/21.
 //
 
-import GoogleMobileAds
+//import GoogleMobileAds
 import UIKit
 
 var clubBelowForAdvice = currentClub
@@ -37,28 +37,28 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     }()
 
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-//        let banner = GADBannerView(adSize: GADAdSizeBanner)
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        banner.translatesAutoresizingMaskIntoConstraints = false
-
-        return banner
-    }()
+//    private let banner: GADBannerView = {
+//        let banner = GADBannerView()
+////        let banner = GADBannerView(adSize: GADAdSizeBanner)
+//        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//        banner.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return banner
+//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if adsEnabled {
-            bannerContainer.addSubview(banner)
-            NSLayoutConstraint.activate([
-                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
-            ])
-            banner.rootViewController = self
-            banner.load(GADRequest())
+//            bannerContainer.addSubview(banner)
+//            NSLayoutConstraint.activate([
+//                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
+//                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
+//                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
+//                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
+//            ])
+//            banner.rootViewController = self
+//            banner.load(GADRequest())
         } else {
             print("not enabled!!!!!!!")
            
