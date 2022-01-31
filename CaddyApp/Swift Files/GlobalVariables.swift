@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-let askAfterThisManyVisits = 10
+let askAfterThisManyVisits = 20
 
 var bannerHeight: CGFloat = 50
 

@@ -1060,20 +1060,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has Dialed In Golf Helped You Improve Your Golf Score?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="Re0-IP-uMe">
-                                <rect key="frame" x="21" y="115" width="333" height="107.66666666666669"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has Dialed In Golf Been Helpful?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="Re0-IP-uMe">
+                                <rect key="frame" x="21" y="115" width="333" height="71.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If so, consider leaving a tip or a review!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kXd-gC-9Fp">
-                                <rect key="frame" x="5" y="252.66666666666666" width="365" height="57.333333333333343"/>
+                                <rect key="frame" x="5" y="216.66666666666666" width="365" height="57.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K22-cp-NFd">
-                                <rect key="frame" x="20" y="360" width="335" height="50"/>
+                                <rect key="frame" x="20" y="324" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pDS-ve-R8M"/>
                                 </constraints>
@@ -1087,13 +1087,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2s-T1-jL0">
-                                <rect key="frame" x="20" y="430" width="335" height="50"/>
+                                <rect key="frame" x="20" y="394" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fcp-Tk-8qg"/>
                                 </constraints>
                                 <color key="tintColor" red="0.21522754429999999" green="0.4822331071" blue="0.1332250535" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Leave a Tip (Remove Ads)">
+                                <buttonConfiguration key="configuration" style="filled" title="Leave a Tip">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -1102,7 +1102,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPx-QS-B8W">
-                                <rect key="frame" x="20" y="500" width="335" height="50"/>
+                                <rect key="frame" x="20" y="464" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HNK-lW-e8l"/>
                                 </constraints>

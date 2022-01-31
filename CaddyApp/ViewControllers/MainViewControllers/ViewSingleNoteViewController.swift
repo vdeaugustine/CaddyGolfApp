@@ -78,11 +78,11 @@ class ViewSingleNoteViewController: UIViewController {
                 mainNoteUpdated = true
             }
 
-            if !mainNoteUpdated && !clubNoteUpdated {
-                print(thisClubNote)
-                print(thisMainNote)
-                fatalError()
-            }
+//            if !mainNoteUpdated && !clubNoteUpdated {
+//                print(thisClubNote)
+//                print(thisMainNote)
+//                fatalError()
+//            }
         }
     }
 

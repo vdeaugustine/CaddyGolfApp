@@ -183,7 +183,7 @@ enum ConstraintTypes: CaseIterable {
 
 enum tipAmounts: String {
     
-case oneDollar = "com.DialedInGolf.OneDollarTip"
-case fiveDollars = "com.DialedInGolf.FiveDollarTip"
-case tenDollars = "com.DialedInGolf.TenDollarTip"
+case oneDollar = "com.DialedInGolf.OneUSDTip"
+case fiveDollars = "com.DialedInGolf.FiveUSDTip"
+case tenDollars = "com.DialedInGolf.TenUSDTip"
 }
