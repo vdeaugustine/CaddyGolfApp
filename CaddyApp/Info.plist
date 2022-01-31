@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+    
 <dict>
+    <key>GADDelayAppMeasurementInit</key>
+    <true/>
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-6724179611591755~5866453087</string>
     <key>SKAdNetworkItems</key>
