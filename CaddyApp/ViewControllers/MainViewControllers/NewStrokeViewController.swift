@@ -5,7 +5,6 @@
 //  Created by Vincent DeAugustine on 12/5/21.
 //
 
-//import GoogleMobileAds
 import UIKit
 
 var clubBelowForAdvice = currentClub
@@ -14,7 +13,6 @@ var advice = Advice()
 var closestClubBelow = ClosestClubBelow(gap: 999, clubName: currentClub.name, swingType: .fullSwing)
 
 class NewStrokeViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var bannerContainer: UIView!
     @IBOutlet var distanceField: UITextField!
     @IBOutlet var useClubLabel: UILabel!
     @IBOutlet var lieTypeSegControl: UISegmentedControl!
@@ -37,33 +35,11 @@ class NewStrokeViewController: UIViewController, UITextFieldDelegate {
 
     }()
 
-//    private let banner: GADBannerView = {
-//        let banner = GADBannerView()
-////        let banner = GADBannerView(adSize: GADAdSizeBanner)
-//        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        banner.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return banner
-//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if adsEnabled {
-//            bannerContainer.addSubview(banner)
-//            NSLayoutConstraint.activate([
-//                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-//                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-//                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-//                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor)
-//            ])
-//            banner.rootViewController = self
-//            banner.load(GADRequest())
-        } else {
-            print("not enabled!!!!!!!")
            
-            bannerContainer.removeFromSuperview()
-        }
 
         distanceField.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advice", style: .done, target: self, action: #selector(getAdvice))

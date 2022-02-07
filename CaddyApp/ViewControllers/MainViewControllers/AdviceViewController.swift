@@ -5,7 +5,6 @@
 //  Created by Vincent on 12/6/21.
 //
 
-//import GoogleMobileAds
 import UIKit
 
 /// - View Hierarchy
@@ -44,7 +43,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController.pushViewController(vc, animated: true)
     }
 
-//    private var interstitial: GADInterstitialAd?
 
     override func viewWillLayoutSubviews() {
         addSubviews()
@@ -55,19 +53,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var numberOfAppearances = UserDefaults.standard.integer(forKey: "totalVisits")
         numberOfAppearances += 1
         UserDefaults.standard.setValue(numberOfAppearances, forKey: "totalVisits")
-
-//        let request = GADRequest()
-//        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-5903531577896836/3152967325",
-//                               request: request,
-//                               completionHandler: { [self] ad, error in
-//                                   if let error = error {
-//                                       print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-//                                       return
-//                                   }
-//                                   interstitial = ad
-//                                   interstitial?.fullScreenContentDelegate = self
-//                               }
-//        )
     }
 
     override func viewDidLayoutSubviews() {
@@ -80,13 +65,6 @@ class AdviceViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-//        if let interstitial = interstitial {
-//            interstitial.present(fromRootViewController: self)
-//        } else {
-//            print("Ad wasn't ready")
-//        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

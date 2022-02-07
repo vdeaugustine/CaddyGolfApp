@@ -5,21 +5,10 @@
 //  Created by Vincent DeAugustine on 12/3/21.
 //
 
-//import GoogleMobileAds
 import UIKit
 
 /// This is the main ViewController. Where user will be changing and viewing bag
 class ClubsViewController: UIViewController {
-    @IBOutlet var bannerContainer: UIView!
-
-//    private let banner: GADBannerView = {
-//        let banner = GADBannerView()
-////        let banner = GADBannerView(adSize: GADAdSizeBanner)
-//        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//        banner.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return banner
-//    }()
 
     @IBOutlet var clubsTableView: UITableView!
 
@@ -71,30 +60,8 @@ class ClubsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if adsEnabled {
-////            banner.rootViewController = self
-////            banner.load(GADRequest())
-//            bannerContainer.addSubview(banner)
-//
-//            print("ENABLED")
-//            NSLayoutConstraint.activate([
-//                banner.leadingAnchor.constraint(equalTo: bannerContainer.leadingAnchor),
-//                banner.topAnchor.constraint(equalTo: bannerContainer.topAnchor),
-//                banner.rightAnchor.constraint(equalTo: bannerContainer.rightAnchor),
-//                banner.bottomAnchor.constraint(equalTo: bannerContainer.bottomAnchor),
-//                banner.heightAnchor.constraint(equalToConstant: 50)
-//                
-//    //            bannerContainer.heightAnchor.constraint(equalToConstant: 0)
-//                // use the above code if you want to turn off ads
-//                // what you could do is set the equaltoconstant for banner height a global variable and just change it to 0 if ads are turned off
-//            ])
-        } else {
-            print("not enabled!!!!!!!")
-            clubsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-            bannerContainer.removeFromSuperview()
-
-        }
+ 
+          
 
         
 

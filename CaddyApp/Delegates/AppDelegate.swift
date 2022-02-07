@@ -6,7 +6,6 @@
 //
 
 import CoreData
-//import GoogleMobileAds
 import UIKit
 import AVFoundation
 
@@ -16,20 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let numberOfTimesOpened = UserDefaults.standard.integer(forKey: "numberOfTimesOpened")
         
-//        if numberOfTimesOpened == 0 {
-//            adsEnabled = true
-//            UserDefaults.standard.setValue(adsEnabled, forKey: "adsEnabled")
-//            UserDefaults.standard.setValue(1, forKey: "numberOfTimesOpened")
-//        }
-        
         UserDefaults.standard.setValue(numberOfTimesOpened + 1, forKey: "numberOfTimesOpened")
         print("opened for the", numberOfTimesOpened + 1, "time")
         
-//        adsEnabled = UserDefaults.standard.bool(forKey: "adsEnabled")
 
         // Override point for customization after application launch.
         setUpSettings()
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // This is to make sure the audio doesn't take a while to load the first time 
         do {

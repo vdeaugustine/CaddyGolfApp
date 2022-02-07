@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		371585F2E6E6672E7340A925 /* Pods_CaddyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */; };
 		9C0705412785921000496B37 /* TestTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705402785921000496B37 /* TestTBVC.swift */; };
 		9C0705432786C16300496B37 /* NoteEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705422786C16300496B37 /* NoteEntryViewController.swift */; };
 		9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C0705442787567200496B37 /* NotesData.xcdatamodeld */; };
@@ -16,6 +15,8 @@
 		9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07054C278759E300496B37 /* NoteTableViewCell.swift */; };
 		9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */; };
 		9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */ = {isa = PBXBuildFile; fileRef = 9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */; };
+		9C3C515327A9CBB800C1622C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3C515227A9CBB800C1622C /* StoreKit.framework */; };
+		9C52683527A8E299009FA05B /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */; };
 		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
 		9C52A405278A883600E07956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A404278A883600E07956 /* ViewController.swift */; };
 		9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */; };
@@ -26,8 +27,6 @@
 		9C5407D02795CB40002C65E9 /* VocabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */; };
 		9C5407D3279652F3002C65E9 /* golfhit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407D2279652F3002C65E9 /* golfhit.wav */; };
 		9C5407DB27965E7C002C65E9 /* scribble.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C5407DA27965E7C002C65E9 /* scribble.mp3 */; };
-		9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */; };
-		9C62B83C27A624D700B1C496 /* TipTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */; };
 		9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674884278DF22200C74319 /* SettingsTableViewController.swift */; };
 		9C674887278E841F00C74319 /* NewAdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C674886278E841F00C74319 /* NewAdviceViewController.swift */; };
 		9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */; };
@@ -44,10 +43,6 @@
 		9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */; };
 		9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */; };
 		9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB972572785571B0048AC54 /* RoundedBox.swift */; };
-		9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F34279FD18800470472 /* TipJarViewController.swift */; };
-		9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */; };
-		9CBA2F3927A1947700470472 /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */; };
-		9CBA2F5B27A461C200470472 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBA2F5A27A461C200470472 /* StoreKit.framework */; };
 		9CD08BCD276C9B6E002F0040 /* BuiltInAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */; };
 		9CDA2536277E4F2500FDAAC2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */; };
 		9CDA2539277FA40900FDAAC2 /* MainClubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */; };
@@ -55,6 +50,9 @@
 		9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */; };
 		9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */; };
 		9CDA25432782B5B100FDAAC2 /* ManagePreviousSwings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */; };
+		9CE49D1927A8E9400093ECFA /* TipJarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE49D1827A8E9400093ECFA /* TipJarViewController.swift */; };
+		9CE49D1B27A8E9670093ECFA /* AskForTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE49D1A27A8E9670093ECFA /* AskForTipViewController.swift */; };
+		9CE49D1D27A8E99C0093ECFA /* TipTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE49D1C27A8E99C0093ECFA /* TipTypeTableViewCell.swift */; };
 		9CF2AF40275AD61000458646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF3F275AD61000458646 /* AppDelegate.swift */; };
 		9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF41275AD61000458646 /* SceneDelegate.swift */; };
 		9CF2AF44275AD61000458646 /* ClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2AF43275AD61000458646 /* ClubsViewController.swift */; };
@@ -71,27 +69,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaddyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0705402785921000496B37 /* TestTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTBVC.swift; sourceTree = "<group>"; };
-		9C0705422786C16300496B37 /* NoteEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntryViewController.swift; sourceTree = "<group>"; };
+		9C0705422786C16300496B37 /* NoteEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteEntryViewController.swift; path = MainViewControllers/NoteEntryViewController.swift; sourceTree = "<group>"; };
 		9C0705452787567200496B37 /* NotesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesData.xcdatamodel; sourceTree = "<group>"; };
 		9C070547278756DE00496B37 /* HandlingNotesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlingNotesCoreData.swift; sourceTree = "<group>"; };
-		9C070549278757E000496B37 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
+		9C070549278757E000496B37 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllNotesViewController.swift; path = "/Users/vincentdeaugustine/Downloads/CaddyGolfApp-Revert/CaddyApp/ViewControllers/MainViewControllers/AllNotesViewController.swift"; sourceTree = "<absolute>"; };
 		9C07054C278759E300496B37 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewControllerTwo.swift; sourceTree = "<group>"; };
 		9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */ = {isa = PBXFileReference; lastKnownFileType = text; path = AdviceVCViewHierarchy; sourceTree = "<group>"; };
+		9C3C515227A9CBB800C1622C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipPurchaseViewController.swift; path = MainViewControllers/TipPurchaseViewController.swift; sourceTree = "<group>"; };
 		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
 		9C52A404278A883600E07956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSingleNoteViewController.swift; sourceTree = "<group>"; };
+		9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewSingleNoteViewController.swift; path = MainViewControllers/ViewSingleNoteViewController.swift; sourceTree = "<group>"; };
 		9C52A40E278D526600E07956 /* PagingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTestViewController.swift; sourceTree = "<group>"; };
-		9C52A410278D572E00E07956 /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
+		9C52A410278D572E00E07956 /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewHomeViewController.swift; path = ../ViewControllers/MainViewControllers/NewHomeViewController.swift; sourceTree = "<group>"; };
 		9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewCell.swift; sourceTree = "<group>"; };
 		9C5407CD2793AC0E002C65E9 /* AdviceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceOptions.swift; sourceTree = "<group>"; };
 		9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabTableViewController.swift; sourceTree = "<group>"; };
 		9C5407D2279652F3002C65E9 /* golfhit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = golfhit.wav; sourceTree = "<group>"; };
 		9C5407DA27965E7C002C65E9 /* scribble.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scribble.mp3; sourceTree = "<group>"; };
-		9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForTipViewController.swift; sourceTree = "<group>"; };
-		9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipTypeTableViewCell.swift; sourceTree = "<group>"; };
 		9C674884278DF22200C74319 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C674886278E841F00C74319 /* NewAdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewController.swift; sourceTree = "<group>"; };
 		9C6F3A9D2784028300CC9129 /* SwingTypeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingTypeBox.swift; sourceTree = "<group>"; };
@@ -104,39 +101,35 @@
 		9C742470278F9793000E824A /* RulesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesTableViewController.swift; sourceTree = "<group>"; };
 		9C7D80B427671A0D00F49D93 /* UserBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBag.swift; sourceTree = "<group>"; };
 		9C7D80B62767CA4000F49D93 /* SaveBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveBag.swift; sourceTree = "<group>"; };
-		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewClubViewController.swift; sourceTree = "<group>"; };
+		9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewClubViewController.swift; path = MainViewControllers/AddNewClubViewController.swift; sourceTree = "<group>"; };
 		9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddStrokeTableViewController.swift; sourceTree = "<group>"; };
 		9CB972532784E0470048AC54 /* ModalListenerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalListenerSingleton.swift; sourceTree = "<group>"; };
 		9CB972572785571B0048AC54 /* RoundedBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBox.swift; sourceTree = "<group>"; };
-		9CBA2F34279FD18800470472 /* TipJarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewController.swift; sourceTree = "<group>"; };
-		9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveTipViewController.swift; sourceTree = "<group>"; };
-		9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPurchaseViewController.swift; sourceTree = "<group>"; };
-		9CBA2F5A27A461C200470472 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9CBA2F5C27A522AE00470472 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = CaddyApp/ViewControllers/Configuration.storekit; sourceTree = SOURCE_ROOT; };
 		9CD08BCC276C9B6E002F0040 /* BuiltInAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInAdvice.swift; sourceTree = "<group>"; };
 		9CDA2535277E4F2500FDAAC2 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
-		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewController.swift; sourceTree = "<group>"; };
+		9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainClubViewController.swift; path = "/Users/vincentdeaugustine/Downloads/CaddyGolfApp-Revert/CaddyApp/ViewControllers/MainViewControllers/MainClubViewController.swift"; sourceTree = "<absolute>"; };
 		9CDA253A277FA4C200FDAAC2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingsViewController.swift; sourceTree = "<group>"; };
 		9CDA25402782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewControllerExtensions.swift; sourceTree = "<group>"; };
 		9CDA25422782B5B100FDAAC2 /* ManagePreviousSwings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePreviousSwings.swift; sourceTree = "<group>"; };
+		9CE49D1827A8E9400093ECFA /* TipJarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipJarViewController.swift; path = MainViewControllers/TipJarViewController.swift; sourceTree = "<group>"; };
+		9CE49D1A27A8E9670093ECFA /* AskForTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskForTipViewController.swift; path = MainViewControllers/AskForTipViewController.swift; sourceTree = "<group>"; };
+		9CE49D1C27A8E99C0093ECFA /* TipTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipTypeTableViewCell.swift; sourceTree = "<group>"; };
 		9CF2AF3C275AD61000458646 /* CaddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF2AF3F275AD61000458646 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF2AF41275AD61000458646 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CF2AF43275AD61000458646 /* ClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsViewController.swift; sourceTree = "<group>"; };
+		9CF2AF43275AD61000458646 /* ClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClubsViewController.swift; path = MainViewControllers/ClubsViewController.swift; sourceTree = "<group>"; };
 		9CF2AF46275AD61000458646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CF2AF48275AD61200458646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF2AF4B275AD61200458646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF2AF4D275AD61200458646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClubDistanceViewController.swift; sourceTree = "<group>"; };
-		9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStrokeViewController.swift; sourceTree = "<group>"; };
+		9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditClubDistanceViewController.swift; path = MainViewControllers/EditClubDistanceViewController.swift; sourceTree = "<group>"; };
+		9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewStrokeViewController.swift; path = MainViewControllers/NewStrokeViewController.swift; sourceTree = "<group>"; };
 		9CF2AF59275DE5F900458646 /* SomeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeFunctions.swift; sourceTree = "<group>"; };
 		9CF2AF5C275EAC8700458646 /* ClubsFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsFile.swift; sourceTree = "<group>"; };
 		9CF2AF5E275EF1A100458646 /* NewStrokeInfoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStrokeInfoStruct.swift; sourceTree = "<group>"; };
 		9CF2AF60275F249300458646 /* ClubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubCell.swift; sourceTree = "<group>"; };
-		9CF2AF62275F2B3500458646 /* AdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewController.swift; sourceTree = "<group>"; };
-		B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaddyApp.debug.xcconfig"; path = "Target Support Files/Pods-CaddyApp/Pods-CaddyApp.debug.xcconfig"; sourceTree = "<group>"; };
-		E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaddyApp.release.xcconfig"; path = "Target Support Files/Pods-CaddyApp/Pods-CaddyApp.release.xcconfig"; sourceTree = "<group>"; };
+		9CF2AF62275F2B3500458646 /* AdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdviceViewController.swift; path = MainViewControllers/AdviceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,27 +137,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				371585F2E6E6672E7340A925 /* Pods_CaddyApp.framework in Frameworks */,
-				9CBA2F5B27A461C200470472 /* StoreKit.framework in Frameworks */,
+				9C3C515327A9CBB800C1622C /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A27E602602A90EDBDB7B35C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9CBA2F5A27A461C200470472 /* StoreKit.framework */,
-				1FBF2D6EE46DEA117346377D /* Pods_CaddyApp.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9C285723278F53EF00E225C8 /* NewAndTesting */ = {
 			isa = PBXGroup;
 			children = (
-				9CBA2F5C27A522AE00470472 /* Configuration.storekit */,
+				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
 				9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */,
 				9C674886278E841F00C74319 /* NewAdviceViewController.swift */,
 				9C0705402785921000496B37 /* TestTBVC.swift */,
@@ -173,18 +156,36 @@
 			path = NewAndTesting;
 			sourceTree = "<group>";
 		};
+		9C3C515127A9CBB800C1622C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C3C515227A9CBB800C1622C /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9C62B83827A5DA4300B1C496 /* MainViewControllers */,
+				9CE49D1827A8E9400093ECFA /* TipJarViewController.swift */,
+				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
+				9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */,
+				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
+				9CE49D1A27A8E9670093ECFA /* AskForTipViewController.swift */,
+				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
+				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
 				9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */,
+				9C070549278757E000496B37 /* AllNotesViewController.swift */,
+				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
+				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
 				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
 				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
 				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
+				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
-				9CBA2F3627A05F0100470472 /* GiveTipViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,11 +217,11 @@
 		9C52A408278CB58F00E07956 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				9CE49D1C27A8E99C0093ECFA /* TipTypeTableViewCell.swift */,
 				9C07054C278759E300496B37 /* NoteTableViewCell.swift */,
 				9CF2AF60275F249300458646 /* ClubCell.swift */,
 				9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */,
 				9C52A404278A883600E07956 /* ViewController.swift */,
-				9C62B83B27A624D700B1C496 /* TipTypeTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -253,33 +254,12 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		9C62B83827A5DA4300B1C496 /* MainViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
-				9C52A410278D572E00E07956 /* NewHomeViewController.swift */,
-				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
-				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
-				9C070549278757E000496B37 /* AllNotesViewController.swift */,
-				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
-				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
-				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
-				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
-				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
-				9CBA2F34279FD18800470472 /* TipJarViewController.swift */,
-				9CBA2F3827A1947700470472 /* TipPurchaseViewController.swift */,
-				9C62B83927A5DE3D00B1C496 /* AskForTipViewController.swift */,
-			);
-			path = MainViewControllers;
-			sourceTree = "<group>";
-		};
 		9CF2AF33275AD61000458646 = {
 			isa = PBXGroup;
 			children = (
 				9CF2AF3E275AD61000458646 /* CaddyApp */,
 				9CF2AF3D275AD61000458646 /* Products */,
-				B74EC438BB9C5D43705B2B52 /* Pods */,
-				7A27E602602A90EDBDB7B35C /* Frameworks */,
+				9C3C515127A9CBB800C1622C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,15 +299,6 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		B74EC438BB9C5D43705B2B52 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */,
-				E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,11 +306,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CF2AF50275AD61200458646 /* Build configuration list for PBXNativeTarget "CaddyApp" */;
 			buildPhases = (
-				BE4EC39A6E7194A530E8B12E /* [CP] Check Pods Manifest.lock */,
 				9CF2AF38275AD61000458646 /* Sources */,
 				9CF2AF39275AD61000458646 /* Frameworks */,
 				9CF2AF3A275AD61000458646 /* Resources */,
-				A3CA7E14D03133AB1F110B35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,48 +368,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A3CA7E14D03133AB1F110B35 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaddyApp/Pods-CaddyApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE4EC39A6E7194A530E8B12E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CaddyApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		9CF2AF38275AD61000458646 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -461,20 +388,19 @@
 				9C72A840276D736C005BAA31 /* Enums.swift in Sources */,
 				9CDA25432782B5B100FDAAC2 /* ManagePreviousSwings.swift in Sources */,
 				9CB972582785571B0048AC54 /* RoundedBox.swift in Sources */,
+				9CE49D1B27A8E9670093ECFA /* AskForTipViewController.swift in Sources */,
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
-				9C62B83C27A624D700B1C496 /* TipTypeTableViewCell.swift in Sources */,
-				9CBA2F3927A1947700470472 /* TipPurchaseViewController.swift in Sources */,
 				9C52A413278DCAA000E07956 /* HomePageTableViewCell.swift in Sources */,
 				9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */,
 				9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
-				9CBA2F3727A05F0100470472 /* GiveTipViewController.swift in Sources */,
 				9C52A405278A883600E07956 /* ViewController.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
 				9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 				9CF2AF61275F249300458646 /* ClubCell.swift in Sources */,
+				9CE49D1D27A8E99C0093ECFA /* TipTypeTableViewCell.swift in Sources */,
 				9C52A40F278D526600E07956 /* PagingTestViewController.swift in Sources */,
 				9C72A848276EF2B4005BAA31 /* PreviousHits.swift in Sources */,
 				9C52A411278D572E00E07956 /* NewHomeViewController.swift in Sources */,
@@ -485,10 +411,9 @@
 				9C0705462787567200496B37 /* NotesData.xcdatamodeld in Sources */,
 				9CF2AF63275F2B3500458646 /* AdviceViewController.swift in Sources */,
 				9CDA25412782A79A00FDAAC2 /* MainClubViewControllerExtensions.swift in Sources */,
-				9CBA2F35279FD18800470472 /* TipJarViewController.swift in Sources */,
+				9CE49D1927A8E9400093ECFA /* TipJarViewController.swift in Sources */,
 				9C0705412785921000496B37 /* TestTBVC.swift in Sources */,
 				9C5407CE2793AC0E002C65E9 /* AdviceOptions.swift in Sources */,
-				9C62B83A27A5DE3D00B1C496 /* AskForTipViewController.swift in Sources */,
 				9CB972542784E0470048AC54 /* ModalListenerSingleton.swift in Sources */,
 				9CDA253D2780F5F000FDAAC2 /* SwingsViewController.swift in Sources */,
 				9C52A40D278CB93B00E07956 /* ViewSingleNoteViewController.swift in Sources */,
@@ -499,6 +424,7 @@
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,
+				9C52683527A8E299009FA05B /* TipPurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -630,7 +556,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -642,11 +568,9 @@
 		};
 		9CF2AF51275AD61200458646 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0CBFD1E93731A584C12BF23 /* Pods-CaddyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR268MWQL4;
@@ -668,7 +592,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -677,11 +600,9 @@
 		};
 		9CF2AF52275AD61200458646 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E03F25A20657F199443A1FBA /* Pods-CaddyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KR268MWQL4;
@@ -703,7 +624,6 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

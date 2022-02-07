@@ -69,7 +69,6 @@ class TipJarViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .purchased, .restored:
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
-                UserDefaults.standard.setValue(false, forKey: "adsEnabled")
                 UserDefaults.standard.setValue(true, forKey: "didAlreadyGiveTip")
                 let alert = UIAlertController(title: "Thank you so much!", message: "Your generous donation will go towards adding new features and making this app better", preferredStyle: .alert)
                 
