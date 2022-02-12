@@ -17,6 +17,8 @@
 
 ## Technologies and Frameworks used in development
 - UIKit and Storyboard are used for UI Design.
+- Codable, Encodable, Decodable, and Equatable used for saving club distances and other persistence using NSUserDefaults.
 - CoreData is used for saving and updating notes.
 - StoreKit is used for in-app purchases.
 - AVFoundation is used for sound effects. 
+
