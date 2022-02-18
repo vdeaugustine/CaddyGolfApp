@@ -162,6 +162,8 @@ func currentClubTypeAsEnum() -> AllClubNames {
         return .wedge54
     case "52 Wedge":
         return .wedge52
+    case "48 Wedge":
+        return .wedge48
     case "P Wedge":
         return .pitchingWedge
 

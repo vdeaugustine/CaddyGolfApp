@@ -67,7 +67,10 @@ class AddNewClubViewController: UIViewController, UITextFieldDelegate {
             print("Already in bag, Not adding it!")
             print("Club: ", clubName)
             print("Bag: ", mainBag)
-            _ = navigationController?.popViewController(animated: true)
+            let alert = UIAlertController(title: "Club already exists", message: "This club is already in your bag", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             return
         }
         print("Club Type Selected \(clubTypeSelected)")
