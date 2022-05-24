@@ -15,6 +15,8 @@
 		9C07054D278759E300496B37 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07054C278759E300496B37 /* NoteTableViewCell.swift */; };
 		9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */; };
 		9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */ = {isa = PBXBuildFile; fileRef = 9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */; };
+		9C32EEE8283D6A2100A51075 /* NewClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEE7283D6A2100A51075 /* NewClubsViewController.swift */; };
+		9C32EEEA283D6DAA00A51075 /* NewClubCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEE9283D6DAA00A51075 /* NewClubCellTableViewCell.swift */; };
 		9C3C515327A9CBB800C1622C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3C515227A9CBB800C1622C /* StoreKit.framework */; };
 		9C52683527A8E299009FA05B /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */; };
 		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
@@ -77,6 +79,8 @@
 		9C07054C278759E300496B37 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		9C2856FE278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAdviceViewControllerTwo.swift; sourceTree = "<group>"; };
 		9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */ = {isa = PBXFileReference; lastKnownFileType = text; path = AdviceVCViewHierarchy; sourceTree = "<group>"; };
+		9C32EEE7283D6A2100A51075 /* NewClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClubsViewController.swift; sourceTree = "<group>"; };
+		9C32EEE9283D6DAA00A51075 /* NewClubCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClubCellTableViewCell.swift; sourceTree = "<group>"; };
 		9C3C515227A9CBB800C1622C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipPurchaseViewController.swift; path = MainViewControllers/TipPurchaseViewController.swift; sourceTree = "<group>"; };
 		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
@@ -156,6 +160,13 @@
 			path = NewAndTesting;
 			sourceTree = "<group>";
 		};
+		9C32EEE6283D681800A51075 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		9C3C515127A9CBB800C1622C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,24 +178,25 @@
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9CE49D1827A8E9400093ECFA /* TipJarViewController.swift */,
 				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
-				9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */,
-				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
-				9CE49D1A27A8E9670093ECFA /* AskForTipViewController.swift */,
-				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
-				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
 				9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */,
+				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
 				9C070549278757E000496B37 /* AllNotesViewController.swift */,
-				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
-				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9CE49D1A27A8E9670093ECFA /* AskForTipViewController.swift */,
 				9CF2AF43275AD61000458646 /* ClubsViewController.swift */,
+				9C32EEE7283D6A2100A51075 /* NewClubsViewController.swift */,
+				9CF2AF55275C57D200458646 /* EditClubDistanceViewController.swift */,
 				9C6F3A9F2784280200CC9129 /* HomeViewController.swift */,
-				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
+				9CDA2538277FA40900FDAAC2 /* MainClubViewController.swift */,
 				9CA706D827928EF100EB63BD /* NewAddStrokeTableViewController.swift */,
-				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
-				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
+				9CF2AF57275DE53500458646 /* NewStrokeViewController.swift */,
+				9C0705422786C16300496B37 /* NoteEntryViewController.swift */,
 				9C742470278F9793000E824A /* RulesTableViewController.swift */,
+				9C674884278DF22200C74319 /* SettingsTableViewController.swift */,
+				9CDA253C2780F5F000FDAAC2 /* SwingsViewController.swift */,
+				9CE49D1827A8E9400093ECFA /* TipJarViewController.swift */,
+				9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */,
+				9C52A40C278CB93B00E07956 /* ViewSingleNoteViewController.swift */,
 				9C5407CF2795CB40002C65E9 /* VocabTableViewController.swift */,
 			);
 			path = ViewControllers;
@@ -219,6 +231,7 @@
 			children = (
 				9CE49D1C27A8E99C0093ECFA /* TipTypeTableViewCell.swift */,
 				9C07054C278759E300496B37 /* NoteTableViewCell.swift */,
+				9C32EEE9283D6DAA00A51075 /* NewClubCellTableViewCell.swift */,
 				9CF2AF60275F249300458646 /* ClubCell.swift */,
 				9C52A412278DCAA000E07956 /* HomePageTableViewCell.swift */,
 				9C52A404278A883600E07956 /* ViewController.swift */,
@@ -274,6 +287,7 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C32EEE6283D681800A51075 /* New Group */,
 				9C5407D1279652E3002C65E9 /* Sounds */,
 				9C285723278F53EF00E225C8 /* NewAndTesting */,
 				9C52A408278CB58F00E07956 /* TableViewCells */,
@@ -392,6 +406,8 @@
 				9C7D80B72767CA4000F49D93 /* SaveBag.swift in Sources */,
 				9CDA253B277FA4C200FDAAC2 /* Extensions.swift in Sources */,
 				9C52A413278DCAA000E07956 /* HomePageTableViewCell.swift in Sources */,
+				9C32EEE8283D6A2100A51075 /* NewClubsViewController.swift in Sources */,
+				9C32EEEA283D6DAA00A51075 /* NewClubCellTableViewCell.swift in Sources */,
 				9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */,
 				9C6F3A9E2784028300CC9129 /* SwingTypeBox.swift in Sources */,
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
