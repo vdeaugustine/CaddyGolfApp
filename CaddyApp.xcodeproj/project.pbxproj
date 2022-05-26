@@ -17,6 +17,9 @@
 		9C285729278F5C5900E225C8 /* AdviceVCViewHierarchy in Resources */ = {isa = PBXBuildFile; fileRef = 9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */; };
 		9C32EEE8283D6A2100A51075 /* NewClubsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEE7283D6A2100A51075 /* NewClubsViewController.swift */; };
 		9C32EEEA283D6DAA00A51075 /* NewClubCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEE9283D6DAA00A51075 /* NewClubCellTableViewCell.swift */; };
+		9C32EEED283EA58100A51075 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEEC283EA58100A51075 /* CircleButton.swift */; };
+		9C32EEEF283EA75F00A51075 /* StrokesCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEEE283EA75F00A51075 /* StrokesCircleView.swift */; };
+		9C32EEF1283EB69B00A51075 /* AddClubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32EEF0283EB69B00A51075 /* AddClubVC.swift */; };
 		9C3C515327A9CBB800C1622C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3C515227A9CBB800C1622C /* StoreKit.framework */; };
 		9C52683527A8E299009FA05B /* TipPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */; };
 		9C52A402278A2F2000E07956 /* ExtraClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C52A401278A2F2000E07956 /* ExtraClasses.swift */; };
@@ -81,6 +84,9 @@
 		9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */ = {isa = PBXFileReference; lastKnownFileType = text; path = AdviceVCViewHierarchy; sourceTree = "<group>"; };
 		9C32EEE7283D6A2100A51075 /* NewClubsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClubsViewController.swift; sourceTree = "<group>"; };
 		9C32EEE9283D6DAA00A51075 /* NewClubCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClubCellTableViewCell.swift; sourceTree = "<group>"; };
+		9C32EEEC283EA58100A51075 /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		9C32EEEE283EA75F00A51075 /* StrokesCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesCircleView.swift; sourceTree = "<group>"; };
+		9C32EEF0283EB69B00A51075 /* AddClubVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubVC.swift; sourceTree = "<group>"; };
 		9C3C515227A9CBB800C1622C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9C52683427A8E299009FA05B /* TipPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipPurchaseViewController.swift; path = MainViewControllers/TipPurchaseViewController.swift; sourceTree = "<group>"; };
 		9C52A401278A2F2000E07956 /* ExtraClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraClasses.swift; sourceTree = "<group>"; };
@@ -167,6 +173,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		9C32EEEB283EA56D00A51075 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9C32EEEC283EA58100A51075 /* CircleButton.swift */,
+				9C32EEEE283EA75F00A51075 /* StrokesCircleView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9C3C515127A9CBB800C1622C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +193,7 @@
 		9C52A406278CB55D00E07956 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C32EEF0283EB69B00A51075 /* AddClubVC.swift */,
 				9C7D80B827687DCC00F49D93 /* AddNewClubViewController.swift */,
 				9C285728278F5C5900E225C8 /* AdviceVCViewHierarchy */,
 				9CF2AF62275F2B3500458646 /* AdviceViewController.swift */,
@@ -287,6 +303,7 @@
 		9CF2AF3E275AD61000458646 /* CaddyApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C32EEEB283EA56D00A51075 /* Helpers */,
 				9C32EEE6283D681800A51075 /* New Group */,
 				9C5407D1279652E3002C65E9 /* Sounds */,
 				9C285723278F53EF00E225C8 /* NewAndTesting */,
@@ -413,6 +430,7 @@
 				9CF2AF42275AD61000458646 /* SceneDelegate.swift in Sources */,
 				9C52A405278A883600E07956 /* ViewController.swift in Sources */,
 				9CF2AF58275DE53500458646 /* NewStrokeViewController.swift in Sources */,
+				9C32EEEF283EA75F00A51075 /* StrokesCircleView.swift in Sources */,
 				9C2856FF278EB8D800E225C8 /* NewAdviceViewControllerTwo.swift in Sources */,
 				9CF2AF56275C57D300458646 /* EditClubDistanceViewController.swift in Sources */,
 				9CF2AF61275F249300458646 /* ClubCell.swift in Sources */,
@@ -437,6 +455,8 @@
 				9C674885278DF22200C74319 /* SettingsTableViewController.swift in Sources */,
 				9C5407D02795CB40002C65E9 /* VocabTableViewController.swift in Sources */,
 				9CA706D927928EF100EB63BD /* NewAddStrokeTableViewController.swift in Sources */,
+				9C32EEED283EA58100A51075 /* CircleButton.swift in Sources */,
+				9C32EEF1283EB69B00A51075 /* AddClubVC.swift in Sources */,
 				9C72A844276D8813005BAA31 /* ClubObject.swift in Sources */,
 				9C72A842276D7B72005BAA31 /* AdviceStructs.swift in Sources */,
 				9CF2AF5F275EF1A100458646 /* NewStrokeInfoStruct.swift in Sources */,

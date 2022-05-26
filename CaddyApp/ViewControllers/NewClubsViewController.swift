@@ -12,7 +12,7 @@ class NewClubsViewController: UIViewController {
 
     private var currentSwingType: swingTypeState = .fullSwing {
         didSet {
-            print("New swing type", self.currentSwingType)
+            print("New swing type", currentSwingType)
         }
     }
 
@@ -45,7 +45,7 @@ class NewClubsViewController: UIViewController {
         default:
             break
         }
-        
+
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.tableView.reloadData()
@@ -59,10 +59,49 @@ class NewClubsViewController: UIViewController {
         tableView.dataSource = self
         tableView.alwaysBounceVertical = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
 
+    private lazy var addClubButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+
+    private lazy var resetButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(didTapReset))
+
     // MARK: - UI Methods
+
+    @objc private func didTapReset() {
+        print("tapped reset")
+        let alert = UIAlertController(title: "Reset all clubs", message: "Are you sure you would like to reset your bag to default? This cannot be undone", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { _ in
+            print("yes default")
+            mainBag = defaultBag()
+            doSave(userDefaults: UserDefaults.standard, saveThisBag: mainBag)
+
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+            }
+        }
+        )
+        )
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+
+    @objc private func didTapAdd() {
+        let newVC = AddClubVC()
+        let nav = UINavigationController(rootViewController: newVC)
+        nav.modalPresentationStyle = .pageSheet
+        guard let sheet = nav.sheetPresentationController else {
+            return
+        }
+        sheet.detents = [.medium()]
+        sheet.prefersGrabberVisible = true
+        present(nav, animated: true)
+        
+    }
 
     private func layoutSegControl() {
         NSLayoutConstraint.activate([
@@ -75,10 +114,10 @@ class NewClubsViewController: UIViewController {
 
     private func layoutTableView() {
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: swingTypeSegControl.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            tableView.topAnchor.constraint(equalTo: swingTypeSegControl.bottomAnchor, constant: 10),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
         ])
     }
 
@@ -86,6 +125,8 @@ class NewClubsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "My Clubs"
+        navigationItem.rightBarButtonItems = [addClubButton, resetButton]
         view.backgroundColor = .black
         view.addSubview(swingTypeSegControl)
         view.addSubview(tableView)
