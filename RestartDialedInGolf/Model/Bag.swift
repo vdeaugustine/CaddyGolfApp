@@ -7,21 +7,18 @@
 
 import Foundation
 
-
-
 class Bag: ObservableObject, Codable {
 //    @Published var clubs = Set<Club>()
     var clubs = Set<Club>()
-    
+
     var clubsArray: [Club] {
-        return Array(clubs).sorted(by: {$0.getDistance() > $1.getDistance()})
+        return Array(clubs).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
-    
-    
+
     enum CodingKeys: CodingKey {
         case clubs
     }
-    
+
     init() {}
 
     required init(from decoder: Decoder) throws {
@@ -34,53 +31,65 @@ class Bag: ObservableObject, Codable {
         try container.encode(clubs, forKey: .clubs)
     }
 
-    var woods: Set<Club> {
+    var woods: [Club] {
         let filtered = clubs.filter({ $0.getType() == .wood })
-        return filtered
+        return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
-    var irons: Set<Club> {
+    var irons: [Club] {
         let filtered = clubs.filter({ $0.getType() == .iron })
-        return filtered
+        return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
-    var hybrids: Set<Club> {
+    var hybrids: [Club] {
         let filtered = clubs.filter({ $0.getType() == .hybrid })
-        return filtered
+        return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
-    var wedges: Set<Club> {
+    var wedges: [Club] {
         let filtered = clubs.filter({ $0.getType() == .wedge })
-        return filtered
+        return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
-    
-    
-    func makeDefault() {
-        self.clubs = Set<Club>()
+
+    func makeDefault(forType: modelDataType = .regular) {
+        clubs = Set<Club>()
         // default woods
         // driver
 //        clubs.insert(Club(number: "Driver", type: .wood, name: "Driver", distance: 250))
-        self.clubs.insert(Club(number: "Driver", type: .wood, name: "Driver", distance: 250))
-        self.clubs.insert(Club(number: "3", type: .wood, name: "3 " + ClubType.wood.rawValue, distance: 220))
-        self.clubs.insert(Club(number: "5", type: .wood, name: "5 " + ClubType.wood.rawValue, distance: 200))
-        
+        clubs.insert(Club(number: "Driver", type: .wood, name: "Driver", distance: 250))
+        clubs.insert(Club(number: "3", type: .wood, name: "3 " + ClubType.wood.rawValue, distance: 220))
+        clubs.insert(Club(number: "5", type: .wood, name: "5 " + ClubType.wood.rawValue, distance: 200))
+
         // default hybrid
-        self.clubs.insert(Club(number: "4", type: .hybrid, name: "4 " + ClubType.hybrid.rawValue, distance: 215))
-        
+        clubs.insert(Club(number: "4", type: .hybrid, name: "4 " + ClubType.hybrid.rawValue, distance: 215))
+
         // default irons
-        for n in 5...9 {
-            self.clubs.insert(Club(number: "\(n)", type: .iron, name: "\(n) " + ClubType.iron.rawValue, distance: 185 - Int(n * 5)))
+        for n in 5 ... 9 {
+            clubs.insert(Club(number: "\(n)", type: .iron, name: "\(n) " + ClubType.iron.rawValue, distance: 185 - Int(n * 5)))
         }
         // default wedges
-        self.clubs.insert(Club(number: "P", type: .wedge, name: "P " + ClubType.wedge.rawValue, distance: 135))
-        self.clubs.insert(Club(number: "60", type: .wedge, name: "60 " + ClubType.wedge.rawValue, distance: 60))
-        self.clubs.insert(Club(number: "56", type: .wedge, name: "56 " + ClubType.wedge.rawValue, distance: 80))
-        
+        clubs.insert(Club(number: "P", type: .wedge, name: "P " + ClubType.wedge.rawValue, distance: 135))
+        clubs.insert(Club(number: "60", type: .wedge, name: "60 " + ClubType.wedge.rawValue, distance: 60))
+        clubs.insert(Club(number: "56", type: .wedge, name: "56 " + ClubType.wedge.rawValue, distance: 80))
+
         print("Bag is now")
         for club in clubs {
             print(club)
         }
+        
+
+        // Give all the clubs some swings so they have something to work with
+        if forType == .preview {
+            for thisClub in clubs {
+                var workingClub = thisClub
+                clubs.remove(thisClub)
+                let numSwings = Int.random(in: 15...60)
+                for _ in 1...numSwings {
+                    workingClub.addSwing(Swing(distance: Int.random(in: 100...210),
+                                               direction: SwingDirection.allCases.randomElement()!))
+                }
+                clubs.insert(workingClub)
+            }
+        }
     }
-    
-    
 }

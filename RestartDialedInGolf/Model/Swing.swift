@@ -12,6 +12,12 @@ struct Swing: Codable, Hashable, Equatable {
     var direction: SwingDirection
     var date: Date
     
+    init (distance: Int, direction: SwingDirection, date: Date = Date()) {
+        self.distance = distance
+        self.direction = direction
+        self.date = date
+    }
+    
     static func == (lhs: Swing, rhs: Swing) -> Bool {
         let condition1 = lhs.distance == rhs.distance
         let condition2 = lhs.direction == rhs.direction

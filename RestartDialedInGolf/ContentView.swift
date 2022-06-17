@@ -9,20 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
+    enum Tabs {
+        case bag, notes, advice
+    }
     var body: some View {
-        VStack {
-            List {
-                ForEach(modelData.bag.clubsArray, id: \.self) { club in
-                    Text("\(club.getName())")
-                }
+        TabView {
+            NavigationView {
+                BagListView()
+                    .environmentObject(modelData)
+                    .tabItem {
+                       Image(systemName: "square")
+                        Text("Bag")
+                    }
             }
+            
         }
+        
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(ModelData())
+            .environmentObject(ModelData(forType: .preview))
+            .preferredColorScheme(.dark)
     }
 }

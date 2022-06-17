@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Club: Codable, Hashable, Equatable, CustomStringConvertible {
     var description: String {
@@ -36,6 +37,15 @@ struct Club: Codable, Hashable, Equatable, CustomStringConvertible {
     func getDistance() -> Int {
         return distance
     }
+    
+    func getThreeFourthsDistance() -> Int {
+        return Int(Double(getDistance()) * 0.75)
+    }
+    
+    func getMaxDistance() -> Int {
+        return Int(Double(getDistance()) * 1.25)
+    }
+    
     func getSwings(ofType: SwingDirection? = nil) -> [Swing] {
         if let ofType = ofType {
             return swings.filter({$0.direction == ofType})

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ClubType: String, Codable {
+enum ClubType: String, Codable, CaseIterable {
     case wood, hybrid, iron, wedge
 }
 

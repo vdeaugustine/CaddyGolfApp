@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum modelDataType {
+    case regular, preview
+}
+
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
 
@@ -23,20 +27,30 @@ class ModelData: ObservableObject {
     }
     
     
-    init() {
-        if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
-            do {
-                let decoder = JSONDecoder()
-                let thisBag = try decoder.decode(Bag.self, from: existingBag)
-                bag = thisBag
-                print(thisBag)
-            } catch {
-                fatalError("Couldn't parse bag as Bag :\n\(error)")
+    init(forType: modelDataType) {
+        switch forType {
+        case .regular:
+            if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
+                do {
+                    let decoder = JSONDecoder()
+                    let thisBag = try decoder.decode(Bag.self, from: existingBag)
+                    bag = thisBag
+                    print(thisBag)
+                } catch {
+                    fatalError("Couldn't parse bag as Bag :\n\(error)")
+                }
+                return
             }
-            return
+            print("no bag found")
+            bag.makeDefault()
+            saveBag()
+        case .preview:
+            bag.makeDefault(forType: .preview)
         }
-        print("no bag found")
-        bag.makeDefault()
-        saveBag()
+        
     }
+    
+    
+    
+    
 }
