@@ -9,23 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
-    enum Tabs {
+    @State private var selection: Tab = .bag
+    enum Tab {
         case bag, notes, advice
     }
+
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
+            NavigationView {
+                Text("HI")
+                    .navigationTitle("Get Advice")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Get Advice", systemImage: "lightbulb")
+            }
+            .tag(Tab.advice)
+
             NavigationView {
                 BagListView()
-                    .environmentObject(modelData)
-                    .tabItem {
-                       Image(systemName: "square")
-                        Text("Bag")
-                    }
+                    .navigationTitle("Your Bag")
+                    .navigationBarTitleDisplayMode(.inline)
             }
-            
+            .tabItem {
+                Label("Bag", systemImage: "star")
+            }
+            .tag(Tab.bag)
+
+            NavigationView {
+                Text("yo")
+                    .navigationTitle("Notes")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Notes", systemImage: "square.and.pencil")
+            }
+            .tag(Tab.notes)
         }
-        
-        
     }
 }
 

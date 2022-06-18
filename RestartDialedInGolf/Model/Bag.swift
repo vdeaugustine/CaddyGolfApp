@@ -36,6 +36,24 @@ class Bag: ObservableObject, Codable {
         return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
+    func getArray(of clubType: ClubType) -> [Club] {
+        print("calling get array")
+        switch clubType {
+        case .wood:
+            let filtered = clubs.filter({ $0.getType() == .wood })
+            return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
+        case .hybrid:
+            let filtered = clubs.filter({ $0.getType() == .hybrid })
+            return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
+        case .iron:
+            let filtered = clubs.filter({ $0.getType() == .iron })
+            return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
+        case .wedge:
+            let filtered = clubs.filter({ $0.getType() == .wedge })
+            return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
+        }
+    }
+
     var irons: [Club] {
         let filtered = clubs.filter({ $0.getType() == .iron })
         return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
@@ -76,16 +94,15 @@ class Bag: ObservableObject, Codable {
         for club in clubs {
             print(club)
         }
-        
 
         // Give all the clubs some swings so they have something to work with
         if forType == .preview {
             for thisClub in clubs {
                 var workingClub = thisClub
                 clubs.remove(thisClub)
-                let numSwings = Int.random(in: 15...60)
-                for _ in 1...numSwings {
-                    workingClub.addSwing(Swing(distance: Int.random(in: 100...210),
+                let numSwings = Int.random(in: 15 ... 60)
+                for _ in 1 ... numSwings {
+                    workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
                                                direction: SwingDirection.allCases.randomElement()!))
                 }
                 clubs.insert(workingClub)

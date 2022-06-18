@@ -12,6 +12,7 @@ struct RestartDialedInGolfApp: App {
     @StateObject var modelData: ModelData = ModelData(forType: .regular)
     var body: some Scene {
         WindowGroup {
+            
             ContentView()
                 .environmentObject(modelData)
                 

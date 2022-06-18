@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9C885E02285C2A420064E2EF /* AddClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C885E01285C2A420064E2EF /* AddClubView.swift */; };
+		9C885E08285D14A60064E2EF /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9C885E07285D14A60064E2EF /* BottomSheet */; };
+		9CDAE149285D713700198EFC /* MainClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE148285D713700198EFC /* MainClubView.swift */; };
+		9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */; };
+		9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16C285E6E8200198EFC /* LineChartView */; };
 		9CFF6DE1285BCCF5000A17C4 /* RestartDialedInGolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */; };
 		9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */; };
 		9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */; };
@@ -45,6 +49,9 @@
 
 /* Begin PBXFileReference section */
 		9C885E01285C2A420064E2EF /* AddClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubView.swift; sourceTree = "<group>"; };
+		9CDAE147285D6EDE00198EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9CDAE148285D713700198EFC /* MainClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubView.swift; sourceTree = "<group>"; };
+		9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSectionView.swift; sourceTree = "<group>"; };
 		9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestartDialedInGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfApp.swift; sourceTree = "<group>"; };
 		9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */,
+				9C885E08285D14A60064E2EF /* BottomSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +103,7 @@
 		9C885DFF285C2A1A0064E2EF /* Bag List */ = {
 			isa = PBXGroup;
 			children = (
-				9CFF6E22285C24CA000A17C4 /* BagListView.swift */,
-				9CFF6E1E285C1554000A17C4 /* ClubRowForBagList.swift */,
+				9CDAE14C285E4B7C00198EFC /* Bag List */,
 			);
 			path = "Bag List";
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 		9C885E00285C2A250064E2EF /* Club Main */ = {
 			isa = PBXGroup;
 			children = (
+				9CDAE148285D713700198EFC /* MainClubView.swift */,
 			);
 			path = "Club Main";
 			sourceTree = "<group>";
@@ -113,6 +122,32 @@
 				9C885E01285C2A420064E2EF /* AddClubView.swift */,
 			);
 			path = "Add Club";
+			sourceTree = "<group>";
+		};
+		9CDAE14C285E4B7C00198EFC /* Bag List */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6E22285C24CA000A17C4 /* BagListView.swift */,
+				9CDAE14D285E4B9400198EFC /* Section */,
+			);
+			path = "Bag List";
+			sourceTree = "<group>";
+		};
+		9CDAE14D285E4B9400198EFC /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */,
+				9CDAE14E285E4B9F00198EFC /* Row */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		9CDAE14E285E4B9F00198EFC /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6E1E285C1554000A17C4 /* ClubRowForBagList.swift */,
+			);
+			path = Row;
 			sourceTree = "<group>";
 		};
 		9CFF6DD4285BCCF4000A17C4 = {
@@ -138,6 +173,7 @@
 		9CFF6DDF285BCCF5000A17C4 /* RestartDialedInGolf */ = {
 			isa = PBXGroup;
 			children = (
+				9CDAE147285D6EDE00198EFC /* Info.plist */,
 				9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */,
 				9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */,
 				9CFF6E1D285C1512000A17C4 /* Bag and Clubs */,
@@ -213,6 +249,10 @@
 			dependencies = (
 			);
 			name = RestartDialedInGolf;
+			packageProductDependencies = (
+				9C885E07285D14A60064E2EF /* BottomSheet */,
+				9CDAE16C285E6E8200198EFC /* LineChartView */,
+			);
 			productName = RestartDialedInGolf;
 			productReference = 9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */;
 			productType = "com.apple.product-type.application";
@@ -285,6 +325,10 @@
 				Base,
 			);
 			mainGroup = 9CFF6DD4285BCCF4000A17C4;
+			packageReferences = (
+				9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */,
+				9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */,
+			);
 			productRefGroup = 9CFF6DDE285BCCF5000A17C4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -331,9 +375,11 @@
 				9CFF6E16285BFD0D000A17C4 /* Club.swift in Sources */,
 				9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */,
 				9CFF6E1A285C0605000A17C4 /* load.swift in Sources */,
+				9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */,
 				9CFF6E18285BFD11000A17C4 /* Swing.swift in Sources */,
 				9CFF6E21285C1976000A17C4 /* Extensions.swift in Sources */,
 				9CFF6E1C285C0BEE000A17C4 /* ModelData.swift in Sources */,
+				9CDAE149285D713700198EFC /* MainClubView.swift in Sources */,
 				9CFF6E23285C24CA000A17C4 /* BagListView.swift in Sources */,
 				9CFF6E10285BE488000A17C4 /* Objects.swift in Sources */,
 				9CFF6DE1285BCCF5000A17C4 /* RestartDialedInGolfApp.swift in Sources */,
@@ -500,11 +546,11 @@
 				DEVELOPMENT_TEAM = KR268MWQL4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,11 +575,11 @@
 				DEVELOPMENT_TEAM = KR268MWQL4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -663,6 +709,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weitieda/bottom-sheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jonathan-Gander/LineChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C885E07285D14A60064E2EF /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */;
+			productName = BottomSheet;
+		};
+		9CDAE16C285E6E8200198EFC /* LineChartView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */;
+			productName = LineChartView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9CFF6DD5285BCCF4000A17C4 /* Project object */;
 }
