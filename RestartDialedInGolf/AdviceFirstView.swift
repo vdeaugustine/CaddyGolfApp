@@ -21,29 +21,36 @@ enum BallPositions: String, CaseIterable {
 
 class DetailsForAdvice: ObservableObject {
     @Published var distanceToPin: String = ""
-
     @Published var accuracyOrDistance: TypeOfApproach = .accuracy
-
     @Published var ballPosition: BallPositions = .flat
-
     @Published var distanceFocused: Bool = false
+    @Published var flagColorChosen: FlagColors = .white
 }
 
 struct AdviceFirstView: View {
     @StateObject var details = DetailsForAdvice()
-    @State private var flagColorChosen: FlagColors = .white
+
     var body: some View {
         VStack {
             Form {
                 DetailsSectionForAdvice()
-                    .environmentObject(details)
 
-                DirectionSection(flagColorChosen: $flagColorChosen)
+                DirectionSection()
+            }
+            .environmentObject(details)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    AdviceAnswerView()
+                } label: {
+                    Text("Get Advice")
+                }
             }
         }
         .onTapGesture {
             // Dismiss the keyboard when the screen is tapped
-            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            dismissKeyboard()
         }
     }
 }
@@ -65,6 +72,7 @@ struct DistanceToPinView: View {
             TextField("Enter Yardage", text: $details.distanceToPin)
                 .multilineTextAlignment(.trailing)
                 .foregroundColor(.blue)
+                .keyboardType(.numberPad)
         }
     }
 }
@@ -87,7 +95,7 @@ struct AccuracyOrDistanceRow: View {
 
 struct FlagButtonView: View {
     var thisFlagColor: FlagColors
-    @Binding var flagColorChosen: FlagColors
+    @EnvironmentObject private var details: DetailsForAdvice
 
     var chosenColor: Color {
         switch thisFlagColor {
@@ -102,9 +110,9 @@ struct FlagButtonView: View {
 
     var body: some View {
         Button {
-            flagColorChosen = thisFlagColor
+            details.flagColorChosen = thisFlagColor
         } label: {
-            Image(systemName: flagColorChosen == thisFlagColor ? "flag.fill" : "flag")
+            Image(systemName: details.flagColorChosen == thisFlagColor ? "flag.fill" : "flag")
                 .font(.largeTitle)
                 .foregroundColor(chosenColor)
                 .padding(4)
@@ -114,13 +122,12 @@ struct FlagButtonView: View {
 }
 
 struct DirectionSection: View {
-    @Binding var flagColorChosen: FlagColors
     var body: some View {
         Section("Direction") {
             HStack(alignment: .center) {
                 ForEach(FlagColors.allCases, id: \.self) { flag in
                     Spacer()
-                    FlagButtonView(thisFlagColor: flag, flagColorChosen: $flagColorChosen)
+                    FlagButtonView(thisFlagColor: flag)
                     Spacer()
                 }
             }

@@ -10,7 +10,7 @@ import SwiftUI
 
 func loadBag() -> Bag? {
     var retBag: Bag?
-    if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
+    if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
         do {
             let decoder = JSONDecoder()
             let thisBag = try decoder.decode(Bag.self, from: existingBag)

@@ -16,16 +16,56 @@ enum SaveItemError: String, Error {
     case cannotRemove
 }
 
+enum bagEnum: String {
+    case bag
+}
+
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
 
+    
+    func insertNote(_ thisNote: Note) {
+        print("inserting this note", thisNote)
+        bag.notes.insert(thisNote)
+        print("Now printing notes in bag before save")
+        print(bag.notes)
+        saveBag()
+    }
+    
+    
+    /// - Parameters:
+    ///   - thisNote: the note that we will update. It should still be un-updated when it is passed as parameter
+    /// - Returns: true if the note updated successfully
+    func updateNote(_ thisNote: Note, newTitle: String? = nil, newBody: String? = nil) -> Bool {
+        var retVal = false
+        guard var noteFoundInNotes = bag.notes.remove(thisNote) else { return false }
+        if let newTitle = newTitle {
+            noteFoundInNotes.title = newTitle
+        }
+        if let newBody = newBody {
+            noteFoundInNotes.body = newBody
+        }
+
+        noteFoundInNotes.date = Date()
+
+        retVal = bag.notes.insert(noteFoundInNotes).0
+        
+        saveBag()
+
+        return retVal
+    }
+    
+    
     func saveBag() {
         let encoder = JSONEncoder()
 
         do {
             let data = try encoder.encode(bag)
-            UserDefaults.standard.set(data, forKey: "bag")
-
+            UserDefaults.standard.set(data, forKey: bagEnum.bag.rawValue)
+            print("saved bag")
+            
+            print("testing get bag")
+            print(loadBag()?.notes ?? "nobag")
         } catch {
             print(error)
         }
@@ -45,7 +85,7 @@ class ModelData: ObservableObject {
 
     func loadBag() -> Bag? {
         var retBag: Bag?
-        if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
+        if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
             do {
                 let decoder = JSONDecoder()
                 let thisBag = try decoder.decode(Bag.self, from: existingBag)
@@ -60,12 +100,17 @@ class ModelData: ObservableObject {
 
     init(forType: modelDataType) {
         switch forType {
-        case .preview:
-            if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
+        case .regular:
+            if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
                 do {
                     let decoder = JSONDecoder()
                     let thisBag = try decoder.decode(Bag.self, from: existingBag)
                     bag = thisBag
+                    print("This bag exists already")
+                    print("There are", bag.notes.count, "notes. here they are")
+                    for note in bag.notes {
+                        print(note.body)
+                    }
                     print(thisBag)
                 } catch {
                     fatalError("Couldn't parse bag as Bag :\n\(error)")
@@ -75,7 +120,7 @@ class ModelData: ObservableObject {
             print("no bag found")
             bag.makeDefault()
             saveBag()
-        case .regular:
+        case .preview:
             bag.makeDefault(forType: .preview)
         }
     }

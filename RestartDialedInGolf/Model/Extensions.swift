@@ -6,9 +6,13 @@
 //
 
 import Foundation
-
+import SwiftUI
 extension Int {
     var string: String {
         return "\(self)"
     }
+}
+
+func dismissKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 }

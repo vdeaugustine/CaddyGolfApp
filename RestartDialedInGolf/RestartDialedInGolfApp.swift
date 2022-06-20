@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct RestartDialedInGolfApp: App {
-    @ObservedObject var modelData: ModelData = ModelData(forType: .regular)
+    @StateObject var modelData: ModelData = ModelData(forType: .regular)
     
     var body: some Scene {
         WindowGroup {

@@ -7,30 +7,46 @@
 
 import Foundation
 
+struct Note: Codable, Equatable, Hashable, Identifiable, CustomStringConvertible {
+    var title: String
+    var body: String
+    var date: Date
+    var id = UUID()
+    
+    var description: String {
+        return "Title: \(title)\nBody: \(body)\nDate: \(date)\nID:\(id)"
+    }
+
+    static func == (lhs: Note, rhs: Note) -> Bool {
+        return lhs.body == rhs.body && lhs.title == rhs.title && lhs.date == rhs.date
+    }
+}
+
 class Bag: ObservableObject, Codable {
-//    @Published var clubs = Set<Club>()
     @Published var clubs = Set<Club>()
+    @Published var notes = Set<Note>()
+    @Published var reload = 0
 
     var clubsArray: [Club] {
         return Array(clubs).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
     enum CodingKeys: CodingKey {
-        case clubs
+        case clubs, notes
     }
 
     init() {}
-    
-    
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         clubs = try container.decode(Set<Club>.self, forKey: .clubs)
+        notes = try container.decode(Set<Note>.self, forKey: .notes)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(clubs, forKey: .clubs)
+        try container.encode(notes, forKey: .notes)
     }
 
     var woods: [Club] {

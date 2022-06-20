@@ -37,7 +37,7 @@ struct ContentView: View {
             .tag(Tab.bag)
 
             NavigationView {
-                Text("yo")
+                AllNotesView()
                     .navigationTitle("Notes")
                     .navigationBarTitleDisplayMode(.inline)
             }

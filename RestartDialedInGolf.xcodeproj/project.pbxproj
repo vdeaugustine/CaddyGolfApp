@@ -15,6 +15,9 @@
 		9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16C285E6E8200198EFC /* LineChartView */; };
 		9CDAE170285E743E00198EFC /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16F285E743E00198EFC /* SwiftPieChart */; };
 		9CDFC84B285FF0D60046F601 /* AdviceFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */; };
+		9CDFC84D28600D960046F601 /* AdviceAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */; };
+		9CDFC84F2860D8670046F601 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84E2860D8670046F601 /* AllNotesView.swift */; };
+		9CDFC8522860D96F0046F601 /* AddNewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC8512860D96F0046F601 /* AddNewNote.swift */; };
 		9CE5C94D285EACC300D6CA94 /* swingsCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */; };
 		9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */; };
 		9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */; };
@@ -62,6 +65,9 @@
 		9CDAE148285D713700198EFC /* MainClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubView.swift; sourceTree = "<group>"; };
 		9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSectionView.swift; sourceTree = "<group>"; };
 		9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdviceFirstView.swift; path = RestartDialedInGolf/AdviceFirstView.swift; sourceTree = SOURCE_ROOT; };
+		9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceAnswerView.swift; sourceTree = "<group>"; };
+		9CDFC84E2860D8670046F601 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
+		9CDFC8512860D96F0046F601 /* AddNewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNote.swift; sourceTree = "<group>"; };
 		9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swingsCircles.swift; sourceTree = "<group>"; };
 		9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesCircle.swift; sourceTree = "<group>"; };
 		9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
@@ -182,8 +188,18 @@
 			isa = PBXGroup;
 			children = (
 				9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */,
+				9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */,
 			);
 			path = Advice;
+			sourceTree = "<group>";
+		};
+		9CDFC8502860D86B0046F601 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC84E2860D8670046F601 /* AllNotesView.swift */,
+				9CDFC8512860D96F0046F601 /* AddNewNote.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		9CE5C949285EAC7E00D6CA94 /* Circles */ = {
@@ -234,6 +250,7 @@
 		9CFF6DDF285BCCF5000A17C4 /* RestartDialedInGolf */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFC8502860D86B0046F601 /* Notes */,
 				9CDAE147285D6EDE00198EFC /* Info.plist */,
 				9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */,
 				9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */,
@@ -438,14 +455,17 @@
 			files = (
 				9CFF6E14285BFD05000A17C4 /* Bag.swift in Sources */,
 				9CFF6E16285BFD0D000A17C4 /* Club.swift in Sources */,
+				9CDFC84D28600D960046F601 /* AdviceAnswerView.swift in Sources */,
 				9C49D127285FA6E800CF9EA4 /* AddStroke.swift in Sources */,
 				9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */,
 				9CFF6E1A285C0605000A17C4 /* load.swift in Sources */,
+				9CDFC84F2860D8670046F601 /* AllNotesView.swift in Sources */,
 				9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */,
 				9CFF6E18285BFD11000A17C4 /* Swing.swift in Sources */,
 				9CDFC84B285FF0D60046F601 /* AdviceFirstView.swift in Sources */,
 				9CFF6E21285C1976000A17C4 /* Extensions.swift in Sources */,
 				9CFF6E1C285C0BEE000A17C4 /* ModelData.swift in Sources */,
+				9CDFC8522860D96F0046F601 /* AddNewNote.swift in Sources */,
 				9CDAE149285D713700198EFC /* MainClubView.swift in Sources */,
 				9CFF6E23285C24CA000A17C4 /* BagListView.swift in Sources */,
 				9CE5C955285EAE7800D6CA94 /* PieChart.swift in Sources */,
