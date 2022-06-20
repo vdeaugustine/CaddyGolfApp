@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
-                Text("HI")
+                AdviceFirstView()
                     .navigationTitle("Get Advice")
                     .navigationBarTitleDisplayMode(.inline)
             }
@@ -27,7 +27,7 @@ struct ContentView: View {
             .tag(Tab.advice)
 
             NavigationView {
-                BagListView()
+                BagListView(bag: modelData.bag)
                     .navigationTitle("Your Bag")
                     .navigationBarTitleDisplayMode(.inline)
             }
@@ -46,6 +46,7 @@ struct ContentView: View {
             }
             .tag(Tab.notes)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

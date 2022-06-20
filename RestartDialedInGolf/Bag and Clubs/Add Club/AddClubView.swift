@@ -12,7 +12,7 @@ struct AddClubView: View {
     @EnvironmentObject var modelData: ModelData
     @State var clubType: ClubType = .wood
     @State var clubName: String = "Driver"
-    @State var distance: String = "0"
+    @State var distance: Int = 150
     @Binding var isShowing: Bool
 
     var names: [String] {
@@ -33,33 +33,50 @@ struct AddClubView: View {
         UITableView.appearance().alwaysBounceVertical = false
         return VStack {
             Form {
-                Picker("Club Type", selection: $clubType) {
-                    ForEach(ClubType.allCases, id: \.self) { theType in
-                        Text(theType.rawValue.capitalized)
-                            .tag(theType)
+                HStack {
+                    Text("Club Type")
+                    Spacer()
+                    Picker("Club Type", selection: $clubType) {
+                        ForEach(ClubType.allCases, id: \.self) { theType in
+                            Text(theType.rawValue.capitalized)
+                                .tag(theType)
+                        }
                     }
                 }
 
-                Picker("Club Number", selection: $clubName) {
-                    ForEach(names, id: \.self) { theName in
-                        Text(theName)
+                HStack {
+                    Text("Club Number")
+                    Spacer()
+                    Picker("Club Number", selection: $clubName) {
+                        ForEach(names, id: \.self) { theName in
+                            Text(theName)
+                        }
                     }
                 }
 
                 HStack {
                     Text("Distance")
                     Spacer()
-                    TextField("Distance", text: $distance)
-                        .multilineTextAlignment(.trailing)
-                    Text("yards")
+                    Picker("Distance", selection: $distance) {
+                        ForEach(50..<301) { theDistance in
+                            if theDistance % 5 == 0 {
+                                Text("\(theDistance)")
+                            }
+                            
+                        }
+                    }
                 }
+                
+                
                 
             }
             .frame(height: 220)
+            .pickerStyle(.menu)
             
             
             Button {
                 // Save
+                
                 print("tapped save")
                 isShowing = false
             } label: {
@@ -73,9 +90,7 @@ struct AddClubView: View {
                 }
                 
             }
-            .offset(x: 0, y: -40)
             
-            Spacer()
         }
         
     }

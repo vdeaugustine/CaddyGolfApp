@@ -17,6 +17,15 @@
         "revision" : "91416f04a04ad3117e4fe58c35a24bb66e57ebb4",
         "version" : "1.4.0"
       }
+    },
+    {
+      "identity" : "swiftpiechart",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ilamanov/SwiftPieChart",
+      "state" : {
+        "revision" : "e6f67120c55e7402f67f3463994105ff6cfbcd10",
+        "version" : "1.0.61"
+      }
     }
   ],
   "version" : 2

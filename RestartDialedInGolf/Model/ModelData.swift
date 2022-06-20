@@ -11,6 +11,11 @@ enum modelDataType {
     case regular, preview
 }
 
+enum SaveItemError: String, Error {
+    case cannotFindInBag
+    case cannotRemove
+}
+
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
 
@@ -25,11 +30,37 @@ class ModelData: ObservableObject {
             print(error)
         }
     }
-    
-    
+
+    func addStrokeToClub(stroke: Swing, club: Club) throws {
+        guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
+            throw SaveItemError.cannotFindInBag
+        }
+
+        var clubInBag = bag.clubs.remove(at: clubInBagIndex)
+        clubInBag.addSwing(stroke)
+        bag.clubs.insert(clubInBag)
+
+        saveBag()
+    }
+
+    func loadBag() -> Bag? {
+        var retBag: Bag?
+        if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
+            do {
+                let decoder = JSONDecoder()
+                let thisBag = try decoder.decode(Bag.self, from: existingBag)
+                retBag = thisBag
+                print(thisBag)
+            } catch {
+                fatalError("Couldn't parse bag as Bag :\n\(error)")
+            }
+        }
+        return retBag
+    }
+
     init(forType: modelDataType) {
         switch forType {
-        case .regular:
+        case .preview:
             if let existingBag = UserDefaults.standard.object(forKey: "bag") as? Data {
                 do {
                     let decoder = JSONDecoder()
@@ -44,13 +75,8 @@ class ModelData: ObservableObject {
             print("no bag found")
             bag.makeDefault()
             saveBag()
-        case .preview:
+        case .regular:
             bag.makeDefault(forType: .preview)
         }
-        
     }
-    
-    
-    
-    
 }

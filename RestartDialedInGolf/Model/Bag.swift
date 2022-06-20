@@ -9,7 +9,7 @@ import Foundation
 
 class Bag: ObservableObject, Codable {
 //    @Published var clubs = Set<Club>()
-    var clubs = Set<Club>()
+    @Published var clubs = Set<Club>()
 
     var clubsArray: [Club] {
         return Array(clubs).sorted(by: { $0.getDistance() > $1.getDistance() })
@@ -20,6 +20,8 @@ class Bag: ObservableObject, Codable {
     }
 
     init() {}
+    
+    
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

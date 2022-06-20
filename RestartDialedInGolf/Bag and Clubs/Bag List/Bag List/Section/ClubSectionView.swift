@@ -10,7 +10,6 @@ import SwiftUI
 struct ClubSectionView: View {
     @EnvironmentObject var modelData: ModelData
     var clubType: ClubType
-    var deleteFunction: (IndexSet) -> Void
     var theseClubs: [Club] {
         switch clubType {
         case .wood:
@@ -30,8 +29,11 @@ struct ClubSectionView: View {
                 NavigationLink { MainClubView(club: club) }
                 label: { ClubRowForBagList(club: club) }
             }
-            .onDelete(perform: deleteFunction)
-        } header: { Text("\(clubType.rawValue)s".capitalized) }
+        } header: {
+            Text("\(clubType.rawValue)s".capitalized)
+                .font(.title3)
+                .foregroundColor(.blue)
+        }
     }
 }
 
