@@ -15,7 +15,11 @@ struct AllNotesView: View {
             if let thisBag = bag {
                 if thisBag.notes.count > 0 {
                     ForEach(Array(thisBag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { note in
-                        Text("\(note.title), \(note.body)")
+                        NavigationLink {
+                            ViewExistingNote(noteToDisplay: note)
+                        } label: {
+                            NoteRowView(note: note)
+                        }
                     }
                     .onDelete { indexSet in
                         var arr = Array(thisBag.notes).sorted(by: { $0.date > $1.date })
@@ -24,6 +28,10 @@ struct AllNotesView: View {
                         modelData.bag = thisBag
                         modelData.saveBag()
                     }
+                    
+                }
+                else {
+                    Text("Press the button on the top right to add a note")
                 }
             } else {
                 Text("NO NOTES")
@@ -32,8 +40,8 @@ struct AllNotesView: View {
         .onAppear {
             bag = modelData.loadBag()
             print("appeaered")
-            
         }
+
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {

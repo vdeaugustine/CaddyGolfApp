@@ -10,10 +10,11 @@ import SwiftUI
 struct AdviceAnswerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            HStack(alignment: .lastTextBaseline) {
                 Text("Recommendation")
                     .font(.title)
                     .foregroundColor(.white)
+                    .minimumScaleFactor(0.75)
                 Spacer()
                 Button("Explanation") {}
                     .font(.subheadline)
