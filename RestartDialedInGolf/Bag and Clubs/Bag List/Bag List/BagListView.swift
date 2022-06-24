@@ -15,7 +15,6 @@ func loadBag() -> Bag? {
             let decoder = JSONDecoder()
             let thisBag = try decoder.decode(Bag.self, from: existingBag)
             retBag = thisBag
-            print(thisBag)
         } catch {
             fatalError("Couldn't parse bag as Bag :\n\(error)")
         }
@@ -24,11 +23,7 @@ func loadBag() -> Bag? {
 }
 
 struct BagListView: View {
-    @EnvironmentObject var modelData: ModelData {
-        didSet {
-            print("Set model data")
-        }
-    }
+    @EnvironmentObject var modelData: ModelData
     @StateObject var bag: Bag
     @State private var showingAddClubSheet: Bool = false
     @State private var showingAlert = false
@@ -39,8 +34,9 @@ struct BagListView: View {
             List {
                 ForEach(sections, id: \.self) { sectionClubType in
                     ClubSectionView(clubType: sectionClubType)
-                } .onDelete(perform: deleteClub(at:))
+                } 
             }
+            
         }
         .navigationTitle("Your Bag")
         .navigationBarTitleDisplayMode(.inline)
@@ -80,17 +76,12 @@ struct BagListView: View {
 
     
     func deleteClub(at offsets: IndexSet) {
-        print("Called delete")
-        print("offsets", offsets)
         guard let first = offsets.first else { return }
         let clubToDelete = bag.clubs.sorted(by: { $0.getDistance() > $1.getDistance() } )[first]
-        print("Delete this club", clubToDelete)
-        print("Model bag before", bag.clubs)
         guard bag.clubs.remove(clubToDelete) != nil else {
             print("Error, did not remove correctly")
             return
         }
-        print("Model data after", bag.clubs.sorted(by: {$0.getDistance() > $1.getDistance()}))
         modelData.saveBag()
         
     }

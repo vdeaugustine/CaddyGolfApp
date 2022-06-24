@@ -24,7 +24,6 @@ struct ClubRowForBagList: View {
     var body: some View {
         HStack {
             Button {
-                print("tapped")
             } label: {
                 ZStack {
                     // Put one circle on top of the other. The bottom circle is the white circle that will always be there. The blue circle is only complete based on how many strokes the user has

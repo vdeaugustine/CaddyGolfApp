@@ -14,11 +14,7 @@ func checkNote(_ theNote: Note) -> Bool {
 
 struct AddNewNote: View {
     @EnvironmentObject var modelData: ModelData
-    @State var bodyOfNote: String = "" {
-        didSet {
-            print(bodyOfNote)
-        }
-    }
+    @State var bodyOfNote: String = "" 
 
     @State var titleOfNote: String = ""
     @FocusState var bodyEditing: Bool

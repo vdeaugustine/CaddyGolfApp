@@ -32,6 +32,9 @@ struct AllNotesView: View {
                 }
                 else {
                     Text("Press the button on the top right to add a note")
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.vertical)
                 }
             } else {
                 Text("NO NOTES")
@@ -39,7 +42,6 @@ struct AllNotesView: View {
         }
         .onAppear {
             bag = modelData.loadBag()
-            print("appeaered")
         }
 
         .toolbar {

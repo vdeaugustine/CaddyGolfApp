@@ -77,7 +77,6 @@ struct AddClubView: View {
             Button {
                 // Save
                 
-                print("tapped save")
                 isShowing = false
             } label: {
                 ZStack {

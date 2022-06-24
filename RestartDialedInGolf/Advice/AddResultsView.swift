@@ -7,32 +7,21 @@
 
 import SwiftUI
 
-struct AddNewStroke: View {
+enum TargetChoices: String, CaseIterable {
+    case fir = "FIR"
+    case gir = "GIR"
+    case neither = "Neither"
+    case missedFIR = "Missed FIR"
+    case missedGIR = "Missed GIR"
+}
+
+struct AddResultsView: View {
     @Environment(\.dismiss) var dismiss
     var club: Club
     @EnvironmentObject var modelData: ModelData
     @State var distance: String = "0"
-    @State var directionChosen: String = "straight"
-    @State var clubType: ClubType = .wood
-    @State var clubNumber: Int = 1
-    @FocusState var distanceFocused: Bool
-
-    private var woodNumbers: [String] {
-        return modelData.bag.woods.map({ $0.getNumber() })
-    }
-
-    private var ironNumbers: [String] {
-        return modelData.bag.irons.map({ $0.getNumber() })
-    }
-
-    private var hybridNumbers: [String] {
-        return modelData.bag.hybrids.map({ $0.getNumber() })
-    }
-
-    private var wedgeNumbers: [String] {
-        return modelData.bag.wedges.map({ $0.getNumber() })
-    }
-
+    @State var directionChosen: SwingDirection = .straight
+    @State var targetChoiceSelected: TargetChoices = .gir
     var body: some View {
         Form {
             Section("How far did you hit the ball?") {
@@ -47,9 +36,22 @@ struct AddNewStroke: View {
                     })
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
-                        .focused($distanceFocused)
 
                     Text("yards")
+                }
+            }
+
+            Section("Did you hit your target?") {
+                HStack {
+                    Text("FIR, GIR, or Neither")
+                    Spacer()
+                    Picker("Success Result", selection: $targetChoiceSelected) {
+                        ForEach(TargetChoices.allCases, id: \.self) {
+                            Text($0.rawValue)
+                                .tag($0)
+                        }
+                    }
+                    .pickerStyle(.menu)
                 }
             }
 
@@ -57,38 +59,38 @@ struct AddNewStroke: View {
                 HStack(alignment: .center) {
                     Spacer()
                     Button {
-                        directionChosen = "left"
+                        directionChosen = .left
                     } label: {
                         Image(systemName: "arrow.up.left")
                             .font(.largeTitle)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .foregroundColor(directionChosen == "left" ? Color.red : .white)
+                    .foregroundColor(directionChosen == .left ? Color.red : .white)
                     Spacer()
                     Button {
-                        directionChosen = "straight"
+                        directionChosen = .straight
                     } label: {
                         Image(systemName: "arrow.up")
                             .font(.largeTitle)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .foregroundColor(directionChosen == "straight" ? .blue : .white)
+                    .foregroundColor(directionChosen == .straight ? .blue : .white)
                     Spacer()
                     Button {
-                        directionChosen = "right"
+                        directionChosen = .right
                     } label: {
                         Image(systemName: "arrow.up.right")
                             .font(.largeTitle)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .foregroundColor(directionChosen == "right" ? Color.red : .white)
+                    .foregroundColor(directionChosen == .right ? Color.red : .white)
                     Spacer()
                 }
                 .multilineTextAlignment(.center)
             }
         }
         .onTapGesture {
-            distanceFocused = false
+            dismissKeyboard()
         }
         .tint(.blue)
         .navigationTitle("Add Stroke for \(club.getName())")
@@ -96,44 +98,51 @@ struct AddNewStroke: View {
         .toolbar {
             ToolbarItem {
                 Button("Save") {
-                    
-                    
-                    
                     guard let distanceInt = Int(self.distance) else { return }
                     var directionToUse: SwingDirection
                     switch directionChosen {
-                    case "left":
+                    case .left:
                         directionToUse = .left
-                    case "right":
+                    case .right:
                         directionToUse = .right
-                    case "straight":
-                        directionToUse = .straight
-                    default:
+                    case .straight:
                         directionToUse = .straight
                     }
+
+                    var newSwing: Swing
                     
-                    let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
+                    switch targetChoiceSelected {
+                    case .fir:
+                        newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date(), hitFairway: true, attemptingFairway: true)
+                    case .gir:
+                        newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date(), hitGreen: true, attemptingGreen: true)
+                    case .neither:
+                        newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
+                    case .missedFIR:
+                        newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date(), hitFairway: false, attemptingFairway: true)
+                    case .missedGIR:
+                        newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date(), hitGreen: false, attemptingGreen: true)
+                    }
                     
-                   
                     
+
                     do {
                         try modelData.addStrokeToClub(stroke: newSwing, club: self.club)
                     } catch {
                         print(error)
                     }
-                    
+
                     dismiss()
-                    
                 }
             }
         }
     }
 }
 
-struct AddNewStroke_Previews: PreviewProvider {
-     static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
+struct AddResultsView_Previews: PreviewProvider {
+    static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
     static var previews: some View {
-        AddNewStroke(club: club)
+        AddResultsView(club: club)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData(forType: .preview))
     }

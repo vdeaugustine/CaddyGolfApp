@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-enum TypeOfApproach: String, CaseIterable {
-    case accuracy, distance
+enum TypeOfShot: String, CaseIterable, Codable {
+    case teeshot = "From the Tee Box"
+    case fairwayShot = "From the Fairway"
+    case approach = "Approach"
 }
 
 enum FlagColors: String, CaseIterable {
@@ -19,17 +21,10 @@ enum BallPositions: String, CaseIterable {
     case flat, downhill, uphill, sidehill
 }
 
-class DetailsForAdvice: ObservableObject {
-    @Published var distanceToPin: String = ""
-    @Published var accuracyOrDistance: TypeOfApproach = .accuracy
-    @Published var ballPosition: BallPositions = .flat
-    @Published var distanceFocused: Bool = false
-    @Published var flagColorChosen: FlagColors = .white
-}
-
 struct AdviceFirstView: View {
     @StateObject var details = DetailsForAdvice()
-
+    @EnvironmentObject var modelData: ModelData
+    @State var showAlert: Bool = false
     var body: some View {
         VStack {
             Form {
@@ -41,10 +36,10 @@ struct AdviceFirstView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    AdviceAnswerView()
-                } label: {
-                    Text("Get Advice")
+                if let advice = Advice.getAdvice(details: details, modelData: modelData) {
+                    NavigationLink("Get Advice") {
+                        AdviceAnswerView(advice: advice, highlightedClub: advice.closestClub)
+                    }
                 }
             }
         }
@@ -59,6 +54,7 @@ struct AdviceFirstView_Previews: PreviewProvider {
     static var previews: some View {
         AdviceFirstView()
             .preferredColorScheme(.dark)
+            .environmentObject(ModelData(forType: .preview))
     }
 }
 
@@ -81,10 +77,10 @@ struct AccuracyOrDistanceRow: View {
     @EnvironmentObject var details: DetailsForAdvice
     var body: some View {
         HStack {
-            Text("Accuracy or Distance")
+            Text("Shot Type")
             Spacer()
-            Picker("Accuracy or Distance", selection: $details.accuracyOrDistance) {
-                ForEach(TypeOfApproach.allCases, id: \.self) {
+            Picker("Shot Type", selection: $details.typeOfShot) {
+                ForEach(TypeOfShot.allCases, id: \.self) {
                     Text("\($0.rawValue.capitalized)")
                         .tag($0)
                 }

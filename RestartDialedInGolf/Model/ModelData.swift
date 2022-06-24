@@ -23,16 +23,11 @@ enum bagEnum: String {
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
 
-    
     func insertNote(_ thisNote: Note) {
-        print("inserting this note", thisNote)
         bag.notes.insert(thisNote)
-        print("Now printing notes in bag before save")
-        print(bag.notes)
         saveBag()
     }
-    
-    
+
     /// - Parameters:
     ///   - thisNote: the note that we will update. It should still be un-updated when it is passed as parameter
     /// - Returns: true if the note updated successfully
@@ -49,23 +44,18 @@ class ModelData: ObservableObject {
         noteFoundInNotes.date = Date()
 
         retVal = bag.notes.insert(noteFoundInNotes).0
-        
+
         saveBag()
 
         return retVal
     }
-    
-    
+
     func saveBag() {
         let encoder = JSONEncoder()
 
         do {
             let data = try encoder.encode(bag)
             UserDefaults.standard.set(data, forKey: bagEnum.bag.rawValue)
-            print("saved bag")
-            
-            print("testing get bag")
-            print(loadBag()?.notes ?? "nobag")
         } catch {
             print(error)
         }
@@ -106,12 +96,7 @@ class ModelData: ObservableObject {
                     let decoder = JSONDecoder()
                     let thisBag = try decoder.decode(Bag.self, from: existingBag)
                     bag = thisBag
-                    print("This bag exists already")
-                    print("There are", bag.notes.count, "notes. here they are")
-                    for note in bag.notes {
-                        print(note.body)
-                    }
-                    print(thisBag)
+
                 } catch {
                     fatalError("Couldn't parse bag as Bag :\n\(error)")
                 }

@@ -12,7 +12,7 @@ struct Note: Codable, Equatable, Hashable, Identifiable, CustomStringConvertible
     var body: String
     var date: Date
     var id = UUID()
-    
+
     var description: String {
         return "Title: \(title)\nBody: \(body)\nDate: \(date)\nID:\(id)"
     }
@@ -55,7 +55,6 @@ class Bag: ObservableObject, Codable {
     }
 
     func getArray(of clubType: ClubType) -> [Club] {
-        print("calling get array")
         switch clubType {
         case .wood:
             let filtered = clubs.filter({ $0.getType() == .wood })
@@ -108,11 +107,6 @@ class Bag: ObservableObject, Codable {
         clubs.insert(Club(number: "60", type: .wedge, name: "60 " + ClubType.wedge.rawValue, distance: 60))
         clubs.insert(Club(number: "56", type: .wedge, name: "56 " + ClubType.wedge.rawValue, distance: 80))
 
-        print("Bag is now")
-        for club in clubs {
-            print(club)
-        }
-
         // Give all the clubs some swings so they have something to work with
         if forType == .preview {
             for thisClub in clubs {
@@ -120,8 +114,20 @@ class Bag: ObservableObject, Codable {
                 clubs.remove(thisClub)
                 let numSwings = Int.random(in: 15 ... 60)
                 for _ in 1 ... numSwings {
-                    workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
-                                               direction: SwingDirection.allCases.randomElement()!))
+                    let green = Bool.random()
+                    let hit = Bool.random()
+                    if green {
+                        workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
+                                                   direction: SwingDirection.allCases.randomElement()!,
+                                                   hitGreen: hit,
+                                                  attemptingGreen: true))
+                    } else {
+                        workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
+                                                   direction: SwingDirection.allCases.randomElement()!,
+                                                   hitFairway: hit,
+                                                  attemptingFairway: true))
+                    }
+                    
                 }
                 clubs.insert(workingClub)
             }

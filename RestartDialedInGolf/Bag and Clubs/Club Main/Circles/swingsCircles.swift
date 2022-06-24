@@ -18,7 +18,6 @@ struct swingsCircles: View {
             }
             .padding(.trailing, 50)
             Button {
-                print("tapped strokes")
             } label: {
                 VStack {
                     StrokesCircle(strokes: CGFloat(club.getSwings().count), goalStrokes: 50)

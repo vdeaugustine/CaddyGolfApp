@@ -11,17 +11,17 @@ import SwiftUI
 
 struct MainClubView: View {
     var club: Club
-    
+    @State var isShowingDeleteAlert = false
     var body: some View {
         ScrollView {
             VStack {
                 swingsCircles(club: club)
-                
+
                 Section {
                     VStack {
                         LineChartForSwings(club: club)
                     }
-                    
+
                 } header: {
                     HStack {
                         Text("All Swings")
@@ -32,26 +32,39 @@ struct MainClubView: View {
                         Spacer()
                     }
                 }
-                
+
                 Section {
                     PieChart(club: club)
-                    .frame(height: 600)
+                        .frame(height: 500)
                 }
-                
-            header: {
-                HStack {
-                    Text("Direction Tendancies")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .padding()
-                    Spacer()
+
+                header: {
+                    HStack {
+                        Text("Direction Tendancies")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            .padding()
+                        Spacer()
+                    }
                 }
-            }
+
+                Button {
+                    isShowingDeleteAlert.toggle()
+                } label: {
+                    Text("Delete Club")
+                        .foregroundColor(.red)
+                }
+                .alert("Deleting will permanently get rid of all club stats", isPresented: $isShowingDeleteAlert) {
+                    Button("Delete", role: .destructive) { }
+                    Button("Cancel", role: .cancel) { }
+                }
+
+                Spacer()
             }
             .padding()
         }
-        
+
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
