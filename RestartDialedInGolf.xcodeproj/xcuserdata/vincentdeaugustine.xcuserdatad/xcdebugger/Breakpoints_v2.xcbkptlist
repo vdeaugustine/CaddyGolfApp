@@ -23,17 +23,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B4F7ED6C-D5D3-41AF-87B7-BDC8E9F2A8D4"
-            shouldBeEnabled = "No"
+            uuid = "38C6251A-0CB2-4F07-B297-89CD5B6DF731"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RestartDialedInGolf/Bag and Clubs/Club Main/MainClubView.swift"
+            filePath = "RestartDialedInGolf/Bag and Clubs/Club Main/Circles/swingsCircles.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "38C6251A-0CB2-4F07-B297-89CD5B6DF731 - 25dcaef808e2dea4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RestartDialedInGolf.swingsCircles.body.getter : some"
+                  moduleName = "RestartDialedInGolf"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentdeaugustine/Desktop/RestartDialedInGolf/RestartDialedInGolf/Bag%20and%20Clubs/Club%20Main/Circles/swingsCircles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "38C6251A-0CB2-4F07-B297-89CD5B6DF731 - d1aad7c429f63dc8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0)&gt; in RestartDialedInGolf.swingsCircles.body.getter : some"
+                  moduleName = "RestartDialedInGolf"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentdeaugustine/Desktop/RestartDialedInGolf/RestartDialedInGolf/Bag%20and%20Clubs/Club%20Main/Circles/swingsCircles.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "1464">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

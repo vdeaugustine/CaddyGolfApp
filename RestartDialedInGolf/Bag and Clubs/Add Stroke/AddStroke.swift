@@ -11,6 +11,7 @@ struct AddNewStroke: View {
     @Environment(\.dismiss) var dismiss
     @Binding var club: Club
     @EnvironmentObject var modelData: ModelData
+    @Binding var bag: Bag?
     @State var distance: String = "0"
     @State var directionChosen: String = "straight"
     @State var clubType: ClubType = .wood
@@ -101,7 +102,7 @@ struct AddNewStroke: View {
                     } catch {
                         fatalError("can't save new stroke")
                     }
-                    
+                    bag = modelData.loadBag()
                     dismiss()
                     
                 }
@@ -127,11 +128,11 @@ func saveNewStroke(distance: String, directionChosen: String, modelData: ModelDa
 
         let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
 
-//        do {
-//            try modelData.addStrokeToClub(stroke: newSwing, club: club)
-//        } catch {
-//            print(error)
-//        }
+        do {
+            try modelData.addStrokeToClub(stroke: newSwing, club: club)
+        } catch {
+            print(error)
+        }
         
         
 
@@ -141,9 +142,9 @@ func saveNewStroke(distance: String, directionChosen: String, modelData: ModelDa
 
 struct AddNewStroke_Previews: PreviewProvider {
    @State static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
-   
+    @State static var bag: Bag? = Bag()
     static var previews: some View {
-        AddNewStroke(club: $club)
+        AddNewStroke(club: $club, bag: $bag)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData(forType: .preview))
     }

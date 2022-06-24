@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct swingsCircles: View {
-    @Binding var club: Club
+    @EnvironmentObject var modelData: ModelData
+    var club: Club
+    var modelClub: Club {
+        return modelData.bag.clubs.first(where: {$0 == club})!
+    }
     var body: some View {
         HStack {
             VStack {
@@ -20,7 +24,7 @@ struct swingsCircles: View {
             Button {
             } label: {
                 VStack {
-                    StrokesCircle(strokes: CGFloat(club.getSwings().count), goalStrokes: 50)
+                    StrokesCircle(strokes: Double(modelClub.getSwings().count), goalStrokes: 50)
                         .frame(width: 75, height: 75)
                     
                     Text("Strokes")
@@ -30,6 +34,5 @@ struct swingsCircles: View {
             .tint(.white)
         }
         .padding()
-        //        .navigationTitle("\(club.name)")
     }
 }

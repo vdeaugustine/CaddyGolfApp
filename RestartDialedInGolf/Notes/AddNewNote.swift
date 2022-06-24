@@ -65,7 +65,6 @@ struct AddNewNote: View {
 
                     // save
                     modelData.insertNote(theNewNote)
-                    modelData.bag.reload += 1
                     dismiss()
                 } label: {
                     Text("Save")

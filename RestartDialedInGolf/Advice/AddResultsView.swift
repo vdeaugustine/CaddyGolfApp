@@ -22,6 +22,7 @@ struct AddResultsView: View {
     @State var distance: String = "0"
     @State var directionChosen: SwingDirection = .straight
     @State var targetChoiceSelected: TargetChoices = .gir
+    @Binding var shouldPopToRootView: Bool
     var body: some View {
         Form {
             Section("How far did you hit the ball?") {
@@ -132,7 +133,7 @@ struct AddResultsView: View {
                         print(error)
                     }
 
-                    dismiss()
+                    shouldPopToRootView = false
                 }
             }
         }
@@ -141,8 +142,9 @@ struct AddResultsView: View {
 
 struct AddResultsView_Previews: PreviewProvider {
     static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
+    @State static var active: Bool = false
     static var previews: some View {
-        AddResultsView(club: club)
+        AddResultsView(club: club, shouldPopToRootView: $active)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData(forType: .preview))
     }

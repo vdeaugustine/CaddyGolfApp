@@ -25,6 +25,7 @@ struct AdviceFirstView: View {
     @StateObject var details = DetailsForAdvice()
     @EnvironmentObject var modelData: ModelData
     @State var showAlert: Bool = false
+    @State var isActive: Bool = false
     var body: some View {
         VStack {
             Form {
@@ -37,9 +38,8 @@ struct AdviceFirstView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if let advice = Advice.getAdvice(details: details, modelData: modelData) {
-                    NavigationLink("Get Advice") {
-                        AdviceAnswerView(advice: advice, highlightedClub: advice.closestClub)
-                    }
+                    NavigationLink(isActive: $isActive, destination: {AdviceAnswerView(advice: advice, highlightedClub: advice.closestClub, rootIsActive: $isActive)}, label: {Text("Get Advice")}) 
+                    .isDetailLink(false)
                 }
             }
         }

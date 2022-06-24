@@ -25,6 +25,7 @@
 		9CDFC85E2864EFED0046F601 /* AddResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85D2864EFED0046F601 /* AddResultsView.swift */; };
 		9CDFC860286522040046F601 /* Advice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85F286522040046F601 /* Advice.swift */; };
 		9CDFC865286538CC0046F601 /* swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CDFC864286538CC0046F601 /* swing.wav */; };
+		9CDFC867286668E10046F601 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDFC866286668E10046F601 /* Launch Screen.storyboard */; };
 		9CE5C94D285EACC300D6CA94 /* swingsCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */; };
 		9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */; };
 		9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */; };
@@ -81,6 +82,7 @@
 		9CDFC85D2864EFED0046F601 /* AddResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResultsView.swift; sourceTree = "<group>"; };
 		9CDFC85F286522040046F601 /* Advice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advice.swift; sourceTree = "<group>"; };
 		9CDFC864286538CC0046F601 /* swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.wav; sourceTree = "<group>"; };
+		9CDFC866286668E10046F601 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swingsCircles.swift; sourceTree = "<group>"; };
 		9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesCircle.swift; sourceTree = "<group>"; };
 		9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		9CFF6DDF285BCCF5000A17C4 /* RestartDialedInGolf */ = {
 			isa = PBXGroup;
 			children = (
+				9CDFC866286668E10046F601 /* Launch Screen.storyboard */,
 				9CDAE147285D6EDE00198EFC /* Info.plist */,
 				9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */,
 				9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */,
@@ -467,6 +470,7 @@
 			files = (
 				9CDFC865286538CC0046F601 /* swing.wav in Resources */,
 				9CFF6DE8285BCCF5000A17C4 /* Preview Assets.xcassets in Resources */,
+				9CDFC867286668E10046F601 /* Launch Screen.storyboard in Resources */,
 				9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +689,8 @@
 				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -714,6 +720,8 @@
 				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

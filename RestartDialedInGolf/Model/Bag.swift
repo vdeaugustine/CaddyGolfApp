@@ -22,21 +22,11 @@ struct Note: Codable, Equatable, Hashable, Identifiable, CustomStringConvertible
     }
 }
 
-class Bag: ObservableObject, Codable {
-    @Published var clubs = Set<Club>()
-    @Published var notes = Set<Note>()
-    @Published var reload = 0
+struct Bag: Codable {
+    var clubs = Set<Club>()
+    var notes = Set<Note>()
+    var reload = 0
 
-    
-    mutating func addStroke(_ stroke: Swing, to club: Club) -> Bool{
-        // first find the club you want to edit
-        guard var foundClub = clubs.remove(club) else {
-            return false
-        }
-        
-    }
-    
-    
     var clubsArray: [Club] {
         return Array(clubs).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
@@ -45,13 +35,18 @@ class Bag: ObservableObject, Codable {
         case clubs, notes
     }
 
-    init() {}
-
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         clubs = try container.decode(Set<Club>.self, forKey: .clubs)
         notes = try container.decode(Set<Note>.self, forKey: .notes)
     }
+    init(){}
+
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        clubs = try container.decode(Set<Club>.self, forKey: .clubs)
+//        notes = try container.decode(Set<Note>.self, forKey: .notes)
+//    }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -96,7 +91,7 @@ class Bag: ObservableObject, Codable {
         return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
-    func makeDefault(forType: modelDataType = .regular) {
+    mutating func makeDefault(forType: modelDataType = .regular) {
         clubs = Set<Club>()
         // default woods
         // driver
@@ -130,14 +125,13 @@ class Bag: ObservableObject, Codable {
                         workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
                                                    direction: SwingDirection.allCases.randomElement()!,
                                                    hitGreen: hit,
-                                                  attemptingGreen: true))
+                                                   attemptingGreen: true))
                     } else {
                         workingClub.addSwing(Swing(distance: Int.random(in: 100 ... 210),
                                                    direction: SwingDirection.allCases.randomElement()!,
                                                    hitFairway: hit,
-                                                  attemptingFairway: true))
+                                                   attemptingFairway: true))
                     }
-                    
                 }
                 clubs.insert(workingClub)
             }

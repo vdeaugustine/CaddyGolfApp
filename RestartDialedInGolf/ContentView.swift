@@ -30,7 +30,6 @@ struct ContentView: View {
                 BagListView()
                     .navigationTitle("Your Bag")
                     .navigationBarTitleDisplayMode(.inline)
-                    .environmentObject(modelData)
             }
             .tabItem {
                 Label("Bag", systemImage: "star")

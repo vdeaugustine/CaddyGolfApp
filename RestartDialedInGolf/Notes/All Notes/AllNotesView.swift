@@ -12,7 +12,7 @@ struct AllNotesView: View {
     @State var bag: Bag? = nil
     var body: some View {
         List {
-            if let thisBag = bag {
+            if var thisBag = bag {
                 if thisBag.notes.count > 0 {
                     ForEach(Array(thisBag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { note in
                         NavigationLink {

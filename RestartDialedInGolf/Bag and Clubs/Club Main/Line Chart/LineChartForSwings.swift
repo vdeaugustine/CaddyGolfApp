@@ -9,7 +9,7 @@ import SwiftUI
 import LineChartView
 
 struct LineChartForSwings: View {
-    @Binding var club: Club
+    @State var club: Club
     
     private var data: [LineChartData] {
         var retArr = [LineChartData]()

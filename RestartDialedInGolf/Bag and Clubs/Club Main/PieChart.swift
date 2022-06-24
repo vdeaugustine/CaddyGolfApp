@@ -8,7 +8,7 @@ import SwiftPieChart
 import SwiftUI
 
 struct PieChart: View {
-    @Binding var club: Club
+    @State var club: Club
     var valuesForChart: ([Double], [String]) {
         var retDoubleArr = [Double]()
         var retStrArr = [String]()
@@ -53,7 +53,7 @@ struct PieChart: View {
 struct PieChart_Previews: PreviewProvider {
     @State static var club = Club(number: "7", type: .iron, name: "7 iron", distance: 158)
     static var previews: some View {
-        PieChart(club: $club)
+        PieChart(club: club)
     }
 }
 

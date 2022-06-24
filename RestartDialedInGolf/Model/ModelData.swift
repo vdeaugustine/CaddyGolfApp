@@ -23,7 +23,7 @@ enum bagEnum: String {
 
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
-    
+
     func insertNote(_ thisNote: Note) {
         bag.notes.insert(thisNote)
         saveBag()
@@ -63,14 +63,17 @@ class ModelData: ObservableObject {
     }
 
     func addStrokeToClub(stroke: Swing, club: Club) throws {
-        guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
-            throw SaveItemError.cannotFindInBag
-        }
-        
+//        guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
+//            throw SaveItemError.cannotFindInBag
+//        }
 
-        var clubInBag = bag.clubs.remove(at: clubInBagIndex)
+        guard var clubInBag = bag.clubs.remove(club) else {
+            throw SaveItemError.cannotRemove
+        }
         clubInBag.addSwing(stroke)
-        bag.clubs.insert(clubInBag)
+        var newBag = bag
+        newBag.clubs.insert(clubInBag)
+        bag = newBag
 
         saveBag()
     }
