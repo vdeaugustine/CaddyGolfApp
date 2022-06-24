@@ -32,25 +32,10 @@ struct AdviceAnswerView: View {
                     .tag(advice.secondClosestClub)
             }
             .pickerStyle(.segmented)
-            .padding(.horizontal)
+            .padding()
             
             List {
-                Section {
-                    if modelData.bag.notes.count <= 0 {
-                        Text("You have no notes saved")
-                            .lineLimit(nil)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.vertical)
-                    }
-                    ForEach(Array(modelData.bag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { n in
-                        NoteRowView(note: n)
-                    }
-
-                } header: {
-                    Text("Notes")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                }
+                
                 
                 Section {
                     PieChart(club: highlightedClub)
@@ -82,8 +67,27 @@ struct AdviceAnswerView: View {
                         Spacer()
                     }
                 }
+                
+                Section {
+                    if modelData.bag.notes.count <= 0 {
+                        Text("You have no notes saved")
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.vertical)
+                    }
+                    ForEach(Array(modelData.bag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { n in
+                        NoteRowView(note: n)
+                    }
+
+                } header: {
+                    Text("Notes")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                }
             }
             .listStyle(.sidebar)
+            
+            
 
             HStack {
                 Spacer()
