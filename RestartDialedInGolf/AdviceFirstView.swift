@@ -47,6 +47,7 @@ struct AdviceFirstView: View {
             // Dismiss the keyboard when the screen is tapped
             dismissKeyboard()
         }
+        
     }
 }
 

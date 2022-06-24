@@ -45,12 +45,7 @@ struct PieChart: View {
         else {
             
             VStack {
-                HStack {
-                    Image(systemName: "exclamationmark.circle")
-                    Text("This is sample data. You have not recorded any swings yet for this club")
-                        .minimumScaleFactor(0.01)
-                        .lineLimit(0)
-                } .frame(height: 35)
+                NoSwingsIndicator()
                 
                 PieChartView(values: (1...3).map({ _ in Double.random(in: 5...15)}),
                              names: ["Left", "Straight", "Right"], formatter: { "\(Int($0)) swings" }, backgroundColor: .black)
@@ -67,5 +62,16 @@ struct PieChart_Previews: PreviewProvider {
     static let club = Club(number: "7", type: .iron, name: "7 iron", distance: 158)
     static var previews: some View {
         PieChart(club: club)
+    }
+}
+
+struct NoSwingsIndicator: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "exclamationmark.circle")
+            Text("This is sample data. You have not recorded any swings yet for this club")
+                .minimumScaleFactor(0.01)
+                .lineLimit(0)
+        } .frame(height: 35)
     }
 }

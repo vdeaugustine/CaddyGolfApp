@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFAudio
 
 enum modelDataType {
     case regular, preview
@@ -22,7 +23,6 @@ enum bagEnum: String {
 
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
-
     func insertNote(_ thisNote: Note) {
         bag.notes.insert(thisNote)
         saveBag()

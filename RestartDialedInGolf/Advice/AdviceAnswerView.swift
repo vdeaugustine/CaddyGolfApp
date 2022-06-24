@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct AdviceAnswerView: View {
+    @State var audioPlayer: AVAudioPlayer!
     @EnvironmentObject var modelData: ModelData
     let advice: Advice
     @State var highlightedClub: Club
@@ -23,6 +25,15 @@ struct AdviceAnswerView: View {
             ColorYardage(advice: advice, club: advice.closestClub, color: .green)
             ColorYardage(advice: advice, club: advice.secondClosestClub, color: .red)
 
+            Picker("Highlighted Club", selection: $highlightedClub) {
+                Text("\(advice.closestClub.getName().capitalized)")
+                    .tag(advice.closestClub)
+                Text("\(advice.secondClosestClub.getName().capitalized)")
+                    .tag(advice.secondClosestClub)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            
             List {
                 Section {
                     if modelData.bag.notes.count <= 0 {
@@ -40,11 +51,43 @@ struct AdviceAnswerView: View {
                         .font(.title2)
                         .foregroundColor(.white)
                 }
+                
+                Section {
+                    PieChart(club: highlightedClub)
+                        .frame(height: 500)
+                }
+
+                header: {
+                    HStack {
+                        Text("Direction Tendancies")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            
+                        Spacer()
+                    }
+                }
+                Section {
+                    VStack {
+                        LineChartForSwings(club: highlightedClub)
+                    }
+
+                } header: {
+                    HStack {
+                        Text("All Swings")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            
+                        Spacer()
+                    }
+                }
             }
+            .listStyle(.sidebar)
 
             HStack {
                 Spacer()
-                Button("Add Result for this Swing") {
+                Button("Add result for this swing") {
                     // Go to add result
                 }
                 Spacer()
@@ -63,7 +106,10 @@ struct AdviceAnswerView: View {
             }
         }
         .onAppear {
-            print("\(advice.closestClub), \(advice.secondClosestClub)")
+
+            let sound = Bundle.main.path(forResource: "swing", ofType: "wav")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer.play()
         }
     }
 }

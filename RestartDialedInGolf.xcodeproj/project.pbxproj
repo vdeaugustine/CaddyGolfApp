@@ -24,6 +24,7 @@
 		9CDFC85C28615F7A0046F601 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85B28615F7A0046F601 /* NoteRowView.swift */; };
 		9CDFC85E2864EFED0046F601 /* AddResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85D2864EFED0046F601 /* AddResultsView.swift */; };
 		9CDFC860286522040046F601 /* Advice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85F286522040046F601 /* Advice.swift */; };
+		9CDFC865286538CC0046F601 /* swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CDFC864286538CC0046F601 /* swing.wav */; };
 		9CE5C94D285EACC300D6CA94 /* swingsCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */; };
 		9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */; };
 		9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */; };
@@ -79,6 +80,7 @@
 		9CDFC85B28615F7A0046F601 /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
 		9CDFC85D2864EFED0046F601 /* AddResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResultsView.swift; sourceTree = "<group>"; };
 		9CDFC85F286522040046F601 /* Advice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advice.swift; sourceTree = "<group>"; };
+		9CDFC864286538CC0046F601 /* swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.wav; sourceTree = "<group>"; };
 		9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swingsCircles.swift; sourceTree = "<group>"; };
 		9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesCircle.swift; sourceTree = "<group>"; };
 		9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = "All Notes";
 			sourceTree = "<group>";
 		};
+		9CDFC861286538B80046F601 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC864286538CC0046F601 /* swing.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		9CE5C949285EAC7E00D6CA94 /* Circles */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 				9CFF6E1D285C1512000A17C4 /* Bag and Clubs */,
 				9CFF6E0E285BE46B000A17C4 /* Model */,
 				9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */,
+				9CDFC861286538B80046F601 /* Sounds */,
 				9CFF6DE6285BCCF5000A17C4 /* Preview Content */,
 			);
 			path = RestartDialedInGolf;
@@ -454,6 +465,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDFC865286538CC0046F601 /* swing.wav in Resources */,
 				9CFF6DE8285BCCF5000A17C4 /* Preview Assets.xcassets in Resources */,
 				9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */,
 			);

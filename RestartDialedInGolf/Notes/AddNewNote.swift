@@ -7,6 +7,7 @@
 
 import AlertToast
 import SwiftUI
+import AVFAudio
 
 func checkNote(_ theNote: Note) -> Bool {
     return !theNote.body.isEmpty && !theNote.title.isEmpty
@@ -15,7 +16,6 @@ func checkNote(_ theNote: Note) -> Bool {
 struct AddNewNote: View {
     @EnvironmentObject var modelData: ModelData
     @State var bodyOfNote: String = "" 
-
     @State var titleOfNote: String = ""
     @FocusState var bodyEditing: Bool
     @State var textToShow: String = "Tap to begin editing"
@@ -66,7 +66,6 @@ struct AddNewNote: View {
                     // save
                     modelData.insertNote(theNewNote)
                     modelData.bag.reload += 1
-
                     dismiss()
                 } label: {
                     Text("Save")
