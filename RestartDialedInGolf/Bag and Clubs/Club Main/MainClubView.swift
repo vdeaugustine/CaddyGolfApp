@@ -10,16 +10,17 @@ import SwiftPieChart
 import SwiftUI
 
 struct MainClubView: View {
-    var club: Club
+    @EnvironmentObject var modelData: ModelData
+    @State var club: Club
     @State var isShowingDeleteAlert = false
     var body: some View {
         ScrollView {
             VStack {
-                swingsCircles(club: club)
+                swingsCircles(club: $club)
 
                 Section {
                     VStack {
-                        LineChartForSwings(club: club)
+                        LineChartForSwings(club: $club)
                     }
 
                 } header: {
@@ -34,7 +35,7 @@ struct MainClubView: View {
                 }
 
                 Section {
-                    PieChart(club: club)
+                    PieChart(club: $club)
                         .frame(height: 500)
                 }
 
@@ -64,11 +65,17 @@ struct MainClubView: View {
             }
             .padding()
         }
+        .onAppear {
+            print("called appear")
+            club = modelData.bag.clubs.first(where: {
+                $0.getName() == club.getName()
+            })!
+        }
 
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    AddNewStroke(club: club)
+                    AddNewStroke(club: $club)
                 } label: {
                     Text("Add Stroke")
                 }

@@ -38,7 +38,7 @@ struct AdviceAnswerView: View {
                 
                 
                 Section {
-                    PieChart(club: highlightedClub)
+                    PieChart(club: $highlightedClub)
                         .frame(height: 500)
                 }
 
@@ -54,7 +54,7 @@ struct AdviceAnswerView: View {
                 }
                 Section {
                     VStack {
-                        LineChartForSwings(club: highlightedClub)
+                        LineChartForSwings(club: $highlightedClub)
                     }
 
                 } header: {

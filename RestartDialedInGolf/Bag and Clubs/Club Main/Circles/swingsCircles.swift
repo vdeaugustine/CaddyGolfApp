@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct swingsCircles: View {
-    var club: Club
+    @Binding var club: Club
     var body: some View {
         HStack {
             VStack {

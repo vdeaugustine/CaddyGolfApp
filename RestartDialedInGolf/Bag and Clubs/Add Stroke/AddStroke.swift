@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddNewStroke: View {
     @Environment(\.dismiss) var dismiss
-    var club: Club
+    @Binding var club: Club
     @EnvironmentObject var modelData: ModelData
     @State var distance: String = "0"
     @State var directionChosen: String = "straight"
@@ -96,30 +96,10 @@ struct AddNewStroke: View {
         .toolbar {
             ToolbarItem {
                 Button("Save") {
-                    
-                    
-                    
-                    guard let distanceInt = Int(self.distance) else { return }
-                    var directionToUse: SwingDirection
-                    switch directionChosen {
-                    case "left":
-                        directionToUse = .left
-                    case "right":
-                        directionToUse = .right
-                    case "straight":
-                        directionToUse = .straight
-                    default:
-                        directionToUse = .straight
-                    }
-                    
-                    let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
-                    
-                   
-                    
                     do {
-                        try modelData.addStrokeToClub(stroke: newSwing, club: self.club)
+                        try saveNewStroke(distance: self.distance, directionChosen: self.directionChosen, modelData: self.modelData, club: &club)
                     } catch {
-                        print(error)
+                        fatalError("can't save new stroke")
                     }
                     
                     dismiss()
@@ -130,10 +110,40 @@ struct AddNewStroke: View {
     }
 }
 
+func saveNewStroke(distance: String, directionChosen: String, modelData: ModelData, club: inout Club) throws {
+    
+        guard let distanceInt = Int(distance) else { return }
+        var directionToUse: SwingDirection
+        switch directionChosen {
+        case "left":
+            directionToUse = .left
+        case "right":
+            directionToUse = .right
+        case "straight":
+            directionToUse = .straight
+        default:
+            directionToUse = .straight
+        }
+
+        let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
+
+//        do {
+//            try modelData.addStrokeToClub(stroke: newSwing, club: club)
+//        } catch {
+//            print(error)
+//        }
+        
+        
+
+        
+    
+}
+
 struct AddNewStroke_Previews: PreviewProvider {
-     static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
+   @State static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
+   
     static var previews: some View {
-        AddNewStroke(club: club)
+        AddNewStroke(club: $club)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData(forType: .preview))
     }

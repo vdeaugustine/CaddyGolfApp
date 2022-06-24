@@ -5,8 +5,8 @@
 //  Created by Vincent DeAugustine on 6/16/22.
 //
 
-import Foundation
 import AVFAudio
+import Foundation
 
 enum modelDataType {
     case regular, preview
@@ -23,6 +23,7 @@ enum bagEnum: String {
 
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
+    
     func insertNote(_ thisNote: Note) {
         bag.notes.insert(thisNote)
         saveBag()
@@ -65,6 +66,7 @@ class ModelData: ObservableObject {
         guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
             throw SaveItemError.cannotFindInBag
         }
+        
 
         var clubInBag = bag.clubs.remove(at: clubInBagIndex)
         clubInBag.addSwing(stroke)

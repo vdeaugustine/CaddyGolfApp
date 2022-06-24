@@ -24,31 +24,22 @@ func loadBag() -> Bag? {
 
 struct BagListView: View {
     @EnvironmentObject var modelData: ModelData
-    @StateObject var bag: Bag
     @State private var showingAddClubSheet: Bool = false
     @State private var showingAlert = false
     private let sections: [ClubType] = [.wood, .iron, .hybrid, .wedge]
     var body: some View {
-        
-          VStack {
+        VStack {
             List {
                 ForEach(sections, id: \.self) { sectionClubType in
                     ClubSectionView(clubType: sectionClubType)
-                } 
+                }
             }
-            
         }
         .navigationTitle("Your Bag")
         .navigationBarTitleDisplayMode(.inline)
-        // This is a third party package that is a modification of sheet. It presents a sheet that only goes up a certain height, which is set by the parameter
-//        .bottomSheet(isPresented: $showingAddClubSheet, height: 450) {
-//        .popover(isPresented: $showingAddClubSheet) {
-//            AddClubView(isShowing: $showingAddClubSheet)
-//                .environmentObject(modelData)
-//                .preferredColorScheme(.dark)
-//        }
-        
-
+        .onAppear {
+//            bag = modelData.loadBag()
+        }
         .toolbar {
             // Top right button pressed when user would like to add a club
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,22 +65,20 @@ struct BagListView: View {
         }
     }
 
-    
     func deleteClub(at offsets: IndexSet) {
         guard let first = offsets.first else { return }
-        let clubToDelete = bag.clubs.sorted(by: { $0.getDistance() > $1.getDistance() } )[first]
-        guard bag.clubs.remove(clubToDelete) != nil else {
+        let clubToDelete = modelData.bag.clubs.sorted(by: { $0.getDistance() > $1.getDistance() })[first]
+        guard modelData.bag.clubs.remove(clubToDelete) != nil else {
             print("Error, did not remove correctly")
             return
         }
         modelData.saveBag()
-        
     }
 }
 
 struct BagListView_Previews: PreviewProvider {
     static var previews: some View {
-        BagListView(bag: loadBag()!)
+        BagListView()
             .environmentObject(ModelData(forType: .preview))
             .preferredColorScheme(.dark)
     }

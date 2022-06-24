@@ -20,7 +20,7 @@ struct CircleForStrokes: Shape {
 }
 
 struct ClubRowForBagList: View {
-    var club: Club
+    @State var club: Club
     var body: some View {
         HStack {
             Button {

@@ -27,9 +27,10 @@ struct ContentView: View {
             .tag(Tab.advice)
 
             NavigationView {
-                BagListView(bag: modelData.bag)
+                BagListView()
                     .navigationTitle("Your Bag")
                     .navigationBarTitleDisplayMode(.inline)
+                    .environmentObject(modelData)
             }
             .tabItem {
                 Label("Bag", systemImage: "star")

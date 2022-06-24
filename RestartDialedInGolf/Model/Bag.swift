@@ -27,6 +27,16 @@ class Bag: ObservableObject, Codable {
     @Published var notes = Set<Note>()
     @Published var reload = 0
 
+    
+    mutating func addStroke(_ stroke: Swing, to club: Club) -> Bool{
+        // first find the club you want to edit
+        guard var foundClub = clubs.remove(club) else {
+            return false
+        }
+        
+    }
+    
+    
     var clubsArray: [Club] {
         return Array(clubs).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
