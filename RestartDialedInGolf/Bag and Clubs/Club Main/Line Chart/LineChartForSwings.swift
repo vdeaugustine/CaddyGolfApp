@@ -9,12 +9,15 @@ import SwiftUI
 import LineChartView
 
 struct LineChartForSwings: View {
-    @State var club: Club
-    
+    var club: Club
+    @EnvironmentObject var modelData: ModelData
+    var modelClub: Club {
+        return modelData.bag.clubs.first(where: { $0 == club })!
+    }
     private var data: [LineChartData] {
         var retArr = [LineChartData]()
         
-        for swing in club.getSwings() {
+        for swing in modelClub.getSwings() {
             
             retArr.append(LineChartData(Double(swing.distance),
                                         timestamp: swing.date,

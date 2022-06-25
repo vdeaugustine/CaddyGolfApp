@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var modelData: ModelData
     @State private var selection: Tab = .bag
     enum Tab {
         case bag, notes, advice

@@ -11,12 +11,13 @@ struct swingsCircles: View {
     @EnvironmentObject var modelData: ModelData
     var club: Club
     var modelClub: Club {
-        return modelData.bag.clubs.first(where: {$0 == club})!
+        return modelData.bag.clubs.first(where: { $0 == club })!
     }
+
     var body: some View {
         HStack {
             VStack {
-                DistanceCircle(distance: Int(club.getDistance()))
+                DistanceCircle(distance: Int(modelClub.getDistance()))
                     .frame(width: 75, height: 75)
                 Text("Average Yards")
             }
@@ -26,7 +27,7 @@ struct swingsCircles: View {
                 VStack {
                     StrokesCircle(strokes: Double(modelClub.getSwings().count), goalStrokes: 50)
                         .frame(width: 75, height: 75)
-                    
+
                     Text("Strokes")
                 }
                 .padding(.leading, 50)

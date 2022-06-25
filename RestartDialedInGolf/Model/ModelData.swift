@@ -25,7 +25,7 @@ class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
 
     func insertNote(_ thisNote: Note) {
-        bag.notes.insert(thisNote)
+        bag.notes.append(thisNote)
         saveBag()
     }
 
@@ -33,22 +33,23 @@ class ModelData: ObservableObject {
     ///   - thisNote: the note that we will update. It should still be un-updated when it is passed as parameter
     /// - Returns: true if the note updated successfully
     func updateNote(_ thisNote: Note, newTitle: String? = nil, newBody: String? = nil) -> Bool {
-        var retVal = false
-        guard var noteFoundInNotes = bag.notes.remove(thisNote) else { return false }
+        guard let ind = bag.notes.firstIndex(of: thisNote) else {
+            print("error in update note index")
+            return false
+        }
+
         if let newTitle = newTitle {
-            noteFoundInNotes.title = newTitle
+            bag.notes[ind].title = newTitle
         }
         if let newBody = newBody {
-            noteFoundInNotes.body = newBody
+            bag.notes[ind].body = newBody
         }
 
-        noteFoundInNotes.date = Date()
-
-        retVal = bag.notes.insert(noteFoundInNotes).0
+        bag.notes[ind].date = Date()
 
         saveBag()
 
-        return retVal
+        return true
     }
 
     func saveBag() {
@@ -63,17 +64,11 @@ class ModelData: ObservableObject {
     }
 
     func addStrokeToClub(stroke: Swing, club: Club) throws {
-//        guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
-//            throw SaveItemError.cannotFindInBag
-//        }
-
-        guard var clubInBag = bag.clubs.remove(club) else {
-            throw SaveItemError.cannotRemove
+        guard let clubInBagIndex = bag.clubs.firstIndex(of: club) else {
+            throw SaveItemError.cannotFindInBag
         }
-        clubInBag.addSwing(stroke)
-        var newBag = bag
-        newBag.clubs.insert(clubInBag)
-        bag = newBag
+
+        bag.clubs[clubInBagIndex].addSwing(stroke)
 
         saveBag()
     }

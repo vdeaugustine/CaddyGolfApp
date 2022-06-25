@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Swing: Codable, Hashable, Equatable, CustomStringConvertible {
+struct Swing: Codable, Equatable, CustomStringConvertible, Hashable {
     var distance: Int
     var direction: SwingDirection
     var date: Date
@@ -16,6 +16,11 @@ struct Swing: Codable, Hashable, Equatable, CustomStringConvertible {
     var wasGoingForGreen: Bool
     var wasGoingForFairway: Bool
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(distance)
+        hasher.combine(direction)
+        hasher.combine(date)
+    }
 
 
     var FIRSuccess: Bool {

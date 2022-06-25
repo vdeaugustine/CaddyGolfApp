@@ -31,6 +31,7 @@
 		9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */; };
 		9CE5C953285EAD2000D6CA94 /* LineChartForSwings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C952285EAD2000D6CA94 /* LineChartForSwings.swift */; };
 		9CE5C955285EAE7800D6CA94 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C954285EAE7800D6CA94 /* PieChart.swift */; };
+		9CED50D928669C6300C522E7 /* MainClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED50D828669C6300C522E7 /* MainClubViewModel.swift */; };
 		9CFF6DE1285BCCF5000A17C4 /* RestartDialedInGolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */; };
 		9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */; };
 		9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
 		9CE5C952285EAD2000D6CA94 /* LineChartForSwings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartForSwings.swift; sourceTree = "<group>"; };
 		9CE5C954285EAE7800D6CA94 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		9CED50D828669C6300C522E7 /* MainClubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewModel.swift; sourceTree = "<group>"; };
 		9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestartDialedInGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfApp.swift; sourceTree = "<group>"; };
 		9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDAE148285D713700198EFC /* MainClubView.swift */,
-				9CE5C954285EAE7800D6CA94 /* PieChart.swift */,
+				9CED50D828669C6300C522E7 /* MainClubViewModel.swift */,
 				9CE5C949285EAC7E00D6CA94 /* Circles */,
 				9CE5C94A285EAC8B00D6CA94 /* Line Chart */,
 				9CE5C94B285EAC9700D6CA94 /* Pie Chart */,
@@ -259,6 +261,7 @@
 		9CE5C94B285EAC9700D6CA94 /* Pie Chart */ = {
 			isa = PBXGroup;
 			children = (
+				9CE5C954285EAE7800D6CA94 /* PieChart.swift */,
 			);
 			path = "Pie Chart";
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				9CE5C955285EAE7800D6CA94 /* PieChart.swift in Sources */,
 				9CFF6E10285BE488000A17C4 /* Objects.swift in Sources */,
 				9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */,
+				9CED50D928669C6300C522E7 /* MainClubViewModel.swift in Sources */,
 				9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */,
 				9CDFC860286522040046F601 /* Advice.swift in Sources */,
 				9CE5C953285EAD2000D6CA94 /* LineChartForSwings.swift in Sources */,

@@ -12,9 +12,8 @@ struct AllNotesView: View {
     @State var bag: Bag? = nil
     var body: some View {
         List {
-            if var thisBag = bag {
-                if thisBag.notes.count > 0 {
-                    ForEach(Array(thisBag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { note in
+            if modelData.bag.notes.count > 0 {
+                ForEach(modelData.bag.notes.sorted(by: { $0.date > $1.date }), id: \.self) { note in
                         NavigationLink {
                             ViewExistingNote(noteToDisplay: note)
                         } label: {
@@ -22,10 +21,7 @@ struct AllNotesView: View {
                         }
                     }
                     .onDelete { indexSet in
-                        var arr = Array(thisBag.notes).sorted(by: { $0.date > $1.date })
-                        arr.remove(atOffsets: indexSet)
-                        thisBag.notes = Set(arr)
-                        modelData.bag = thisBag
+                        modelData.bag.notes.remove(atOffsets: indexSet)
                         modelData.saveBag()
                     }
                     
@@ -36,9 +32,7 @@ struct AllNotesView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.vertical)
                 }
-            } else {
-                Text("NO NOTES")
-            }
+            
         }
         .onAppear {
             bag = modelData.loadBag()

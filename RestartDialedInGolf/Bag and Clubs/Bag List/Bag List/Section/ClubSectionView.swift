@@ -25,7 +25,6 @@ struct ClubSectionView: View {
 
     var body: some View {
         Section {
-            
             ForEach(theseClubs, id: \.self) { club in
                 NavigationLink { MainClubView(club: club) }
                 label: { ClubRowForBagList(club: club) }
@@ -38,8 +37,8 @@ struct ClubSectionView: View {
     }
 }
 
-//struct ClubSectionView_Previews: PreviewProvider {
+// struct ClubSectionView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ClubSectionView()
 //    }
-//}
+// }

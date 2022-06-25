@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Club: Codable, Hashable, Equatable, CustomStringConvertible {
+struct Club: Codable, Equatable, CustomStringConvertible, Identifiable, Hashable {
     var description: String {
         return name
     }
@@ -18,13 +18,28 @@ struct Club: Codable, Hashable, Equatable, CustomStringConvertible {
         self.type = type
         self.name = name
         self.distance = distance
+        
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(number)
+        hasher.combine(name)
+        hasher.combine(swings)
+        hasher.combine(id)
+        hasher.combine(dateLastEdited)
     }
 
     private var number: String
     private var type: ClubType
     private var name: String
     private var distance: Int
-    private var swings: [Swing] = [Swing]()
+    private var dateLastEdited: Date = Date()
+    private var swings: [Swing] = [Swing]() {
+        didSet {
+            dateLastEdited = Date()
+        }
+    }
+    var id = UUID()
     func getNumber() -> String {
         return number
     }

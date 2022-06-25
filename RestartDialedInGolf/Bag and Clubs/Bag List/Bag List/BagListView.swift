@@ -24,7 +24,6 @@ func loadBag() -> Bag? {
 
 struct BagListView: View {
     @EnvironmentObject var modelData: ModelData
-    @State private var showingAddClubSheet: Bool = false
     @State private var showingAlert = false
     private let sections: [ClubType] = [.wood, .iron, .hybrid, .wedge]
     var body: some View {
@@ -37,14 +36,10 @@ struct BagListView: View {
         }
         .navigationTitle("Your Bag")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-//            bag = modelData.loadBag()
-        }
         .toolbar {
             // Top right button pressed when user would like to add a club
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    showingAddClubSheet = true
                 } label: {
                     Label("Add Club", systemImage: "plus")
                 }
@@ -66,12 +61,7 @@ struct BagListView: View {
     }
 
     func deleteClub(at offsets: IndexSet) {
-        guard let first = offsets.first else { return }
-        let clubToDelete = modelData.bag.clubs.sorted(by: { $0.getDistance() > $1.getDistance() })[first]
-        guard modelData.bag.clubs.remove(clubToDelete) != nil else {
-            print("Error, did not remove correctly")
-            return
-        }
+        modelData.bag.clubs.remove(atOffsets: offsets)
         modelData.saveBag()
     }
 }

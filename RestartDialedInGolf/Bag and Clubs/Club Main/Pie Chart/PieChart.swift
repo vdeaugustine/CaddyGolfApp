@@ -8,20 +8,25 @@ import SwiftPieChart
 import SwiftUI
 
 struct PieChart: View {
-    @State var club: Club
+    var club: Club
+    @EnvironmentObject var modelData: ModelData
+    var modelClub: Club {
+        return modelData.bag.clubs.first(where: { $0 == club })!
+    }
+    
     var valuesForChart: ([Double], [String]) {
         var retDoubleArr = [Double]()
         var retStrArr = [String]()
-        if club.getSwings(ofType: .left).count > 0 {
-            retDoubleArr.append(Double(club.getSwings(ofType: .left).count))
+        if modelClub.getSwings(ofType: .left).count > 0 {
+            retDoubleArr.append(Double(modelClub.getSwings(ofType: .left).count))
             retStrArr.append("Left")
         }
-        if club.getSwings(ofType: .straight).count > 0 {
-            retDoubleArr.append(Double(club.getSwings(ofType: .straight).count))
+        if modelClub.getSwings(ofType: .straight).count > 0 {
+            retDoubleArr.append(Double(modelClub.getSwings(ofType: .straight).count))
             retStrArr.append("Straight")
         }
-        if club.getSwings(ofType: .right).count > 0 {
-            retDoubleArr.append(Double(club.getSwings(ofType: .right).count))
+        if modelClub.getSwings(ofType: .right).count > 0 {
+            retDoubleArr.append(Double(modelClub.getSwings(ofType: .right).count))
             retStrArr.append("Right")
         }
 
@@ -29,9 +34,9 @@ struct PieChart: View {
     }
 
     var doShow: Bool {
-        let oneOrMoreLeftSwings = club.getSwings(ofType: .left).count > 0
-        let oneOrMoreStraightSwings = club.getSwings(ofType: .straight).count > 0
-        let oneOrMoreRightSwings = club.getSwings(ofType: .left).count > 0
+        let oneOrMoreLeftSwings = modelClub.getSwings(ofType: .left).count > 0
+        let oneOrMoreStraightSwings = modelClub.getSwings(ofType: .straight).count > 0
+        let oneOrMoreRightSwings = modelClub.getSwings(ofType: .right).count > 0
         return oneOrMoreLeftSwings || oneOrMoreRightSwings || oneOrMoreStraightSwings
     }
 

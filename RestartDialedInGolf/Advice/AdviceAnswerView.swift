@@ -125,7 +125,6 @@ struct AdviceAnswerView: View {
             self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
             audioPlayer.play()
         }
-        
     }
 }
 

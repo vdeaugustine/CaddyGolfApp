@@ -9,9 +9,8 @@ import SwiftUI
 
 struct AddNewStroke: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var club: Club
+    var club: Club
     @EnvironmentObject var modelData: ModelData
-    @Binding var bag: Bag?
     @State var distance: String = "0"
     @State var directionChosen: String = "straight"
     @State var clubType: ClubType = .wood
@@ -44,7 +43,6 @@ struct AddNewStroke: View {
                         if isEditing {
                             self.distance = ""
                         }
-
                     })
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.trailing)
@@ -98,53 +96,44 @@ struct AddNewStroke: View {
             ToolbarItem {
                 Button("Save") {
                     do {
-                        try saveNewStroke(distance: self.distance, directionChosen: self.directionChosen, modelData: self.modelData, club: &club)
+                        try saveNewStroke(distance: self.distance, directionChosen: self.directionChosen, modelData: self.modelData, club: club)
                     } catch {
                         fatalError("can't save new stroke")
                     }
-                    bag = modelData.loadBag()
                     dismiss()
-                    
                 }
             }
         }
     }
 }
 
-func saveNewStroke(distance: String, directionChosen: String, modelData: ModelData, club: inout Club) throws {
-    
-        guard let distanceInt = Int(distance) else { return }
-        var directionToUse: SwingDirection
-        switch directionChosen {
-        case "left":
-            directionToUse = .left
-        case "right":
-            directionToUse = .right
-        case "straight":
-            directionToUse = .straight
-        default:
-            directionToUse = .straight
-        }
+func saveNewStroke(distance: String, directionChosen: String, modelData: ModelData, club: Club) throws {
+    guard let distanceInt = Int(distance) else { return }
+    var directionToUse: SwingDirection
+    switch directionChosen {
+    case "left":
+        directionToUse = .left
+    case "right":
+        directionToUse = .right
+    case "straight":
+        directionToUse = .straight
+    default:
+        directionToUse = .straight
+    }
 
-        let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
+    let newSwing = Swing(distance: distanceInt, direction: directionToUse, date: Date())
 
-        do {
-            try modelData.addStrokeToClub(stroke: newSwing, club: club)
-        } catch {
-            print(error)
-        }
-        
-        
-
-        
-    
+    do {
+        try modelData.addStrokeToClub(stroke: newSwing, club: club)
+    } catch {
+        print(error)
+    }
 }
 
 struct AddNewStroke_Previews: PreviewProvider {
-   @State static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
-    @State static var bag: Bag? = Bag()
+    static var club = Club(number: "9", type: .iron, name: "9 iron", distance: 139)
     static var previews: some View {
-        AddNewStroke(club: $club, bag: $bag)
+        AddNewStroke(club: club)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData(forType: .preview))
     }
