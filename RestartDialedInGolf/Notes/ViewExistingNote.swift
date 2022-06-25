@@ -18,17 +18,21 @@ struct ViewExistingNote: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            VStack {
                 Text(noteToDisplay.title)
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .lineLimit(2)
                     .minimumScaleFactor(0.01)
-                Spacer()
-                Text(noteToDisplay.date, format: noteToDisplay.date.noteFormat)
-                    .foregroundColor(.white)
-            }
-            .padding()
+                HStack {
+                    
+                    Spacer()
+                    Text(noteToDisplay.date, format: noteToDisplay.date.noteFormat)
+                        .foregroundColor(.white)
+                }
+                
+
+            }.padding()
             ZStack(alignment: .topLeading) {
                 Text(noteToDisplay.body)
             }

@@ -16,15 +16,21 @@ struct EditExistingNote: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-            HStack {
-                TextField("Note Title", text: $passedNote.title)
+            VStack(alignment: .leading) {
+                Text(passedNote.title)
                     .font(.largeTitle)
                     .foregroundColor(.white)
-                Spacer()
-                Text(Date(), format: Date().noteFormat)
-                    .foregroundColor(.white)
-            }
-            .padding()
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.01)
+                HStack {
+                    
+                    Spacer()
+                    Text(passedNote.date, format: passedNote.date.noteFormat)
+                        .foregroundColor(.white)
+                }
+                
+
+            }.padding()
             ZStack(alignment: .topLeading) {
                 TextEditor(text: $passedNote.body)
             }
@@ -68,5 +74,6 @@ struct EditExistingNote_Previews: PreviewProvider {
     @State static var passed: Note = Note(title: "Something", body: "something more", date: Date())
     static var previews: some View {
         EditExistingNote(passedNote: $passed)
+            .preferredColorScheme(.dark)
     }
 }

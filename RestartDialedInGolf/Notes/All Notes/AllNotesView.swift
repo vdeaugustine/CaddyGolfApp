@@ -13,7 +13,7 @@ struct AllNotesView: View {
     var body: some View {
         List {
             if modelData.bag.notes.count > 0 {
-                ForEach(modelData.bag.notes.sorted(by: { $0.date > $1.date }), id: \.self) { note in
+                ForEach(modelData.bag.notes.sorted(by: { $0.date > $1.date }), id: \.self.id) { note in
                         NavigationLink {
                             ViewExistingNote(noteToDisplay: note)
                         } label: {

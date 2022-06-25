@@ -28,11 +28,14 @@ struct AddNewNote: View {
                 TextField("Note Title", text: $titleOfNote)
                     .font(.largeTitle)
                     .foregroundColor(.white)
-                Spacer()
-                Text(Date(), format: Date().noteFormat)
-                    .foregroundColor(.white)
-            }
-            .padding()
+                
+            } .padding(10)
+//            HStack {
+//                Spacer()
+//                Text(Date(), format: Date().noteFormat)
+//                    .foregroundColor(.white)
+//            }
+            
             ZStack(alignment: .topLeading) {
                 TextEditor(text: $bodyOfNote)
                 if bodyOfNote.isEmpty {

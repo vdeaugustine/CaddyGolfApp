@@ -19,6 +19,9 @@ struct AddResultsView: View {
     @Environment(\.dismiss) var dismiss
     var club: Club
     @EnvironmentObject var modelData: ModelData
+    private var modelClub: Club {
+        return modelData.bag.clubs.first(where: { $0 == club })!
+    }
     @State var distance: String = "0"
     @State var directionChosen: SwingDirection = .straight
     @State var targetChoiceSelected: TargetChoices = .gir
@@ -94,7 +97,7 @@ struct AddResultsView: View {
             dismissKeyboard()
         }
         .tint(.blue)
-        .navigationTitle("Add Stroke for \(club.getName())")
+        .navigationTitle("Add Stroke for \(modelClub.getName())")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem {

@@ -111,7 +111,7 @@ struct AdviceAnswerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    AddResultsView(club: advice.closestClub, shouldPopToRootView: $rootIsActive)
+                    AddResultsView(club: highlightedClub, shouldPopToRootView: $rootIsActive)
                 } label: {
                     Text("Add Result")
                         .foregroundColor(.blue)
