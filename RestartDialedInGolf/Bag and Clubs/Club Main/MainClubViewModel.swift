@@ -2,19 +2,19 @@
 //  MainClubViewModel.swift
 //  RestartDialedInGolf
 //
-//  Created by Vincent DeAugustine on 6/24/22.
+//  Created by Vincent DeAugustine on 6/26/22.
 //
 
 import Foundation
 
-final class MainClubViewModel: ObservableObject {
-    @Published var modelData: ModelData
-    @Published var club: Club
-    @Published var isShowingDeleteAlert = false
-    @Published var bag: Bag? = nil
-    
-    init (modelData: ModelData, club: Club) {
-        self.modelData = modelData
-        self.club = club
-    }
-}
+//final class MainClubViewModel: ObservableObject {
+//    
+//    var modelData: ModelData
+//    var club: Club
+//    var modelClub: Club {
+//        return modelData.bag.clubs.first(where: { $0 == club })!
+//    }
+//    
+//    
+//    init(cl)
+//}

@@ -24,6 +24,18 @@ class ModelData: ObservableObject {
         saveBag()
     }
 
+    func deleteClub(_ club: Club) throws {
+        enum DeleteError: Error { case failedToDelete, couldntFindClubIndex, foundIndexOutOfRange }
+        guard let removeIndex = bag.clubs.firstIndex(where: { $0 == club }) else {
+            throw DeleteError.couldntFindClubIndex
+        }
+        guard removeIndex < bag.clubs.count else {
+            throw DeleteError.foundIndexOutOfRange
+        }
+        bag.clubs.remove(at: removeIndex)
+        saveBag()
+    }
+
     /// - Parameters:
     ///   - thisNote: the note that we will update. It should still be un-updated when it is passed as parameter
     /// - Returns: true if the note updated successfully
@@ -67,7 +79,7 @@ class ModelData: ObservableObject {
 
         saveBag()
     }
-    
+
     func addClub(_ club: Club) throws {
         enum AddClubErrors: Error { case clubAlreadyExists }
         if bag.clubs.contains(where: { $0 == club }) {

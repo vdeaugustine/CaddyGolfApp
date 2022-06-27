@@ -10,6 +10,7 @@ import SwiftPieChart
 import SwiftUI
 
 struct MainClubView: View {
+    @Environment (\.dismiss) private var dismiss
     @EnvironmentObject var modelData: ModelData
     var club: Club
     var modelClub: Club {
@@ -65,8 +66,17 @@ struct MainClubView: View {
                         .foregroundColor(.red)
                 }
                 .alert("Deleting will permanently get rid of all club stats", isPresented: $isShowingDeleteAlert) {
-                    Button("Delete", role: .destructive) { }
-                    Button("Cancel", role: .cancel) { }
+                    Button("Delete", role: .destructive) {
+                        do {
+                            dismiss()
+                            try modelData.deleteClub(modelClub)
+                            
+                        } catch {
+                            // show alert or something
+                            print(error)
+                        }
+                    }
+                    Button("Cancel", role: .cancel){}
                 }
 
                 Spacer()

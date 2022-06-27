@@ -5,16 +5,17 @@
 //  Created by Vincent DeAugustine on 6/26/22.
 //
 
-import SwiftUI
 import AlertToast
+import SwiftUI
 
 struct EditClubView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var modelData: ModelData
     var club: Club
     private var modelClub: Club {
-        return modelData.bag.clubs.first(where: {$0 == club})!
+        return modelData.bag.clubs.first(where: { $0 == club })!
     }
+
     @State var distanceEntered: String = ""
     @State var showToast = false
 
@@ -30,7 +31,7 @@ struct EditClubView: View {
                 })
                     .keyboardType(.numberPad)
                     .multilineTextAlignment(.trailing)
-                
+
                 Text("yards")
             }
         }
@@ -49,12 +50,11 @@ struct EditClubView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
-                    
                     guard let intOfStr = Int(distanceEntered) else {
                         showToast.toggle()
                         return
                     }
-                    
+
                     do {
                         try modelData.bag.editClubDistance(intOfStr, forClub: modelClub)
                     } catch {
@@ -62,15 +62,13 @@ struct EditClubView: View {
                         print(error)
                         return
                     }
-                    
+
                     modelData.saveBag()
-                    
+
                     dismiss()
                 }
             }
         }
-        
-        
     }
 }
 

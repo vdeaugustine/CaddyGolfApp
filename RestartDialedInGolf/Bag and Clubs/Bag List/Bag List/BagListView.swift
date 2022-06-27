@@ -5,9 +5,9 @@
 //  Created by Vincent DeAugustine on 6/16/22.
 //
 
+import AlertToast
 import BottomSheet
 import SwiftUI
-import AlertToast
 
 func loadBag() -> Bag? {
     var retBag: Bag?
@@ -24,7 +24,7 @@ func loadBag() -> Bag? {
 struct BagListView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var showingAlert = false
-    
+
     private let sections: [ClubType] = [.wood, .iron, .hybrid, .wedge]
     var body: some View {
         VStack {
@@ -50,22 +50,32 @@ struct BagListView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Reset") {
                     showingAlert = true
+                    
                 }
-                .alert("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert) {
+                
+                .confirmationDialog("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert, titleVisibility: .visible) {
+                    
+                    
                     Button("Reset", role: .destructive) {
                         modelData.bag.makeDefault(modelData: modelData)
                     }
-
-                    Button("Cancel", role: .cancel) {}
+                    
+                    
                 }
+                .preferredColorScheme(.dark)
+                
+//                .alert("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert) {
+//                    Button("Reset", role: .destructive) {
+//                        modelData.bag.makeDefault(modelData: modelData)
+//                    }
+//
+//                    Button("Cancel", role: .cancel) {}
+//                }
             }
         }
     }
 
-    func deleteClub(at offsets: IndexSet) {
-        modelData.bag.clubs.remove(atOffsets: offsets)
-        modelData.saveBag()
-    }
+    
 }
 
 struct BagListView_Previews: PreviewProvider {
