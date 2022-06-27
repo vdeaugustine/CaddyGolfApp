@@ -12,7 +12,11 @@ struct LineChartForSwings: View {
     var club: Club
     @EnvironmentObject var modelData: ModelData
     var modelClub: Club {
-        return modelData.bag.clubs.first(where: { $0 == club })!
+        guard let theClub = modelData.bag.clubs.first(where: { $0 == club }) else {
+            return Club(number: "NA", type: .wood, name: "NA", distance: 999)
+        }
+        
+        return theClub
     }
 
     var doShow: Bool {

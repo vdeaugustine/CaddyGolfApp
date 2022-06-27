@@ -16,7 +16,9 @@ func loadBag() -> Bag? {
             let decoder = JSONDecoder()
             let thisBag = try decoder.decode(Bag.self, from: existingBag)
             retBag = thisBag
-        } catch {}
+        } catch {
+            print(error)
+        }
     }
     return retBag
 }
@@ -50,32 +52,17 @@ struct BagListView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Reset") {
                     showingAlert = true
-                    
                 }
-                
+
                 .confirmationDialog("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert, titleVisibility: .visible) {
-                    
-                    
                     Button("Reset", role: .destructive) {
-                        modelData.bag.makeDefault(modelData: modelData)
+                        modelData.makeDefault()
                     }
-                    
-                    
                 }
                 .preferredColorScheme(.dark)
-                
-//                .alert("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert) {
-//                    Button("Reset", role: .destructive) {
-//                        modelData.bag.makeDefault(modelData: modelData)
-//                    }
-//
-//                    Button("Cancel", role: .cancel) {}
-//                }
             }
         }
     }
-
-    
 }
 
 struct BagListView_Previews: PreviewProvider {

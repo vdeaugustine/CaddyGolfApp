@@ -11,8 +11,13 @@ import AlertToast
 struct AddClubView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var modelData: ModelData
-    @State var clubType: ClubType = .wood
-    @State var clubNumber: String = "Driver"
+    @State var clubType: ClubType = .wood {
+        didSet {
+            print("did change")
+            clubNumber = numbers.first!
+        }
+    }
+    @State var clubNumber: String = ""
     @State var distance: Int = 150
     @State var showToast = false
 
@@ -70,9 +75,10 @@ struct AddClubView: View {
 
             Button {
                 // Save
-                let clubToAdd = Club(number: clubNumber, type: clubType, name: clubNumber.lowercased() == "driver" ? "Driver" : clubNumber + clubType.rawValue.capitalized, distance: distance)
+                let clubToAdd = Club(number: clubNumber, type: clubType, name: clubNumber.lowercased() == "driver" ? "Driver" : clubNumber + " " + clubType.rawValue, distance: distance + 50)
                 do {
                     try modelData.addClub(clubToAdd)
+                    dismiss()
                 } catch {
                     print(error)
                     showToast.toggle()
@@ -95,6 +101,9 @@ struct AddClubView: View {
          .toast(isPresenting: $showToast, alert: {
              AlertToast(displayMode: .alert, type: .error(.red), title: "Club Already Exists")
          })
+         .onAppear {
+             clubNumber = numbers.first!
+         }
     }
 }
 

@@ -12,24 +12,21 @@ import SwiftUI
 struct MainClubView: View {
     @Environment (\.dismiss) private var dismiss
     @EnvironmentObject var modelData: ModelData
-    var club: Club
-    var modelClub: Club {
-        return modelData.bag.clubs.first(where: { $0 == club })!
-    }
     @State var isShowingDeleteAlert = false
+    @StateObject var viewModel: MainClubViewModel
     var body: some View {
         ScrollView {
             VStack {
-                swingsCircles(club: modelClub)
+                swingsCircles(club: viewModel.modelClub)
                 NavigationLink {
-                    EditClubView(club: modelClub)
+                    EditClubView(club: viewModel.modelClub)
                 } label: {
                     Text("Edit Distance")
                 }
 
                 Section {
                     VStack {
-                        LineChartForSwings(club: modelClub)
+                        LineChartForSwings(club: viewModel.modelClub)
                     }
 
                 } header: {
@@ -44,7 +41,7 @@ struct MainClubView: View {
                 }
 
                 Section {
-                    PieChart(club: modelClub)
+                    PieChart(club: viewModel.modelClub)
                         .frame(height: 500)
                 }
 
@@ -65,18 +62,17 @@ struct MainClubView: View {
                     Text("Delete Club")
                         .foregroundColor(.red)
                 }
-                .alert("Deleting will permanently get rid of all club stats", isPresented: $isShowingDeleteAlert) {
+                .confirmationDialog("Deleting will permanently get rid of all club stats", isPresented: $isShowingDeleteAlert, titleVisibility: .visible) {
                     Button("Delete", role: .destructive) {
                         do {
                             dismiss()
-                            try modelData.deleteClub(modelClub)
+                            try modelData.deleteClub(viewModel.modelClub)
                             
                         } catch {
                             // show alert or something
                             print(error)
                         }
                     }
-                    Button("Cancel", role: .cancel){}
                 }
 
                 Spacer()
@@ -86,21 +82,22 @@ struct MainClubView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        AddNewStroke(club: club)
+                        AddNewStroke(club: viewModel.modelClub)
                     } label: {
                         Text("Add Stroke")
                     }
                 }
             }
-            .navigationTitle("\(club.getName().capitalized)")
+            .navigationTitle("\(viewModel.modelClub.getName().capitalized)")
         }
     }
 }
 
-struct MainClubView_Previews: PreviewProvider {
-    static let club = Club(number: "7", type: .iron, name: "7 iron", distance: 158)
-    static var previews: some View {
-        MainClubView(club: club)
-            .preferredColorScheme(.dark)
-    }
-}
+//struct MainClubView_Previews: PreviewProvider {
+//    static let viewModel: MainClubViewModel
+//    static let club = Club(number: "7", type: .iron, name: "7 iron", distance: 158)
+//    static var previews: some View {
+//        MainClubView(club: club)
+//            .preferredColorScheme(.dark)
+//    }
+//}

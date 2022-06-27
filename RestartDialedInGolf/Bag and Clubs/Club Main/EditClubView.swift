@@ -13,7 +13,11 @@ struct EditClubView: View {
     @EnvironmentObject var modelData: ModelData
     var club: Club
     private var modelClub: Club {
-        return modelData.bag.clubs.first(where: { $0 == club })!
+        guard let theClub = modelData.bag.clubs.first(where: { $0 == club }) else {
+            return Club(number: "NA", type: .wood, name: "NA", distance: 999)
+        }
+        
+        return theClub
     }
 
     @State var distanceEntered: String = ""

@@ -26,7 +26,9 @@ struct ClubSectionView: View {
     var body: some View {
         Section {
             ForEach(theseClubs, id: \.self.id) { club in
-                NavigationLink { MainClubView(club: club) }
+                NavigationLink {
+                    MainClubView(viewModel: MainClubViewModel(club: club, modelData: modelData))
+                }
                 label: { ClubRowForBagList(club: club) }
             }
         } header: {
