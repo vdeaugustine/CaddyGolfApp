@@ -13,7 +13,7 @@ struct PieChart: View {
     var modelClub: Club {
         return modelData.bag.clubs.first(where: { $0 == club })!
     }
-    
+
     var valuesForChart: ([Double], [String]) {
         var retDoubleArr = [Double]()
         var retStrArr = [String]()
@@ -50,6 +50,7 @@ struct PieChart: View {
 
                 PieChartView(values: (1 ... 3).map({ _ in Double.random(in: 5 ... 15) }),
                              names: ["Left", "Straight", "Right"], formatter: { "\(Int($0)) swings" }, backgroundColor: .black)
+                .padding()
             }
         }
     }

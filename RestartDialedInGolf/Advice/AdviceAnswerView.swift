@@ -53,18 +53,9 @@ struct AdviceAnswerView: View {
                         }
                     }
                     Section {
-                        VStack {
-                            if highlightedClub.getSwings().count > 0 {
-                                LineChartForSwings(club: highlightedClub)
-                            } else {
-                                HStack {
-                                    Image(systemName: "exclamationmark.circle")
-                                    Text("No swings yet recorded for club")
-                                }
-                                .font(.system(size: 17))
-                            }
-                        }
-                        .frame(height: highlightedClub.getSwings().count > 0 ? 300 : 25)
+                        LineChartForSwings(club: self.highlightedClub)
+                            .frame(height: 300)
+//                            }
 
                     } header: {
                         HStack {

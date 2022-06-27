@@ -8,18 +8,13 @@
 import AVFAudio
 import Foundation
 
-enum modelDataType {
-    case regular, preview
-}
+enum modelDataType { case regular, preview }
 
 enum SaveItemError: String, Error {
-    case cannotFindInBag
-    case cannotRemove
+    case cannotFindInBag, cannotRemove
 }
 
-enum bagEnum: String {
-    case bag
-}
+enum bagEnum: String { case bag }
 
 class ModelData: ObservableObject {
     @Published var bag: Bag = Bag()
@@ -72,6 +67,14 @@ class ModelData: ObservableObject {
 
         saveBag()
     }
+    
+    func addClub(_ club: Club) throws {
+        enum AddClubErrors: Error { case clubAlreadyExists }
+        if bag.clubs.contains(where: { $0 == club }) {
+            throw AddClubErrors.clubAlreadyExists
+        }
+        bag.clubs.append(club)
+    }
 
     func loadBag() -> Bag? {
         var retBag: Bag?
@@ -81,9 +84,7 @@ class ModelData: ObservableObject {
                 let thisBag = try decoder.decode(Bag.self, from: existingBag)
                 retBag = thisBag
                 print(thisBag)
-            } catch {
-                fatalError("Couldn't parse bag as Bag :\n\(error)")
-            }
+            } catch { print(error) }
         }
         return retBag
     }
@@ -91,22 +92,11 @@ class ModelData: ObservableObject {
     init(forType: modelDataType) {
         switch forType {
         case .regular:
-            if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
-                do {
-                    let decoder = JSONDecoder()
-                    let thisBag = try decoder.decode(Bag.self, from: existingBag)
-                    bag = thisBag
-
-                } catch {
-                    fatalError("Couldn't parse bag as Bag :\n\(error)")
-                }
-                return
-            }
-            print("no bag found")
-            bag.makeDefault()
+            guard let existingBag = loadBag() else { print("no bag found"); return }
+            bag = existingBag
             saveBag()
         case .preview:
-            bag.makeDefault(forType: .preview)
+            bag.makeDefault(forType: .preview, modelData: self)
         }
     }
 }

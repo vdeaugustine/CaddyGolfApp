@@ -7,6 +7,7 @@
 
 import BottomSheet
 import SwiftUI
+import AlertToast
 
 func loadBag() -> Bag? {
     var retBag: Bag?
@@ -15,9 +16,7 @@ func loadBag() -> Bag? {
             let decoder = JSONDecoder()
             let thisBag = try decoder.decode(Bag.self, from: existingBag)
             retBag = thisBag
-        } catch {
-            fatalError("Couldn't parse bag as Bag :\n\(error)")
-        }
+        } catch {}
     }
     return retBag
 }
@@ -25,6 +24,7 @@ func loadBag() -> Bag? {
 struct BagListView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var showingAlert = false
+    
     private let sections: [ClubType] = [.wood, .iron, .hybrid, .wedge]
     var body: some View {
         VStack {
@@ -39,7 +39,8 @@ struct BagListView: View {
         .toolbar {
             // Top right button pressed when user would like to add a club
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
+                NavigationLink {
+                    AddClubView()
                 } label: {
                     Label("Add Club", systemImage: "plus")
                 }
@@ -51,7 +52,8 @@ struct BagListView: View {
                     showingAlert = true
                 }
                 .alert("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert) {
-                    Button("Reset", role: .destructive) { modelData.bag.makeDefault()
+                    Button("Reset", role: .destructive) {
+                        modelData.bag.makeDefault(modelData: modelData)
                     }
 
                     Button("Cancel", role: .cancel) {}

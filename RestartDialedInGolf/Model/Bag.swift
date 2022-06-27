@@ -53,6 +53,23 @@ struct Bag: Codable {
         try container.encode(clubs, forKey: .clubs)
         try container.encode(notes, forKey: .notes)
     }
+    
+    mutating func editClubDistance(_ newDistance: Int, forClub: Club) throws {
+        enum editClubErrors: Error { case cantFindClub, clubsIndexOutOfRange }
+        guard let thisClubsIndex = self.clubs.firstIndex(where: {$0 == forClub}) else {
+            throw editClubErrors.cantFindClub
+        }
+        
+        guard thisClubsIndex < clubs.count else {
+            throw editClubErrors.clubsIndexOutOfRange
+        }
+        
+        var thisClub = self.clubs.remove(at: thisClubsIndex)
+        thisClub.setDistance(newDistance)
+        if thisClubsIndex > clubs.count { clubs.append(thisClub) }
+        else { self.clubs.insert(thisClub, at: thisClubsIndex) }
+        
+    }
 
     var woods: [Club] {
         let filtered = clubs.filter({ $0.getType() == .wood })
@@ -91,8 +108,8 @@ struct Bag: Codable {
         return Array(filtered).sorted(by: { $0.getDistance() > $1.getDistance() })
     }
 
-    mutating func makeDefault(forType: modelDataType = .regular) {
-        clubs = [Club]()
+    mutating func makeDefault(forType: modelDataType = .regular, modelData: ModelData) {
+        clubs.removeAll()
         // default woods
         // driver
 //        clubs.insert(Club(number: "Driver", type: .wood, name: "Driver", distance: 250))
@@ -112,6 +129,9 @@ struct Bag: Codable {
         clubs.append(Club(number: "60", type: .wedge, name: "60 " + ClubType.wedge.rawValue, distance: 60))
         clubs.append(Club(number: "56", type: .wedge, name: "56 " + ClubType.wedge.rawValue, distance: 80))
 
+        modelData.saveBag()
+        
+        
         // Give all the clubs some swings so they have something to work with
         if forType == .preview {
             for index in 0 ..< clubs.count {

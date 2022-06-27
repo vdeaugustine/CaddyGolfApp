@@ -20,7 +20,11 @@ struct CircleForStrokes: Shape {
 }
 
 struct ClubRowForBagList: View {
-    @State var club: Club
+    @EnvironmentObject var modelData: ModelData
+    var club: Club
+    var modelClub: Club {
+        return modelData.bag.clubs.first(where: {$0 == club})!
+    }
     var body: some View {
         HStack {
             Button {
@@ -29,7 +33,7 @@ struct ClubRowForBagList: View {
                     // Put one circle on top of the other. The bottom circle is the white circle that will always be there. The blue circle is only complete based on how many strokes the user has
                     CircleForStrokes(strokes: 25)
                         .foregroundColor(.white)
-                    CircleForStrokes(strokes: Double(club.getSwings().count))
+                    CircleForStrokes(strokes: Double(modelClub.getSwings().count))
                         .foregroundColor(.blue)
 
                     Text("Strokes")
@@ -41,7 +45,7 @@ struct ClubRowForBagList: View {
 
             }.buttonStyle(PlainButtonStyle())
 
-            Text(club.getName())
+            Text(modelClub.getName())
                 .font(.title2)
                 .bold()
                 .padding(5)
@@ -49,7 +53,7 @@ struct ClubRowForBagList: View {
 
             Spacer()
 
-            Text("\(club.getDistance()) yards")
+            Text("\(modelClub.getDistance()) yards")
                 .font(.headline)
                 .minimumScaleFactor(0.01)
             

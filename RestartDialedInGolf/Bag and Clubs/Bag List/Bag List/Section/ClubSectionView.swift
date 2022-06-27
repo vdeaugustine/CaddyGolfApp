@@ -25,7 +25,7 @@ struct ClubSectionView: View {
 
     var body: some View {
         Section {
-            ForEach(theseClubs, id: \.self) { club in
+            ForEach(theseClubs, id: \.self.id) { club in
                 NavigationLink { MainClubView(club: club) }
                 label: { ClubRowForBagList(club: club) }
             }

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Tab = .bag
-    enum Tab {
-        case bag, notes, advice
-    }
+    enum Tab { case bag, notes, advice }
 
     var body: some View {
         TabView(selection: $selection) {

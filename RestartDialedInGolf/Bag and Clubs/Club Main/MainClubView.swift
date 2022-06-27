@@ -20,6 +20,11 @@ struct MainClubView: View {
         ScrollView {
             VStack {
                 swingsCircles(club: modelClub)
+                NavigationLink {
+                    EditClubView(club: modelClub)
+                } label: {
+                    Text("Edit Distance")
+                }
 
                 Section {
                     VStack {

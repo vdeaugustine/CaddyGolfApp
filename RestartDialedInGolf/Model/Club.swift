@@ -55,6 +55,14 @@ struct Club: Codable, Equatable, CustomStringConvertible, Identifiable, Hashable
     func getDistance() -> Int {
         return distance
     }
+    
+    func getAverageDistance() -> Int {
+        var currSum = 0
+        for swing in swings {
+            currSum += swing.distance
+        }
+        return swings.count > 0 ? currSum / swings.count : 0
+    }
 
     func getThreeFourthsDistance() -> Int {
         return Int(Double(getDistance()) * 0.75)

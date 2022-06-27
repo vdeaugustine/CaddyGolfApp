@@ -10,6 +10,12 @@ import SwiftUI
 struct swingsCircles: View {
     @EnvironmentObject var modelData: ModelData
     var club: Club
+    @State private var showingAverage = false
+    var usedYards: Int {
+//        if modelClub.getSwings().count < 1 { return modelClub.getDistance() }
+        return showingAverage ? modelClub.getAverageDistance() : Int(modelClub.getDistance())
+    }
+
     var modelClub: Club {
         return modelData.bag.clubs.first(where: { $0 == club })!
     }
@@ -17,11 +23,20 @@ struct swingsCircles: View {
     var body: some View {
         HStack {
             VStack {
-                DistanceCircle(distance: Int(modelClub.getDistance()))
-                    .frame(width: 75, height: 75)
-                Text("Average Yards")
+                Button {
+                    showingAverage.toggle()
+
+                } label: {
+                    VStack {
+                        DistanceCircle(distance: usedYards)
+                            .frame(width: 75, height: 75)
+                        Text(showingAverage ? "Average Yards" : "Entered Yards")
+                            .minimumScaleFactor(0.01)
+                    }
+                    .padding(.trailing, 50)
+                }.tint(.white)
             }
-            .padding(.trailing, 50)
+
             Button {
             } label: {
                 VStack {

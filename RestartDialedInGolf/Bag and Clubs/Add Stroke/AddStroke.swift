@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct AddNewStroke: View {
     @Environment(\.dismiss) var dismiss
@@ -16,6 +17,7 @@ struct AddNewStroke: View {
     @State var clubType: ClubType = .wood
     @State var clubNumber: Int = 1
     @FocusState var distanceFocused: Bool
+    @State var showToast = false
 
     private var woodNumbers: [String] {
         return modelData.bag.woods.map({ $0.getNumber() })
@@ -97,13 +99,17 @@ struct AddNewStroke: View {
                 Button("Save") {
                     do {
                         try saveNewStroke(distance: self.distance, directionChosen: self.directionChosen, modelData: self.modelData, club: club)
+                            dismiss()
                     } catch {
-                        fatalError("can't save new stroke")
+                        showToast.toggle()
                     }
-                    dismiss()
+                    
                 }
             }
         }
+        .toast(isPresenting: $showToast, duration: 5, alert: {
+            AlertToast(displayMode: .banner(.slide), type: .error(.blue), title: "Could not save", subTitle: "Something happened when trying to save stroke. Exit the app and try again")
+        })
     }
 }
 
