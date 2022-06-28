@@ -23,6 +23,7 @@ struct NoteRowView: View {
                     .minimumScaleFactor(0.75)
                     .padding(.leading, 25)
                     .opacity(0.74)
+                    .padding(.top, 3)
                     
                 Spacer()
 

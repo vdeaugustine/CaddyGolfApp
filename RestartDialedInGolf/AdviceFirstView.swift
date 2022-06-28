@@ -17,8 +17,10 @@ enum FlagColors: String, CaseIterable {
     case red, white, blue
 }
 
-enum BallPositions: String, CaseIterable {
-    case flat, downhill, uphill, sidehill
+enum BallPositions: String, CaseIterable, Codable {
+    case flat, downhill, uphill
+    case belowFeet = "Ball Below Feet"
+    case aboveFeet = "Ball Above Feet"
 }
 
 struct AdviceFirstView: View {
@@ -152,7 +154,7 @@ struct BallPositionRow: View {
         HStack {
             Text("Ball Position")
             Spacer()
-            Picker("Accuracy or Distance", selection: $details.ballPosition) {
+            Picker("Ball Position", selection: $details.ballPosition) {
                 ForEach(BallPositions.allCases, id: \.self) {
                     Text("\($0.rawValue.capitalized)")
                         .tag($0)

@@ -19,7 +19,7 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem {
-                Label("Get Advice", systemImage: "lightbulb")
+                Label("Get Advice", systemImage: "scope")
             }
             .tag(Tab.advice)
 
@@ -29,7 +29,7 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem {
-                Label("Bag", systemImage: "star")
+                Label("Bag", systemImage: "list.number")
             }
             .tag(Tab.bag)
 

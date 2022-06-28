@@ -11,6 +11,7 @@
 		9C885E02285C2A420064E2EF /* AddClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C885E01285C2A420064E2EF /* AddClubView.swift */; };
 		9C885E08285D14A60064E2EF /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9C885E07285D14A60064E2EF /* BottomSheet */; };
 		9C9625AA28696A730094523F /* MainClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9625A928696A730094523F /* MainClubViewModel.swift */; };
+		9C9625AC286A1BA10094523F /* BallPositionAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */; };
 		9CDAE149285D713700198EFC /* MainClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE148285D713700198EFC /* MainClubView.swift */; };
 		9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */; };
 		9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16C285E6E8200198EFC /* LineChartView */; };
@@ -72,6 +73,7 @@
 		9C49D126285FA6E800CF9EA4 /* AddStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddStroke.swift; path = "RestartDialedInGolf/Bag and Clubs/Add Stroke/AddStroke.swift"; sourceTree = SOURCE_ROOT; };
 		9C885E01285C2A420064E2EF /* AddClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubView.swift; sourceTree = "<group>"; };
 		9C9625A928696A730094523F /* MainClubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewModel.swift; sourceTree = "<group>"; };
+		9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallPositionAdvice.swift; sourceTree = "<group>"; };
 		9CDAE147285D6EDE00198EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9CDAE148285D713700198EFC /* MainClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubView.swift; sourceTree = "<group>"; };
 		9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSectionView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */,
 				9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */,
+				9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */,
 				9CDFC85D2864EFED0046F601 /* AddResultsView.swift */,
 			);
 			path = Advice;
@@ -517,6 +520,7 @@
 				9CFF6E21285C1976000A17C4 /* Extensions.swift in Sources */,
 				9CDFC85E2864EFED0046F601 /* AddResultsView.swift in Sources */,
 				9C9625AA28696A730094523F /* MainClubViewModel.swift in Sources */,
+				9C9625AC286A1BA10094523F /* BallPositionAdvice.swift in Sources */,
 				9CFF6E1C285C0BEE000A17C4 /* ModelData.swift in Sources */,
 				9CDFC8522860D96F0046F601 /* AddNewNote.swift in Sources */,
 				9CDAE149285D713700198EFC /* MainClubView.swift in Sources */,

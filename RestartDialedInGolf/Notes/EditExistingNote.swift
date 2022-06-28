@@ -56,7 +56,6 @@ struct EditExistingNote: View {
 
                     // save
                     modelData.insertNote(passedNote)
-                    modelData.bag.reload += 1
 
                     dismiss()
                 } label: {

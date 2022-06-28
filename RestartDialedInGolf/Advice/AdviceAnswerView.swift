@@ -26,7 +26,32 @@ struct AdviceAnswerView: View {
                 .padding()
                 ColorYardage(advice: advice, club: advice.closestClub, color: .green)
                 ColorYardage(advice: advice, club: advice.secondClosestClub, color: .red)
-
+                
+                Spacer(minLength: 30)
+                
+                if advice.ballPosition != .flat {
+                    HStack {
+                                        Spacer()
+                                    
+                                        NavigationLink {
+                                            BallPositionAdvice(advice: advice)
+                                        } label: {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 10)
+                                                Text("Ball Position Advice")
+                                                    .foregroundColor(.white)
+                                            }
+                                            .frame(width: 200, height: 30)
+                                            .foregroundColor(.init(UIColor(red: 0, green: 87 / 255, blue: 23 / 255, alpha: 1)))
+                                            
+                                    }
+                        Spacer()
+                }
+                
+                    
+                }
+                
+                
                 Picker("Highlighted Club", selection: $highlightedClub) {
                     Text("\(advice.closestClub.getName().capitalized)")
                         .tag(advice.closestClub)
@@ -35,39 +60,39 @@ struct AdviceAnswerView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
-
+                
                 List {
                     Section {
                         PieChart(club: highlightedClub)
                             .frame(height: 500)
                     }
-
-                    header: {
-                        HStack {
-                            Text("Direction Tendancies")
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .fontWeight(.medium)
-
-                            Spacer()
-                        }
+                    
+                header: {
+                    HStack {
+                        Text("Direction Tendancies")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.medium)
+                        
+                        Spacer()
                     }
+                }
                     Section {
                         LineChartForSwings(club: self.highlightedClub)
                             .frame(height: 300)
-//                            }
-
+                        //                            }
+                        
                     } header: {
                         HStack {
                             Text("All Swings")
                                 .foregroundColor(.white)
                                 .font(.title2)
                                 .fontWeight(.medium)
-
+                            
                             Spacer()
                         }
                     }
-
+                    
                     Section {
                         if modelData.bag.notes.count <= 0 {
                             Text("You have no notes saved")
@@ -78,7 +103,7 @@ struct AdviceAnswerView: View {
                         ForEach(Array(modelData.bag.notes).sorted(by: { $0.date > $1.date }), id: \.self) { n in
                             NoteRowView(note: n)
                         }
-
+                        
                     } header: {
                         Text("Notes")
                             .font(.title2)
@@ -87,7 +112,7 @@ struct AdviceAnswerView: View {
                 }
                 .listStyle(.sidebar)
                 .frame(height: 1000)
-
+                
                 HStack {
                     Spacer()
                     Button("Add result for this swing") {
@@ -110,7 +135,7 @@ struct AdviceAnswerView: View {
                 .isDetailLink(false)
             }
         }
-
+        
         .onAppear {
             let sound = Bundle.main.path(forResource: "swing", ofType: "wav")
             self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
@@ -123,9 +148,9 @@ struct AdviceAnswerView_Previews: PreviewProvider {
     static let advice: Advice = {
         let cc = Club(number: "Driver", type: .wood, name: "Driver", distance: 250)
         let scc = Club(number: "3", type: .wood, name: "3 wood", distance: 225)
-        return Advice(closestClub: cc, secondClosestClub: scc, typeOfShot: .teeshot, targetDistance: 210, realDistance: 210)
+        return Advice(closestClub: cc, secondClosestClub: scc, typeOfShot: .teeshot, targetDistance: 210, realDistance: 210, ballPosition: .downhill)
     }()
-
+    
     @State static var active: Bool = false
     static var previews: some View {
         AdviceAnswerView(advice: advice, highlightedClub: advice.closestClub, rootIsActive: $active)
@@ -140,7 +165,7 @@ struct LabelForClub: View {
         HStack(alignment: .firstTextBaseline) {
             Text(club.getName().capitalized)
                 .font(.system(size: 30))
-
+            
                 .padding(.leading, 20)
             Text("\(club.getDistance()) yards")
                 .font(.title2)
@@ -163,7 +188,7 @@ struct ColorYardage: View {
         }
         return .clear
     }
-
+    
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             LabelForClub(club: club)

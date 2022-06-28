@@ -6,8 +6,8 @@
 //
 
 import AlertToast
-import SwiftUI
 import AVFAudio
+import SwiftUI
 
 func checkNote(_ theNote: Note) -> Bool {
     return !theNote.body.isEmpty && !theNote.title.isEmpty
@@ -15,7 +15,7 @@ func checkNote(_ theNote: Note) -> Bool {
 
 struct AddNewNote: View {
     @EnvironmentObject var modelData: ModelData
-    @State var bodyOfNote: String = "" 
+    @State var bodyOfNote: String = ""
     @State var titleOfNote: String = ""
     @FocusState var bodyEditing: Bool
     @State var textToShow: String = "Tap to begin editing"
@@ -23,31 +23,41 @@ struct AddNewNote: View {
     @State var showToast: Bool = false
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 TextField("Note Title", text: $titleOfNote)
                     .font(.largeTitle)
                     .foregroundColor(.white)
-                
-            } .padding(10)
-//            HStack {
-//                Spacer()
-//                Text(Date(), format: Date().noteFormat)
-//                    .foregroundColor(.white)
-//            }
-            
-            ZStack(alignment: .topLeading) {
+                    .onTapGesture {
+                        showPlaceholder = true
+                    }
+
+            }.padding(10)
+
+            ZStack {
                 TextEditor(text: $bodyOfNote)
-                if bodyOfNote.isEmpty {
-                    Text("Tap and begin typing")
-                        .padding([.leading])
-                        .padding([.top], 8)
+                    .padding(.leading)
+                if showPlaceholder && bodyOfNote.isEmpty {
+                    Text("Tap anywhere to begin editing")
                 }
             }
-            .padding()
+            
             .onTapGesture {
+                showPlaceholder = false
                 dismissKeyboard()
             }
+
+            //                if bodyOfNote.isEmpty || showPlaceholder {
+            //                    Text("Tap and begin typing")
+            //                        .padding([.leading])
+            //                        .padding([.top], 8)
+            //                        .onTapGesture {
+            //                            showPlaceholder = false
+            //                        }
+            //                }
+
+//            .padding()
+            
 
             Spacer()
         }

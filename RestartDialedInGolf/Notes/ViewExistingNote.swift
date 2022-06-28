@@ -18,7 +18,7 @@ struct ViewExistingNote: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(alignment: .leading) {
-            VStack {
+            VStack(alignment: .leading) {
                 Text(noteToDisplay.title)
                     .font(.largeTitle)
                     .foregroundColor(.white)
@@ -44,15 +44,15 @@ struct ViewExistingNote: View {
             Spacer()
         }
 
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    EditExistingNote(passedNote: $noteToDisplay)
-                } label: {
-                    Text("Edit")
-                }
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                NavigationLink {
+//                    EditExistingNote(passedNote: $noteToDisplay)
+//                } label: {
+//                    Text("Edit")
+//                }
+//            }
+//        }
     }
 }
 
