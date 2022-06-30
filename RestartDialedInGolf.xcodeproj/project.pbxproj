@@ -1,0 +1,1018 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C49D127285FA6E800CF9EA4 /* AddStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C49D126285FA6E800CF9EA4 /* AddStroke.swift */; };
+		9C885E02285C2A420064E2EF /* AddClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C885E01285C2A420064E2EF /* AddClubView.swift */; };
+		9C885E08285D14A60064E2EF /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9C885E07285D14A60064E2EF /* BottomSheet */; };
+		9C9625AA28696A730094523F /* MainClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9625A928696A730094523F /* MainClubViewModel.swift */; };
+		9C9625AC286A1BA10094523F /* BallPositionAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */; };
+		9CC4EA06286D25F3002C6391 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA05286D25F3002C6391 /* Enums.swift */; };
+		9CC4EA08286D277A002C6391 /* AdviceFirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA07286D277A002C6391 /* AdviceFirstViewModel.swift */; };
+		9CC4EA0A286D2E2B002C6391 /* DistanceToPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA09286D2E2B002C6391 /* DistanceToPinView.swift */; };
+		9CC4EA0C286D2E52002C6391 /* AccuracyOrDistanceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA0B286D2E52002C6391 /* AccuracyOrDistanceRow.swift */; };
+		9CC4EA0E286D2E7E002C6391 /* FlagButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA0D286D2E7E002C6391 /* FlagButtonView.swift */; };
+		9CC4EA10286D2EA2002C6391 /* FlagColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA0F286D2EA2002C6391 /* FlagColorSection.swift */; };
+		9CC4EA12286D2EB4002C6391 /* DetailsSectionForAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA11286D2EB4002C6391 /* DetailsSectionForAdvice.swift */; };
+		9CC4EA14286D2EEF002C6391 /* BallPositionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA13286D2EEF002C6391 /* BallPositionRow.swift */; };
+		9CC4EA18286D310B002C6391 /* LabelForClub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA17286D310B002C6391 /* LabelForClub.swift */; };
+		9CC4EA1C286D314A002C6391 /* ColorYardage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA1B286D314A002C6391 /* ColorYardage.swift */; };
+		9CC4EA1E286D317E002C6391 /* AdviceAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA1D286D317E002C6391 /* AdviceAnswerViewModel.swift */; };
+		9CC4EA20286D35A5002C6391 /* BallPositionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA1F286D35A5002C6391 /* BallPositionButtonView.swift */; };
+		9CC4EA22286D37B7002C6391 /* ListOfChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4EA21286D37B7002C6391 /* ListOfChartsView.swift */; };
+		9CDAE149285D713700198EFC /* MainClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE148285D713700198EFC /* MainClubView.swift */; };
+		9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */; };
+		9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16C285E6E8200198EFC /* LineChartView */; };
+		9CDAE170285E743E00198EFC /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDAE16F285E743E00198EFC /* SwiftPieChart */; };
+		9CDFC84B285FF0D60046F601 /* AdviceFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */; };
+		9CDFC84D28600D960046F601 /* AdviceAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */; };
+		9CDFC84F2860D8670046F601 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC84E2860D8670046F601 /* AllNotesView.swift */; };
+		9CDFC8522860D96F0046F601 /* AddNewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC8512860D96F0046F601 /* AddNewNote.swift */; };
+		9CDFC855286144900046F601 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 9CDFC854286144900046F601 /* AlertToast */; };
+		9CDFC85728614A660046F601 /* ViewExistingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85628614A660046F601 /* ViewExistingNote.swift */; };
+		9CDFC85928614E0F0046F601 /* EditExistingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85828614E0F0046F601 /* EditExistingNote.swift */; };
+		9CDFC85C28615F7A0046F601 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85B28615F7A0046F601 /* NoteRowView.swift */; };
+		9CDFC85E2864EFED0046F601 /* AddResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85D2864EFED0046F601 /* AddResultsView.swift */; };
+		9CDFC860286522040046F601 /* Advice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDFC85F286522040046F601 /* Advice.swift */; };
+		9CDFC865286538CC0046F601 /* swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CDFC864286538CC0046F601 /* swing.wav */; };
+		9CDFC867286668E10046F601 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CDFC866286668E10046F601 /* Launch Screen.storyboard */; };
+		9CE5C94D285EACC300D6CA94 /* swingsCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */; };
+		9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */; };
+		9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */; };
+		9CE5C953285EAD2000D6CA94 /* LineChartForSwings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C952285EAD2000D6CA94 /* LineChartForSwings.swift */; };
+		9CE5C955285EAE7800D6CA94 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5C954285EAE7800D6CA94 /* PieChart.swift */; };
+		9CED50FB286919F200C522E7 /* EditClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED50FA286919F200C522E7 /* EditClubView.swift */; };
+		9CFF6DE1285BCCF5000A17C4 /* RestartDialedInGolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */; };
+		9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */; };
+		9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */; };
+		9CFF6DE8285BCCF5000A17C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CFF6DE7285BCCF5000A17C4 /* Preview Assets.xcassets */; };
+		9CFF6DF2285BCCF5000A17C4 /* RestartDialedInGolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DF1285BCCF5000A17C4 /* RestartDialedInGolfTests.swift */; };
+		9CFF6DFC285BCCF5000A17C4 /* RestartDialedInGolfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DFB285BCCF5000A17C4 /* RestartDialedInGolfUITests.swift */; };
+		9CFF6DFE285BCCF5000A17C4 /* RestartDialedInGolfUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6DFD285BCCF5000A17C4 /* RestartDialedInGolfUITestsLaunchTests.swift */; };
+		9CFF6E10285BE488000A17C4 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E0F285BE488000A17C4 /* Objects.swift */; };
+		9CFF6E14285BFD05000A17C4 /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E13285BFD05000A17C4 /* Bag.swift */; };
+		9CFF6E16285BFD0D000A17C4 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E15285BFD0D000A17C4 /* Club.swift */; };
+		9CFF6E18285BFD11000A17C4 /* Swing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E17285BFD11000A17C4 /* Swing.swift */; };
+		9CFF6E1A285C0605000A17C4 /* load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E19285C0605000A17C4 /* load.swift */; };
+		9CFF6E1C285C0BEE000A17C4 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E1B285C0BEE000A17C4 /* ModelData.swift */; };
+		9CFF6E1F285C1554000A17C4 /* ClubRowForBagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E1E285C1554000A17C4 /* ClubRowForBagList.swift */; };
+		9CFF6E21285C1976000A17C4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E20285C1976000A17C4 /* Extensions.swift */; };
+		9CFF6E23285C24CA000A17C4 /* BagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFF6E22285C24CA000A17C4 /* BagListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9CFF6DEE285BCCF5000A17C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CFF6DD5285BCCF4000A17C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CFF6DDC285BCCF4000A17C4;
+			remoteInfo = RestartDialedInGolf;
+		};
+		9CFF6DF8285BCCF5000A17C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CFF6DD5285BCCF4000A17C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CFF6DDC285BCCF4000A17C4;
+			remoteInfo = RestartDialedInGolf;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C49D126285FA6E800CF9EA4 /* AddStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddStroke.swift; path = "RestartDialedInGolf/Bag and Clubs/Add Stroke/AddStroke.swift"; sourceTree = SOURCE_ROOT; };
+		9C885E01285C2A420064E2EF /* AddClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClubView.swift; sourceTree = "<group>"; };
+		9C9625A928696A730094523F /* MainClubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubViewModel.swift; sourceTree = "<group>"; };
+		9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallPositionAdvice.swift; sourceTree = "<group>"; };
+		9CC4EA05286D25F3002C6391 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		9CC4EA07286D277A002C6391 /* AdviceFirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceFirstViewModel.swift; sourceTree = "<group>"; };
+		9CC4EA09286D2E2B002C6391 /* DistanceToPinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceToPinView.swift; sourceTree = "<group>"; };
+		9CC4EA0B286D2E52002C6391 /* AccuracyOrDistanceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuracyOrDistanceRow.swift; sourceTree = "<group>"; };
+		9CC4EA0D286D2E7E002C6391 /* FlagButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagButtonView.swift; sourceTree = "<group>"; };
+		9CC4EA0F286D2EA2002C6391 /* FlagColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagColorSection.swift; sourceTree = "<group>"; };
+		9CC4EA11286D2EB4002C6391 /* DetailsSectionForAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSectionForAdvice.swift; sourceTree = "<group>"; };
+		9CC4EA13286D2EEF002C6391 /* BallPositionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallPositionRow.swift; sourceTree = "<group>"; };
+		9CC4EA17286D310B002C6391 /* LabelForClub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelForClub.swift; sourceTree = "<group>"; };
+		9CC4EA1B286D314A002C6391 /* ColorYardage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorYardage.swift; sourceTree = "<group>"; };
+		9CC4EA1D286D317E002C6391 /* AdviceAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceAnswerViewModel.swift; sourceTree = "<group>"; };
+		9CC4EA1F286D35A5002C6391 /* BallPositionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallPositionButtonView.swift; sourceTree = "<group>"; };
+		9CC4EA21286D37B7002C6391 /* ListOfChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfChartsView.swift; sourceTree = "<group>"; };
+		9CDAE147285D6EDE00198EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9CDAE148285D713700198EFC /* MainClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainClubView.swift; sourceTree = "<group>"; };
+		9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubSectionView.swift; sourceTree = "<group>"; };
+		9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdviceFirstView.swift; path = "RestartDialedInGolf/Advice/Advice First View/AdviceFirstView.swift"; sourceTree = SOURCE_ROOT; };
+		9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceAnswerView.swift; sourceTree = "<group>"; };
+		9CDFC84E2860D8670046F601 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
+		9CDFC8512860D96F0046F601 /* AddNewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNote.swift; sourceTree = "<group>"; };
+		9CDFC85628614A660046F601 /* ViewExistingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExistingNote.swift; sourceTree = "<group>"; };
+		9CDFC85828614E0F0046F601 /* EditExistingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExistingNote.swift; sourceTree = "<group>"; };
+		9CDFC85B28615F7A0046F601 /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
+		9CDFC85D2864EFED0046F601 /* AddResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResultsView.swift; sourceTree = "<group>"; };
+		9CDFC85F286522040046F601 /* Advice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advice.swift; sourceTree = "<group>"; };
+		9CDFC864286538CC0046F601 /* swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.wav; sourceTree = "<group>"; };
+		9CDFC866286668E10046F601 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swingsCircles.swift; sourceTree = "<group>"; };
+		9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesCircle.swift; sourceTree = "<group>"; };
+		9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
+		9CE5C952285EAD2000D6CA94 /* LineChartForSwings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartForSwings.swift; sourceTree = "<group>"; };
+		9CE5C954285EAE7800D6CA94 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		9CED50FA286919F200C522E7 /* EditClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClubView.swift; sourceTree = "<group>"; };
+		9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestartDialedInGolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfApp.swift; sourceTree = "<group>"; };
+		9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CFF6DE7285BCCF5000A17C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9CFF6DED285BCCF5000A17C4 /* RestartDialedInGolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestartDialedInGolfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CFF6DF1285BCCF5000A17C4 /* RestartDialedInGolfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfTests.swift; sourceTree = "<group>"; };
+		9CFF6DF7285BCCF5000A17C4 /* RestartDialedInGolfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestartDialedInGolfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CFF6DFB285BCCF5000A17C4 /* RestartDialedInGolfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfUITests.swift; sourceTree = "<group>"; };
+		9CFF6DFD285BCCF5000A17C4 /* RestartDialedInGolfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDialedInGolfUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9CFF6E0F285BE488000A17C4 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		9CFF6E13285BFD05000A17C4 /* Bag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bag.swift; sourceTree = "<group>"; };
+		9CFF6E15285BFD0D000A17C4 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		9CFF6E17285BFD11000A17C4 /* Swing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swing.swift; sourceTree = "<group>"; };
+		9CFF6E19285C0605000A17C4 /* load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = load.swift; sourceTree = "<group>"; };
+		9CFF6E1B285C0BEE000A17C4 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		9CFF6E1E285C1554000A17C4 /* ClubRowForBagList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubRowForBagList.swift; sourceTree = "<group>"; };
+		9CFF6E20285C1976000A17C4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9CFF6E22285C24CA000A17C4 /* BagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9CFF6DDA285BCCF4000A17C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CDAE16D285E6E8200198EFC /* LineChartView in Frameworks */,
+				9CDFC855286144900046F601 /* AlertToast in Frameworks */,
+				9C885E08285D14A60064E2EF /* BottomSheet in Frameworks */,
+				9CDAE170285E743E00198EFC /* SwiftPieChart in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DEA285BCCF5000A17C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DF4285BCCF5000A17C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C49D125285FA67300CF9EA4 /* Add Stroke */ = {
+			isa = PBXGroup;
+			children = (
+				9C49D126285FA6E800CF9EA4 /* AddStroke.swift */,
+			);
+			path = "Add Stroke";
+			sourceTree = "<group>";
+		};
+		9C885DFF285C2A1A0064E2EF /* Bag List */ = {
+			isa = PBXGroup;
+			children = (
+				9CDAE14C285E4B7C00198EFC /* Bag List */,
+			);
+			path = "Bag List";
+			sourceTree = "<group>";
+		};
+		9C885E00285C2A250064E2EF /* Club Main */ = {
+			isa = PBXGroup;
+			children = (
+				9CED50FA286919F200C522E7 /* EditClubView.swift */,
+				9C9625A928696A730094523F /* MainClubViewModel.swift */,
+				9CDAE148285D713700198EFC /* MainClubView.swift */,
+				9CE5C949285EAC7E00D6CA94 /* Circles */,
+				9CE5C94A285EAC8B00D6CA94 /* Line Chart */,
+				9CE5C94B285EAC9700D6CA94 /* Pie Chart */,
+			);
+			path = "Club Main";
+			sourceTree = "<group>";
+		};
+		9C885E03285C2A470064E2EF /* Add Club */ = {
+			isa = PBXGroup;
+			children = (
+				9C885E01285C2A420064E2EF /* AddClubView.swift */,
+			);
+			path = "Add Club";
+			sourceTree = "<group>";
+		};
+		9CC4EA15286D2F1D002C6391 /* Advice First View */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC84A285FF0D60046F601 /* AdviceFirstView.swift */,
+				9CC4EA07286D277A002C6391 /* AdviceFirstViewModel.swift */,
+				9CC4EA16286D2F24002C6391 /* Subviews */,
+			);
+			path = "Advice First View";
+			sourceTree = "<group>";
+		};
+		9CC4EA16286D2F24002C6391 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9CC4EA13286D2EEF002C6391 /* BallPositionRow.swift */,
+				9CC4EA11286D2EB4002C6391 /* DetailsSectionForAdvice.swift */,
+				9CC4EA0F286D2EA2002C6391 /* FlagColorSection.swift */,
+				9CC4EA0D286D2E7E002C6391 /* FlagButtonView.swift */,
+				9CC4EA0B286D2E52002C6391 /* AccuracyOrDistanceRow.swift */,
+				9CC4EA09286D2E2B002C6391 /* DistanceToPinView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9CC4EA19286D3130002C6391 /* Advice Answer View */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC84C28600D960046F601 /* AdviceAnswerView.swift */,
+				9CC4EA1D286D317E002C6391 /* AdviceAnswerViewModel.swift */,
+				9CC4EA1A286D3138002C6391 /* Subviews */,
+			);
+			path = "Advice Answer View";
+			sourceTree = "<group>";
+		};
+		9CC4EA1A286D3138002C6391 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9CC4EA17286D310B002C6391 /* LabelForClub.swift */,
+				9CC4EA1B286D314A002C6391 /* ColorYardage.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9CDAE14C285E4B7C00198EFC /* Bag List */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6E22285C24CA000A17C4 /* BagListView.swift */,
+				9CDAE14D285E4B9400198EFC /* Section */,
+			);
+			path = "Bag List";
+			sourceTree = "<group>";
+		};
+		9CDAE14D285E4B9400198EFC /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				9CDAE14A285E49FA00198EFC /* ClubSectionView.swift */,
+				9CDAE14E285E4B9F00198EFC /* Row */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		9CDAE14E285E4B9F00198EFC /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6E1E285C1554000A17C4 /* ClubRowForBagList.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
+		9CDFC849285FEE550046F601 /* Advice */ = {
+			isa = PBXGroup;
+			children = (
+				9CC4EA15286D2F1D002C6391 /* Advice First View */,
+				9CC4EA19286D3130002C6391 /* Advice Answer View */,
+				9CDFC85D2864EFED0046F601 /* AddResultsView.swift */,
+				9C9625AB286A1BA10094523F /* BallPositionAdvice.swift */,
+			);
+			path = Advice;
+			sourceTree = "<group>";
+		};
+		9CDFC8502860D86B0046F601 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC85A28615F440046F601 /* All Notes */,
+				9CDFC8512860D96F0046F601 /* AddNewNote.swift */,
+				9CDFC85628614A660046F601 /* ViewExistingNote.swift */,
+				9CDFC85828614E0F0046F601 /* EditExistingNote.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		9CDFC85A28615F440046F601 /* All Notes */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC84E2860D8670046F601 /* AllNotesView.swift */,
+				9CDFC85B28615F7A0046F601 /* NoteRowView.swift */,
+			);
+			path = "All Notes";
+			sourceTree = "<group>";
+		};
+		9CDFC861286538B80046F601 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC864286538CC0046F601 /* swing.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		9CE5C949285EAC7E00D6CA94 /* Circles */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5C94E285EACE800D6CA94 /* StrokesCircle.swift */,
+				9CE5C94C285EACC300D6CA94 /* swingsCircles.swift */,
+				9CE5C950285EAD0900D6CA94 /* DistanceCircle.swift */,
+			);
+			path = Circles;
+			sourceTree = "<group>";
+		};
+		9CE5C94A285EAC8B00D6CA94 /* Line Chart */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5C952285EAD2000D6CA94 /* LineChartForSwings.swift */,
+			);
+			path = "Line Chart";
+			sourceTree = "<group>";
+		};
+		9CE5C94B285EAC9700D6CA94 /* Pie Chart */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5C954285EAE7800D6CA94 /* PieChart.swift */,
+			);
+			path = "Pie Chart";
+			sourceTree = "<group>";
+		};
+		9CFF6DD4285BCCF4000A17C4 = {
+			isa = PBXGroup;
+			children = (
+				9CC4EA21286D37B7002C6391 /* ListOfChartsView.swift */,
+				9CC4EA1F286D35A5002C6391 /* BallPositionButtonView.swift */,
+				9CFF6DDF285BCCF5000A17C4 /* RestartDialedInGolf */,
+				9CFF6DF0285BCCF5000A17C4 /* RestartDialedInGolfTests */,
+				9CFF6DFA285BCCF5000A17C4 /* RestartDialedInGolfUITests */,
+				9CFF6DDE285BCCF5000A17C4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CFF6DDE285BCCF5000A17C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */,
+				9CFF6DED285BCCF5000A17C4 /* RestartDialedInGolfTests.xctest */,
+				9CFF6DF7285BCCF5000A17C4 /* RestartDialedInGolfUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9CFF6DDF285BCCF5000A17C4 /* RestartDialedInGolf */ = {
+			isa = PBXGroup;
+			children = (
+				9CDFC866286668E10046F601 /* Launch Screen.storyboard */,
+				9CDAE147285D6EDE00198EFC /* Info.plist */,
+				9CFF6DE0285BCCF5000A17C4 /* RestartDialedInGolfApp.swift */,
+				9CFF6DE2285BCCF5000A17C4 /* ContentView.swift */,
+				9CDFC8502860D86B0046F601 /* Notes */,
+				9CDFC849285FEE550046F601 /* Advice */,
+				9CFF6E1D285C1512000A17C4 /* Bag and Clubs */,
+				9CFF6E0E285BE46B000A17C4 /* Model */,
+				9CFF6DE4285BCCF5000A17C4 /* Assets.xcassets */,
+				9CDFC861286538B80046F601 /* Sounds */,
+				9CFF6DE6285BCCF5000A17C4 /* Preview Content */,
+			);
+			path = RestartDialedInGolf;
+			sourceTree = "<group>";
+		};
+		9CFF6DE6285BCCF5000A17C4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6DE7285BCCF5000A17C4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9CFF6DF0285BCCF5000A17C4 /* RestartDialedInGolfTests */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6DF1285BCCF5000A17C4 /* RestartDialedInGolfTests.swift */,
+			);
+			path = RestartDialedInGolfTests;
+			sourceTree = "<group>";
+		};
+		9CFF6DFA285BCCF5000A17C4 /* RestartDialedInGolfUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6DFB285BCCF5000A17C4 /* RestartDialedInGolfUITests.swift */,
+				9CFF6DFD285BCCF5000A17C4 /* RestartDialedInGolfUITestsLaunchTests.swift */,
+			);
+			path = RestartDialedInGolfUITests;
+			sourceTree = "<group>";
+		};
+		9CFF6E0E285BE46B000A17C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CFF6E0F285BE488000A17C4 /* Objects.swift */,
+				9CFF6E13285BFD05000A17C4 /* Bag.swift */,
+				9CFF6E1B285C0BEE000A17C4 /* ModelData.swift */,
+				9CFF6E19285C0605000A17C4 /* load.swift */,
+				9CFF6E15285BFD0D000A17C4 /* Club.swift */,
+				9CC4EA05286D25F3002C6391 /* Enums.swift */,
+				9CFF6E17285BFD11000A17C4 /* Swing.swift */,
+				9CFF6E20285C1976000A17C4 /* Extensions.swift */,
+				9CDFC85F286522040046F601 /* Advice.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CFF6E1D285C1512000A17C4 /* Bag and Clubs */ = {
+			isa = PBXGroup;
+			children = (
+				9C49D125285FA67300CF9EA4 /* Add Stroke */,
+				9C885E03285C2A470064E2EF /* Add Club */,
+				9C885E00285C2A250064E2EF /* Club Main */,
+				9C885DFF285C2A1A0064E2EF /* Bag List */,
+			);
+			path = "Bag and Clubs";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9CFF6DDC285BCCF4000A17C4 /* RestartDialedInGolf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CFF6E01285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolf" */;
+			buildPhases = (
+				9CFF6DD9285BCCF4000A17C4 /* Sources */,
+				9CFF6DDA285BCCF4000A17C4 /* Frameworks */,
+				9CFF6DDB285BCCF4000A17C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RestartDialedInGolf;
+			packageProductDependencies = (
+				9C885E07285D14A60064E2EF /* BottomSheet */,
+				9CDAE16C285E6E8200198EFC /* LineChartView */,
+				9CDAE16F285E743E00198EFC /* SwiftPieChart */,
+				9CDFC854286144900046F601 /* AlertToast */,
+			);
+			productName = RestartDialedInGolf;
+			productReference = 9CFF6DDD285BCCF5000A17C4 /* RestartDialedInGolf.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9CFF6DEC285BCCF5000A17C4 /* RestartDialedInGolfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CFF6E04285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolfTests" */;
+			buildPhases = (
+				9CFF6DE9285BCCF5000A17C4 /* Sources */,
+				9CFF6DEA285BCCF5000A17C4 /* Frameworks */,
+				9CFF6DEB285BCCF5000A17C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CFF6DEF285BCCF5000A17C4 /* PBXTargetDependency */,
+			);
+			name = RestartDialedInGolfTests;
+			productName = RestartDialedInGolfTests;
+			productReference = 9CFF6DED285BCCF5000A17C4 /* RestartDialedInGolfTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9CFF6DF6285BCCF5000A17C4 /* RestartDialedInGolfUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CFF6E07285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolfUITests" */;
+			buildPhases = (
+				9CFF6DF3285BCCF5000A17C4 /* Sources */,
+				9CFF6DF4285BCCF5000A17C4 /* Frameworks */,
+				9CFF6DF5285BCCF5000A17C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CFF6DF9285BCCF5000A17C4 /* PBXTargetDependency */,
+			);
+			name = RestartDialedInGolfUITests;
+			productName = RestartDialedInGolfUITests;
+			productReference = 9CFF6DF7285BCCF5000A17C4 /* RestartDialedInGolfUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9CFF6DD5285BCCF4000A17C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					9CFF6DDC285BCCF4000A17C4 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					9CFF6DEC285BCCF5000A17C4 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 9CFF6DDC285BCCF4000A17C4;
+					};
+					9CFF6DF6285BCCF5000A17C4 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 9CFF6DDC285BCCF4000A17C4;
+					};
+				};
+			};
+			buildConfigurationList = 9CFF6DD8285BCCF4000A17C4 /* Build configuration list for PBXProject "RestartDialedInGolf" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9CFF6DD4285BCCF4000A17C4;
+			packageReferences = (
+				9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */,
+				9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */,
+				9CDAE16E285E743E00198EFC /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
+				9CDFC853286144900046F601 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
+			productRefGroup = 9CFF6DDE285BCCF5000A17C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9CFF6DDC285BCCF4000A17C4 /* RestartDialedInGolf */,
+				9CFF6DEC285BCCF5000A17C4 /* RestartDialedInGolfTests */,
+				9CFF6DF6285BCCF5000A17C4 /* RestartDialedInGolfUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9CFF6DDB285BCCF4000A17C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CDFC865286538CC0046F601 /* swing.wav in Resources */,
+				9CFF6DE8285BCCF5000A17C4 /* Preview Assets.xcassets in Resources */,
+				9CDFC867286668E10046F601 /* Launch Screen.storyboard in Resources */,
+				9CFF6DE5285BCCF5000A17C4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DEB285BCCF5000A17C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DF5285BCCF5000A17C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9CFF6DD9285BCCF4000A17C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CFF6E14285BFD05000A17C4 /* Bag.swift in Sources */,
+				9CFF6E16285BFD0D000A17C4 /* Club.swift in Sources */,
+				9CC4EA0E286D2E7E002C6391 /* FlagButtonView.swift in Sources */,
+				9CDFC85928614E0F0046F601 /* EditExistingNote.swift in Sources */,
+				9CDFC84D28600D960046F601 /* AdviceAnswerView.swift in Sources */,
+				9C49D127285FA6E800CF9EA4 /* AddStroke.swift in Sources */,
+				9CFF6DE3285BCCF5000A17C4 /* ContentView.swift in Sources */,
+				9CDFC85C28615F7A0046F601 /* NoteRowView.swift in Sources */,
+				9CFF6E1A285C0605000A17C4 /* load.swift in Sources */,
+				9CDFC84F2860D8670046F601 /* AllNotesView.swift in Sources */,
+				9CDAE14B285E49FA00198EFC /* ClubSectionView.swift in Sources */,
+				9CC4EA06286D25F3002C6391 /* Enums.swift in Sources */,
+				9CFF6E18285BFD11000A17C4 /* Swing.swift in Sources */,
+				9CC4EA18286D310B002C6391 /* LabelForClub.swift in Sources */,
+				9CDFC84B285FF0D60046F601 /* AdviceFirstView.swift in Sources */,
+				9CC4EA1C286D314A002C6391 /* ColorYardage.swift in Sources */,
+				9CFF6E21285C1976000A17C4 /* Extensions.swift in Sources */,
+				9CDFC85E2864EFED0046F601 /* AddResultsView.swift in Sources */,
+				9C9625AA28696A730094523F /* MainClubViewModel.swift in Sources */,
+				9C9625AC286A1BA10094523F /* BallPositionAdvice.swift in Sources */,
+				9CC4EA0C286D2E52002C6391 /* AccuracyOrDistanceRow.swift in Sources */,
+				9CFF6E1C285C0BEE000A17C4 /* ModelData.swift in Sources */,
+				9CDFC8522860D96F0046F601 /* AddNewNote.swift in Sources */,
+				9CDAE149285D713700198EFC /* MainClubView.swift in Sources */,
+				9CFF6E23285C24CA000A17C4 /* BagListView.swift in Sources */,
+				9CC4EA08286D277A002C6391 /* AdviceFirstViewModel.swift in Sources */,
+				9CC4EA0A286D2E2B002C6391 /* DistanceToPinView.swift in Sources */,
+				9CE5C955285EAE7800D6CA94 /* PieChart.swift in Sources */,
+				9CC4EA22286D37B7002C6391 /* ListOfChartsView.swift in Sources */,
+				9CFF6E10285BE488000A17C4 /* Objects.swift in Sources */,
+				9CE5C951285EAD0900D6CA94 /* DistanceCircle.swift in Sources */,
+				9CE5C94F285EACE800D6CA94 /* StrokesCircle.swift in Sources */,
+				9CC4EA10286D2EA2002C6391 /* FlagColorSection.swift in Sources */,
+				9CDFC860286522040046F601 /* Advice.swift in Sources */,
+				9CE5C953285EAD2000D6CA94 /* LineChartForSwings.swift in Sources */,
+				9CC4EA14286D2EEF002C6391 /* BallPositionRow.swift in Sources */,
+				9CFF6DE1285BCCF5000A17C4 /* RestartDialedInGolfApp.swift in Sources */,
+				9CED50FB286919F200C522E7 /* EditClubView.swift in Sources */,
+				9C885E02285C2A420064E2EF /* AddClubView.swift in Sources */,
+				9CFF6E1F285C1554000A17C4 /* ClubRowForBagList.swift in Sources */,
+				9CC4EA12286D2EB4002C6391 /* DetailsSectionForAdvice.swift in Sources */,
+				9CC4EA1E286D317E002C6391 /* AdviceAnswerViewModel.swift in Sources */,
+				9CDFC85728614A660046F601 /* ViewExistingNote.swift in Sources */,
+				9CC4EA20286D35A5002C6391 /* BallPositionButtonView.swift in Sources */,
+				9CE5C94D285EACC300D6CA94 /* swingsCircles.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DE9285BCCF5000A17C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CFF6DF2285BCCF5000A17C4 /* RestartDialedInGolfTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CFF6DF3285BCCF5000A17C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CFF6DFE285BCCF5000A17C4 /* RestartDialedInGolfUITestsLaunchTests.swift in Sources */,
+				9CFF6DFC285BCCF5000A17C4 /* RestartDialedInGolfUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9CFF6DEF285BCCF5000A17C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CFF6DDC285BCCF4000A17C4 /* RestartDialedInGolf */;
+			targetProxy = 9CFF6DEE285BCCF5000A17C4 /* PBXContainerItemProxy */;
+		};
+		9CFF6DF9285BCCF5000A17C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CFF6DDC285BCCF4000A17C4 /* RestartDialedInGolf */;
+			targetProxy = 9CFF6DF8285BCCF5000A17C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9CFF6DFF285BCCF5000A17C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9CFF6E00285BCCF5000A17C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9CFF6E02285BCCF5000A17C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_ASSET_PATHS = "\"RestartDialedInGolf/Preview Content\"";
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dialed In Golf";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9CFF6E03285BCCF5000A17C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_ASSET_PATHS = "\"RestartDialedInGolf/Preview Content\"";
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RestartDialedInGolf/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dialed In Golf";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VIN.DialedInGolf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9CFF6E05285BCCF5000A17C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vin.RestartDialedInGolfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestartDialedInGolf.app/RestartDialedInGolf";
+			};
+			name = Debug;
+		};
+		9CFF6E06285BCCF5000A17C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vin.RestartDialedInGolfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RestartDialedInGolf.app/RestartDialedInGolf";
+			};
+			name = Release;
+		};
+		9CFF6E08285BCCF5000A17C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vin.RestartDialedInGolfUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestartDialedInGolf;
+			};
+			name = Debug;
+		};
+		9CFF6E09285BCCF5000A17C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KR268MWQL4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = vin.RestartDialedInGolfUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestartDialedInGolf;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9CFF6DD8285BCCF4000A17C4 /* Build configuration list for PBXProject "RestartDialedInGolf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CFF6DFF285BCCF5000A17C4 /* Debug */,
+				9CFF6E00285BCCF5000A17C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CFF6E01285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CFF6E02285BCCF5000A17C4 /* Debug */,
+				9CFF6E03285BCCF5000A17C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CFF6E04285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CFF6E05285BCCF5000A17C4 /* Debug */,
+				9CFF6E06285BCCF5000A17C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CFF6E07285BCCF5000A17C4 /* Build configuration list for PBXNativeTarget "RestartDialedInGolfUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CFF6E08285BCCF5000A17C4 /* Debug */,
+				9CFF6E09285BCCF5000A17C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weitieda/bottom-sheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jonathan-Gander/LineChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		9CDAE16E285E743E00198EFC /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ilamanov/SwiftPieChart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		9CDFC853286144900046F601 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C885E07285D14A60064E2EF /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C885E06285D14A60064E2EF /* XCRemoteSwiftPackageReference "bottom-sheet" */;
+			productName = BottomSheet;
+		};
+		9CDAE16C285E6E8200198EFC /* LineChartView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CDAE16B285E6E8200198EFC /* XCRemoteSwiftPackageReference "LineChartView" */;
+			productName = LineChartView;
+		};
+		9CDAE16F285E743E00198EFC /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CDAE16E285E743E00198EFC /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
+			productName = SwiftPieChart;
+		};
+		9CDFC854286144900046F601 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CDFC853286144900046F601 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9CFF6DD5285BCCF4000A17C4 /* Project object */;
+}
