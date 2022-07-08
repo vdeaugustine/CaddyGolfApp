@@ -6,39 +6,52 @@
 //
 
 import AlertToast
-import BottomSheet
 import SwiftUI
 
-func loadBag() -> Bag? {
-    var retBag: Bag?
-    if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
-        do {
-            let decoder = JSONDecoder()
-            let thisBag = try decoder.decode(Bag.self, from: existingBag)
-            retBag = thisBag
-        } catch {
-            print(error)
-        }
-    }
-    return retBag
-}
-
 struct BagListView: View {
+    // MARK: - Properties
+
     @EnvironmentObject var modelData: ModelData
     @State private var showingAlert = false
-
     private let sections: [ClubType] = [.wood, .iron, .hybrid, .wedge]
+
+    // MARK: - Body
+
     var body: some View {
         VStack {
+            // MARK: List of clubs
+
             List {
                 ForEach(sections, id: \.self) { sectionClubType in
+
+                    // MARK: Club type section
+
                     ClubSectionView(clubType: sectionClubType)
                 }
             }
         }
+
+        // MARK: Modifiers for top level Vstack
         .navigationTitle("Your Bag")
         .navigationBarTitleDisplayMode(.inline)
+
+        // MARK: - Toolbar
+
         .toolbar {
+            // MARK: Reset bag button
+            // Button the user can tap to reset their clubs to default. It will present an alert and if the alert is accepted, then it resets the clubs
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Reset") {
+                    showingAlert = true
+                }
+                .confirmationDialog("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert, titleVisibility: .visible) {
+                    Button("Reset", role: .destructive) {
+                        modelData.makeDefault()
+                    }
+                }
+            }
+
+            // MARK: Add Club button
             // Top right button pressed when user would like to add a club
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
@@ -46,20 +59,6 @@ struct BagListView: View {
                 } label: {
                     Label("Add Club", systemImage: "plus")
                 }
-            }
-
-            // Button the user can tap to reset their clubs to default. It will present an alert and if the alert is accepted, then it resets the clubs
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Reset") {
-                    showingAlert = true
-                }
-
-                .confirmationDialog("Are you sure you want to reset? This action cannot be undone", isPresented: $showingAlert, titleVisibility: .visible) {
-                    Button("Reset", role: .destructive) {
-                        modelData.makeDefault()
-                    }
-                }
-                .preferredColorScheme(.dark)
             }
         }
     }

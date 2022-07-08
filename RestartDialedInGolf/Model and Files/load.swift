@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 func loadBag() -> Bag? {
     var retBag: Bag?
     if let existingBag = UserDefaults.standard.object(forKey: bagEnum.bag.rawValue) as? Data {
@@ -20,6 +21,8 @@ func loadBag() -> Bag? {
     }
     return retBag
 }
+
+
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

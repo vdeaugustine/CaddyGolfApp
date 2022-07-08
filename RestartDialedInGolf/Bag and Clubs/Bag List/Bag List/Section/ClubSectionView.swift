@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClubSectionView: View {
+    // MARK: - Properties
     @EnvironmentObject var modelData: ModelData
     var clubType: ClubType
     var theseClubs: [Club] {
@@ -22,14 +23,18 @@ struct ClubSectionView: View {
             return modelData.bag.wedges
         }
     }
-
+    // MARK: - Body
     var body: some View {
         Section {
             ForEach(theseClubs, id: \.self.id) { club in
                 NavigationLink {
-                    MainClubView(viewModel: MainClubViewModel(club: club, modelData: modelData))
+                    MainClubView(viewModel: MainClubViewModel(club: club,
+                                                              modelData: modelData))
                 }
-                label: { ClubRowForBagList(club: club) }
+                label: {
+                    // MARK: Club Row View
+                    ClubRowForBagList(club: club)
+                }
             }
         } header: {
             Text("\(clubType.rawValue)s".capitalized)
@@ -38,6 +43,8 @@ struct ClubSectionView: View {
         }
     }
 }
+
+// MARK: - Preview
 
 // struct ClubSectionView_Previews: PreviewProvider {
 //    static var previews: some View {
